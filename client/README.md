@@ -1,8 +1,8 @@
-# cd client
+## 1) cd client
 
-# npm install
+## 2) npm install
 
-# npm start
+## 3) npm start
 
 # Getting Started with Create React App
 
