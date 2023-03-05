@@ -79,7 +79,11 @@ export default function Nabar() {
                     Contact
                   </NavLink>
                 </li>
-
+                <li className="nav-item">
+                  <NavLink className="nav-link text-white" to="/profile">
+                    Profile
+                  </NavLink>
+                </li>
                 <li className="nav-item">
                   <NavLink className="nav-link text-white" to="/registration">
                     Login{" "}
