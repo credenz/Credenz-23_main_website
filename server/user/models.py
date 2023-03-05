@@ -15,6 +15,8 @@ class User(AbstractUser):
     institute = models.TextField(default="", max_length=512)
     senior = models.BooleanField(default=False)
     coins = models.IntegerField(default=0)
+    offline_officer = models.BooleanField(default=False)
+    players = models.ManyToManyField('self', blank=True)
 
     @property
     def full_name(self):

@@ -49,3 +49,31 @@ class LeaderboardView(generics.ListAPIView):
     )
 
     serializer_class = ProfileSerializer
+
+# Team event APIs
+
+# check if the team member has registered
+class CheckUserView(generics.GenericAPIView):
+    def post(self, request):
+        username = request.data["username"]
+        phone_no = request.data["phone_no"]
+
+        if User.objects.filter(username = username, phone_no = phone_no):
+            return Response({"message" : "verified"}, status=status.HTTP_200_OK)
+        
+        return Response({"message" : "not verified"}, status=status.HTTP_400_BAD_REQUEST)
+    
+# Offline Register APIs
+class RegisterPlayerView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def post(self, request, *args, **kwargs):
+        if (request.user__offline_officer == True):
+            serializer = self.serializer_class(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response({"message" : "saved"}, status=status.HTTP_201_CREATED)
+        
+
+        

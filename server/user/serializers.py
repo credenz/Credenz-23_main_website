@@ -10,7 +10,7 @@ class TokenPairSerializer(TokenObtainPairSerializer):
         return token
 
 class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True, required=False)
     email = serializers.EmailField(required=True)
     phone = serializers.CharField(max_length=20, required=True)
     referralCode = serializers.CharField(
