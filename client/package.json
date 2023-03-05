@@ -20,8 +20,6 @@
     "@react-three/fiber": "8.8",
     "maath": "^0.5.2",
     "three": "^0.148.0"
-
-
   },
   "scripts": {
     "start": "react-scripts start",
