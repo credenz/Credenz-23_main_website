@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { debounce } from "debounce";
@@ -79,7 +79,11 @@ export default function Nabar() {
                     Contact
                   </NavLink>
                 </li>
-
+                <li className="nav-item">
+                  <NavLink className="nav-link text-white" to="/profile">
+                    Profile
+                  </NavLink>
+                </li>
                 <li className="nav-item">
                   <NavLink className="nav-link text-white" to="/registration">
                     Login{" "}

@@ -10,6 +10,7 @@ import Navbar from './Components/Navbar';
 import Cart from './pages/Cart';
 import Footer from './Components/Footer';
 import Home from './Components/Home/Home'
+import Profile from './pages/Profile/Profile';
 
 
 
@@ -26,6 +27,7 @@ function App() {
    <Route exact path="/contact" element={<Contact/> } />
    <Route exact path="/registration" element={<Registration/> } />
    <Route exact path="/cart" element={<Cart/> } />
+   <Route exact path="/profile" element={<Profile/> } />
   </Routes> 
   {/* <Footer/> */}
 </div>

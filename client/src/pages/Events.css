@@ -817,6 +817,16 @@ img {
   padding: 5px;
 }
 
+.modal-content button:disabled,
+button[disabled]
+ {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
+
 .modalbody {
   font-size: 16px;
   letter-spacing: 1.5px;
