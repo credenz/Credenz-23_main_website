@@ -9,6 +9,7 @@ import { useFrame } from '@react-three/fiber'
 import { Logo3 } from './models/Logo_v3'
 import LogoV4 from './models/Logo_v4'
 import LogoV5 from './models/Logo_v5'
+import SignBoard from './models/SignBoard'
 
 export default function Experience() {
 
@@ -19,7 +20,7 @@ export default function Experience() {
   }
   return (
     <>
-        {/* <OrbitControls /> */}
+        <OrbitControls />
         {/* <Environment attach="background" files="models/credenz/hdri.hdr" /> */}
         
         <Environment
@@ -48,7 +49,8 @@ export default function Experience() {
         {/* <Logo3 /> */}
         {/* <LogoV4 /> */}
         <LogoV5 />
-        <Rig />
+        <SignBoard />
+        {/* <Rig /> */}
         {/* <SkyBox /> */}
     </>
   )

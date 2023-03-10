@@ -63,12 +63,12 @@ export default function LogoV5(props) {
       {/* <mesh geometry={nodes.Gem.geometry} material={nodes.Gem.material} position={[0.05, 0.1, -5.31]} rotation={[Math.PI / 2, 0, 0]} >
         <meshBasicMaterial map={bakedTexture} map-flipY = {false} />
       </mesh> */}
-      <mesh geometry={nodes.plate.geometry} material={nodes.plate.material} position={[-2.96, 1.39, 6.24]} rotation={[Math.PI / 2, 0, 0]} >
+      {/* <mesh geometry={nodes.plate.geometry} material={nodes.plate.material} position={[-2.96, 1.39, 6.24]} rotation={[Math.PI / 2, 0, 0]} >
         
         <Suspense fallback={<meshBasicMaterial map={bakedTexture} map-flipY = {false} />}>
           <VideoMaterial url="models/v5/rickroll.mp4" />
         </Suspense>
-      </mesh>
+      </mesh> */}
 
       <Bounds>
         <SelectToZoom>
