@@ -1,7 +1,7 @@
 import React from "react";
 import "./About.css"
 import {motion} from 'framer-motion';
-import Clash from "../images/clash.png";
+import Clash from "../../images/clash.png";
 const About = () =>{
     return (
 <>

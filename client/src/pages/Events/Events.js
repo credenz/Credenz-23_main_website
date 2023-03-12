@@ -4,19 +4,20 @@ import Modal from "react-modal";
 
 import "./Events.css";
 
-import Clash from "../images/clash.png";
-import RC from "../images/rc.png";
-import NTH from "../images/nth.png";
-import WALLSTREET from "../images/wallstreet.png";
-import BPLAN from "../images/bplan.png";
-import ENIGMA from "../images/enigma.png";
-import DATAWIZ from "../images/datawiz.png";
-import QUIZ from "../images/quiz.png";
-import PAPER from "../images/paper.png";
-import CRETRONIX from "../images/cretronix.png";
-import PIXELATE from "../images/pixelate.png";
-import WEB from "../images/webwever.png";
-import { useCartContext } from "../context/cart_context";
+import Clash from "../../images/clash.png";
+import RC from "../../images/rc.png";
+import NTH from "../../images/nth.png";
+import WALLSTREET from "../../images/wallstreet.png";
+import BPLAN from "../../images/bplan.png";
+import ENIGMA from "../../images/enigma.png";
+import DATAWIZ from "../../images/datawiz.png";
+import QUIZ from "../../images/quiz.png";
+import PAPER from "../../images/paper.png";
+import CRETRONIX from "../../images/cretronix.png";
+import PIXELATE from "../../images/pixelate.png";
+import WEB from "../../images/webwever.png";
+// import {Clash,RC,NTH,WALLSTREET,BPLAN,ENIGMA,DATAWIZ,QUIZ,PAPER,CRETRONIX,PIXELATE,WEB} from '../../images';
+import { useCartContext } from "../../context/cart_context";
 
 
 const Events = () => {
@@ -262,11 +263,11 @@ const Events = () => {
                 <div className="modalbutton">
                   <button
                   disabled={
-                   cart.find((item)=> item.id === data.id) ? true: false
+                   cart!=null?(cart.find((item)=> item.id === data.id) ? true: false):false
                   }
 
                   className={
-                   `  ${cart.find((item)=> item.id === data.id) ? 'disabled': ''}`}
+                   `  ${cart!=null?(cart.find((item)=> item.id === data.id) ? 'disabled': ''):''}`}
                     onClick={() =>
                       addtocart(
                         data.id,

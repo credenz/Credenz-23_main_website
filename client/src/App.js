@@ -2,15 +2,16 @@
 import './App.css';
 import { Routes,Route} from "react-router-dom";
 // import Home from './pages/Home';
-import Events from "./pages/Events"
-import Contact from './pages/Contact';
-import About from "./pages/About";
-import Registration from './pages/Registration';
-import Navbar from './Components/Navbar';
-import Cart from './pages/Cart';
-import Footer from './Components/Footer';
+import Events from "./pages/Events/Events"
+import Contact from './pages/Contact/Contact';
+import About from "./pages/About/About";
+import Registration from './pages/Register/Registration';
+import Navbar from './Components/Navbar/Navbar';
+import Cart from './pages/Cart/Cart';
+import Footer from './Components/Footer/Footer';
 import Home from './Components/Home/Home'
 import Profile from './pages/Profile/Profile';
+import Payment from './pages/Payment/Payment';
 
 
 
@@ -28,6 +29,7 @@ function App() {
    <Route exact path="/registration" element={<Registration/> } />
    <Route exact path="/cart" element={<Cart/> } />
    <Route exact path="/profile" element={<Profile/> } />
+   <Route exact path="/payment" element={<Payment/> } />
   </Routes> 
   {/* <Footer/> */}
 </div>

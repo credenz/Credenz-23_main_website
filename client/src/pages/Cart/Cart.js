@@ -1,13 +1,15 @@
 import React from "react";
 import "./Cart.css";
-import Clash from "../images/clash.png";
+// import Clash from "../../images/clash.png";
 import { Scrollbars } from "react-custom-scrollbars-2";
-import { useCartContext } from "../context/cart_context";
-
+import { useCartContext } from "../../context/cart_context";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const { cart, removeitem, clearcart, totalprice } = useCartContext();
   // console.log(cart)
-
+  let navigate = useNavigate();
+  let variable = encodeURI('upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=1&tn=ieee&cu=INR');
+  console.log(variable);
   if (cart.length === 0) {
     return (
       <div className="cartpage">
@@ -108,7 +110,9 @@ const Cart = () => {
                 <div class="col">TOTAL PRICE</div>
                 <div class="col text-right">{totalprice}</div>
               </div>
-              <button class="btn">CHECKOUT</button>
+              {/* <img src={`https://api.qrserver.com/v1/create-qr-code/?data=${variable}&amp;size=100x100`}
+                                                class="qr-code img-thumbnail img-responsive" alt='QR CODE'/> */}
+              <button class="btn" onClick={()=>navigate('/payment')}>CHECKOUT</button>
             </div>
           </div>
         </div>
