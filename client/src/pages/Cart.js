@@ -8,7 +8,7 @@ const Cart = () => {
   const { cart, removeitem, clearcart, totalprice } = useCartContext();
   // console.log(cart)
 
-  if (cart.length === 0) {
+  if (cart.length === 0 ) {
     return (
       <div className="cartpage">
         <div class="card">
