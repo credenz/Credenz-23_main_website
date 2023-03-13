@@ -19,8 +19,17 @@ const Registration = () => {
   const [username, setusername] = useState("");
   const [registeremail, setregisterEmail] = useState("");
   const [phone, setphone] = useState("");
+  const [institute, setinstitute] = useState("");
+  const [year, setyear] = useState("");
+  const [referal, setreferal] = useState("");
   const [registerpassword, setregisterpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
+
+  //next register
+  const [ieee, setieee] = useState(false);
+  const [ispictian, setIspictian] = useState(false);
+  const [isjunior, setIsjunior] = useState(false);
+  const [isSenior, setIsSenior] = useState(false);
 
   //forget
   const [forgetemail, setforgetemail] = useState("");
@@ -97,9 +106,8 @@ const Registration = () => {
     }
   };
 
-
   // const allfieldsfilled = () => {
-   
+
   //   const emailValid = ValidateEmail(registeremail);
   //   const phoneValid = ValidatePhone(phone);
   //   return (
@@ -286,10 +294,8 @@ const Registration = () => {
                             name="institute"
                             placeholder="Institiute"
                             required
-                            onChange={(e) =>
-                              setregisterpassword(e.target.value)
-                            }
-                            value={registerpassword}
+                            onChange={(e) => setinstitute(e.target.value)}
+                            value={institute}
                           />
                           <input
                             class="form-control"
@@ -297,8 +303,8 @@ const Registration = () => {
                             name="Year"
                             placeholder="Year"
                             required
-                            onChange={(e) => setconfirmpassword(e.target.value)}
-                            value={confirmpassword}
+                            onChange={(e) => setyear(e.target.value)}
+                            value={year}
                           />
                         </div>
 
@@ -307,8 +313,8 @@ const Registration = () => {
                           type="text"
                           name="referalcode"
                           placeholder="Referal Code (If any)"
-                          onChange={(e) => setregisterpassword(e.target.value)}
-                          value={registerpassword}
+                          onChange={(e) => setreferal(e.target.value)}
+                          value={referal}
                         />
 
                         <div className="passwordsection">
@@ -336,8 +342,8 @@ const Registration = () => {
 
                         <div class="form-button">
                           <button
-                            onClick={(e) =>
-                            setregister2(1)
+                            onClick={
+                              (e) => setregister2(1)
                               // allfieldsfilled()
                               //   ? registerpassword === confirmpassword
                               //   ?  setregister2(1)
@@ -372,26 +378,46 @@ const Registration = () => {
                       <div className="registersection">
                         <div className="collegesection">
                           <div className="div1">
-                            <input type="checkbox" id="javascript" />
+                            <input 
+                            onClick={()=>setieee(true)}
+                            value={ieee}
+                            type="checkbox" id="javascript" />
 
-                            <label for="javascript">IEEE Member</label>
+                            <label for="javascript">IEEE Member </label>
                           </div>
 
                           <div className="div2">
-                            <input type="checkbox" id="javascript" />
+                            <input
+                            onClick={()=>setIspictian(true)}
+                            value={ispictian}
+                             type="checkbox" id="javascript" />
                             <label for="javascript">PICTIAN</label>
                           </div>
                         </div>
-
+                      
                         <div className="collegesection">
+                        <br />
+                        <p>Choose any one from below</p>
                           <div className="div1">
-                            <input type="checkbox" id="javascript" />
-
-                            <label for="javascript">Junior (FE/SE)</label>
+                            <input
+                            onClick={()=>setIsjunior(true)}
+                            value={isjunior}
+                              type="checkbox"
+                              id="javascript"
+                              name="sep1"
+                            />
+                   
+                            <label for="sep1">Junior (FE/SE)</label>
                           </div>
                           <div className="div2">
-                            <input type="checkbox" id="javascript" />
-                            <label for="javascript">SENIOR (TE/BE)</label>
+                            <input
+                            onClick={()=>setIsSenior(true)}
+                            value={isSenior}
+                              type="checkbox"
+                              name="sep2"
+                              id="javascript"
+                            />
+                            <label for="sep2">SENIOR (TE/BE)</label>
                           </div>
                         </div>
 
@@ -447,7 +473,6 @@ const Registration = () => {
 
                     <input
                       class="form-control"
-                      
                       type="text"
                       name="token"
                       placeholder="Verification token"
@@ -501,37 +526,6 @@ const Registration = () => {
                       </button>
                     </div>
                   </form>
-                </div>
-                <div class="form-sent">
-                  <div class="website-logo-inside">
-                    <a href="index-2.html">
-                      <div class="logo">
-                        <img
-                          class="logo-size"
-                          src="images/logo-light.svg"
-                          alt=""
-                        />
-                      </div>
-                    </a>
-                  </div>
-                  <div class="tick-holder">
-                    <div class="tick-icon"></div>
-                  </div>
-                  <h3>Password link sent</h3>
-                  <p>
-                    Please check your inbox{" "}
-                    <a
-                      href="http://brandio.io/cdn-cgi/l/email-protection"
-                      class="__cf_email__"
-                      data-cfemail="5930363f2b341930363f2b342d3c342935382d3c773036"
-                    >
-                      [email&#160;protected]
-                    </a>
-                  </p>
-                  <div class="info-holder">
-                    <span>Unsure if that email address was correct?</span>{" "}
-                    <a href="#">We can help</a>.
-                  </div>
                 </div>
               </div>
             </div>
