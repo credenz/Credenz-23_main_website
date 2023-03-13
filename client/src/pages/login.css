@@ -21,6 +21,7 @@ body {
 .form-body {
     /* background-color: #152733; */
     /* min-height: 90vh; */
+    margin: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -190,7 +191,7 @@ body {
 
 
 .login .form-content .form-items {
-    width: 350px;
+    max-width: 350px;
     text-align: center;
     padding: 15px;
 }
