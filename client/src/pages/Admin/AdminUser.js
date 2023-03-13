@@ -1,47 +1,9 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import Modal from "react-modal";
-
-import "./Events.css";
-
-import Clash from "../images/clash.png";
-import RC from "../images/rc.png";
-import NTH from "../images/nth.png";
-import WALLSTREET from "../images/wallstreet.png";
-import BPLAN from "../images/bplan.png";
-import ENIGMA from "../images/enigma.png";
-import DATAWIZ from "../images/datawiz.png";
-import QUIZ from "../images/quiz.png";
-import PAPER from "../images/paper.png";
-import CRETRONIX from "../images/cretronix.png";
-import PIXELATE from "../images/pixelate.png";
-import WEB from "../images/webwever.png";
-import { useCartContext } from "../context/cart_context";
-
-
-const Events = () => {
-  const { cart,addtocart} = useCartContext();
-  const [Details, setDetails] = useState(0);
-  const [eventid, seteventid] = useState();
-  const [eventslist, seteventslist] = useState([
-    { logo: Clash, title: "Clash", id: "1" },
-    { logo: RC, title: "Reverse Coding", id: "2" },
-    { logo: NTH, title: "NTH", id: "3" },
-    { logo: WALLSTREET, title: "Wallstreet", id: "4" },
-    { logo: BPLAN, title: "B-Plan", id: "5" },
-    { logo: ENIGMA, title: "Enigma", id: "6" },
-    { logo: DATAWIZ, title: "Datawiz", id: "7" },
-    { logo: QUIZ, title: "Quiz", id: "8" },
-    { logo: PAPER, title: "Paper Presentation", id: "9" },
-    { logo: CRETRONIX, title: "Cretronix", id: "10" },
-    { logo: PIXELATE, title: "Pixelate", id: "11" },
-    { logo: WEB, title: "Web Weaver", id: "12" },
-  ]);
-
-  const [details, setdetails] = useState([
+import { useState } from "react";
+const AdminUser = () => {
+  const details = [
     {},
     {
-      image: Clash,
+
       heading: "CLASH",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "1",
@@ -54,7 +16,7 @@ const Events = () => {
     },
 
     {
-      image: RC,
+
       heading: "REVERSE CODING",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "2",
@@ -63,7 +25,7 @@ const Events = () => {
     },
 
     {
-      image: NTH,
+
       heading: "REVERSE 3",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "3",
@@ -72,7 +34,7 @@ const Events = () => {
     },
 
     {
-      image: WALLSTREET,
+
       heading: "REVERSE 4",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "4",
@@ -81,7 +43,7 @@ const Events = () => {
     },
 
     {
-      image: BPLAN,
+
       heading: "REVERSE 5",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "5",
@@ -89,7 +51,7 @@ const Events = () => {
       count: 1,
     },
     {
-      image: ENIGMA,
+
       heading: "REVERSE 6",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "6",
@@ -97,7 +59,7 @@ const Events = () => {
       count: 1,
     },
     {
-      image: DATAWIZ,
+
       heading: "REVERSE 6",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "7",
@@ -105,7 +67,7 @@ const Events = () => {
       count: 1,
     },
     {
-      image: QUIZ,
+
       heading: "REVERSE 6",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "8",
@@ -113,7 +75,7 @@ const Events = () => {
       count: 1,
     },
     {
-      image: PAPER,
+
       heading: "REVERSE 6",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "9",
@@ -121,173 +83,158 @@ const Events = () => {
       count: 1,
     },
     {
-      image: CRETRONIX,
-      heading: "REVERSE 6",
+
+      heading: "CRETRONIX",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "10",
       amount: 50,
       count: 1,
     },
     {
-      image: PIXELATE,
-      heading: "REVERSE 6",
+
+      heading: "PIXELATE",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "11",
       amount: 50,
       count: 1,
     },
     {
-      image: WEB,
-      heading: "REVERSE 6",
+
+      heading: "WEB",
       body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       id: "12",
       amount: 50,
       count: 1,
     },
-  ]);
-
-  const customStyles = {
-    overlay: {
-      zIndex: "1000",
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      background: "transparent",
-      border: "none",
-    },
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      background: "black",
-      border: "none",
-      padding: "0px",
-    },
-  };
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-
-  //   const openmodal =(id)=>{
-  //     seteventid(id);
-  // }
-
-  function openModal(id) {
-    seteventid(id);
-    setIsOpen(true);
+  ];
+  const [cart, setCart] = useState([]);
+  const [amount, setAmount] = useState(0);
+  let link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${amount}&tn=IEEE&cu=INR`;
+  const handelChange = (e) => {
+    // console.log(Number(e.target.value),e.target.id,e.target.checked)
+    let temp = cart;
+    if (!e.target.checked) temp = temp.filter((data) => data.id !== e.target.id)
+    else temp.push({ id: e.target.id, amt: Number(e.target.value) })
+    let amt = 0;
+    temp.map(data => amt += data.amt);
+    // console.log(temp,amt);
+    setAmount(amt);
+    setCart(temp);
+    link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${amt}&tn=IEEE&cu=INR`;
+    generate();
   }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = "#f00";
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-
-
+    const [isQr, setisQr] = useState(false);
+    const [upiId, setupiId] = useState("");
+    function generate() {
+        setisQr(true);
+        var div = document.getElementById('payment-qr-code');
+              
+            while(div.firstChild) {
+                div.removeChild(div.firstChild);
+            }
+        var qrcode = new window.QRCode(document.querySelector(".payment-qr-code"), {
+            text: link,
+            width: 150, //default 128
+            height: 150,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: window.QRCode.CorrectLevel.H
+        });
+    }
+    const handleClick=()=>{
+        window.alert(`UPI Transaction Id :- ${upiId}`);
+    }
   return (
-    <>
-      <div class="st">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
 
-        <div class="eventpage ">
-          <div class="container ">
-            <h1 style={{ textAlign: "center" }}>EVENTS</h1>
-            <div class="main">
-              {eventslist.map((list) => (
-                <div
-                  class="outer"
-                  key={list.id}
-                  onClick={() => openModal(list.id)}
-                >
-                  <div class="wrapper-new">
-                    <div class="container-new">
-                      <img
-                        src={list.logo}
-                        alt=""
-                        class="event-icon"
-                        style={{
-                          height: "70px",
-                          width: "70px",
-                          marginBottom: "0",
-                        }}
-                      />
-                      <div class="card-title">{list.title}</div>
-                    </div>
-                  </div>
+    <div className="adminUser">
+      {/* {console.log(details)} */}
+      {/* <form onSubmit={(e)=>{e.preventDefault();console.log(e.target)}}> */}
+
+      <div class="card">
+        <div class="row">
+          <div class="col-md-7 cart">
+            <div class="title">
+              <div class="row">
+                <div class="col">
+                  <h4>
+                    <b>Events</b>
+                  </h4>
                 </div>
-              ))}
+                {/* <div class="col align-self-center text-right ">3 items</div> */}
+              </div>
             </div>
+            
+            <table style={{'width':'100%'}}>
+              <tbody style={{ 'fontSize': 'large' }}>
+                <tr>
+                  <th>Event Name</th>
+                  <th style={{ 'paddingLeft': '5px' }}>Cost</th>
+                </tr>
+                {details.map((data) => (
+                  <tr key={data.id}>
+                    <td><input type="checkbox" onChange={handelChange} id={data.id} name={data.heading} value={data.amount} />
+                      <label for={data.id}>{data.heading}</label></td>
+                    <td style={{ 'paddingLeft': '15px' }}><label for={data.id}>{data.amount}</label></td>
+
+
+                  </tr>
+
+
+
+                ))}
+                <tr><hr style={{ 'width': '120%', 'height': '2px', 'borderWidth': '5px', 'color': 'white', 'backgroundColor': 'white' }}></hr></tr>
+                <tr><td>Items</td><td style={{ 'paddingLeft': '15px' }}>{cart.length}</td></tr>
+                <tr><td>Total Amount</td><td style={{ 'paddingLeft': '15px' }}>{amount}</td></tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-md-5 summary">
+            <div>
+                                <h4>
+                                    <b>Payment</b>
+                                </h4>
+                            </div>
+                            <hr />
+            {/* <div class="row">
+                <div class="col" style={{ paddingLeft: "0" }}>
+                  ITEMS 3
+                </div>
+                <div class="col text-right">&euro; 132.00</div>
+              </div> */}
+
+            <div
+              class="row"
+              style={{
+                borderTop: "1px solid rgba(0,0,0,.1)",
+                padding: "2vh 0",
+              }}
+            >
+              {/* <div class="col">TOTAL PRICE</div>
+              <div class="col text-right">{totalprice}</div> */}
+            </div>
+            <div class='pay-links'>
+            {/* {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>} */}
+              <div id='payment-qr-code' class="payment-qr-code" style={isQr ? { 'visibility': 'visible' } : { 'height': '0', 'width': '0' }}></div>
+              {/* <a target="_blank" href={link} rel="noreferrer" class="payment-link">Click To Pay</a> */}
+            </div>
+            Enter Upi Transaction Id:
+            <input id="upiId"
+              name="upiId"
+              value={upiId}
+              onChange={e => setupiId(e.target.value)}
+              placeholder="Enter Upi Transaction Id:"
+              required
+            >
+            </input>
+            <button class="btn" onClick={() => handleClick()}>Confirm Payment</button>
           </div>
         </div>
       </div>
+    </div>
 
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        ariaHideApp={false}
-        // contentLabel="Example Modal"
-      >
-        {details.map((data) => {
-          if (eventid && data.id == eventid)
-            return (
-              <div className="modal-content" key={data.id}>
-                <div className="modalimage">
-                  <img src={data.image} alt="" />
-                </div>
-                <p>{data.heading}</p>
-                <div className="modalbutton">
-                  <button onClick={() => setDetails(0)}>Info</button>
-                  <button onClick={() => setDetails(1)}>Rules</button>
-                  <button onClick={() => setDetails(2)}>Stucture</button>
-                </div>
+  )
+}
 
-                <div className="modalbody">
-                  <p>{Details == 0 && data.body}</p>
-                  <p>{Details == 1 && data.rules}</p>
-                  <p>{Details == 2 && data.structure}</p>
-                </div>
-
-                <div className="modalbutton">
-                  <button
-                  disabled={
-                   cart.find((item)=> item.id === data.id) ? true: false
-                  }
-
-                  className={
-                   `  ${cart.find((item)=> item.id === data.id) ? 'disabled': ''}`}
-                    onClick={() =>
-                      addtocart(
-                        data.id,
-                        data.image,
-                        data.heading,
-                        data.amount,
-                        
-                      )
-                    }
-                  >
-                    ADD TO CART
-                  </button>
-                  <button>CHECKOUT</button>
-                </div>
-                <button onClick={closeModal}>CLOSE</button>
-              </div>
-            );
-        })}
-      </Modal>
-    </>
-  );
-};
-
-export default Events;
+export default AdminUser;

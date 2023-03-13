@@ -317,7 +317,7 @@
 	 font-family: "Jost", sans-serif;
 	 transition: 0.3s;
 }
-.qr-code {
+.profile-qr-code {
 	max-width: 100px;
 	max-height: 100px;
 	margin: 10px;

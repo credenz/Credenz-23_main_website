@@ -4,7 +4,7 @@ from .models import *
 
 @admin.register(Event)
 class EventAdmin(ImportExportActionModelAdmin):
-    list_display = ("event_name", "event_start", "event_end", "group_event")
+    list_display = ("event_id", "event_name", "event_start", "event_end", "group_event")
 
 @admin.register(User)
 class UserAdmin(ImportExportActionModelAdmin):

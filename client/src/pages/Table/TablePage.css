@@ -1,0 +1,67 @@
+.tablePage {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+  }
+  
+  
+  .tablePage  .search {
+    padding: 10px;
+    font-size: 20px;
+    background-color: transparent;
+  }
+  
+  .tablePage .list {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+  
+  .tablePage .listItem {
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: #444;
+    font-weight: 300;
+  }
+  
+  .tablePage table {
+    width: 100%;
+    margin: 50px 0px;
+    border-spacing: 15px;
+    color: #444;
+  }
+  
+  .tablePage tr {
+    margin-bottom: 20px;
+  }
+  
+  .tablePage th {
+    width: 250px;
+    text-align: left;
+    font-size: 20px;
+  }
+  
+  .tablePage td {
+    width: 250px;
+    font-size: 20px;
+    padding-top :5px;
+  }
+
+  .td-button{
+    border-radius: 6px;
+    border: 0;
+    padding: 6px 28px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 10px;
+    outline: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background-color: #1592E6;
+    color: #fff;
+    box-shadow: 0 0 0 rgb(0 0 0 / 16%);
+  }
