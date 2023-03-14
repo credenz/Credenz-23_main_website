@@ -10,6 +10,7 @@ const Registration = () => {
   const [register2, setregister2] = useState(0);
 
   //   login
+  // login will be through username not email
   const [loginemail, setloginEmail] = useState("");
   const [loginpassword, setloginPassword] = useState("");
 
