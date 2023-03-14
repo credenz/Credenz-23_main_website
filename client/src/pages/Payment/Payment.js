@@ -7,11 +7,17 @@ const Payment = () => {
     // const [data,setData]=useState(props);
     const { totalprice } = useCartContext();
     const link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${totalprice}&tn=IEEE&cu=INR`;
-    const [isQr, setisQr] = useState(false);
+    // const [isQr, setisQr] = useState(false);
     const [upiId, setupiId] = useState("");
     let navigate = useNavigate();
     function generate() {
-        setisQr(true);
+        // setisQr(true);
+        // setisQr(true);
+        var div = document.getElementById('payment-qr-code');
+              
+            while(div.firstChild) {
+                div.removeChild(div.firstChild);
+            }
         var qrcode = new window.QRCode(document.querySelector(".payment-qr-code"), {
             text: link,
             width: 150, //default 128
@@ -24,7 +30,7 @@ const Payment = () => {
     const handleClick=()=>{
         window.alert(`UPI Transaction Id :- ${upiId}`);
     }
-    // useEffect(()=>generate(),[]);
+    useEffect(()=>generate(),[]);
     return (
         <>
             <div className="payment">
@@ -59,7 +65,7 @@ const Payment = () => {
                             <div class="back-to-shop">
                                 <a href="#" onClick={(e) => { e.preventDefault(); navigate('/cart') }}>Back to cart</a>
                                 {/* <button onClick={()=>navigate('/cart')}>Back to cart</button> */}
-                                {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>}
+                                {/* {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>} */}
                             </div>
                         </div>
 
@@ -88,10 +94,10 @@ const Payment = () => {
                                 <div class="col text-right">{totalprice}</div>
                             </div>
                             <div class='pay-links'>
-                            <div class="payment-qr-code" style={isQr?{'visibility': 'visible'}:{'height': '0','width':'0'}}></div>
+                            <div class="payment-qr-code" id='payment-qr-code'></div>
                             <a target="_blank" href={link} rel="noreferrer" class="payment-link">Click To Pay</a>
                             </div>
-                            
+                            Enter Upi Transaction Id:
                             <input id="upiId"
                                     name="upiId"
                                     value={upiId}

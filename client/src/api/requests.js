@@ -17,14 +17,16 @@ const backend = axios.create({
 // const leaderboard = () => backend.get( `/leaderboard/`, {headers: { "content-type": "application/json"}} );
 // const time=() => backend.get( `/timer/`, {headers: { "content-type": "application/json"}} );
 // const feedback = (data) => backend.post( `/auth/feedback/`, data,{headers: { "content-type": "application/json" }} );
+
+const events=()=>backend.get(`api/events/`)
 const Requests = {
-    login,
-    register,
-    userquestion,
-    user,
-    extrahint,
-    leaderboard,
-    time,
-    feedback
+    // login,
+    // register,
+    // userquestion,
+    // user,
+    // extrahint,
+    // leaderboard,
+    // time,
+    // feedback
   };
   export default Requests;
