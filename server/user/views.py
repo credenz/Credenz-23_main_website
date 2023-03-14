@@ -110,6 +110,14 @@ class PasswordResetConfirmView(generics.GenericAPIView):
         else:
             message = "Link is invalid or expired"
         return Response({"message": message}, status=status.HTTP_400_BAD_REQUEST)
+    
+class OrderView(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = OrderSerializer
+
+    def get(self, request, *args, **kwargs):
+        serializer = self.get_serializer(instance=request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 # Team event APIs
 

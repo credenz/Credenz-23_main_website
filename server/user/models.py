@@ -1,22 +1,19 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth import get_user_model
 from .utils import getReferralCode
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     phone = models.IntegerField(null = True)
+    institute = models.TextField(default="", max_length=512)
+    senior = models.BooleanField(default=False)
     referral = models.CharField(
         max_length=100, null=True, db_index=True, unique=True, blank=True
     )
-    country_code = models.CharField(default="+91", max_length=5)
-    ieee_member = models.BooleanField(default=False)
-    ieee_member_id = models.IntegerField(default=0, blank=True)
-    institute = models.TextField(default="", max_length=512)
-    senior = models.BooleanField(default=False)
     coins = models.IntegerField(default=0)
     offline_officer = models.BooleanField(default=False)
-    players = models.ManyToManyField('self', blank=True)
 
     @property
     def full_name(self):
@@ -48,13 +45,17 @@ class Event(models.Model):
     event_start = models.DateTimeField()
     event_end = models.DateTimeField()
     group_event = models.BooleanField(default=False)
+    event_rules =  models.TextField(null=True)
+    event_cost = models.IntegerField(default=0)
+
 
     def __str__(self):
         return str(self.event_name) + " pk:" + str(self.pk)
 
 class Order(models.Model):
-    player_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
+    player_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    transaction_id = models.IntegerField(default=0)
     order_date = models.DateTimeField(auto_now_add=True)
     payment_verified = models.BooleanField(default=False)
 

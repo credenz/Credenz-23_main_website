@@ -77,25 +77,25 @@ class EventSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
+    event = EventSerializer()
     class Meta:
         model = Order
         fields = "__all__"
 
 class ProfileSerializer(serializers.ModelSerializer):
-    order = OrderSerializer(many=True, read_only=True, source="orders")
+    order = OrderSerializer(many=True, read_only=True)
 
     class Meta:
         model = User
         fields = [
             "username", 
-            "first_name",
-            "last_name", 
+            "full_name",
             "email", 
             "phone", 
             "senior",
             "institute",
             "coins",
             "referral",
-            "order"
+            "order",
         ]
 
