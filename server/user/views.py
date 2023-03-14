@@ -47,7 +47,6 @@ class UserLoginView(generics.GenericAPIView):
 class EventsDetail(generics.ListAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
-    permission_classes = [IsAuthenticated]
 
 class ProfileView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
