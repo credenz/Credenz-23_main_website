@@ -106,20 +106,20 @@ const Registration = () => {
     }
   };
 
-  // const allfieldsfilled = () => {
+  const allfieldsfilled = () => {
 
-  //   const emailValid = ValidateEmail(registeremail);
-  //   const phoneValid = ValidatePhone(phone);
-  //   return (
-  //     firstname !== "" &&
-  //     lastname !== "" &&
-  //     username !== "" &&
-  //     emailValid &&
-  //     phoneValid &&
-  //     registerpassword !== "" &&
-  //     confirmpassword !== ""
-  //   );
-  // };
+    const emailValid = ValidateEmail(registeremail);
+    const phoneValid = ValidatePhone(phone);
+    return (
+      firstname !== "" &&
+      lastname !== "" &&
+      username !== "" &&
+      emailValid &&
+      phoneValid &&
+      registerpassword !== "" &&
+      confirmpassword !== ""
+    );
+  };
 
   return (
     <>
@@ -343,16 +343,16 @@ const Registration = () => {
                         <div class="form-button">
                           <button
                             onClick={
-                              (e) => setregister2(1)
-                              // allfieldsfilled()
-                              //   ? registerpassword === confirmpassword
-                              //   ?  setregister2(1)
-                              //   : swal(
-                              //       "Error",
-                              //       "Passwords don't match!",
-                              //       "error"
-                              //     )
-                              //     : swal("Error", "Please fill out all the details", "error")
+                              (e) => 
+                              allfieldsfilled()
+                                ? registerpassword === confirmpassword
+                                ?  setregister2(1)
+                                : swal(
+                                    "Error",
+                                    "Passwords don't match!",
+                                    "error"
+                                  )
+                                  : swal("Error", "Please fill out all the details", "error")
                             }
                             class="ibtn"
                           >
