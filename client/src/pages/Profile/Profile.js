@@ -25,6 +25,8 @@ const Profile = () => {
     useEffect(()=>setData({username:'neil_reac',first_name:'Neil',last_name:'Armstrrong',email:'wasd@gmail.com',phone:1233211231,institute:'Pune Institute Of Computer Technology',coins:200,referral:'JOBHIHO',order:[{date:'23/3/23',eventName:'CLASH',paymentStatus:'Under Review'},{date:'23/3/23',eventName:'RC',paymentStatus:'Successfull'}]}),[])
     return (
         <> 
+        <div className="profile">
+        <div className="container profiledetails">
             <div class="card" data-state="#about">
                 <div class="card-header">
                     {/* <div class="card-cover" style="background-image: url('https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')"></div> */}
@@ -144,6 +146,8 @@ const Profile = () => {
                         <button data-section="#contact">REFERRAL</button>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
         </>
     )

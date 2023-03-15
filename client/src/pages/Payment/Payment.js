@@ -3,7 +3,7 @@ import './Payment.css';
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { useNavigate } from 'react-router-dom';
 import { useCartContext } from "../../context/cart_context";
-const Payment = () => {
+const Payment = () => { 
     // const [data,setData]=useState(props);
     const { totalprice } = useCartContext();
     const link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${totalprice}&tn=IEEE&cu=INR`;

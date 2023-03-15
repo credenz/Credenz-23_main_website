@@ -84,7 +84,7 @@ function TablePage() {
         {
           "id": 8,
           "first_name": "Lamond",
-          "last_name": "Ricket",
+          "last_name": "Ricket", 
           "email": "lricket7@washington.edu",
           "gender": "Male"
        , },
