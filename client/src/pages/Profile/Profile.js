@@ -39,6 +39,8 @@ const Profile = () => {
     },[])
     return (
         <> 
+        <div className="profile">
+        <div className="container profiledetails">
             <div class="card" data-state="#about">
                 <div class="card-header">
                     {/* <div class="card-cover" style="background-image: url('https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')"></div> */}
@@ -158,6 +160,8 @@ const Profile = () => {
                         <button data-section="#contact">REFERRAL</button>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
         </>
     )

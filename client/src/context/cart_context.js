@@ -41,7 +41,7 @@ const CartProvider = ({ children }) => {
   };
 
 
-
+ 
   useEffect(()=>{
     // dispatch({type:"TOTALITEM"});
     // console.log(state);

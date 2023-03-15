@@ -18,10 +18,36 @@ body {
     /* background-color: #152733; */
 }
 
+.login{
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register{
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forget{
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
 .form-body {
     /* background-color: #152733; */
     /* min-height: 90vh; */
-    margin: 10px;
+    margin: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +55,7 @@ body {
 
 .form-body .row{
 
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;

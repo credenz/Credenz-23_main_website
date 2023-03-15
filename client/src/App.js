@@ -32,7 +32,7 @@ function App() {
    <Route exact path="/payment" element={<Payment/> } />
    <Route exact path="/admin" element={<Admin/> } />
   </Routes> 
-  {/* <Footer/> */}
+  <Footer/>
 </div>
     </>
   );

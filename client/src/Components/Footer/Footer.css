@@ -1,7 +1,7 @@
 
 
   /* footer */
-.footer {
+/* .footer {
     display: flex;
   flex-direction: row;
     background: #1b2735;
@@ -37,7 +37,7 @@
   .footer .row-i {
     display: flex;
     flex-direction: row;
-    /* justify-content: space-around; */
+   
     align-items: center;
     justify-content: center;
   }
@@ -80,4 +80,107 @@
     .footer .row a i {
       margin: 0% 3%;
     }
+  } */
+
+  @font-face {
+    font-family: "SolThin";
   }
+  * {
+    font-family: "SolThin", sans-serif;
+  }
+  .footer-main {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    /* width: 100%; */
+    width: 100vw;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    font-weight: 700;
+    z-index: 999;
+    letter-spacing: 0.12em;
+    background-color: rgb(34, 4, 34);
+  }
+  
+  .sticky-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .branch-text {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+  }
+  .branch-text,
+  .terms {
+    text-align: center;
+  }
+  
+  .terms-text {
+    cursor: pointer;
+    text-decoration: none !important;
+    text-decoration-thickness: 0;
+  }
+  
+  .social-icons {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.5s ease;
+  }
+  
+  .social-icons:hover {
+    /* transform: scale(1.05); */
+    transform: translateY(0.2rem);
+  }
+  
+  .social-wrapper {
+    text-align: center;
+    display: inline-block;
+  }
+  .footer-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgb(34, 4, 34);
+  }
+  
+  @media (max-width: 768px) {
+    .sticky-bottom {
+      position: inherit;
+    }
+    .footer-main {
+      height: fit-content;
+    }
+    .footer-wrapper {
+      height: fit-content;
+      text-align: center;
+    }
+    .branch-text {
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .social-wrapper {
+      margin: 10px 0;
+    }
+  }
+  
+  @media (max-width: 375px) and (min-width: 320px) {
+    .footer-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .branch-text {
+      margin-left: 0;
+      transform: translateX(0);
+    }
+  }
+  
