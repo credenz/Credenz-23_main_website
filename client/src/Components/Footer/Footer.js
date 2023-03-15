@@ -70,6 +70,11 @@ import LinkedIn from "../../images/linkedin.png";
         >
           © PICT IEEE Student Branch
         </a>
+        <div className="terms col-md-4">
+          <NavLink to={"/team"} className="terms-text">
+            Designed & Developed By : WEB TEAM
+          </NavLink>
+        </div>
         <div className="social-wrapper col-md-4">
           <a
             href="https://www.instagram.com/pictieee/"
@@ -93,11 +98,7 @@ import LinkedIn from "../../images/linkedin.png";
             <img src={Facebook} alt="Instagram" className="social-icons me-3" />
           </a>
         </div>
-        <div className="terms col-md-4">
-          <NavLink to={"/terms"} className="terms-text">
-            Terms of Service
-          </NavLink>
-        </div>
+        
         <div className="footer-wrapper"></div>
       </Row>
     </div>

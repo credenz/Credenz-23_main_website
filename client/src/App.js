@@ -13,6 +13,7 @@ import Home from './Components/Home/Home'
 import Profile from './pages/Profile/Profile';
 import Payment from './pages/Payment/Payment';
 import Admin from './pages/Admin/Admin';
+import Team from "./pages/team/Team"
 
 
 
@@ -30,6 +31,7 @@ function App() {
    <Route exact path="/cart" element={<Cart/> } />
    <Route exact path="/profile" element={<Profile/> } />
    <Route exact path="/payment" element={<Payment/> } />
+   <Route exact path="/team" element={<Team/> } />
    <Route exact path="/admin" element={<Admin/> } />
   </Routes> 
   <Footer/>

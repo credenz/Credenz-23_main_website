@@ -125,6 +125,7 @@
     cursor: pointer;
     text-decoration: none !important;
     text-decoration-thickness: 0;
+    color: white;
   }
   
   .social-icons {

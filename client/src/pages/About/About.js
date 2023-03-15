@@ -77,75 +77,20 @@ const About = () =>{
             </div>
         </div>
 
-{/* <div className="team">
+<div className="team">
 <h1>Our Team</h1>
         <div class="cards">
        
         <div class="card">
             <div class="thumb">
-                <img src={Clash} alt=""/>
-                <div class="social">
-                    <input type="checkbox" name="" id="toggle1" class="share-toggle"/>
-                    <label for="toggle1" class="share-button">
-                        <i class="fas fa-plus"></i>
-                    </label>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="info">
-                <h2>James Ford</h2>
-                <span>General Director</span>
-            </div>
-        </div>
-        <div class="card">
-            <div class="thumb">
             <img src={Clash} alt=""/>
                 <div class="social">
-                    <input type="checkbox" name="" id="toggle2" class="share-toggle"/>
-                    <label for="toggle2" class="share-button">
-                        <i class="fas fa-plus"></i>
-                    </label>
+                   
                     <a href="#" class="share-icon">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="info">
-                <h2>Natasha</h2>
-                <span>Web Designer</span>
-            </div>
-        </div>
-        <div class="card">
-            <div class="thumb">
-            <img src={Clash} alt=""/>
-                <div class="social">
-                    <input type="checkbox" name="" id="toggle3" class="share-toggle"/>
-                    <label for="toggle3" class="share-button">
-                        <i class="fas fa-plus"></i>
-                    </label>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
+                   
+                    
                 </div>
             </div>
             <div class="info">
@@ -157,19 +102,12 @@ const About = () =>{
             <div class="thumb">
             <img src={Clash} alt=""/>
                 <div class="social">
-                    <input type="checkbox" name="" id="toggle3" class="share-toggle"/>
-                    <label for="toggle3" class="share-button">
-                        <i class="fas fa-plus"></i>
-                    </label>
+                   
                     <a href="#" class="share-icon">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
+                   
+                    
                 </div>
             </div>
             <div class="info">
@@ -181,19 +119,12 @@ const About = () =>{
             <div class="thumb">
             <img src={Clash} alt=""/>
                 <div class="social">
-                    <input type="checkbox" name="" id="toggle3" class="share-toggle"/>
-                    <label for="toggle3" class="share-button">
-                        <i class="fas fa-plus"></i>
-                    </label>
+                   
                     <a href="#" class="share-icon">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="share-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
+                   
+                    
                 </div>
             </div>
             <div class="info">
@@ -205,19 +136,46 @@ const About = () =>{
             <div class="thumb">
             <img src={Clash} alt=""/>
                 <div class="social">
-                    <input type="checkbox" name="" id="toggle3" class="share-toggle"/>
-                    <label for="toggle3" class="share-button">
-                        <i class="fas fa-plus"></i>
-                    </label>
+                   
                     <a href="#" class="share-icon">
                         <i class="fab fa-instagram"></i>
                     </a>
+                   
+                    
+                </div>
+            </div>
+            <div class="info">
+                <h2>James</h2>
+                <span>Web Developer</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="thumb">
+            <img src={Clash} alt=""/>
+                <div class="social">
+                   
                     <a href="#" class="share-icon">
-                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
                     </a>
+                   
+                    
+                </div>
+            </div>
+            <div class="info">
+                <h2>James</h2>
+                <span>Web Developer</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="thumb">
+            <img src={Clash} alt=""/>
+                <div class="social">
+                   
                     <a href="#" class="share-icon">
-                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-instagram"></i>
                     </a>
+                   
+                    
                 </div>
             </div>
             <div class="info">
@@ -226,9 +184,9 @@ const About = () =>{
             </div>
         </div>
     </div>
-</div> */}
+</div>
 
-        {/* <div class="our-clients">
+        <div class="our-clients">
         <h1>Our Sponsors</h1>
   <ul>
     <li> <img src={Clash} alt=""/> <img src={Clash} alt=""/> </li>
@@ -239,7 +197,7 @@ const About = () =>{
     <li> <img src={Clash} alt=""/> <img src={Clash} alt=""/> </li>
     
   </ul>
-</div> */}
+</div>
     </motion.div>
 
 </>
