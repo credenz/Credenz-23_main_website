@@ -16,4 +16,4 @@ class ReferralAdmin(ImportExportActionModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(ImportExportActionModelAdmin):
-    list_display = ("event", "player_id", "order_date", "payment_verified")
+    list_display = ("id", "event", "order_date", "payment", "transaction_id")

@@ -53,11 +53,13 @@ class Event(models.Model):
         return str(self.event_name) + " pk:" + str(self.pk)
 
 class Order(models.Model):
-    player_id = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    PAYMENT_STATUS = (("PO", "Pending"), ("CO", "Completed"))
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     transaction_id = models.IntegerField(default=0)
     order_date = models.DateTimeField(auto_now_add=True)
-    payment_verified = models.BooleanField(default=False)
+    payment = models.CharField(max_length=20, choices=PAYMENT_STATUS, default="PO")
 
     def __str__(self):
         return str(self.pk)
