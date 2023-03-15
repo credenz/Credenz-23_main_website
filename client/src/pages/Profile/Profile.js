@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import './Profile.css'
+import './Profile.css';
+import Requests from '../../api/requests';
 const Profile = () => {
     const [data,setData]=useState({});
     const buttons = document.querySelectorAll(".card-buttons button");
@@ -22,7 +23,20 @@ const Profile = () => {
     buttons.forEach((btn) => {
         btn.addEventListener("click", handleButtonClick);
     });
-    useEffect(()=>setData({username:'neil_reac',first_name:'Neil',last_name:'Armstrrong',email:'wasd@gmail.com',phone:1233211231,institute:'Pune Institute Of Computer Technology',coins:200,referral:'JOBHIHO',order:[{date:'23/3/23',eventName:'CLASH',paymentStatus:'Under Review'},{date:'23/3/23',eventName:'RC',paymentStatus:'Successfull'}]}),[])
+    const fetchProfile= async()=>{
+        console.log(localStorage.getItem('token'));
+        await Requests.profile({token:localStorage.getItem('token')})
+        .then((res)=>{
+            console.log(res);
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+    useEffect(()=>{
+        fetchProfile();
+        setData({username:'neil_reac',first_name:'Neil',last_name:'Armstrrong',email:'wasd@gmail.com',phone:1233211231,institute:'Pune Institute Of Computer Technology',coins:200,referral:'JOBHIHO',order:[{date:'23/3/23',eventName:'CLASH',paymentStatus:'Under Review'},{date:'23/3/23',eventName:'RC',paymentStatus:'Successfull'}]})
+    },[])
     return (
         <> 
             <div class="card" data-state="#about">

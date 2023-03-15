@@ -4,6 +4,8 @@ import "./login.css";
 import "./register.css";
 import PhoneInput from "react-phone-number-input";
 import { Link } from "react-router-dom";
+import Requests from "../../api/requests";
+import { useNavigate } from "react-router-dom";
 const Registration = () => {
   const [register, setregister] = useState(0);
 
@@ -11,7 +13,7 @@ const Registration = () => {
 
   //   login
   // login will be through username not email
-  const [loginemail, setloginEmail] = useState("");
+  const [loginUsername, setloginUsername] = useState("");
   const [loginpassword, setloginPassword] = useState("");
 
   //register
@@ -40,6 +42,8 @@ const Registration = () => {
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
+  let navigate=useNavigate();
+
   //   function validate_required(field,alerttxt)
   // {
 
@@ -51,16 +55,37 @@ const Registration = () => {
 
   // }
 
-  const loginSubmit = (e) => {
+  const loginSubmit = async (e) => {
     e.preventDefault();
     console.log({
-      loginemail,
+      loginUsername,
       loginpassword,
     });
+    await Requests.login({username:loginUsername,password:loginpassword})
+    .then((res)=>{
+      console.log(res.data.access);
+      localStorage.setItem('token',res.data.access      );
+      window.alert('LOGIN SUcCess');
+    })
+    .catch((err)=>{
+      console.log(err);
+      window.alert('Wrong username or password');
+    })
   };
 
-  const signupsubmit = (e) => {
+  const signupsubmit = async (e) => {
     e.preventDefault();
+    let data={
+      username,first_name:(firstname+' '+lastname),
+      email:registeremail,password:registerpassword,
+      phone,country_code:'+91',
+      institute,senior:isSenior
+    };
+    if(referal!=='') data.referralCode=referal;
+    console.log(data);
+    // await Requests.register(data)
+    // .then((res)=>{console.log(res)})
+    // .catch((err)=>console.log(err))
     // console.log({
     //     fullname: firstname + lastname,
     //     username: username,
@@ -161,11 +186,11 @@ const Registration = () => {
                   <form onSubmit={loginSubmit}>
                     <input
                       class="form-control"
-                      type="email"
-                      name="loginemail"
-                      placeholder="E-mail Address"
-                      onChange={(e) => setloginEmail(e.target.value)}
-                      value={loginemail}
+                      type="text"
+                      name="loginUsername"
+                      placeholder="UserName"
+                      onChange={(e) => setloginUsername(e.target.value)}
+                      value={loginUsername}
                       required
                     />
                     <input
@@ -377,7 +402,7 @@ const Registration = () => {
                       </div>
 
                       <div className="registersection">
-                        <div className="collegesection">
+                        {/* <div className="collegesection">
                           <div className="div1">
                             <input 
                             onClick={()=>setieee(true)}
@@ -394,7 +419,7 @@ const Registration = () => {
                              type="checkbox" id="javascript" />
                             <label for="javascript">PICTIAN</label>
                           </div>
-                        </div>
+                        </div> */}
                       
                         <div className="collegesection">
                         <br />
