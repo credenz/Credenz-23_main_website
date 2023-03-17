@@ -65,6 +65,10 @@ body {
     align-items: center;
 }
 
+ #noline{
+    text-decoration: none;
+}
+
 .form-body .row{
    
     min-height: 100vh;

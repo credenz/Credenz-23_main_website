@@ -1,7 +1,15 @@
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+
 .App {
   min-height: 100vh;
   /* width: 100vw; */
   background: rgb(55, 1, 55);
+/* width: 100vw; */
 
 
   

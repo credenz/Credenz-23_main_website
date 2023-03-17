@@ -91,7 +91,7 @@ const Payment = () => {
                                 }}
                             >
                                 <div class="col">TOTAL PRICE</div>
-                                <div class="col text-right">{totalprice}</div>
+                                <div class="col text-right"> <i class="fa fa-inr"></i> {totalprice}</div>
                             </div>
                             <div class='pay-links'>
                             <div class="payment-qr-code" id='payment-qr-code'></div>

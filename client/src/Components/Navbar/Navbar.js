@@ -628,12 +628,12 @@ const NavbarCustom = (props) => {
                 Contact
               </NavLink>
               <NavLink
-                key={"registration"}
+                key={"login"}
                 activeClassName="activeLink"
-                to={`/registration`}
-                isActive={() => page === "/registration"}
+                to={`/login`}
+                isActive={() => page === "/login"}
                 onClick={() => {
-                  setPage("/registration");
+                  setPage("/login");
                   handleCollapse();
                 }}
                 className="header-title"

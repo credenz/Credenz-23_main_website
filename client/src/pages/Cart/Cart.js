@@ -63,9 +63,9 @@ const Cart = () => {
                             <div class="row ">Event name</div>
                             <div class="row">{curr.heading}</div>
                           </div>
-
+                         
                           <div class="col  close">
-                            <div className="amount">{curr.amount}</div>
+                            <div className="amount"> <i class="fa fa-inr"></i> {curr.amount}</div>
                             <div className="delete">
                               <i
                                 class="fa-solid fa-trash"
@@ -108,7 +108,7 @@ const Cart = () => {
                 }}
               >
                 <div class="col">TOTAL PRICE</div>
-                <div class="col text-right">{totalprice}</div>
+                <div class="col text-right"> <i class="fa fa-inr"></i> {totalprice}</div>
               </div>
               {/* <img src={`https://api.qrserver.com/v1/create-qr-code/?data=${variable}&amp;size=100x100`}
                                                 class="qr-code img-thumbnail img-responsive" alt='QR CODE'/> */}

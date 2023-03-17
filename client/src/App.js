@@ -5,7 +5,7 @@ import { Routes,Route} from "react-router-dom";
 import Events from "./pages/Events/Events"
 import Contact from './pages/Contact/Contact';
 import About from "./pages/About/About";
-import Registration from './pages/Register/Registration';
+
 import Navbar from './Components/Navbar/Navbar';
 import Cart from './pages/Cart/Cart';
 import Footer from './Components/Footer/Footer';
@@ -14,6 +14,9 @@ import Profile from './pages/Profile/Profile';
 import Payment from './pages/Payment/Payment';
 import Admin from './pages/Admin/Admin';
 import Team from "./pages/team/Team"
+
+import LoginNew from "./pages/Register/LoginNew";
+import Register from "./pages/Register/Register"
 
 
 
@@ -27,7 +30,8 @@ function App() {
    <Route exact path="/events" element={<Events/> } />
    <Route exact path="/about" element={<About/> } />
    <Route exact path="/contact" element={<Contact/> } />
-   <Route exact path="/registration" element={<Registration/> } />
+   <Route exact path="/login" element={<LoginNew/> } />
+   <Route exact path="/register" element={<Register/> } />
    <Route exact path="/cart" element={<Cart/> } />
    <Route exact path="/profile" element={<Profile/> } />
    <Route exact path="/payment" element={<Payment/> } />
