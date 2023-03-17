@@ -26,12 +26,9 @@ class UserSerializer(serializers.ModelSerializer):
             "password", 
             "email", 
             "phone", 
-            "country_code", 
             "referralCode", 
-            "ieee_member",
-            "ieee_member_id",
             "senior",
-            "institute"
+            "institute",
             ]
 
         extra_kwargs = {
@@ -59,7 +56,6 @@ class UserSerializer(serializers.ModelSerializer):
             phone=validated_data["phone"],
             first_name=validated_data["first_name"],
             last_name=validated_data["last_name"],
-            country_code=validated_data["country_code"],
             ieee_member=validated_data["ieee_member"],
             ieee_member_id=validated_data["ieee_member_id"],
             senior=validated_data["senior"],
@@ -77,25 +73,39 @@ class EventSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    event = EventSerializer()
+    order_date = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S')
     class Meta:
         model = Order
         fields = "__all__"
 
 class ProfileSerializer(serializers.ModelSerializer):
-    order = OrderSerializer(many=True, read_only=True, source="orders")
+    email = serializers.EmailField(required=True)
+    phone = serializers.CharField(max_length=20, required=True)
+    username = serializers.CharField(max_length=20)
+    orders = serializers.SerializerMethodField()
+
+    def get_orders(self, obj):
+        user = self.context['request'].user
+        if user == obj:
+            orders = Order.objects.filter(user=user)
+            return OrderSerializer(orders, many=True).data
+        else:
+            return []
 
     class Meta:
         model = User
         fields = [
             "username", 
-            "first_name",
-            "last_name", 
+            "full_name",
             "email", 
             "phone", 
             "senior",
             "institute",
             "coins",
             "referral",
-            "order"
+            "orders",
+            "offline_officer",
         ]
 

@@ -2,6 +2,7 @@ from django.db.models import Count
 from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.encoding import force_bytes
@@ -47,15 +48,13 @@ class UserLoginView(generics.GenericAPIView):
 class EventsDetail(generics.ListAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
-    permission_classes = [IsAuthenticated]
 
-class ProfileView(generics.GenericAPIView):
-    permission_classes = [IsAuthenticated]
+class ProfileView(generics.RetrieveAPIView):
     serializer_class = ProfileSerializer
+    permission_classes = [IsAuthenticated]
 
-    def get(self, request, *args, **kwargs):
-        serializer = self.get_serializer(instance=request.user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    def get_object(self):
+        return self.request.user
     
 class LeaderboardView(generics.ListAPIView):
     queryset = (
@@ -111,6 +110,15 @@ class PasswordResetConfirmView(generics.GenericAPIView):
         else:
             message = "Link is invalid or expired"
         return Response({"message": message}, status=status.HTTP_400_BAD_REQUEST)
+
+class OrderView(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self, request):
+        user = get_object_or_404(User, id=request.user.id)
+        orders = Order.objects.filter(user=user)
+        serializer = OrderSerializer(orders, many=True)
+        return Response(serializer.data)
+
 
 # Team event APIs
 

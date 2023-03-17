@@ -60,6 +60,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 ROOT_URLCONF = 'main_website.urls'
 
 TEMPLATES = [
@@ -121,7 +123,6 @@ TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

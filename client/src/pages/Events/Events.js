@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 
@@ -19,6 +19,7 @@ import WEB from "../../images/webwever.png";
 // import {Clash,RC,NTH,WALLSTREET,BPLAN,ENIGMA,DATAWIZ,QUIZ,PAPER,CRETRONIX,PIXELATE,WEB} from '../../images';
 import { useCartContext } from "../../context/cart_context";
 
+import Requests from "../../api/requests";
 
 const Events = () => {
   const { cart,addtocart} = useCartContext();
@@ -190,8 +191,14 @@ const Events = () => {
   function closeModal() {
     setIsOpen(false);
   }
-
-
+  const eventList= async ()=>{
+    await Requests.events()
+    .then((res)=>console.log(res))
+    .catch((err)=>console.log(err))
+  }
+  useEffect(()=>{
+    eventList();
+  },[]);
 
   return (
     <>

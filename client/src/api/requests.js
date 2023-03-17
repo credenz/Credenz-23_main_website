@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const hostname = window.location.hostname
-let url = ""
-if(hostname === "localhost") url = "http://localhost:8000/api"
-else url = `https://admin.nth.pictieee.in/api`
+let url = "http://127.0.0.1:8000/api"
+// if(hostname === "localhost") url = "http://127.0.0.1:8000/"
+// else url = `https://admin.nth.pictieee.in/api`
 const backend = axios.create({
     baseURL: url
   });
@@ -18,15 +18,20 @@ const backend = axios.create({
 // const time=() => backend.get( `/timer/`, {headers: { "content-type": "application/json"}} );
 // const feedback = (data) => backend.post( `/auth/feedback/`, data,{headers: { "content-type": "application/json" }} );
 
-const events=()=>backend.get(`api/events/`)
+const events=()=>backend.get(`/events/`,{headers: { }} );
+const login = (data) => backend.post( `/login/`, data,{headers: {}} );
+const profile= (data)=>backend.get(`/profile/`,{headers:{Authorization:`Bearer ${data.token}`}});
+const register=(data)=>backend.post(`/register/`,data,{headers: {}});
 const Requests = {
-    // login,
-    // register,
+    login,
+    profile,
+    register,
     // userquestion,
     // user,
     // extrahint,
     // leaderboard,
     // time,
-    // feedback
+    // feedback.
+    events
   };
   export default Requests;
