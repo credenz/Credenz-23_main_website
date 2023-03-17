@@ -150,17 +150,17 @@ const AdminUser = () => {
       {/* {console.log(details)} */}
       {/* <form onSubmit={(e)=>{e.preventDefault();console.log(e.target)}}> */}
 
-      <div class="card">
-        <div class="row">
-          <div class="col-md-7 cart">
-            <div class="title">
-              <div class="row">
-                <div class="col">
+      <div className="card">
+        <div className="row">
+          <div className="col-md-7 cart">
+            <div className="title">
+              <div className="row">
+                <div className="col">
                   <h4>
                     <b>Events</b>
                   </h4>
                 </div>
-                {/* <div class="col align-self-center text-right ">3 items</div> */}
+                {/* <div className="col align-self-center text-right ">3 items</div> */}
               </div>
             </div>
             
@@ -190,34 +190,34 @@ const AdminUser = () => {
             </table>
           </div>
 
-          <div class="col-md-5 summary">
+          <div className="col-md-5 summary">
             <div>
                                 <h4>
                                     <b>Payment</b>
                                 </h4>
                             </div>
                             <hr />
-            {/* <div class="row">
-                <div class="col" style={{ paddingLeft: "0" }}>
+            {/* <div className="row">
+                <div className="col" style={{ paddingLeft: "0" }}>
                   ITEMS 3
                 </div>
-                <div class="col text-right">&euro; 132.00</div>
+                <div className="col text-right">&euro; 132.00</div>
               </div> */}
 
             <div
-              class="row"
+              className="row"
               style={{
                 borderTop: "1px solid rgba(0,0,0,.1)",
                 padding: "2vh 0",
               }}
             >
-              {/* <div class="col">TOTAL PRICE</div>
-              <div class="col text-right">{totalprice}</div> */}
+              {/* <div className="col">TOTAL PRICE</div>
+              <div className="col text-right">{totalprice}</div> */}
             </div>
-            <div class='pay-links'>
+            <div className='pay-links'>
             {/* {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>} */}
-              <div id='payment-qr-code' class="payment-qr-code" style={isQr ? { 'visibility': 'visible' } : { 'height': '0', 'width': '0' }}></div>
-              {/* <a target="_blank" href={link} rel="noreferrer" class="payment-link">Click To Pay</a> */}
+              <div id='payment-qr-code' className="payment-qr-code" style={isQr ? { 'visibility': 'visible' } : { 'height': '0', 'width': '0' }}></div>
+              {/* <a target="_blank" href={link} rel="noreferrer" className="payment-link">Click To Pay</a> */}
             </div>
             Enter Upi Transaction Id:
             <input id="upiId"
@@ -228,7 +228,7 @@ const AdminUser = () => {
               required
             >
             </input>
-            <button class="btn" onClick={() => handleClick()}>Confirm Payment</button>
+            <button className="btn" onClick={() => handleClick()}>Confirm Payment</button>
           </div>
         </div>
       </div>

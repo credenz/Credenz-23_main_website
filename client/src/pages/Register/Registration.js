@@ -151,21 +151,21 @@ const Registration = () => {
     <>
       {/* login */}
       {register == 0 && (
-        <div class="form-body login">
-          <div class="row">
-            <div class="form-holder">
-              <div class="form-content">
-                <div class="form-items">
-                  {/* <div class="website-logo-inside">
+        <div className="form-body login">
+          <div className="row">
+            <div className="form-holder">
+              <div className="form-content">
+                <div className="form-items">
+                  {/* <div className="website-logo-inside">
                             <a href="index-2.html">
-                                <div class="logo">
-                                    <img class="logo-size" src="images/logo-light.svg" alt=""/>
+                                <div className="logo">
+                                    <img className="logo-size" src="images/logo-light.svg" alt=""/>
                                 </div>
                             </a>
                         </div> */}
                   <h3>Welcome Back</h3>
                   <p>Please sign-in to continue !</p>
-                  <div class="page-links">
+                  <div className="page-links">
                     <button
                       className="underline"
                       onClick={() => {
@@ -185,7 +185,7 @@ const Registration = () => {
                   </div>
                   <form onSubmit={loginSubmit}>
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="text"
                       name="loginUsername"
                       placeholder="UserName"
@@ -194,7 +194,7 @@ const Registration = () => {
                       required
                     />
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="password"
                       name="loginpassword"
                       placeholder="Password"
@@ -202,8 +202,8 @@ const Registration = () => {
                       value={loginpassword}
                       required
                     />
-                    <div class="form-button">
-                      <button id="submit" type="submit" class="ibtn">
+                    <div className="form-button">
+                      <button id="submit" type="submit" className="ibtn">
                         Login
                       </button>{" "}
                       <button
@@ -214,7 +214,7 @@ const Registration = () => {
                       </button>
                     </div>
                   </form>
-                  {/* <div class="other-links">
+                  {/* <div className="other-links">
                             <span>Or login with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a>
                         </div> */}
                 </div>
@@ -226,21 +226,21 @@ const Registration = () => {
 
       {/* register */}
       {register == 1 && (
-        <div class="form-body register">
-          <div class="row">
-            <div class="form-holder">
-              <div class="form-content">
-                <div class="form-items">
-                  {/* <div class="website-logo-inside">
+        <div className="form-body register">
+          <div className="row">
+            <div className="form-holder">
+              <div className="form-content">
+                <div className="form-items">
+                  {/* <div className="website-logo-inside">
                             <a href="index-2.html">
-                                <div class="logo">
-                                    <img class="logo-size" src="images/logo-light.svg" alt=""/>
+                                <div className="logo">
+                                    <img className="logo-size" src="images/logo-light.svg" alt=""/>
                                 </div>
                             </a>
                         </div> */}
                   <h3>Create Account</h3>
                   <p>Please sign-up to continue!</p>
-                  <div class="page-links">
+                  <div className="page-links">
                     <button
                       className="registerbutton"
                       onClick={() =>
@@ -264,7 +264,7 @@ const Registration = () => {
                       <div className="registersection">
                         <div className="namesection">
                           <input
-                            class="form-control"
+                            className="form-control"
                             type="text"
                             name="firstname"
                             placeholder="First Name"
@@ -274,7 +274,7 @@ const Registration = () => {
                           />
 
                           <input
-                            class="form-control"
+                            className="form-control"
                             type="text"
                             name="lastname"
                             placeholder="Last Name"
@@ -285,7 +285,7 @@ const Registration = () => {
                         </div>
 
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="text"
                           name="username"
                           placeholder="Username"
@@ -294,7 +294,7 @@ const Registration = () => {
                           value={username}
                         />
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="email"
                           name="registeremail"
                           placeholder="E-mail Address"
@@ -304,7 +304,7 @@ const Registration = () => {
                         />
 
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="phone"
                           name="phone"
                           placeholder="Phone"
@@ -315,7 +315,7 @@ const Registration = () => {
 
                         <div className="passwordsection">
                           <input
-                            class="form-control"
+                            className="form-control"
                             type="text"
                             name="institute"
                             placeholder="Institiute"
@@ -324,7 +324,7 @@ const Registration = () => {
                             value={institute}
                           />
                           <input
-                            class="form-control"
+                            className="form-control"
                             type="text"
                             name="Year"
                             placeholder="Year"
@@ -335,7 +335,7 @@ const Registration = () => {
                         </div>
 
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="text"
                           name="referalcode"
                           placeholder="Referal Code (If any)"
@@ -345,7 +345,7 @@ const Registration = () => {
 
                         <div className="passwordsection">
                           <input
-                            class="form-control"
+                            className="form-control"
                             type="password"
                             name="password"
                             placeholder="Password"
@@ -356,7 +356,7 @@ const Registration = () => {
                             value={registerpassword}
                           />
                           <input
-                            class="form-control"
+                            className="form-control"
                             type="password"
                             name="confirm_password"
                             placeholder="Confirm Password"
@@ -366,7 +366,7 @@ const Registration = () => {
                           />
                         </div>
 
-                        <div class="form-button">
+                        <div className="form-button">
                           <button
                             onClick={
                               (e) => setregister2(1)
@@ -380,7 +380,7 @@ const Registration = () => {
                               //     )
                               //     : swal("Error", "Please fill out all the details", "error")
                             }
-                            class="ibtn"
+                            className="ibtn"
                           >
                             Next
                           </button>
@@ -395,7 +395,7 @@ const Registration = () => {
                         <button
                           className="registerbutton back"
                           onClick={() => setregister2(0)}
-                          class=""
+                          className=""
                         >
                           <p> {`< Go Back`}</p>
                         </button>
@@ -447,8 +447,8 @@ const Registration = () => {
                           </div>
                         </div>
 
-                        <div class="form-button">
-                          <button id="submit" type="submit" class="ibtn">
+                        <div className="form-button">
+                          <button id="submit" type="submit" className="ibtn">
                             Register
                           </button>
                         </div>
@@ -456,7 +456,7 @@ const Registration = () => {
                     </form>
                   )}
 
-                  {/* <div class="other-links">
+                  {/* <div className="other-links">
                             <span>Or register with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a>
                         </div> */}
                 </div>
@@ -468,15 +468,15 @@ const Registration = () => {
 
       {/* forget password */}
       {register == 2 && (
-        <div class="form-body forget">
-          <div class="row">
-            <div class="form-holder">
-              <div class="form-content">
-                <div class="form-items">
-                  {/* <div class="website-logo-inside">
+        <div className="form-body forget">
+          <div className="row">
+            <div className="form-holder">
+              <div className="form-content">
+                <div className="form-items">
+                  {/* <div className="website-logo-inside">
                             <a href="index-2.html">
-                                <div class="logo">
-                                    <img class="logo-size" src="images/logo-light.svg" alt=""/>
+                                <div className="logo">
+                                    <img className="logo-size" src="images/logo-light.svg" alt=""/>
                                 </div>
                             </a>
                         </div> */}
@@ -488,7 +488,7 @@ const Registration = () => {
 
                   <form onClick={forgetSubmit} className="forgetfields">
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="email"
                       name="forgetemail"
                       placeholder="E-mail Address"
@@ -498,7 +498,7 @@ const Registration = () => {
                     />
 
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="text"
                       name="token"
                       placeholder="Verification token"
@@ -508,7 +508,7 @@ const Registration = () => {
                     />
 
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="password"
                       name="newpassword"
                       placeholder="New password"
@@ -518,30 +518,30 @@ const Registration = () => {
                     />
 
                     <div className="forgetpart">
-                      <div class="form-button ">
+                      <div className="form-button ">
                         <button
                           // onClick={() => setregister(0)}
                           id="submit"
                           type="submit"
-                          class="ibtn btn-forget"
+                          className="ibtn btn-forget"
                         >
                           Send Reset Link
                         </button>
                       </div>
 
-                      <div class="form-button ">
+                      <div className="form-button ">
                         <button
                           onClick={() => setregister(0)}
                           id="submit"
                           type="submit"
-                          class="ibtn btn-forget"
+                          className="ibtn btn-forget"
                         >
                           Submit
                         </button>
                       </div>
                     </div>
 
-                    <div class="form-button full-width  ">
+                    <div className="form-button full-width  ">
                       <button
                         className="registerbutton"
                         onClick={() => setregister(0)}

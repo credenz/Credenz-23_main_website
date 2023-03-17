@@ -34,17 +34,17 @@ const Payment = () => {
     return (
         <>
             <div className="payment">
-                <div class="card">
-                    <div class="row">
-                        <div class="col-md-8 cart">
-                            <div class="title">
-                                <div class="row">
-                                    <div class="col">
+                <div className="card">
+                    <div className="row">
+                        <div className="col-md-8 cart">
+                            <div className="title">
+                                <div className="row">
+                                    <div className="col">
                                         <h4>
                                             <b>Payment</b>
                                         </h4>
                                     </div>
-                                    {/* <div class="col align-self-center text-right ">3 items</div> */}
+                                    {/* <div className="col align-self-center text-right ">3 items</div> */}
                                 </div>
                             </div>
 
@@ -52,7 +52,7 @@ const Payment = () => {
                                 <Scrollbars>
                                     <div>
                                         <h4> Follow This Steps For Payment </h4>
-                                        <p class="pay-rules">
+                                        <p className="pay-rules">
                                         1)Scan QR or click on the link to pay.<br></br>
                                         2)Ensure Amout entered matches the one shown in summary.<br></br>
                                         3)Verification of payment will be done and status will be updated in profile-orders section.<br></br>
@@ -62,40 +62,40 @@ const Payment = () => {
 
                                 </Scrollbars>
                             </div>
-                            <div class="back-to-shop">
+                            <div className="back-to-shop">
                                 <a href="#" onClick={(e) => { e.preventDefault(); navigate('/cart') }}>Back to cart</a>
                                 {/* <button onClick={()=>navigate('/cart')}>Back to cart</button> */}
                                 {/* {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>} */}
                             </div>
                         </div>
 
-                        <div class="col-md-4 summary">
+                        <div className="col-md-4 summary">
                             {/* <div>
                                 <h4>
                                     <b>Buy</b>
                                 </h4>
                             </div>
                             <hr /> */}
-                            {/* <div class="row">
-                <div class="col" style={{ paddingLeft: "0" }}>
+                            {/* <div className="row">
+                <div className="col" style={{ paddingLeft: "0" }}>
                   ITEMS 3
                 </div>
-                <div class="col text-right">&euro; 132.00</div>
+                <div className="col text-right">&euro; 132.00</div>
               </div> */}
 
                             <div
-                                class="row"
+                                className="row"
                                 style={{
                                     borderTop: "1px solid rgba(0,0,0,.1)",
                                     padding: "2vh 0",
                                 }}
                             >
-                                <div class="col">TOTAL PRICE</div>
-                                <div class="col text-right"> <i class="fa fa-inr"></i> {totalprice}</div>
+                                <div className="col">TOTAL PRICE</div>
+                                <div className="col text-right"> <i className="fa fa-inr"></i> {totalprice}</div>
                             </div>
-                            <div class='pay-links'>
-                            <div class="payment-qr-code" id='payment-qr-code'></div>
-                            <a target="_blank" href={link} rel="noreferrer" class="payment-link">Click To Pay</a>
+                            <div className='pay-links'>
+                            <div className="payment-qr-code" id='payment-qr-code'></div>
+                            <a target="_blank" href={link} rel="noreferrer" className="payment-link">Click To Pay</a>
                             </div>
                             Enter Upi Transaction Id:
                             <input id="upiId"
@@ -106,7 +106,7 @@ const Payment = () => {
                                     required
                                     >
                             </input>
-                            <button class="btn" onClick={() => handleClick()}>Confirm Payment</button>
+                            <button className="btn" onClick={() => handleClick()}>Confirm Payment</button>
                         </div>
                     </div>
                 </div>

@@ -10,6 +10,27 @@
 
 }
 
+.banner{
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+    background-image: url(../../../public/assets/images/Sky.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 0;
+
+
+
+}
+.banner h1{
+  font-size: 100px;
+}
+
 .about .container{
   display: flex;
   flex-direction: column;
@@ -34,7 +55,7 @@
 }
 
 .about .aboutus {
-  margin: 80px 0 10px 0;
+  /* margin: 80px 0 10px 0; */
 }
 
 .about .aboutus h1 {

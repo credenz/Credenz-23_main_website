@@ -53,7 +53,7 @@
     
 }
 .team .card .info{
-    margin-top: 10px;
+    margin-top: 20px;
     text-align: center;
 }
 .team .card .info h2{
@@ -95,14 +95,14 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.37);
     z-index: 2;
 }
-.team .card .thumb .share-button i{
+/* .team .card .thumb .share-button i{
     font-size: 18px;
     transform: rotate(45deg);
     transition: 0.3s;
 }
 .team .card .share-toggle:checked ~ .share-button i{
     transform: rotate(180deg);
-}
+} */
 .team .card .share-icon{
     position: absolute;
     right: 27px;
@@ -116,10 +116,10 @@
     cursor: pointer;
     color: #fff;
     transition: all 0.5s ease;
-    transform: translateY(0) rotate(180deg);
+    /* transform: translateY(0) rotate(180deg); */
     z-index: 1;
 }
-.team .card .share-toggle{
+/* .team .card .share-toggle{
     display: none;
 }
 .team .card .share-toggle:checked ~ .share-icon:nth-child(3){
@@ -130,4 +130,4 @@
 }  
 .team .card .share-toggle:checked ~ .share-icon:nth-child(5){
     transform: translateY(-175px) rotate(0);
-}
+} */

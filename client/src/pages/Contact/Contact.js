@@ -5,36 +5,36 @@ const Contact = () =>{
 <>
 <div  className="contactpage" >
       <section  >
-        <div class="row">
+        <div className="row">
           <h1>Contact Us</h1>
         </div>
-        <div class="row">
-          <div class="column">
-            <div class="card">
-              <div class="img-container">
+        <div className="row">
+          <div className="column">
+            <div className="card">
+              <div className="img-container">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkvFCLSMbUU6Bqb1m-0y3LPAQ7_Gcs-PNZw&usqp=CAU"
                   alt=""
                 />
               </div>
               <h3>kim Jong</h3>
-              <div class="icons">
+              <div className="icons">
                 <a href="#" alt="">
-                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="#" alt="">
-                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="#" alt="">
-                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
           </div>
 
-          <div class="column">
-            <div class="card">
-              <div class="img-container">
+          <div className="column">
+            <div className="card">
+              <div className="img-container">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkvFCLSMbUU6Bqb1m-0y3LPAQ7_Gcs-PNZw&usqp=CAU"
                   alt=""
@@ -42,23 +42,23 @@ const Contact = () =>{
               </div>
               <h3>Donald Trump</h3>
 
-              <div class="icons">
+              <div className="icons">
                 <a href="#" alt="">
-                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="#" alt="">
-                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="#" alt="">
-                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
           </div>
 
-          <div class="column">
-            <div class="card">
-              <div class="img-container">
+          <div className="column">
+            <div className="card">
+              <div className="img-container">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkvFCLSMbUU6Bqb1m-0y3LPAQ7_Gcs-PNZw&usqp=CAU"
                   alt=""
@@ -66,15 +66,15 @@ const Contact = () =>{
               </div>
               <h3>xi jinping</h3>
 
-              <div class="icons">
+              <div className="icons">
                 <a href="#" alt="">
-                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="#" alt="">
-                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="#" alt="">
-                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
@@ -101,7 +101,7 @@ const Contact = () =>{
                 rows="10"
                 placeholder="Write Message"
               ></textarea>
-              <input type="submit" value="submit" class="send-button" />
+              <input type="submit" value="submit" className="send-button" />
             </form>
           </div>
           {/* map */}

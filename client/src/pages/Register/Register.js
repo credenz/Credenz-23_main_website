@@ -91,21 +91,21 @@ const Register = () => {
   // };
   return (
     <>
-      <div class="form-body register">
-        <div class="row">
-          <div class="form-holder">
-            <div class="form-content">
-              <div class="form-items">
-                {/* <div class="website-logo-inside">
+      <div className="form-body register">
+        <div className="row">
+          <div className="form-holder">
+            <div className="form-content">
+              <div className="form-items">
+                {/* <div className="website-logo-inside">
                             <a href="index-2.html">
-                                <div class="logo">
-                                    <img class="logo-size" src="images/logo-light.svg" alt=""/>
+                                <div className="logo">
+                                    <img className="logo-size" src="images/logo-light.svg" alt=""/>
                                 </div>
                             </a>
                         </div> */}
                 <h3>Create Account</h3>
                 <p>Please sign-up to continue!</p>
-                <div class="page-links">
+                <div className="page-links">
                   <a
                     href="/login"
                     //   className="registerbutton"
@@ -130,7 +130,7 @@ const Register = () => {
                     <div className="registersection">
                       <div className="namesection">
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="text"
                           name="firstname"
                           placeholder="First Name"
@@ -140,7 +140,7 @@ const Register = () => {
                         />
 
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="text"
                           name="lastname"
                           placeholder="Last Name"
@@ -151,7 +151,7 @@ const Register = () => {
                       </div>
 
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="text"
                         name="username"
                         placeholder="Username"
@@ -160,7 +160,7 @@ const Register = () => {
                         value={username}
                       />
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="email"
                         name="registeremail"
                         placeholder="E-mail Address"
@@ -170,7 +170,7 @@ const Register = () => {
                       />
 
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="phone"
                         name="phone"
                         placeholder="Phone"
@@ -181,7 +181,7 @@ const Register = () => {
 
                       <div className="passwordsection">
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="text"
                           name="institute"
                           placeholder="Institiute"
@@ -190,7 +190,7 @@ const Register = () => {
                           value={institute}
                         />
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="text"
                           name="Year"
                           placeholder="Year"
@@ -201,7 +201,7 @@ const Register = () => {
                       </div>
 
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="text"
                         name="referalcode"
                         placeholder="Referal Code (If any)"
@@ -211,7 +211,7 @@ const Register = () => {
 
                       <div className="passwordsection">
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="password"
                           name="password"
                           placeholder="Password"
@@ -220,7 +220,7 @@ const Register = () => {
                           value={registerpassword}
                         />
                         <input
-                          class="form-control"
+                          className="form-control"
                           type="password"
                           name="confirm_password"
                           placeholder="Confirm Password"
@@ -230,7 +230,7 @@ const Register = () => {
                         />
                       </div>
 
-                      <div class="form-button">
+                      <div className="form-button">
                         <button
                           onClick={
                             (e) => setregister2(1)
@@ -244,7 +244,7 @@ const Register = () => {
                             //     )
                             //     : swal("Error", "Please fill out all the details", "error")
                           }
-                          class="ibtn"
+                          className="ibtn"
                         >
                           Next
                         </button>
@@ -259,7 +259,7 @@ const Register = () => {
                       <button
                         className="registerbutton back"
                         onClick={() => setregister2(0)}
-                        class=""
+                        // className=""
                       >
                         <p> {`< Go Back`}</p>
                       </button>
@@ -318,8 +318,8 @@ const Register = () => {
                         </div>
                       </div>
 
-                      <div class="form-button">
-                        <button id="submit" type="submit" class="ibtn">
+                      <div className="form-button">
+                        <button id="submit" type="submit" className="ibtn">
                           Register
                         </button>
                       </div>
@@ -327,7 +327,7 @@ const Register = () => {
                   </form>
                 )}
 
-                {/* <div class="other-links">
+                {/* <div className="other-links">
                             <span>Or register with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a>
                         </div> */}
               </div>
