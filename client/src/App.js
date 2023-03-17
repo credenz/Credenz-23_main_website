@@ -17,6 +17,8 @@ import Team from "./pages/team/Team"
 
 import LoginNew from "./pages/Register/LoginNew";
 import Register from "./pages/Register/Register"
+import Error from './pages/Error/Error';
+import User from './Components/useradd/User';
 
 
 
@@ -33,10 +35,12 @@ function App() {
    <Route exact path="/login" element={<LoginNew/> } />
    <Route exact path="/register" element={<Register/> } />
    <Route exact path="/cart" element={<Cart/> } />
+   <Route exact path="/user" element={<User/> } />
    <Route exact path="/profile" element={<Profile/> } />
    <Route exact path="/payment" element={<Payment/> } />
    <Route exact path="/team" element={<Team/> } />
    <Route exact path="/admin" element={<Admin/> } />
+   <Route exact path="/error" element={<Error/> } />
   </Routes> 
   <Footer/>
 </div>

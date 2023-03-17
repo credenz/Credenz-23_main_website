@@ -40,6 +40,25 @@ const Events = () => {
     { logo: WEB, title: "Web Weaver", id: "12" },
   ]);
 
+  const [player, setplayer] = useState([{ player: "" }]);
+
+  const handleplayerChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...player];
+    list[index][name] = value;
+    setplayer(list);
+  };
+
+  const handleplayerRemove = (index) => {
+    const list = [...player];
+    list.splice(index, 1);
+    setplayer(list);
+  };
+
+  const handleplayerAdd = () => {
+    setplayer([...player, { player: "" }]);
+  };
+
   const [details, setdetails] = useState([
     {},
     {
@@ -53,6 +72,7 @@ const Events = () => {
         "carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
       amount: 50,
       count: 1,
+      team:"Maximum 3 players are allowed"
     },
 
     {
@@ -147,6 +167,8 @@ const Events = () => {
       count: 1,
     },
   ]);
+
+
 
   const customStyles = {
     overlay: {
@@ -259,12 +281,67 @@ const Events = () => {
                   <button onClick={() => setDetails(0)}>Info</button>
                   <button onClick={() => setDetails(1)}>Rules</button>
                   <button onClick={() => setDetails(2)}>Stucture</button>
+                  <button onClick={() => setDetails(3)}>Create Team</button>
                 </div>
 
                 <div className="modalbody">
                   <p>{Details == 0 && data.body}</p>
                   <p>{Details == 1 && data.rules}</p>
                   <p>{Details == 2 && data.structure}</p>
+                  {Details==3 && (
+                    <div className="members">
+                    <p>{data.team}</p>
+    <form className="" autoComplete="off">
+      <div className="form-field">
+        <label htmlFor="player">player(s)</label>
+        {player.map((singleplayer, index) => (
+          <div key={index} className="players">
+            <div className="first-division">
+              <input
+                name="player"
+                type="text"
+                id="player"
+                placeholder="Player name"
+                value={singleplayer.player}
+                onChange={(e) => handleplayerChange(e, index)}
+                required
+              />
+              {player.length - 1 === index && player.length < 3 && (
+                <button
+                  type="button"
+                  onClick={handleplayerAdd}
+                  className="add-btn"
+                >
+                  <span>Add a player</span>
+                </button>
+              )}
+            </div>
+            <div className="second-division">
+              {player.length !== 1 && (
+                <button
+                  type="button"
+                  onClick={() => handleplayerRemove(index)}
+                  className="remove-btn"
+                >
+                  <span>Remove</span>
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* <div className="output">
+        <h2>Output</h2>
+        {player &&
+          player.map((singleplayer, index) => (
+            <ul key={index}>
+              {singleplayer.player && <li>{singleplayer.player}</li>}
+            </ul>
+          ))}
+      </div> */}
+    </form>
+    </div>
+                  ) }
                 </div>
 
                 <div className="modalbutton">

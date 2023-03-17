@@ -80,7 +80,7 @@ const Cart = () => {
                 </Scrollbars>
               </div>
               <div class="back-to-shop">
-                <a href="#">Back to events</a>
+                <a href="/events">Back to events</a>
 
                 <button onClick={clearcart}>Clear cart</button>
               </div>
