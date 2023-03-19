@@ -7,7 +7,7 @@ const About = () => {
     <>
     <div className="about">
     <div className="banner">
-        <h1 className="text-center text-glow">About Us</h1>
+        <h1 className="text-center text-glow"  data-aos="fade-in" data-aos-duration="600" >About Us</h1>
         </div>
       <div className="container ">
         {/* <div className="about-ctd text-center">
@@ -33,7 +33,8 @@ const About = () => {
        
        
           <div className="ieee">
-            <div className="image-ab">
+            <div className="image-ab" data-aos="fade-right" 
+            >
               <div className="left-1">
                 <div>
                   <img className="abimg" src={Clash} alt="" />
@@ -49,7 +50,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="image-ab">
+            <div className="image-ab" data-aos="fade-left" >
               <div className="left-2">
                 <div>
                   <h2 style={{textAlign:"center"}} >PICT IEEE Student Branch (PISB)</h2>
@@ -66,7 +67,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="image-ab">
+            <div className="image-ab" data-aos="fade-right" >
               <div className="left-3">
                 <div>
                   <img src={Clash} alt="" />
@@ -84,30 +85,30 @@ const About = () => {
           </div>
         </div>
 
-        <div className="our-clients">
+        <div className="our-clients" data-aos="fade-down" >
           <h1>Our Sponsors</h1>
           <ul>
-            <li>
+            <li  data-aos="zoom-out" >
               {" "}
               <img src={Clash} alt="" /> <img src={Clash} alt="" />{" "}
             </li>
-            <li>
+            <li   data-aos="zoom-out">
               {" "}
               <img src={Clash} alt="" /> <img src={Clash} alt="" />{" "}
             </li>
-            <li>
+            <li  data-aos="zoom-out">
               {" "}
               <img src={Clash} alt="" /> <img src={Clash} alt="" />{" "}
             </li>
-            <li>
+            <li  data-aos="zoom-out">
               {" "}
               <img src={Clash} alt="" /> <img src={Clash} alt="" />{" "}
             </li>
-            <li>
+            <li  data-aos="zoom-out">
               {" "}
               <img src={Clash} alt="" /> <img src={Clash} alt="" />{" "}
             </li>
-            <li>
+            <li  data-aos="zoom-out">
               {" "}
               <img src={Clash} alt="" /> <img src={Clash} alt="" />{" "}
             </li>

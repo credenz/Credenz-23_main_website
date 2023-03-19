@@ -287,13 +287,14 @@ const handelSubmit = (eventId) =>{
         <div id="stars2"></div>
         <div id="stars3"></div>
 
-        <div className="eventpage ">
-          <div className="container ">
+        <div className="eventpage " data-aos="fade-in"  data-aos-duration="400" >
+          <div className="container " >
             <h1 style={{ textAlign: "center" }}>EVENTS</h1>
             <div className="main">
               {eventslist.map((list) => (
                 <div
                   className="outer"
+                  // data-aos="zoom-in"
                   key={list.id}
                   onClick={() => openModal(list.id)}
                 >
@@ -319,7 +320,7 @@ const handelSubmit = (eventId) =>{
         </div>
       </div>
 
-      <Modal
+      <Modal 
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
@@ -328,9 +329,9 @@ const handelSubmit = (eventId) =>{
         // contentLabel="Example Modal"
       >
         {details.map((data) => {
-          if (eventid && data.id == eventid)
+          if (eventid && data.id === eventid)
             return (
-              <div className="modal-content" key={data.id}>
+              <div className="modal-content" key={data.id} data-aos="fade-in"  data-aos-duration="500" >
                 <div className="modalimage">
                   <img src={data.image} alt="" />
                 </div>
@@ -343,10 +344,10 @@ const handelSubmit = (eventId) =>{
                 </div>
 
                 <div className="modalbody">
-                  <p>{Details == 0 && data.body}</p>
-                  <p>{Details == 1 && data.rules}</p>
-                  <p>{Details == 2 && data.structure}</p>
-                  {Details == 3 && (
+                  <p>{Details === 0 && data.body}</p>
+                  <p>{Details === 1 && data.rules}</p>
+                  <p>{Details === 2 && data.structure}</p>
+                  {Details === 3 && (
                     <div className="members">
                       <p>{data.team}</p>
                       <form className="" autoComplete="off">
@@ -397,7 +398,7 @@ const handelSubmit = (eventId) =>{
                                       className="add-btn"
                                     >
                                       <span>Add a player</span>
-                                    </button>
+                                    </button>   
                                   )}
                         </div>
                         {/* <div className="output">

@@ -602,7 +602,7 @@
     letter-spacing: 2px;
     background: url("./bg.jpg"); */
 
-  min-height: 100vh;
+  min-height: 95vh;
   width: 100vw;
   display: flex;
   justify-content: center;

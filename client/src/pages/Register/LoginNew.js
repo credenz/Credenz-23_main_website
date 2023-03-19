@@ -68,7 +68,7 @@ const LoginNew = () => {
     <>
       {/* login */}
       {register == 0 && (
-        <div className="form-body login">
+        <div className="form-body login"  data-aos="fade-in"  data-aos-duration="500">
           <div className="row">
             <div className="form-holder">
               <div className="form-content">
@@ -148,10 +148,10 @@ const LoginNew = () => {
 
       {/* forget password */}
       {register == 1 && (
-        <div className="form-body forget">
+        <div className="form-body forget" >
           <div className="row">
             <div className="form-holder">
-              <div className="form-content">
+              <div className="form-content" data-aos="fade-in"  data-aos-duration="400">
                 <div className="form-items">
                   {/* <div className="website-logo-inside">
                             <a href="index-2.html">

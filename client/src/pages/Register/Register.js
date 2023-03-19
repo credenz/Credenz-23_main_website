@@ -91,7 +91,7 @@ const Register = () => {
   // };
   return (
     <>
-      <div className="form-body register">
+      <div className="form-body register"  data-aos="fade-in"  data-aos-duration="500">
         <div className="row">
           <div className="form-holder">
             <div className="form-content">
@@ -254,8 +254,8 @@ const Register = () => {
                 )}
 
                 {register2 == 1 && (
-                  <form onSubmit={signupsubmit}>
-                    <div className="form-button goback  ">
+                  <form onSubmit={signupsubmit}   >
+                    <div className="form-button goback  " >
                       <button
                         className="registerbutton back"
                         onClick={() => setregister2(0)}
@@ -265,7 +265,7 @@ const Register = () => {
                       </button>
                     </div>
 
-                    <div className="registersection">
+                    <div className="registersection" >
                       <div className="collegesection">
                         <div className="div1">
                           <input
