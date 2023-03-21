@@ -137,7 +137,7 @@
 					"apikey": [
 						{
 							"key": "value",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MDMxNjcwLCJqdGkiOiIwNGJlZDYyZWE2YzM0MTgyOGZmOTUyNmEzZTJiYjczNiIsInVzZXJfaWQiOjJ9.o3hrhl6FeAERPIlSl2hDoC-RaHunqS9QK1krke7IEPU",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5OTM4NzYxLCJqdGkiOiIwMGUxYzlkYTc3MjQ0YzQ2YWUxOWQ1OTNmZWU1MjNlNyIsInVzZXJfaWQiOjJ9.P6h_z_nSMxOTtNvRhO_2WUeiDDVMIKZNO7DzZKtdJao",
 							"type": "string"
 						},
 						{
@@ -287,7 +287,7 @@
 					"apikey": [
 						{
 							"key": "value",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NDUyOTEwLCJqdGkiOiI3YTIwM2FhZjI0NDc0ODk1YjYzZTQ0OTliNDk4NTlkNiIsInVzZXJfaWQiOjJ9.4_kmhNTJv-M7a0U6CmYk-phrrJFfOjmbLejlKTo1r5g",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5OTM4NzYxLCJqdGkiOiIwMGUxYzlkYTc3MjQ0YzQ2YWUxOWQ1OTNmZWU1MjNlNyIsInVzZXJfaWQiOjJ9.P6h_z_nSMxOTtNvRhO_2WUeiDDVMIKZNO7DzZKtdJao",
 							"type": "string"
 						},
 						{
@@ -306,6 +306,48 @@
 					],
 					"path": [
 						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "place-order",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5OTcxNTQzLCJqdGkiOiJhYjE2MDM5MTE2ZjI0NDIzYjdiMDFhYjIwMWIxMmZkMiIsInVzZXJfaWQiOjJ9.08v9PCB0hVOB2B4BpVhJhDAFTjR4rQn9tpDSRnxYvVc",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"transaction_id\": 123456,\r\n    \"payment\": \"PO\",\r\n    \"event\": [1, 2]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}api/placeorder/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"placeorder",
 						""
 					]
 				}
