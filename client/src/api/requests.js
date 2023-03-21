@@ -19,9 +19,13 @@ const backend = axios.create({
 // const feedback = (data) => backend.post( `/auth/feedback/`, data,{headers: { "content-type": "application/json" }} );
 
 const events=()=>backend.get(`/events/`,{headers: { }} );
+const login = (data) => backend.post( `/login/`, data,{headers: {}} );
+const profile= (data)=>backend.get(`/profile/`,{headers:{Authorization:`Bearer ${data.token}`}});
+const register=(data)=>backend.post(`/register/`,data,{headers: {}});
 const Requests = {
-    // login,
-    // register,
+    login,
+    profile,
+    register,
     // userquestion,
     // user,
     // extrahint,

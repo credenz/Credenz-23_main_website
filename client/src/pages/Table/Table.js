@@ -1,5 +1,6 @@
 const Table = ({ data }) => {
     return (
+      <div className="container">
       <table>
         <tbody>
           <tr>
@@ -20,6 +21,7 @@ const Table = ({ data }) => {
           ))}
         </tbody>
       </table>
+      </div>
     );
   };
   

@@ -46,8 +46,12 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
+  <script>
+    AOS.init({
+      offset: 120, 
+  delay: 0, 
+  duration: 1000,
+    });
+  </script>
   </body>
 </html>

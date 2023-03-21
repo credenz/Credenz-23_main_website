@@ -15,9 +15,31 @@
 	 flex-wrap: wrap;
 	 padding: 20px;
 } */
- .card {
+
+.profile {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+
+.profiledetails {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+
+ .profile .card {
 	 max-width: 340px;
-	 margin: auto;
+	 margin: 50px 0 50px;
 	 overflow-y: auto;
 	 position: relative;
 	 z-index: 1;
@@ -29,46 +51,46 @@
 	 border-radius: 10px;
 	 box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
 }
- .card[data-state="#about"] {
+.profile  .card[data-state="#about"] {
 	 height: fit-content;
 }
- .card[data-state="#about"] .card-main {
+.profile .card[data-state="#about"] .card-main {
 	 padding-top: 0;
 }
- .card[data-state="#contact"] {
+.profile  .card[data-state="#contact"] {
 	 height: fit-content;
 }
- .card[data-state="#experience"] {
+.profile  .card[data-state="#experience"] {
 	 height: fit-content;
 }
- .card.is-active .card-header {
+.profile .card.is-active .card-header {
 	 height: 80px;
 }
- .card.is-active .card-cover {
+.profile .card.is-active .card-cover {
 	 height: 100px;
 	 top: -50px;
 }
- .card.is-active .card-avatar {
+.profile .card.is-active .card-avatar {
 	 transform: none;
 	 left: 20px;
 	 width: 50px;
 	 height: 50px;
 	 bottom: 10px;
 }
- .card.is-active .card-fullname, .card.is-active .card-jobtitle {
+.profile  .card.is-active .card-fullname, .card.is-active .card-jobtitle {
 	 left: 86px;
 	 transform: none;
 }
- .card.is-active .card-fullname {
+.profile  .card.is-active .card-fullname {
 	 bottom: 18px;
 	 font-size: 19px;
 }
- .card.is-active .card-jobtitle {
+.profile  .card.is-active .card-jobtitle {
 	 bottom: 16px;
 	 letter-spacing: 1px;
 	 font-size: 10px;
 }
- .card-header {
+.profile  .card-header {
 	 position: relative;
 	 display: flex;
 	 height: 200px;
@@ -76,10 +98,10 @@
 	 width: 100%;
 	 transition: 0.3s;
 }
- .card-header * {
+.profile  .card-header * {
 	 transition: 0.3s;
 }
- .card-cover {
+.profile  .card-cover {
 	 width: 100%;
 	 height: 100%;
 	 position: absolute;
@@ -93,7 +115,7 @@
 	 transform: scale(1.2);
 	 transition: 0.5s;
 }
- .card-avatar {
+.profile  .card-avatar {
 	 width: 100px;
 	 height: 100px;
 	 box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
@@ -105,7 +127,7 @@
 	 left: 50%;
 	 transform: translateX(-50%) translateY(-64px);
 }
- .card-fullname {
+.profile  .card-fullname {
 	 position: absolute;
 	 bottom: 0;
 	 font-size: 22px;
@@ -115,7 +137,7 @@
 	 transform: translateY(-10px) translateX(-50%);
 	 left: 50%;
 }
- .card-jobtitle {
+.profile  .card-jobtitle {
 	 position: absolute;
 	 bottom: 0;
 	 font-size: 11px;
@@ -128,22 +150,22 @@
 	 left: 50%;
 	 transform: translateX(-50%) translateY(-7px);
 }
- .card-main {
+.profile  .card-main {
 	 position: relative;
 	 flex: 1;
 	 display: flex;
 	 padding-top: 10px;
 	 flex-direction: column;
 }
- .card-subtitle {
+.profile  .card-subtitle {
 	 font-weight: 700;
 	 font-size: 13px;
 	 margin-bottom: 8px;
 }
- .card-content {
+.profile  .card-content {
 	 padding: 20px;
 }
- .card-desc {
+.profile  .card-desc {
 	 line-height: 1.6;
 	 color: #636b6f;
 	 font-size: 14px;
@@ -151,19 +173,19 @@
 	 font-weight: 400;
 	 font-family: "DM Sans", sans-serif;
 }
- .card-social {
+.profile  .card-social {
 	 display: flex;
 	 align-items: center;
 	 padding: 0 20px;
 	 margin-bottom: 30px;
 }
- .card-social svg {
+.profile  .card-social svg {
 	 fill: #a5b5ce;
 	 width: 16px;
 	 display: block;
 	 transition: 0.3s;
 }
- .card-social a {
+.profile  .card-social a {
 	 color: #8797a1;
 	 height: 32px;
 	 width: 32px;
@@ -176,13 +198,13 @@
 	 border-radius: 50%;
 	 margin-right: 10px;
 }
- .card-social a:hover svg {
+.profile  .card-social a:hover svg {
 	 fill: #637faa;
 }
- .card-social a:last-child {
+.profile  .card-social a:last-child {
 	 margin-right: 0;
 }
- .card-buttons {
+.profile  .card-buttons {
 	 display: flex;
 	 background-color: black;
 	 margin-top: auto;
@@ -190,7 +212,7 @@
 	 bottom: 0;
 	 left: 0;
 }
- .card-buttons button {
+.profile  .card-buttons button {
 	 flex: 1 1 auto;
 	 user-select: none;
 	 background: 0;
@@ -205,15 +227,15 @@
 	 outline: 0;
 	 border-bottom: 3px solid transparent;
 }
- .card-buttons button.is-active, .card-buttons button:hover {
+.profile  .card-buttons button.is-active, .card-buttons button:hover {
 	 color: #e1e1e7;
 	 border-bottom: 3px solid #8a84ff;
 	 background: linear-gradient(to bottom, rgba(127, 199, 231, 0) 0%, rgba(207, 204, 255, 0.2) 44%, rgba(211, 226, 255, 0.4) 100%);
 }
- .card-section {
+.profile  .card-section {
 	 display: none;
 }
- .card-section.is-active {
+.profile  .card-section.is-active {
 	 display: block;
 	 animation: fadeIn 0.6s both;
 }
@@ -226,11 +248,11 @@
 		 opacity: 1;
 	}
 }
- .card-timeline {
+.profile  .card-timeline {
 	 margin-top: 30px;
 	 position: relative;
 }
- .card-timeline:after {
+.profile  .card-timeline:after {
 	 background: linear-gradient(to top, rgba(134, 214, 243, 0) 0%, rgba(81, 106, 204, 1) 100%);
 	 content: "";
 	 left: 42px;
@@ -240,17 +262,17 @@
 	 position: absolute;
 	 content: "";
 }
- .card-item {
+.profile  .card-item {
 	 position: relative;
 	 padding-left: 60px;
 	 padding-right: 20px;
 	 padding-bottom: 30px;
 	 z-index: 1;
 }
- .card-item:last-child {
+.profile  .card-item:last-child {
 	 padding-bottom: 5px;
 }
- .card-item:after {
+.profile  .card-item:after {
 	 content: attr(data-year);
 	 width: 10px;
 	 position: absolute;
@@ -266,21 +288,21 @@
 	 color: rgba(134, 134, 134, 0.7);
 	 background: linear-gradient(to bottom, #a0aee3 0%, #516acc 100%);
 }
- .card-item-title {
+.profile  .card-item-title {
 	 font-weight: 500;
 	 font-size: 14px;
 	 margin-bottom: 5px;
 }
- .card-item-desc {
+.profile  .card-item-desc {
 	 font-size: 13px;
 	 color: #6f6f7b;
 	 line-height: 1.5;
 	 font-family: "DM Sans", sans-serif;
 }
- .card-contact-wrapper {
+.profile .card-contact-wrapper {
 	 margin-top: 20px;
 }
- .card-contact {
+.profile  .card-contact {
 	 display: flex;
 	 align-items: center;
 	 font-size: 13px;
@@ -289,10 +311,10 @@
 	 line-height: 1.6;
 	 cursor: pointer;
 }
- .card-contact + .card-contact {
+.profile  .card-contact + .card-contact {
 	 margin-top: 16px;
 }
- .card-contact svg {
+.profile  .card-contact svg {
 	flex-shrink: 0;
     width: 36px;
     height: 34px;
@@ -301,7 +323,7 @@
     padding-right: 12px;
     border-right: 1px solid #dfe2ec;
 }
- .contact-me {
+.profile .contact-me {
 	 border: 0;
 	 outline: none;
 	 background: linear-gradient(to right, rgba(83, 200, 239, 0.8) 0%, rgba(81, 106, 204, 0.8) 96%);
@@ -317,7 +339,7 @@
 	 font-family: "Jost", sans-serif;
 	 transition: 0.3s;
 }
-.profile-qr-code {
+.profile .profile-qr-code {
 	max-width: 100px;
 	max-height: 100px;
 	margin: 10px;

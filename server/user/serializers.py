@@ -74,11 +74,25 @@ class EventSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     user = UserSerializer()
-    event = EventSerializer()
+    event = EventSerializer(many=True)
     order_date = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S')
     class Meta:
         model = Order
         fields = "__all__"
+
+class PlaceOrderSerializer(serializers.ModelSerializer):
+    event = serializers.ListField(child=serializers.IntegerField())
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Order
+        fields = ("user", "transaction_id", "payment", "event")
+
+    def create(self, validated_data):
+        event = validated_data.pop("event")
+        order = Order.objects.create(**validated_data)
+        order.event.set(event)
+        return order
 
 class ProfileSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)

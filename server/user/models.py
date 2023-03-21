@@ -44,7 +44,8 @@ class Event(models.Model):
     event_id = models.CharField(max_length=255,default=101)
     event_start = models.DateTimeField()
     event_end = models.DateTimeField()
-    group_event = models.BooleanField(default=False)
+    group_event = models.BooleanField(default=False, null=True)
+    group_size = models.IntegerField(default=0, null=True)
     event_rules =  models.TextField(null=True)
     event_cost = models.IntegerField(default=0)
 
@@ -56,10 +57,11 @@ class Order(models.Model):
     PAYMENT_STATUS = (("PO", "Pending"), ("CO", "Completed"))
     
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
-    transaction_id = models.IntegerField(default=0)
+    event = models.ManyToManyField(Event)
+    amount = models.IntegerField(default=0, null=True)
+    transaction_id = models.IntegerField(default=0, null=True)
     order_date = models.DateTimeField(auto_now_add=True)
-    payment = models.CharField(max_length=20, choices=PAYMENT_STATUS, default="PO")
+    payment = models.CharField(max_length=20, choices=PAYMENT_STATUS, default="PO", null=True)
 
     def __str__(self):
         return str(self.pk)
@@ -91,5 +93,9 @@ class Referral(models.Model):
          )
         
         return res
+
+class Team(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
+    user = models.ManyToManyField(User)
 
 
