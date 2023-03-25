@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.1.4 .\\Logo_v5.glb
 */
 
 import React, { useRef, useState } from 'react'
-import { useGLTF, useTexture, useBounds, Bounds, useVideoTexture } from '@react-three/drei'
+import { useGLTF, useTexture, useBounds, Bounds, useVideoTexture, PointMaterial } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { Suspense } from 'react'
 import * as THREE from 'three'
@@ -77,6 +77,13 @@ export default function LogoV5(props) {
           </mesh>
           <mesh geometry={nodes.Satellite.geometry} material={nodes.Satellite.material} position={[0.05, 0.1, -4.61]} rotation={[Math.PI / 2, 0, 0]} >
             <meshBasicMaterial map={bakedTexture} map-flipY = {false} />
+              {/* <pointsMaterial
+                size={0.001}
+                threshold={0.1}
+                color={0xff00ff}
+                // sizeAttenuation={true}
+              /> */}
+              {/* <PointMaterial transparent vertexColors size={15} sizeAttenuation={false} depthWrite={false} /> */}
           </mesh>
         </SelectToZoom>
       </Bounds>

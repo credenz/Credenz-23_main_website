@@ -56,8 +56,6 @@ class UserSerializer(serializers.ModelSerializer):
             phone=validated_data["phone"],
             first_name=validated_data["first_name"],
             last_name=validated_data["last_name"],
-            ieee_member=validated_data["ieee_member"],
-            ieee_member_id=validated_data["ieee_member_id"],
             senior=validated_data["senior"],
             institute=validated_data["institute"],
         )

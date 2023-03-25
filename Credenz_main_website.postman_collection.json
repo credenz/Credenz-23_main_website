@@ -19,7 +19,7 @@
 					"formdata": [
 						{
 							"key": "username",
-							"value": "test1",
+							"value": "test2",
 							"type": "text"
 						},
 						{
@@ -29,23 +29,24 @@
 						},
 						{
 							"key": "first_name",
-							"value": "test1",
+							"value": "test2",
 							"type": "text"
 						},
 						{
 							"key": "phone",
-							"value": "9145527174",
+							"value": "9145527175",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "test1@gmail.com",
+							"value": "test2@gmail.com",
 							"type": "text"
 						},
 						{
 							"key": "country_code",
 							"value": "+91",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "last_name",
@@ -59,24 +60,27 @@
 							"disabled": true
 						},
 						{
-							"key": "ieee_member",
-							"value": "True",
-							"type": "text"
-						},
-						{
-							"key": "ieee_member_id",
-							"value": "1234",
-							"type": "text"
-						},
-						{
 							"key": "senior",
 							"value": "True",
-							"type": "text"
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "test2",
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "institute",
 							"value": "PICT",
 							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "1234",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
