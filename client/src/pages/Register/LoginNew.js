@@ -44,7 +44,7 @@ const LoginNew = () => {
     await Requests.login({username:loginUsername,password:loginpassword})
     .then((res)=>{
       console.log(res.data.access);
-      localStorage.setItem('token',res.data.access      );
+      localStorage.setItem('token',res.data.access);
       window.alert('LOGIN SUcCess');
     })
     .catch((err)=>{
@@ -129,9 +129,9 @@ const LoginNew = () => {
                   <form onSubmit={loginSubmit}>
                     <input
                       className="form-control"
-                      type="email"
+                      type="text"
                       name="loginemail"
-                      placeholder="E-mail Address"
+                      placeholder="Username"
                       onChange={(e) => setloginUsername(e.target.value)}
                       value={loginUsername}
                       required

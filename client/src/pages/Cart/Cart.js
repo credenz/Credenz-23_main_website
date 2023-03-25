@@ -4,6 +4,7 @@ import "./Cart.css";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { useCartContext } from "../../context/cart_context";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 const Cart = () => {
   const { cart, removeitem, clearcart, totalprice } = useCartContext();
   // console.log(cart)
@@ -112,7 +113,14 @@ const Cart = () => {
               </div>
               {/* <img src={`https://api.qrserver.com/v1/create-qr-code/?data=${variable}&amp;size=100x100`}
                                                 className="qr-code img-thumbnail img-responsive" alt='QR CODE'/> */}
-              <button className="btn" onClick={()=>navigate('/payment')}>CHECKOUT</button>
+              <button className="btn" onClick={()=>{
+                if(localStorage.getItem('token')) navigate('/payment');
+                else{
+                  swal("Error", "Login First", "error");
+                  navigate('/login');
+                }
+                }}>
+                CHECKOUT</button>
             </div>
           </div>
         </div>

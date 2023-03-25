@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCartContext } from "../../context/cart_context";
 const Payment = () => { 
     // const [data,setData]=useState(props);
-    const { totalprice } = useCartContext();
+    const { cart,totalprice } = useCartContext();
     const link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${totalprice}&tn=IEEE&cu=INR`;
     // const [isQr, setisQr] = useState(false);
     const [upiId, setupiId] = useState("");
@@ -28,6 +28,7 @@ const Payment = () => {
         });
     }
     const handleClick=()=>{
+        console.log(cart);
         window.alert(`UPI Transaction Id :- ${upiId}`);
     }
     useEffect(()=>generate(),[]);
