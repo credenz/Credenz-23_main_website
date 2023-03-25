@@ -8,10 +8,30 @@
     font-family: "SolThin", sans-serif;
     margin: 0;
     padding: 0;
-   /* overflow: auto; */
+    box-sizing: border-box;
+
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #090a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(128, 128, 128);
 }
 
 body{
-   
+ 
     /* color: azure; */
+
+}
+
+ .btnnew{
+  background: purple;
+  border: 2px solid rgb(97, 9, 97);
+  padding: 5px 5px;
 }

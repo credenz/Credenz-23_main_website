@@ -1,22 +1,19 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth import get_user_model
 from .utils import getReferralCode
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     phone = models.IntegerField(null = True)
+    institute = models.TextField(default="", max_length=512)
+    senior = models.BooleanField(default=False)
     referral = models.CharField(
         max_length=100, null=True, db_index=True, unique=True, blank=True
     )
-    country_code = models.CharField(default="+91", max_length=5)
-    ieee_member = models.BooleanField(default=False)
-    ieee_member_id = models.IntegerField(default=0, blank=True)
-    institute = models.TextField(default="", max_length=512)
-    senior = models.BooleanField(default=False)
     coins = models.IntegerField(default=0)
     offline_officer = models.BooleanField(default=False)
-    players = models.ManyToManyField('self', blank=True)
 
     @property
     def full_name(self):
@@ -47,16 +44,24 @@ class Event(models.Model):
     event_id = models.CharField(max_length=255,default=101)
     event_start = models.DateTimeField()
     event_end = models.DateTimeField()
-    group_event = models.BooleanField(default=False)
+    group_event = models.BooleanField(default=False, null=True)
+    group_size = models.IntegerField(default=0, null=True)
+    event_rules =  models.TextField(null=True)
+    event_cost = models.IntegerField(default=0)
+
 
     def __str__(self):
         return str(self.event_name) + " pk:" + str(self.pk)
 
 class Order(models.Model):
-    player_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
+    PAYMENT_STATUS = (("PO", "Pending"), ("CO", "Completed"))
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    event = models.ManyToManyField(Event)
+    amount = models.IntegerField(default=0, null=True)
+    transaction_id = models.IntegerField(default=0, null=True)
     order_date = models.DateTimeField(auto_now_add=True)
-    payment_verified = models.BooleanField(default=False)
+    payment = models.CharField(max_length=20, choices=PAYMENT_STATUS, default="PO", null=True)
 
     def __str__(self):
         return str(self.pk)
@@ -88,5 +93,9 @@ class Referral(models.Model):
          )
         
         return res
+
+class Team(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
+    user = models.ManyToManyField(User)
 
 

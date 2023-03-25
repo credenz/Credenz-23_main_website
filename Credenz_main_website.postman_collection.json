@@ -1,0 +1,399 @@
+{
+	"info": {
+		"_postman_id": "6f5ced37-e671-42dc-a3db-1b486fbd5d66",
+		"name": "Credenz_main_website",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23769533"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "test2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "hello@23",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "test2",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "9145527175",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test2@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "country_code",
+							"value": "+91",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "test1",
+							"type": "text"
+						},
+						{
+							"key": "referralCode",
+							"value": "Us9M_g",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "senior",
+							"value": "True",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "test2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "institute",
+							"value": "PICT",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "1234",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base}}api/register/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "test1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "helloworld@23",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base}}api/login/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "events",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5OTM4NzYxLCJqdGkiOiIwMGUxYzlkYTc3MjQ0YzQ2YWUxOWQ1OTNmZWU1MjNlNyIsInVzZXJfaWQiOjJ9.P6h_z_nSMxOTtNvRhO_2WUeiDDVMIKZNO7DzZKtdJao",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}api/events/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"events",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NDUyOTEwLCJqdGkiOiI3YTIwM2FhZjI0NDc0ODk1YjYzZTQ0OTliNDk4NTlkNiIsInVzZXJfaWQiOjJ9.4_kmhNTJv-M7a0U6CmYk-phrrJFfOjmbLejlKTo1r5g",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}api/profile/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"profile",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leaderboard",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}api/leaderboard/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"leaderboard",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "password-reset",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "socialshreyas01@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base}}api/password-reset/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"password-reset",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "password-reset-confirm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "uid",
+							"value": "Mg",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "bkz4jx-722c3022a8e56de0510af6774843b041",
+							"type": "text"
+						},
+						{
+							"key": "new_password",
+							"value": "helloworld@23",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base}}api/password-reset-confirm/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"password-reset-confirm",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of Orders",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5OTM4NzYxLCJqdGkiOiIwMGUxYzlkYTc3MjQ0YzQ2YWUxOWQ1OTNmZWU1MjNlNyIsInVzZXJfaWQiOjJ9.P6h_z_nSMxOTtNvRhO_2WUeiDDVMIKZNO7DzZKtdJao",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}api/orders/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "place-order",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5OTcxNTQzLCJqdGkiOiJhYjE2MDM5MTE2ZjI0NDIzYjdiMDFhYjIwMWIxMmZkMiIsInVzZXJfaWQiOjJ9.08v9PCB0hVOB2B4BpVhJhDAFTjR4rQn9tpDSRnxYvVc",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"transaction_id\": 123456,\r\n    \"payment\": \"PO\",\r\n    \"event\": [1, 2]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}api/placeorder/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"placeorder",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MDMxNjcwLCJqdGkiOiIwNGJlZDYyZWE2YzM0MTgyOGZmOTUyNmEzZTJiYjczNiIsInVzZXJfaWQiOjJ9.o3hrhl6FeAERPIlSl2hDoC-RaHunqS9QK1krke7IEPU",
+			"type": "string"
+		}
+	]
+}

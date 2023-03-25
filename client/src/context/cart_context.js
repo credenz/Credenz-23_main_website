@@ -5,8 +5,10 @@ const CartContext = createContext();
 
 const getLocalcartdata=()=>{
   let localcartdata = localStorage.getItem("credenzcart");
-
-  if(localcartdata === []){
+  if(localcartdata===null){
+    return [];
+  }
+  else if(localcartdata === []){
     return [];
   }else{
     return JSON.parse(localcartdata);
@@ -39,7 +41,7 @@ const CartProvider = ({ children }) => {
   };
 
 
-
+ 
   useEffect(()=>{
     // dispatch({type:"TOTALITEM"});
     // console.log(state);
