@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./login.css";
 import "./register.css";
+import { useNavigate,useParams } from "react-router-dom";
+import ReactModal from "react-modal";
+import Requests from "../../api/requests";
 const Register = () => {
+  let navigate=useNavigate();
   const [register2, setregister2] = useState(0);
 
   const[senior,setsenior] = useState()
@@ -29,6 +33,17 @@ const Register = () => {
 
   const signupsubmit = (e) => {
     e.preventDefault();
+    let data={
+      username,first_name:(firstname+' '+lastname),
+      email:registeremail,password:registerpassword,
+      phone,country_code:'+91',
+      institute,senior:isSenior
+    };
+    if(referal!=='') data.referralCode=referal;
+    console.log(data);
+    // await Requests.register(data)
+    // .then((res)=>{console.log(res)})
+    // .catch((err)=>console.log(err))
     // console.log({
     //     fullname: firstname + lastname,
     //     username: username,
@@ -89,6 +104,12 @@ const Register = () => {
   //     confirmpassword !== ""
   //   );
   // };
+  let referral = useParams().referral;
+  useEffect(()=>{
+    if(referral)
+    setreferal(referral);
+    // console.log(referral);
+  },[])
   return (
     <>
       <div className="form-body register"  data-aos="fade-in"  data-aos-duration="500">
@@ -106,7 +127,7 @@ const Register = () => {
                 <h3>Create Account</h3>
                 <p>Please sign-up to continue!</p>
                 <div className="page-links">
-                  <a
+                  {/* <a
                     href="/login"
                     //   className="registerbutton"
                     //   onClick={() =>
@@ -115,7 +136,17 @@ const Register = () => {
                     //   }
                   >
                     Login
-                  </a>{" "}
+                  </a>{" "} */}
+                  <button
+                    className="registerbutton"
+                    id="noline"
+                      onClick={() => {
+                        // setregister(0);
+                        navigate('/login');
+                      }}
+                  >
+                    Login
+                  </button>
                   <button
                     className="underline"
                     //   onClick={() => {

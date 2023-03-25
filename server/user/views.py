@@ -119,11 +119,26 @@ class OrderView(APIView):
         serializer = OrderSerializer(orders, many=True)
         return Response(serializer.data)
 
+class PlaceOrderView(generics.CreateAPIView):
+    serializer_class = PlaceOrderSerializer
+    permission_classes = [IsAuthenticated]
+    def create(self, request, *args, **kwargs):
+        cost = 0
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
 
+        event_ids = serializer.validated_data.get('event')
+        for id in event_ids:
+            cost += Event.objects.get(id=id).event_cost
+        order = serializer.save(amount=cost)
+
+        return Response({"transaction_id" : order.transaction_id}, status=status.HTTP_201_CREATED)
+    
 # Team event APIs
 
 # check if the team member has registered
 class CheckUserView(generics.GenericAPIView):
+    permission_classes = [IsAuthenticated]
     def post(self, request):
         username = request.data["username"]
         phone_no = request.data["phone_no"]
@@ -132,6 +147,15 @@ class CheckUserView(generics.GenericAPIView):
             return Response({"message" : "verified"}, status=status.HTTP_200_OK)
         
         return Response({"message" : "not verified"}, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class RegisterTeamView(generics.CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        event = request.data['event']
+        users = request.data['usernames']
+
+
     
 # Offline Register APIs
 class RegisterPlayerView(generics.CreateAPIView):

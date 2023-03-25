@@ -3,14 +3,16 @@ import swal from "sweetalert";
 import "./login.css";
 import "./register.css";
 import PhoneInput from "react-phone-number-input";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import Requests from "../../api/requests";
 const LoginNew = () => {
+  let navigate=useNavigate();
   const [register, setregister] = useState(0);
 
   const [register2, setregister2] = useState(0);
 
   //   login
-  const [loginemail, setloginEmail] = useState("");
+  const [loginUsername, setloginUsername] = useState("");
   const [loginpassword, setloginPassword] = useState("");
 
   //forget
@@ -32,12 +34,23 @@ const LoginNew = () => {
 
   // }
 
-  const loginSubmit = (e) => {
+  const loginSubmit = async(e) => {
     e.preventDefault();
     console.log({
-      loginemail,
+      loginUsername,
+      loginUsername,
       loginpassword,
     });
+    await Requests.login({username:loginUsername,password:loginpassword})
+    .then((res)=>{
+      console.log(res.data.access);
+      localStorage.setItem('token',res.data.access      );
+      window.alert('LOGIN SUcCess');
+    })
+    .catch((err)=>{
+      console.log(err);
+      window.alert('Wrong username or password');
+    })
   };
 
   const forgetSubmit = (e) => {
@@ -91,8 +104,18 @@ const LoginNew = () => {
                     >
                       Login
                     </button>
-
-                    <a id="noline"
+                    <button
+                      // className="underline"
+                      id="noline"
+                      className="registerbutton"
+                      onClick={() => {
+                        setregister(1);
+                        navigate('/register')
+                      }}
+                    >
+                      Register
+                    </button>
+                    {/* <a id="noline"
                       href="/register"
                       // className="registerbutton"
                       // onClick={() => {
@@ -101,7 +124,7 @@ const LoginNew = () => {
                       // }}
                     >
                       Register
-                    </a>
+                    </a> */}
                   </div>
                   <form onSubmit={loginSubmit}>
                     <input
@@ -109,8 +132,8 @@ const LoginNew = () => {
                       type="email"
                       name="loginemail"
                       placeholder="E-mail Address"
-                      onChange={(e) => setloginEmail(e.target.value)}
-                      value={loginemail}
+                      onChange={(e) => setloginUsername(e.target.value)}
+                      value={loginUsername}
                       required
                     />
                     <input
