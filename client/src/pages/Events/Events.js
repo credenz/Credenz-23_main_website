@@ -226,6 +226,7 @@ const handelSubmit = (eventId) =>{
       team: "Maximum 2 players are allowed",
       max: 2,
     },
+    
   ]);
 
   const customStyles = {
