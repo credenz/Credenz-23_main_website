@@ -13,7 +13,7 @@ export default function Model1(props) {
   const screenTexture = useTexture('models/explore/v1/textures/screen.png')
   const wireTexture = useTexture('models/explore/v1/textures/wire.png')
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} position={[0,-1.5,0]}>
       <mesh geometry={nodes.Body_Cube041.geometry} material={materials.Basic} position={[0.33, 1.29, 0.62]} rotation={[Math.PI / 2, 0, 0]} scale={7} >
         <meshBasicMaterial map={borderTexture} map-flipY={false} />
       </mesh>

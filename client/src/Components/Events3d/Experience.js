@@ -4,6 +4,7 @@ import { CubeTextureLoader } from 'three'
 import React from 'react'
 import Model1 from './models/v1'
 import { easing } from "maath"
+import Model2 from './models/v2'
 
 export default function Experience() {
   function Rig() {
@@ -21,11 +22,15 @@ export default function Experience() {
           maxAzimuthAngle={Math.PI/180 * 20}
           minPolarAngle={Math.PI/180 * 60}
           maxPolarAngle={Math.PI/180 * 120}
+          enableZoom = {false}
+          enableDamping
+          enablePan = {false}
           makeDefault
         />
         {/* <Rig /> */}
         <ambientLight />
-        <Model1 />
+        {/* <Model1 /> */}
+        <Model2 />
         
     </>
   )
