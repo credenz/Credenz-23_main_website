@@ -5,6 +5,7 @@ import React from 'react'
 import Model1 from './models/v1'
 import { easing } from "maath"
 import Model2 from './models/v2'
+import { MobileView, BrowserView } from 'react-device-detect'
 
 export default function Experience() {
   function Rig() {
@@ -29,8 +30,9 @@ export default function Experience() {
         />
         {/* <Rig /> */}
         <ambientLight />
-        {/* <Model1 /> */}
         <Model2 />
+
+        
         
     </>
   )
