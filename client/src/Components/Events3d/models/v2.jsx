@@ -4,7 +4,8 @@ Command: npx gltfjsx@6.1.4 nth.glb
 */
 
 import React, { useRef } from 'react'
-import { useGLTF, useTexture } from '@react-three/drei'
+import { Html, useGLTF, useTexture } from '@react-three/drei'
+import Next from '../components/next'
 
 export default function Model2(props) {
   const { nodes, materials } = useGLTF('/models/explore/v2/explore.glb')
@@ -12,6 +13,7 @@ export default function Model2(props) {
   const borderTexture = useTexture('models/explore/v2/textures/border.png')
   const screenTexture = useTexture('models/explore/v2/textures/screen.png')
   return (
+    <>
     <group {...props} dispose={null} position={[0,-1.5,0]}>
       <mesh geometry={nodes.Body.geometry} material={nodes.Body.material} position={[0.33, 1.29, 0.62]} rotation={[Math.PI / 2, 0, 0]} scale={7} >
         <meshBasicMaterial map={borderTexture} map-flipY={false} />
@@ -23,6 +25,11 @@ export default function Model2(props) {
         <meshBasicMaterial map={bgTexture} map-flipY={false} />
       </mesh>
     </group>
+    <Html>
+      <Next />
+    </Html>
+    </>
+
   )
   
 }
