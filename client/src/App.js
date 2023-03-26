@@ -19,6 +19,7 @@ import LoginNew from "./pages/Register/LoginNew";
 import Register from "./pages/Register/Register"
 import Error from './pages/Error/Error';
 import User from './Components/useradd/User';
+import Explore from './Components/Events3d/Explore';
 
 
 
@@ -29,6 +30,7 @@ function App() {
     <Navbar/>
   <Routes>
    <Route exact path="/" element={<Home/> } />
+   <Route exact path="/explore" element={<Explore /> } />
    <Route exact path="/events" element={<Events/> } />
    <Route exact path="/about" element={<About/> } />
    <Route exact path="/contact" element={<Contact/> } />

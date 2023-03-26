@@ -10,6 +10,7 @@ import { Logo3 } from './models/Logo_v3'
 import LogoV4 from './models/Logo_v4'
 import LogoV5 from './models/Logo_v5'
 import SignBoard from './models/SignBoard'
+import LogoV6 from './models/Logo_v6'
 
 export default function Experience() {
 
@@ -23,7 +24,7 @@ export default function Experience() {
         <OrbitControls />
         {/* <Environment attach="background" files="models/credenz/hdri.hdr" /> */}
         
-        <Environment
+        {/* <Environment
           background // can be true, false or "only" (which only sets the background) (default: false)
           blur={0} // blur factor between 0 and 1 (default: 0, only works with three 0.146 and up)
           files={['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png']}
@@ -31,7 +32,7 @@ export default function Experience() {
           preset={null}
           scene={undefined} // adds the ability to pass a custom THREE.Scene, can also be a ref
           encoding={undefined} // adds the ability to pass a custom THREE.TextureEncoding (default: THREE.sRGBEncoding for an array of files and THREE.LinearEncoding for a single texture)
-        />
+        /> */}
         {/* <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} color={"orange"}/> */}
         {/* <color attach="background" args={['black']} /> */}
         {/* <directionalLight 
@@ -48,7 +49,8 @@ export default function Experience() {
         {/* <Logo /> */}
         {/* <Logo3 /> */}
         {/* <LogoV4 /> */}
-        <LogoV5 />
+        {/* <LogoV5 /> */}
+        <LogoV6 />
         <SignBoard />
         {/* <Rig /> */}
         {/* <SkyBox /> */}

@@ -7,7 +7,7 @@ import './Home.css'
 
 export default function Home() {
   return (
-    <Canvas className='canvas'>
+    <Canvas className='canvas' camera={{fov: 50,}}>
         <Experience />
         <Environment files="models/credenz/hdri.hdr" background/>
         
