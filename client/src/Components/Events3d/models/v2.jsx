@@ -12,8 +12,9 @@ export default function Model2(props) {
   const bgTexture = useTexture('models/explore/v2/textures/bg.png')
   const borderTexture = useTexture('models/explore/v2/textures/border.png')
   const screenTexture = useTexture('models/explore/v2/textures/screen.png')
+  
 
-  const textures = [screenTexture, bgTexture, borderTexture, ]
+  const textures = [screenTexture, bgTexture, borderTexture,]
   const [currTexture, setCurr] = useState(0)
   return (
     <>
@@ -22,17 +23,17 @@ export default function Model2(props) {
         <meshBasicMaterial map={borderTexture} map-flipY={false} />
       </mesh>
       <mesh geometry={nodes.Screen.geometry} material={nodes.Screen.material} position={[0.33, 1.29, 0.62]} rotation={[Math.PI / 2, 0, 0]} scale={7} 
-        // onClick={() => {
-        //   setCurr(currTexture+1);
-        //   console.log(currTexture)
-        // }}
+        onClick={() => {
+          setCurr(currTexture+1);
+          console.log(currTexture)
+        }}
         
       >
-        <Suspense fallback={<FallbackMaterial borderTexture={borderTexture} />}>
-          <VideoMaterial url="vid.mp4" />
-        </Suspense>
+         {(currTexture+1)%textures.length == 0 && <Suspense fallback={<FallbackMaterial fallbackTexture={screenTexture} />}>
+          <VideoMaterial url="dola.mp4" />
+        </Suspense>}
       
-        {/* <meshBasicMaterial map={textures[currTexture % textures.length]} map-flipY={false} /> */}
+        {(currTexture+1)%textures.length != 0 && <meshBasicMaterial map={textures[currTexture % textures.length]} map-flipY={false} />}
       </mesh>
       <mesh geometry={nodes.BG.geometry} material={nodes.BG.material} position={[0.03, 7.29, -0.33]} rotation={[Math.PI / 2, 0, 0]} >
         <meshBasicMaterial map={bgTexture} map-flipY={false} />
@@ -49,12 +50,12 @@ export default function Model2(props) {
 }
 
 useGLTF.preload('/models/explore/v2/explore.glb')
-useGLTF.preload('./vid.mp4')
+useGLTF.preload('./dola.mp4')
 function VideoMaterial({ url }) {
-  const texture = useVideoTexture(url, {muted:true, unsuspend: 'canplay'})
+  const texture = useVideoTexture(url, {muted:false, unsuspend: 'canplay'})
   return <meshBasicMaterial map={texture} toneMapped={false} map-flipY={false}/>
 }
 
-function FallbackMaterial({ borderTexture }) {
-  return <meshBasicMaterial map={borderTexture} toneMapped={false} />
+function FallbackMaterial({ fallbackTexture }) {
+  return <meshBasicMaterial map={fallbackTexture} toneMapped={false} />
 }
