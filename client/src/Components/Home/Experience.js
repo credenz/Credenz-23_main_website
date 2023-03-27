@@ -11,6 +11,7 @@ import LogoV4 from './models/Logo_v4'
 import LogoV5 from './models/Logo_v5'
 import SignBoard from './models/SignBoard'
 import LogoV6 from './models/Logo_v6'
+import { LogoV7 } from './models/Logo_v7'
 
 export default function Experience() {
 
@@ -21,7 +22,7 @@ export default function Experience() {
   }
   return (
     <>
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         {/* <Environment attach="background" files="models/credenz/hdri.hdr" /> */}
         
         {/* <Environment
@@ -33,8 +34,8 @@ export default function Experience() {
           scene={undefined} // adds the ability to pass a custom THREE.Scene, can also be a ref
           encoding={undefined} // adds the ability to pass a custom THREE.TextureEncoding (default: THREE.sRGBEncoding for an array of files and THREE.LinearEncoding for a single texture)
         /> */}
-        {/* <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} color={"orange"}/> */}
-        {/* <color attach="background" args={['black']} /> */}
+        <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} color={"orange"}/>
+        <color attach="background" args={['black']} />
         {/* <directionalLight 
             castShadow 
             shadow-mapSize-height={512}
@@ -44,15 +45,16 @@ export default function Experience() {
             position={[1, 1, 1]} 
         /> */}
         {/* <pointLight color="purple" intensity={1} position={[0, 1000, -1000]} /> */}
-        <ambientLight intensity={10}/>
+        <ambientLight intensity={100}/>
         {/* <Scene /> */}
         {/* <Logo /> */}
         {/* <Logo3 /> */}
         {/* <LogoV4 /> */}
         {/* <LogoV5 /> */}
-        <LogoV6 />
-        <SignBoard />
-        {/* <Rig /> */}
+        {/* <LogoV6 /> */}
+        <LogoV7 />
+        {/* <SignBoard /> */}
+        <Rig />
         {/* <SkyBox /> */}
     </>
   )
