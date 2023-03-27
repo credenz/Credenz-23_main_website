@@ -41,6 +41,7 @@ export default function Model2(props) {
 
     </group>
     <Html >
+      <h1>Click karo!</h1>
       <Next/>
     </Html>
     </>
