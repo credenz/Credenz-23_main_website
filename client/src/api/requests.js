@@ -21,7 +21,7 @@ const backend = axios.create({
 const events=()=>backend.get(`/events/`,{headers: { }} );
 const login = (data) => backend.post( `/login/`, data,{headers: {}} );
 const profile= (data)=>backend.get(`/profile/`,{headers:{Authorization:`Bearer ${data.token}`}});
-const register=(data)=>backend.post(`/register/`,data,{headers: {}});
+const register=(data)=>backend.post(`/register/`,data,{headers: { }});
 const Requests = {
     login,
     profile,

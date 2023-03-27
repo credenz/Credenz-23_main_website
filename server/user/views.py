@@ -148,14 +148,39 @@ class CheckUserView(generics.GenericAPIView):
         
         return Response({"message" : "not verified"}, status=status.HTTP_400_BAD_REQUEST)
     
-
 class RegisterTeamView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
+    
     def post(self, request):
-        event = request.data['event']
-        users = request.data['usernames']
+        event_id = request.data['event']
+        username = request.data['username']
+        user = User.objects.get(username=username)
 
+        if Order.objects.filter(user=user, event=event_id).exists():
+            if not Team.objects.filter(event=event_id, user=user).exists():
+                team = Team.objects.get_or_create(event=Event.objects.get(id = event_id))
+                team.user.add(request.user, user)
+                return Response({"message": "team member added"}, status=status.HTTP_201_CREATED)
+            return Response({"message" : "User already in a team"}, status=status.HTTP_400_BAD_REQUEST)
 
+        return Response({"message": "User not registered for the event"}, status=status.HTTP_400_BAD_REQUEST)
+    
+class RemoveUserFromTeamView(generics.UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    
+    def update(self, request, *args, **kwargs):
+        event_id = request.data['event']
+        username = request.data['username']
+
+        try:
+            user = User.objects.get(username=username)
+            team = Team.objects.get(event_id=event_id, user=request.user)
+            team.user.remove(user)
+            return Response({'message': 'User removed from the team'}, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response({'message': 'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+        except Team.DoesNotExist:
+            return Response({'message': 'User is not a part of the team'}, status=status.HTTP_400_BAD_REQUEST)
     
 # Offline Register APIs
 class RegisterPlayerView(generics.CreateAPIView):
