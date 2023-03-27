@@ -15,7 +15,7 @@ export function LogoV7(props) {
   const satelliteTexture = useTexture('/models/v7/textures/satellite.png')
   const spaceshipTexture = useTexture('/models/v7/textures/spaceship.png')
   const stonesTexture = useTexture('/models/v7/textures/stones.png')
-  const terrain1Texture = useTexture('/models/v7/textures/terrain1.png')
+  const terrain1Texture = useTexture('/models/v7/textures/terrain_1.png')
   const terrain2Texture = useTexture('/models/v7/textures/terrain2.png')
   const tilesTexture = useTexture('/models/v7/textures/tiles.png')
 
