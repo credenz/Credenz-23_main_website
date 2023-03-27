@@ -42,9 +42,10 @@ const Register = () => {
       email:registeremail,
       last_name:lastname,
       // country_code:'+91',
-      institute
+      institute,
+      senior,
     };
-    if(senior) data.senior='true';
+    // if(senior) data.senior='true';
     if(referal!=='') data.referralCode=referal;
     console.log(data,typeof(data.phone));
     await Requests.register(data)
@@ -52,10 +53,15 @@ const Register = () => {
       console.log(res);
       localStorage.setItem('token',res.data.access);
       window.alert('Register SUcCess');
+      navigate('/events');
     })
     .catch((err)=>{
-      console.log(err,err.response.data);
-      window.alert(err.response.data);
+      console.log(err,err.response.data.username);
+      console.log(err,err.response.data[0]);
+      let msg='Error';
+      if(err.response.data.username) msg=err.response.data.username;
+      if(err.response.data[0]) msg=err.response.data[0];
+      window.alert(msg);
 
     })
     // console.log({
