@@ -18,7 +18,7 @@ import PIXELATE from "../../images/pixelate.png";
 import WEB from "../../images/webwever.png";
 // import {Clash,RC,NTH,WALLSTREET,BPLAN,ENIGMA,DATAWIZ,QUIZ,PAPER,CRETRONIX,PIXELATE,WEB} from '../../images';
 import { useCartContext } from "../../context/cart_context";
-
+import EventSky from "./EventSky";
 import Requests from "../../api/requests";
 
 const Events = () => {
@@ -282,11 +282,11 @@ const handelSubmit = (eventId) =>{
 
   return (
     <>
+      <EventSky>
       <div className="st">
-        <div id="stars"></div>
+        {/* <div id="stars"></div>
         <div id="stars2"></div>
-        <div id="stars3"></div>
-
+        <div id="stars3"></div> */}
         <div className="eventpage " data-aos="fade-in"  data-aos-duration="400" >
           <div className="container " >
             <h1 style={{ textAlign: "center" }}>EVENTS</h1>
@@ -319,6 +319,7 @@ const handelSubmit = (eventId) =>{
           </div>
         </div>
       </div>
+        </EventSky>
 
       <Modal 
         isOpen={modalIsOpen}
