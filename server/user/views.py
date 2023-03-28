@@ -110,6 +110,14 @@ class PasswordResetConfirmView(generics.GenericAPIView):
         else:
             message = "Link is invalid or expired"
         return Response({"message": message}, status=status.HTTP_400_BAD_REQUEST)
+    
+class VerifyReferralCodeView(generics.GenericAPIView):
+    serializer_class = ReferralCodeVerifySerializer
+
+    def post(self, request):
+        serializer = self.get_serializer(data=self.request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response(serializer.validated_data)
 
 class OrderView(APIView):
     permission_classes = [IsAuthenticated]

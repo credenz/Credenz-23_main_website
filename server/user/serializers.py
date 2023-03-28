@@ -121,3 +121,14 @@ class ProfileSerializer(serializers.ModelSerializer):
             "offline_officer",
         ]
 
+
+class ReferralCodeVerifySerializer(serializers.Serializer):
+    referralCode = serializers.CharField()
+
+    def validate(self, attrs):
+        if not User.objects.filter(referral=attrs["referralCode"]).exists():
+            raise serializers.ValidationError(
+                {"referralCode": "referral code is invalid"}
+            )
+
+        return attrs

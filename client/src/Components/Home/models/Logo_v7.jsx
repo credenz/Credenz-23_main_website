@@ -13,7 +13,7 @@ export function LogoV7(props) {
   const logoTexture = useTexture('/models/v7/textures/logo.png')
   const navTexture = useTexture('/models/v7/textures/nav.png')
   const satelliteTexture = useTexture('/models/v7/textures/satellite.png')
-  const spaceshipTexture = useTexture('/models/v7/textures/spaceship.png')
+  // const spaceshipTexture = useTexture('/models/v7/textures/spaceship.png')
   const stonesTexture = useTexture('/models/v7/textures/stones.png')
   const terrain1Texture = useTexture('/models/v7/textures/terrain_1.png')
   const terrain2Texture = useTexture('/models/v7/textures/terrain2.png')
@@ -48,9 +48,9 @@ export function LogoV7(props) {
       <mesh geometry={nodes.Cylinder.geometry} material={nodes.Cylinder.material} position={[3.19, 1.15, 4.32]} rotation={[1.59, 0, 1.4]} scale={0.47} >
         <meshBasicMaterial map={satelliteTexture} map-flipY={false} />
       </mesh>
-      <mesh geometry={nodes.Spaceship.geometry} material={nodes.Spaceship.material} position={[0.01, 1.2, 18.48]} rotation={[0.03, 0.61, -1.62]} scale={[0.14, 0.16, 0.14]} >
+      {/* <mesh geometry={nodes.Spaceship.geometry} material={nodes.Spaceship.material} position={[0.01, 1.2, 18.48]} rotation={[0.03, 0.61, -1.62]} scale={[0.14, 0.16, 0.14]} >
         <meshBasicMaterial map={spaceshipTexture} map-flipY={false} />
-      </mesh>
+      </mesh> */}
       <mesh geometry={nodes.Nav001.geometry} material={nodes.Nav001.material} position={[-3.57, 2.01, 5.54]} rotation={[0, 0.61, 0]} scale={0.8} >
         <meshBasicMaterial map={navTexture} map-flipY={false} />
       </mesh>
