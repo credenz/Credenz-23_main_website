@@ -46,6 +46,7 @@ const LoginNew = () => {
       console.log(res.data.access);
       localStorage.setItem('token',res.data.access);
       window.alert('LOGIN SUcCess');
+      navigate('/events');
     })
     .catch((err)=>{
       console.log(err);

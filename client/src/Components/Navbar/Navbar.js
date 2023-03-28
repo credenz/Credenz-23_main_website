@@ -120,7 +120,9 @@ import { NavLink, useLocation } from "react-router-dom";
 import swal from "sweetalert";
 // import { API } from "../axios/API";
 import "./Navbar.css";
-import Clash from "../../images/clash.png"
+// import Clash from "../../images/clash.png"
+import IEEE from '../../images/IEEE.png';
+import pisb from '../../images/pisb-logo.png';
 // import DownArrow from "../images/arrow-down-sign-to-navigate.png";
 // import deleteIcon from "../images/bin.png";
 // import BPlan from "../images/bplan.png";
@@ -142,6 +144,7 @@ import Clash from "../../images/clash.png"
 // import Webweaver from "../images/web.png";
 // import CartContext from "./CartContext";
 // import QRCode from "../images/qrcode.jpg";
+import PhoneNavbar from './phoneNavbar';
 
 const NavbarCustom = (props) => {
   const location = useLocation();
@@ -526,9 +529,9 @@ const NavbarCustom = (props) => {
   };
 
   const displayUPICode = () => {};
-
   return (
     <>
+      <div className="navbar-desktop">
       <Navbar
         collapseOnSelect
         variant="dark"
@@ -545,7 +548,7 @@ const NavbarCustom = (props) => {
             target="_blank"
             className="header-header"
           >
-            <img src={Clash} alt="pisblogo" className="nav-logo ms-4" />
+            <img src={pisb} alt="pisblogo" className="nav-logo ms-4" />
           </Navbar.Brand>
           {/* <Navbar.Toggle
             id="navbar-toggler-btn"
@@ -627,7 +630,7 @@ const NavbarCustom = (props) => {
               >
                 Contact
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 key={"login"}
                 activeClassName="activeLink"
                 to={`/login`}
@@ -639,14 +642,14 @@ const NavbarCustom = (props) => {
                 className="header-title"
                 // hidden={isLoggedIn ? true : false}
               >
-                {/* <TextSliced
+                <TextSliced
                 title={isLoggedIn ? (!paymentDone ? "Pay Now" : "") : "Login"}
                 activeLink={page === "/login"}
-              /> */}
+              />
                 Login
-              </NavLink>
+              </NavLink> */}
 
-              <NavLink
+              {/* <NavLink
                 key={"profile"}
                 activeClassName="activeLink"
                 to={`/profile`}
@@ -672,7 +675,7 @@ const NavbarCustom = (props) => {
                 }}
               >
                 Cart
-              </NavLink>
+              </NavLink> */}
               {/* {isLoggedIn && (
                 <>
                   <div
@@ -719,23 +722,25 @@ const NavbarCustom = (props) => {
                 </>
               )} */}
             </Nav>
-            {/* <a
+            <a
               href="https://www.ieee.org"
               target="_blank"
               rel="noreferrer"
               className="me-3 ms-5"
             >
               <img
-                src={Clash}
+                src={IEEE}
                 alt="iEEElogo"
                 className="nav-logo logo-ieee"
               />
-            </a> */}
+            </a>
           </Navbar.Collapse>
         </Container>
       </Navbar>
- 
-
+      </div>
+      <div className="navbar-mobile">
+            <PhoneNavbar/>
+            </div>
       {/* UPI MODAL */}
 
     

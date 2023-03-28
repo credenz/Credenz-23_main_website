@@ -102,7 +102,9 @@
     font-weight: 700;
     z-index: 999;
     letter-spacing: 0.12em;
-    background-color: rgb(34, 4, 34);
+    /* background-color: rgb(34, 4, 34); */
+    background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: saturate(180%) blur(10 px);
   }
   
   .sticky-bottom {
@@ -150,7 +152,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    background-color: rgb(34, 4, 34);
+    /* background-color: rgb(34, 4, 34); */
   }
   
   @media (max-width: 768px) {

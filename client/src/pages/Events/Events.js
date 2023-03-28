@@ -18,7 +18,7 @@ import PIXELATE from "../../images/pixelate.png";
 import WEB from "../../images/webwever.png";
 // import {Clash,RC,NTH,WALLSTREET,BPLAN,ENIGMA,DATAWIZ,QUIZ,PAPER,CRETRONIX,PIXELATE,WEB} from '../../images';
 import { useCartContext } from "../../context/cart_context";
-
+import EventSky from "./EventSky";
 import Requests from "../../api/requests";
 
 const Events = () => {
@@ -34,9 +34,9 @@ const Events = () => {
     { logo: ENIGMA, title: "Enigma", id: "6" },
     { logo: DATAWIZ, title: "Datawiz", id: "7" },
     { logo: QUIZ, title: "Quiz", id: "8" },
-    { logo: PAPER, title: "Paper Presentation", id: "9" },
+    // { logo: PAPER, title: "Paper Presentation", id: "9" },
     { logo: CRETRONIX, title: "Cretronix", id: "10" },
-    { logo: PIXELATE, title: "Pixelate", id: "11" },
+    // { logo: PIXELATE, title: "Pixelate", id: "11" },
     { logo: WEB, title: "Web Weaver", id: "12" },
   ]);
 
@@ -186,16 +186,16 @@ const handelSubmit = (eventId) =>{
       team: "Maximum 2 players are allowed",
       max: 2,
     },
-    {
-      image: PAPER,
-      heading: "REVERSE 6",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "9",
-      amount: 50,
-      count: 1,
-      team: "Maximum 2 players are allowed",
-      max: 2,
-    },
+    // {
+    //   image: PAPER,
+    //   heading: "REVERSE 6",
+    //   body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+    //   id: "9",
+    //   amount: 50,
+    //   count: 1,
+    //   team: "Maximum 2 players are allowed",
+    //   max: 2,
+    // },
     {
       image: CRETRONIX,
       heading: "REVERSE 6",
@@ -206,16 +206,16 @@ const handelSubmit = (eventId) =>{
       team: "Maximum 2 players are allowed",
       max: 2,
     },
-    {
-      image: PIXELATE,
-      heading: "REVERSE 6",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "11",
-      amount: 50,
-      count: 1,
-      team: "Maximum 2 players are allowed",
-      max: 2,
-    },
+    // {
+    //   image: PIXELATE,
+    //   heading: "REVERSE 6",
+    //   body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+    //   id: "11",
+    //   amount: 50,
+    //   count: 1,
+    //   team: "Maximum 2 players are allowed",
+    //   max: 2,
+    // },
     {
       image: WEB,
       heading: "REVERSE 6",
@@ -282,11 +282,11 @@ const handelSubmit = (eventId) =>{
 
   return (
     <>
+      <EventSky>
       <div className="st">
-        <div id="stars"></div>
+        {/* <div id="stars"></div>
         <div id="stars2"></div>
-        <div id="stars3"></div>
-
+        <div id="stars3"></div> */}
         <div className="eventpage " data-aos="fade-in"  data-aos-duration="400" >
           <div className="container " >
             <h1 style={{ textAlign: "center" }}>EVENTS</h1>
@@ -296,7 +296,7 @@ const handelSubmit = (eventId) =>{
                   className="outer"
                   // data-aos="zoom-in"
                   key={list.id}
-                  onClick={() => openModal(list.id)}
+                  // onClick={() => openModal(list.id)}
                 >
                   <div className="wrapper-new">
                     <div className="container-new">
@@ -319,6 +319,7 @@ const handelSubmit = (eventId) =>{
           </div>
         </div>
       </div>
+        </EventSky>
 
       <Modal 
         isOpen={modalIsOpen}

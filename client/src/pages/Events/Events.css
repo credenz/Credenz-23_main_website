@@ -17,9 +17,11 @@
   min-height: 90vh;
   max-width: 100vw;
   overflow: hidden;
-  background: url("../../../public/assets/images/astronaut.png") no-repeat center
-    center fixed;
+  /* background: url("../../../public/assets/images/astronaut.png") no-repeat center
+    center fixed; */
     background-position: right 45% bottom 90%;
+    /* background: rgb(36,0,9);
+    background: linear-gradient(180deg, rgba(36,0,9,1) 42%, rgba(54,25,39,1) 73%, rgba(80,19,44,1) 100%); */
 }
 
 .eventpage button {
@@ -628,8 +630,19 @@
   position: relative;
   padding: 6.5rem 0.5rem 8.7rem;
   /* min-height: 90vh; */
+  animation: eventpage 5s ease-in-out infinite;
 }
-
+@keyframes eventpage {
+  0% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(2px);
+  }
+}
 
 
 .eventpage .container{
