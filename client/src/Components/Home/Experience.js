@@ -22,7 +22,7 @@ export default function Experience() {
   }
   return (
     <>
-        {/* <OrbitControls /> */}
+        <OrbitControls />
         {/* <Environment attach="background" files="models/credenz/hdri.hdr" /> */}
         
         {/* <Environment
@@ -54,7 +54,7 @@ export default function Experience() {
         {/* <LogoV6 /> */}
         <LogoV7 />
         {/* <SignBoard /> */}
-        <Rig />
+        {/* <Rig /> */}
         {/* <SkyBox /> */}
     </>
   )

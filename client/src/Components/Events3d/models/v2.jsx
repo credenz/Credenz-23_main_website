@@ -41,7 +41,7 @@ export default function Model2(props) {
 
     </group>
     <Html >
-      <h1>Click karo!</h1>
+      
       <Next/>
     </Html>
     </>
@@ -53,7 +53,7 @@ export default function Model2(props) {
 useGLTF.preload('/models/explore/v2/explore.glb')
 useGLTF.preload('./dola.mp4')
 function VideoMaterial({ url }) {
-  const texture = useVideoTexture(url, {muted:false, unsuspend: 'canplay'})
+  const texture = useVideoTexture(url, {muted:false, unsuspend: 'canplay', loop:false})
   return <meshBasicMaterial map={texture} toneMapped={false} map-flipY={false}/>
 }
 
