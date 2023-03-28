@@ -20,6 +20,7 @@ import Register from "./pages/Register/Register"
 import Error from './pages/Error/Error';
 import User from './Components/useradd/User';
 import Explore from './Components/Events3d/Explore';
+import Loader from './Components/loader/Loader';
 
 
 

@@ -1,7 +1,7 @@
-import { OrbitControls, Stars, Environment } from '@react-three/drei'
+import { OrbitControls, Stars, Environment, useHelper, GizmoHelper } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { CubeTextureLoader } from 'three'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Logo from './models/Logo'
 import Scene from './models/Scene'
 import { easing } from "maath"
@@ -13,6 +13,7 @@ import SignBoard from './models/SignBoard'
 import LogoV6 from './models/Logo_v6'
 import { LogoV7 } from './models/Logo_v7'
 import {isMobile} from 'react-device-detect';
+import Sign from './models/Sign'
 
 export default function Experience() {
   const [isSnapped, setSnpped] = useState(false)
@@ -39,12 +40,14 @@ export default function Experience() {
     minPolarAngle={(Math.PI / 180) * 60}
     maxPolarAngle={(Math.PI / 180) * 80}
     // enableZoom={isMobile ? false : true}
-    enableZoom={true}
+    enableZoom={false}
     enableDamping
-    enablePan={true}
+    enablePan={false}
     makeDefault
     />
   }
+    const ptLight = useRef()
+
   return (
     <>
         {/* <OrbitControls /> */}
@@ -69,7 +72,17 @@ export default function Experience() {
             intensity={.2} 
             position={[1, 1, 1]} 
         /> */}
-        {/* <pointLight color="purple" intensity={1} position={[0, 1000, -1000]} /> */}
+        {/* <rectAreaLight
+          width={7}
+          height={7}
+          color={"white"}
+          intensity={6}
+          position={[-2, 0, 5]}
+          lookAt={[0, 0, 0]}
+          penumbra={1}
+          castShadow
+        >
+        </rectAreaLight> */}
         <ambientLight intensity={100}/>
         {/* <Scene /> */}
         {/* <Logo /> */}
@@ -78,11 +91,14 @@ export default function Experience() {
         {/* <LogoV5 /> */}
         {/* <LogoV6 /> */}
         <LogoV7 />
+        <Sign />
         {/* <SignBoard /> */}
         {/* <Rig /> */}
         {/* <SkyBox /> */}
 
         {isMobile ? <MobileController /> : <Rig />}
+        {/* <OrbitControls /> */}
+
 
         
     </>
