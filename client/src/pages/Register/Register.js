@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./login.css";
 import "./register.css";
 import { useNavigate,useParams } from "react-router-dom";
+import swal from "sweetalert";
 import ReactModal from "react-modal";
 import Requests from "../../api/requests";
 const Register = () => {
@@ -17,7 +18,7 @@ const Register = () => {
   const [registeremail, setregisterEmail] = useState("");
   const [phone, setphone] = useState("");
   const [institute, setinstitute] = useState("");
-  const [year, setyear] = useState("");
+  // const [year, setyear] = useState("");
   const [referal, setreferal] = useState("");
   const [registerpassword, setregisterpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
@@ -31,19 +32,32 @@ const Register = () => {
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
-  const signupsubmit = (e) => {
+  const signupsubmit = async (e) => {
     e.preventDefault();
     let data={
-      username,first_name:(firstname+' '+lastname),
-      email:registeremail,password:registerpassword,
-      phone,country_code:'+91',
-      institute,senior:isSenior
+      username,
+      password:registerpassword,
+      first_name:firstname,
+      phone,
+      email:registeremail,
+      last_name:lastname,
+      // country_code:'+91',
+      institute
     };
+    if(senior) data.senior='true';
     if(referal!=='') data.referralCode=referal;
-    console.log(data);
-    // await Requests.register(data)
-    // .then((res)=>{console.log(res)})
-    // .catch((err)=>console.log(err))
+    console.log(data,typeof(data.phone));
+    await Requests.register(data)
+    .then((res)=>{
+      console.log(res);
+      localStorage.setItem('token',res.data.access);
+      window.alert('Register SUcCess');
+    })
+    .catch((err)=>{
+      console.log(err,err.response.data);
+      window.alert(err.response.data);
+
+    })
     // console.log({
     //     fullname: firstname + lastname,
     //     username: username,
@@ -90,20 +104,20 @@ const Register = () => {
     }
   };
 
-  // const allfieldsfilled = () => {
+  const allfieldsfilled = () => {
 
-  //   const emailValid = ValidateEmail(registeremail);
-  //   const phoneValid = ValidatePhone(phone);
-  //   return (
-  //     firstname !== "" &&
-  //     lastname !== "" &&
-  //     username !== "" &&
-  //     emailValid &&
-  //     phoneValid &&
-  //     registerpassword !== "" &&
-  //     confirmpassword !== ""
-  //   );
-  // };
+    const emailValid = ValidateEmail(registeremail);
+    const phoneValid = ValidatePhone(phone);
+    return (
+      firstname !== "" &&
+      lastname !== "" &&
+      username !== "" &&
+      emailValid &&
+      phoneValid &&
+      registerpassword !== "" &&
+      confirmpassword !== ""
+    );
+  };
   let referral = useParams().referral;
   useEffect(()=>{
     if(referral)
@@ -220,7 +234,7 @@ const Register = () => {
                           onChange={(e) => setinstitute(e.target.value)}
                           value={institute}
                         />
-                        <input
+                        {/* <input
                           className="form-control"
                           type="text"
                           name="Year"
@@ -228,7 +242,7 @@ const Register = () => {
                           required
                           onChange={(e) => setyear(e.target.value)}
                           value={year}
-                        />
+                        /> */}
                       </div>
 
                       <input
@@ -264,16 +278,16 @@ const Register = () => {
                       <div className="form-button">
                         <button
                           onClick={
-                            (e) => setregister2(1)
-                            // allfieldsfilled()
-                            //   ? registerpassword === confirmpassword
-                            //   ?  setregister2(1)
-                            //   : swal(
-                            //       "Error",
-                            //       "Passwords don't match!",
-                            //       "error"
-                            //     )
-                            //     : swal("Error", "Please fill out all the details", "error")
+                            (e) => {setregister2(1)
+                            allfieldsfilled()
+                              ? registerpassword === confirmpassword
+                              ?  setregister2(1)
+                              : swal(
+                                  "Error",
+                                  "Passwords don't match!",
+                                  "error"
+                                )
+                                : swal("Error", "Please fill out all the details", "error")}
                           }
                           className="ibtn"
                         >
@@ -297,7 +311,7 @@ const Register = () => {
                     </div>
 
                     <div className="registersection" >
-                      <div className="collegesection">
+                      {/* <div className="collegesection">
                         <div className="div1">
                           <input
                             onClick={() => setieee(true)}
@@ -318,7 +332,7 @@ const Register = () => {
                           />
                           <label for="javascript">PICTIAN</label>
                         </div>
-                      </div>
+                      </div> */}
 
                       <div className="collegesection">
                        

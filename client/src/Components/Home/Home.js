@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
-import { Environment } from '@react-three/drei'
-import React from 'react'
+import { Environment, Html, useProgress } from '@react-three/drei'
+import React, { Suspense } from 'react'
 import Experience from './Experience'
 import Temp from './Temp'
 import './Home.css'
@@ -8,10 +8,22 @@ import './Home.css'
 export default function Home() {
   return (
     <Canvas className='canvas' camera={{fov: 50,}}>
-        <Experience />
-        <Environment files="models/credenz/hdri.hdr" background/>
         
-        {/* <Temp /> */}
+        <Suspense fallback={<Loader />}>
+          <Experience />
+          {/* <Environment files="models/credenz/hdri.hdr" background/> */}
+          <Environment files="models/v7/textures/hdri4.hdr" />
+          
+          {/* <Temp /> */}
+        </Suspense>
     </Canvas>
   )
 }
+function Loader() {
+  const { active, progress, errors, item, loaded, total } = useProgress()
+  return <Html center>{progress} % loaded</Html>
+}
+
+
+
+  
