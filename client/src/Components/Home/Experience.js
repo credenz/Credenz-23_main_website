@@ -1,7 +1,7 @@
 import { OrbitControls, Stars, Environment } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { CubeTextureLoader } from 'three'
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from './models/Logo'
 import Scene from './models/Scene'
 import { easing } from "maath"
@@ -12,17 +12,42 @@ import LogoV5 from './models/Logo_v5'
 import SignBoard from './models/SignBoard'
 import LogoV6 from './models/Logo_v6'
 import { LogoV7 } from './models/Logo_v7'
+import {isMobile} from 'react-device-detect';
 
 export default function Experience() {
+  const [isSnapped, setSnpped] = useState(false)
 
   function Rig() {
     return useFrame((state, delta) => {
       easing.damp3(state.camera.position, [0 + state.mouse.x / 1, 1.5 + state.mouse.y / 1, 11], 0.2, delta)
     })
   }
+
+  function MobileController(){
+
+    useFrame((state, delta) => {
+      // console.log(state.camera.position)
+      if(!isSnapped){
+        easing.damp3(state.camera.position, [-3,4,21], 0.01, delta)
+        setSnpped(true)
+      }
+    })
+  
+    return <OrbitControls 
+    minAzimuthAngle={(-Math.PI / 180) * 15}
+    maxAzimuthAngle={(Math.PI / 180) * 15}
+    minPolarAngle={(Math.PI / 180) * 60}
+    maxPolarAngle={(Math.PI / 180) * 80}
+    // enableZoom={isMobile ? false : true}
+    enableZoom={true}
+    enableDamping
+    enablePan={true}
+    makeDefault
+    />
+  }
   return (
     <>
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         {/* <Environment attach="background" files="models/credenz/hdri.hdr" /> */}
         
         {/* <Environment
@@ -56,6 +81,10 @@ export default function Experience() {
         {/* <SignBoard /> */}
         {/* <Rig /> */}
         {/* <SkyBox /> */}
+
+        {isMobile ? <MobileController /> : <Rig />}
+
+        
     </>
   )
 }
@@ -77,3 +106,4 @@ function SkyBox() {
   scene.background = texture;
   return null;
 }
+
