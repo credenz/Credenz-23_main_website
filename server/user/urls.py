@@ -9,6 +9,7 @@ urlpatterns = [
     path("refresh/", TokenRefreshView.as_view(), name="refresh-token"),
     path('password-reset/', PasswordResetView.as_view(), name='password_reset'),
     path('password-reset-confirm/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('referral-verify/', VerifyReferralCodeView.as_view(), name="referral-verify"),
     path("events/", EventsDetail.as_view(), name="events"),
     path("add-member/", RegisterTeamView.as_view(), name="add-team-member"),
     path("remove-member/", RemoveUserFromTeamView.as_view(), name="remove-team-member"),
