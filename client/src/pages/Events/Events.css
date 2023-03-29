@@ -19,9 +19,12 @@
   overflow: hidden;
   /* background: url("../../../public/assets/images/astronaut.png") no-repeat center
     center fixed; */
-    background-position: right 45% bottom 90%;
+    
     /* background: rgb(36,0,9);
     background: linear-gradient(180deg, rgba(36,0,9,1) 42%, rgba(54,25,39,1) 73%, rgba(80,19,44,1) 100%); */
+    background: url("../../../public/assets/images/bgspace.jpg") no-repeat center
+    center fixed;
+    background-position: right 47% bottom 95%;
 }
 
 .eventpage button {
@@ -604,7 +607,7 @@
     letter-spacing: 2px;
     background: url("./bg.jpg"); */
 
-  min-height: 95vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -651,7 +654,7 @@ margin-top: 35px;
 
 .main {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -672,9 +675,9 @@ margin-top: 35px;
   background-repeat: no-repeat;
   object-fit: cover;
   width: 135px;
-  height: 135px;
+  height: 150px;
   /* margin: 5% auto; */
-  margin: 20px 40px;
+  margin: 20px 48px;
   position: relative;
   transition: all 0.2s ease;
 

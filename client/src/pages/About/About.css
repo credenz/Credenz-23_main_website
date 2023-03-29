@@ -18,11 +18,11 @@
   justify-content: center;
   align-items: center;
  
-    background-image: url(../../../public/assets/images/Sky.png);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 0;
+  background-image: url("../../../public/assets/images/bgspace.webp");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 0;
 
 
 
