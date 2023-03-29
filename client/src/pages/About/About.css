@@ -18,7 +18,7 @@
   justify-content: center;
   align-items: center;
  
-    background-image: url(../../../public/assets/images/Sky.png);
+    background-image: url("../../../public/assets/images/bgspace.webp");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -324,13 +324,16 @@
 .our-clients ul {
   padding: 0;
   margin: 0;
+
 }
 
 .our-clients ul li {
   list-style: none;
   display: inline-block;
-  width: 260px;
-  height: 240px;
+  max-width: 250px;
+  min-width: 200px;
+  max-height: 235px;
+  min-height: 200px;
   position: relative;
   overflow: hidden;
   cursor: pointer;

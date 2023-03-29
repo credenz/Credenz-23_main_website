@@ -24,6 +24,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url("../../../public/assets/images/bgspace.webp");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 0;
 }
 
 .register{
@@ -32,6 +37,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url("../../../public/assets/images/bgspace.webp");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 0;
 }
 
 .forget{
@@ -162,13 +172,14 @@ body {
 
        min-height: 70vh;
        min-width: 70vw;
-    border-image-source: url(http://localhost:3000/static/media/eventborder.5ae54625403195e188c1.png);
+    /* border-image-source: url(http://localhost:3000/static/media/eventborder.5ae54625403195e188c1.png);
         border-image-slice: 245;
         border-image-width: 375px;
         border-image-outset: 0;
         left: 0px;
         border-image-repeat: none;
-        border-style: solid;
+        border-style: solid; */
+        background-color: rgb(43 13 47 / 70%);
    
 }
 

@@ -33,7 +33,7 @@ const About = () => {
        
        
           <div className="ieee">
-            <div className="image-ab" data-aos="fade-right" 
+            <div className="image-ab"  
             >
               <div className="left-1">
                 <div>
@@ -50,7 +50,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="image-ab" data-aos="fade-left" >
+            <div className="image-ab"  >
               <div className="left-2">
                 <div>
                   <h2 style={{textAlign:"center"}} >PICT IEEE Student Branch (PISB)</h2>
@@ -67,7 +67,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="image-ab" data-aos="fade-right" >
+            <div className="image-ab"  >
               <div className="left-3">
                 <div>
                   <img src={Clash} alt="" />
