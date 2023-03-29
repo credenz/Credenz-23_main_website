@@ -24,7 +24,7 @@
     background: linear-gradient(180deg, rgba(36,0,9,1) 42%, rgba(54,25,39,1) 73%, rgba(80,19,44,1) 100%); */
     background: url("../../../public/assets/images/bgspace.jpg") no-repeat center
     center fixed;
-    background-position: right 47% bottom 95%;
+    background-position: right 47% bottom 90%;
 }
 
 .eventpage button {
@@ -657,6 +657,7 @@ margin-top: 35px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  
 }
 
 .eventslist {
