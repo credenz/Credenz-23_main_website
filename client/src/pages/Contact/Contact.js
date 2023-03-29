@@ -1,5 +1,6 @@
 import React from "react";
 import Cname from "./Cname";
+import Nidhi from "./nidhi.jpg"
 import "./Contact.css";
 
 export default function Contact() {
@@ -12,7 +13,7 @@ export default function Contact() {
             <div class="card"  data-aos="zoom-out" >
               <div class="img-container">
                 <img
-                  src=""
+                  src={Nidhi}
                   alt=""
                 />
               </div>
@@ -31,29 +32,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div class="column">
-            <div class="card" data-aos="zoom-out" >
-              <div class="img-container">
-                <img
-                  src=""
-                  alt=""
-                />
-              </div>
-              <h3>Donald Trump</h3>
-
-              <div class="icons">
-                <a href="/#" alt="">
-                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
-                </a>
-                <a href="/#" alt="">
-                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
-                </a>
-                <a href="/#" alt="">
-                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+        
 
           <div class="column">
             <div class="card"  data-aos="zoom-out" >
