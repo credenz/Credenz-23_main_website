@@ -282,8 +282,8 @@ const handelSubmit = (eventId) =>{
 
   return (
     <>
-      <EventSky>
       <div className="st">
+      {/* <EventSky> */}
         {/* <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3"></div> */}
@@ -318,8 +318,8 @@ const handelSubmit = (eventId) =>{
             </div>
           </div>
         </div>
+        {/* </EventSky> */}
       </div>
-        </EventSky>
 
       <Modal 
         isOpen={modalIsOpen}
