@@ -1,4 +1,4 @@
-import { OrbitControls, Stars, Environment, useHelper, GizmoHelper } from '@react-three/drei'
+import { OrbitControls, Stars, Environment, useHelper, GizmoHelper, Html } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { CubeTextureLoader } from 'three'
 import React, { useEffect, useRef, useState } from 'react'
@@ -14,6 +14,7 @@ import LogoV6 from './models/Logo_v6'
 import { LogoV7 } from './models/Logo_v7'
 import {isMobile} from 'react-device-detect';
 import Sign from './models/Sign'
+import Soon from './models/Soon'
 
 export default function Experience() {
   const [isSnapped, setSnpped] = useState(false)
@@ -57,55 +58,21 @@ export default function Experience() {
 
   return (
     <>
-        {/* <OrbitControls /> */}
-        {/* <Environment attach="background" files="models/credenz/hdri.hdr" /> */}
         
-        {/* <Environment
-          background // can be true, false or "only" (which only sets the background) (default: false)
-          blur={0} // blur factor between 0 and 1 (default: 0, only works with three 0.146 and up)
-          files={['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png']}
-          path="/models/cubemap/"
-          preset={null}
-          scene={undefined} // adds the ability to pass a custom THREE.Scene, can also be a ref
-          encoding={undefined} // adds the ability to pass a custom THREE.TextureEncoding (default: THREE.sRGBEncoding for an array of files and THREE.LinearEncoding for a single texture)
-        /> */}
         <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} color={"orange"}/>
         <color attach="background" args={['black']} />
-        {/* <directionalLight 
-            castShadow 
-            shadow-mapSize-height={512}
-            shadow-mapSize-width={512} 
-            color="white" 
-            intensity={.2} 
-            position={[1, 1, 1]} 
-        /> */}
-        {/* <rectAreaLight
-          width={7}
-          height={7}
-          color={"white"}
-          intensity={6}
-          position={[-2, 0, 5]}
-          lookAt={[0, 0, 0]}
-          penumbra={1}
-          castShadow
-        >
-        </rectAreaLight> */}
+        
         <ambientLight intensity={100}/>
-        {/* <Scene /> */}
-        {/* <Logo /> */}
-        {/* <Logo3 /> */}
-        {/* <LogoV4 /> */}
-        {/* <LogoV5 /> */}
-        {/* <LogoV6 /> */}
         <LogoV7 />
         <Sign />
-        {/* <SignBoard /> */}
-        {/* <Rig /> */}
-        {/* <SkyBox /> */}
 
         {isPhone ? <MobileController /> : <Rig />}
-        {console.log(isPhone)}
+        {/* {console.log(isPhone)} */}
         {/* <OrbitControls /> */}
+
+        
+
+        <Soon />
 
 
         
