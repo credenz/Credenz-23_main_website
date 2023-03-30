@@ -119,7 +119,7 @@ const PhoneNavbar = () => {
             </li>
             <li>
               <Link
-                to={"/contact-us"}
+                to={"/contact"}
                 onClick={() => setNavOpen(false)}
                 style={{ textDecoration: "none" }}
               >

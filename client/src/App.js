@@ -35,7 +35,7 @@ function App() {
    <Route exact path="/events" element={<Events/> } />
    <Route exact path="/about" element={<About/> } />
    <Route exact path="/contact" element={<Contact/> } />
-   <Route exact path="/login" element={<LoginNew/> } />
+   {/* <Route exact path="/login" element={<LoginNew/> } />
    <Route exact path="/register/:referral" element={<Register/> } />
    <Route exact path="/register" element={<Register/> } />
    <Route exact path="/cart" element={<Cart/> } />
@@ -43,7 +43,7 @@ function App() {
    <Route exact path="/profile" element={<Profile/> } />
    <Route exact path="/payment" element={<Payment/> } />
    <Route exact path="/team" element={<Team/> } />
-   <Route exact path="/admin" element={<Admin/> } />
+   <Route exact path="/admin" element={<Admin/> } /> */}
    <Route exact path="*" element={<Error/> } />
   </Routes> 
   <Footer/>
