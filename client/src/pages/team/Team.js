@@ -3,6 +3,10 @@ import "./Team.css"
 import Clash from "../../images/clash.png";
 import Yash from "./yash.jpeg"
 import Chinmay from "./chinmay.jpeg"
+import Devraj from "./devraj.jpg"
+import Shreyas from "./shreyas.jpg"
+import Vansh from "./vansh.jpeg"
+import Prajwal from "./prajwal.jpeg"
 const Team = () => {
   const[ourteam,setourteam] =useState([
     {
@@ -18,26 +22,26 @@ const Team = () => {
       id:2,
     },
     {
-      photo:Clash,
-      name:"Yash Mali",
+      photo:Prajwal,
+      name:"Prajwal Toundakar",
       link:"#",
       id:3,
     },
     {
-      photo:Clash,
-      name:"Yash Mali",
+      photo:Vansh,
+      name:"Vansh Teppalwar",
       link:"#",
       id:4,
     },
     {
-      photo:Clash,
-      name:"Yash Mali",
+      photo:Shreyas,
+      name:"Shreyas Chandolkar",
       link:"#",
       id:5,
     },
     {
-      photo:Clash,
-      name:"Yash Mali",
+      photo:Devraj,
+      name:"Devraj Shetake",
       link:"#",
       id:6,
     },

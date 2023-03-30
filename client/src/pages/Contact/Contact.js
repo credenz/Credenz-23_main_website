@@ -1,6 +1,7 @@
 import React from "react";
 import Cname from "./Cname";
 import Nidhi from "./nidhi.jpg"
+import Harsh from "./harsh.png"
 import "./Contact.css";
 
 export default function Contact() {
@@ -38,11 +39,34 @@ export default function Contact() {
             <div class="card"  data-aos="zoom-out" >
               <div class="img-container">
                 <img
-                  src=""
+                  src={Harsh}
                   alt=""
                 />
               </div>
               <h3>xi jinping</h3>
+
+              <div class="icons">
+                <a href="/#" alt="">
+                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
+                </a>
+                <a href="/#" alt="">
+                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                </a>
+                <a href="/#" alt="">
+                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="card"  data-aos="zoom-out" >
+              <div class="img-container">
+                <img
+                  src={Harsh}
+                  alt=""
+                />
+              </div>
+              <h3>Chu</h3>
 
               <div class="icons">
                 <a href="/#" alt="">

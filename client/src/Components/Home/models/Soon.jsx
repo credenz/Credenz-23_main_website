@@ -14,7 +14,7 @@ export default function Soon(props) {
 
   useFrame(({ clock }) => {
     const a = clock.getElapsedTime();
-    soonRef.current.rotation.y = Math.cos(a ) * 0.5;
+    soonRef.current.rotation.y = Math.cos(a ) * 0.2;
     // navGroup.current.rotation.x = a;
     // navGroup.current.rotation.z = a;
   });
@@ -26,7 +26,7 @@ export default function Soon(props) {
     // </group>
       <group {...props} dispose={null} >
         <group position={[0.05, 0.15, -4.27]} scale={1.8}>
-          <mesh geometry={nodes.CS.geometry} material={nodes.CS.material} scale={0.55} ref={soonRef}> 
+          <mesh geometry={nodes.CS.geometry} material={nodes.CS.material} scale={0.75} ref={soonRef}> 
           <meshBasicMaterial   color={"white"}/>
           </mesh>
         </group>
