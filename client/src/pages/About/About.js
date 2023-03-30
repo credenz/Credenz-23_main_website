@@ -2,6 +2,8 @@ import React from "react";
 import "./About.css";
 import { motion } from "framer-motion";
 import Clash from "../../images/clash.png";
+import Ping from "./ping.jpg"
+import Credenz from "./credenz.jpg"
 const About = () => {
   return (
     <>
@@ -62,7 +64,7 @@ const About = () => {
 
               <div className="right-2">
                 <div>
-                  <img src={Clash} alt="" />
+                  <img src={Credenz} alt="" />
                 </div>
               </div>
             </div>
@@ -70,7 +72,7 @@ const About = () => {
             <div className="image-ab" data-aos="fade-right" >
               <div className="left-3">
                 <div>
-                  <img src={Clash} alt="" />
+                  <img src={Ping} alt="" />
                 </div>
               </div>
               <div className="right-3">
@@ -85,7 +87,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="our-clients" data-aos="fade-down" >
+        {/* <div className="our-clients" data-aos="fade-down" >
           <h1>Our Sponsors</h1>
           <ul>
             <li  data-aos="zoom-out" >
@@ -113,7 +115,7 @@ const About = () => {
               <img src={Clash} alt="" /> <img src={Clash} alt="" />{" "}
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
       </div>
     </>
