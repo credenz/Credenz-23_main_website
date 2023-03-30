@@ -39,7 +39,7 @@ const About = () => {
             >
               <div className="left-1">
                 <div>
-                  <img className="abimg" src={Clash} alt="" />
+                  <img className="abimg" src={Credenz} alt="" />
                 </div>
               </div>
               <div className="right-1">

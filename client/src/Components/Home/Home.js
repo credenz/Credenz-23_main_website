@@ -34,7 +34,7 @@ export default function Home() {
 function R3FLoader() {
   const { active, progress, errors, item, loaded, total } = useProgress()
   // return <Html center>{progress} % loaded</Html>
-  return <Html center><Loader props={progress}/></Html>
+  return <Html ><Loader props={progress}/></Html>
 }
 
 
