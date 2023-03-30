@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import "./Team.css"
 import Clash from "../../images/clash.png";
-
+import Yash from "./yash.jpeg"
+import Chinmay from "./chinmay.jpeg"
 const Team = () => {
   const[ourteam,setourteam] =useState([
     {
-      photo:Clash,
+      photo:Yash,
       name:"Yash Mali",
       link:"https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-linkedin",
       id:1,
     },
     {
-      photo:Clash,
-      name:"Yash Mali",
+      photo:Chinmay,
+      name:"Chinmay Survey",
       link:"#",
       id:2,
     },
@@ -53,7 +54,7 @@ const Team = () => {
           {ourteam.map((details)=>(
             <div className="card" key={details.id} >
               <div className="thumb">
-                <img src={Clash} alt="" />
+                <img src={details.photo} alt="" />
                 <div className="social">
                   <a href={details.link} className="share-icon" target="_blank" >
                     <i className="fa fa-linkedin"></i>
