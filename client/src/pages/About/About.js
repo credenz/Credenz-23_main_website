@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import "./About.css";
 import { motion } from "framer-motion";
-import Clash from "../../images/clash.png";
+import Logo from "./credenz-white.png";
 import Ping from "./ping.jpg";
 import Credenz from "./credenz.jpg";
 const About = () => {
@@ -51,29 +51,14 @@ const About = () => {
         data-aos-easing="linear">
                 <div className="left-1" >
                   <div>
-                    <img className="abimg" src={Clash} alt="" />
+                    <img className="abimg" src={Logo} alt="" />
                   </div>
                 </div>
                 <div className="right-1">
                   <div>
                     <h2 style={{ textAlign: "center" }}>CREDENZ</h2>
                     <p>
-                      Credenz is the annual technical festival organised by the
-                      PICT IEEE Student Branch. Started in 2004, with a view to
-                      elicit the best out of each and everyone, it has grown to
-                      become one of the finest technical events in Pune. Credenz
-                      aims not only to infuse a competitive spirit among
-                      participants but also widen their horizons in the
-                      ever-changing field of technology via myriad seminars and
-                      workshops.Participants get a chance to discover their
-                      talents and thrive in numerous events like Clash, B Plan,
-                      RoboLIGA, WebWeaver, Pixelate, Cretronix, Paper
-                      Presentation and DataWiz. This is a unique chance for the
-                      students to go beyond the traditional spheres of academics
-                      and make the most of their potential. This spirit of
-                      learning and discovery has inspired the PICT IEEE Student
-                      Branch to present Credenz, a podium for you to nurture and
-                      cultivate your talents.
+                    Credenz, organized by the PICT IEEE Student Branch, is an annual technical festival that began in 2004. It has become one of Pune's premier technical events, aiming to inspire participants to bring out their best. Credenz offers a diverse range of seminars and workshops that help expand participants' knowledge in the ever-evolving field of technology, while also instilling a competitive spirit among them. With events like Clash, B Plan, WebWeaver, Cretronix, Wall Street, and DataWiz, participants have ample opportunities to explore their talents and succeed. Credenz is a unique opportunity for students to surpass the conventional boundaries of academia and unlock their full potential. The PICT IEEE Student Branch's vision is to promote learning and exploration through Credenz, creating a platform for individuals to nurture their skills and achieve their goals.
                     </p>
                   </div>
                 </div>

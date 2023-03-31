@@ -1,4 +1,4 @@
-input[type=checkbox] {
+/* input[type=checkbox] {
     height: 0;
     width: 0;
     visibility: hidden;
@@ -37,7 +37,7 @@ input[type=checkbox] {
   }
   label:active:after {
     width: 130px;
-  }
+  } */
   /* body {
     display: flex;
     justify-content: center;

@@ -16,7 +16,12 @@ export default function Model2(props) {
 
   const textures = [screenTexture,]
   const [currTexture, setCurr] = useState(0)
-  const [isMuted, setIsMuted] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
+
+  function VideoMaterial({ url }) {
+    const texture = useVideoTexture(url, {muted:isMuted, unsuspend: 'canplay', loop:false})
+    return <meshBasicMaterial map={texture} toneMapped={false} map-flipY={false}/>
+  }
   return (
     <>
     <group {...props} dispose={null} position={[0,-1.5,0]}>
@@ -26,12 +31,13 @@ export default function Model2(props) {
       <mesh geometry={nodes.Screen.geometry} material={nodes.Screen.material} position={[0.33, 1.29, 0.62]} rotation={[Math.PI / 2, 0, 0]} scale={7} 
         onClick={() => {
           setCurr(currTexture+1);
+          setIsMuted(!isMuted);
           console.log(currTexture)
         }}
         
       >
          {currTexture >= textures.length && <Suspense fallback={<FallbackMaterial fallbackTexture={screenTexture} />}>
-          <VideoMaterial url="dola.mp4" />
+          <VideoMaterial url="theme.mp4" />
         </Suspense>}
       
         {currTexture < textures.length && <meshBasicMaterial map={textures[currTexture % textures.length]} map-flipY={false} />}
@@ -53,10 +59,10 @@ export default function Model2(props) {
 
 useGLTF.preload('/models/explore/v2/explore.glb')
 useGLTF.preload('./dola.mp4')
-function VideoMaterial({ url }) {
-  const texture = useVideoTexture(url, {muted:false, unsuspend: 'canplay', loop:false})
-  return <meshBasicMaterial map={texture} toneMapped={false} map-flipY={false}/>
-}
+// function VideoMaterial({ url, isMuted }) {
+//   const texture = useVideoTexture(url, {muted:isMuted, unsuspend: 'canplay', loop:false})
+//   return <meshBasicMaterial map={texture} toneMapped={false} map-flipY={false}/>
+// }
 
 function FallbackMaterial({ fallbackTexture }) {
   return <meshBasicMaterial map={fallbackTexture} toneMapped={false} />
