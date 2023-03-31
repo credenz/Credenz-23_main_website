@@ -3,7 +3,7 @@ import Cname from "./Cname";
 import Nidhi from "./nidhi.jpg"
 import Harsh from "./harsh.png"
 import "./Contact.css";
-
+import swal from "sweetalert";
 export default function Contact() {
   return (
     <div className="contact-one" >
@@ -87,7 +87,7 @@ export default function Contact() {
 
           <div className="form-container" data-aos="fade-right" >
             <h3>FeedBack</h3>
-            <form action="" className="contact-form">
+            <form action="" className="contact-form" onSubmit={(e)=>{e.preventDefault();swal("Your feedback has been succesfully submitted!", "", "success");}}>
               <input type="text" placeholder="Enter Name" required />
               <input
                 type="email"
