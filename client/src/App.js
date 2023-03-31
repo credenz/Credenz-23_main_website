@@ -5,7 +5,7 @@ import { Routes,Route} from "react-router-dom";
 import Events from "./pages/Events/Events"
 import Contact from './pages/Contact/Contact';
 import About from "./pages/About/About";
-
+import Scrolltop from "./pages/Scrolltop/Scrolltop";
 import Navbar from './Components/Navbar/Navbar';
 import Cart from './pages/Cart/Cart';
 import Footer from './Components/Footer/Footer';
@@ -28,8 +28,10 @@ function App() {
   return (
     <>
     <div className="App">
+    <Scrolltop/>
     <Navbar/>
   <Routes>
+
    <Route exact path="/" element={<Home/> } />
    <Route exact path="/explore" element={<Explore /> } />
    <Route exact path="/events" element={<Events/> } />
@@ -42,6 +44,7 @@ function App() {
    <Route exact path="/user" element={<User/> } />
    <Route exact path="/profile" element={<Profile/> } />
    <Route exact path="/payment" element={<Payment/> } />
+   
    <Route exact path="/admin" element={<Admin/> } /> */}
    <Route exact path="/team" element={<Team/> } />
    <Route exact path="*" element={<Error/> } />

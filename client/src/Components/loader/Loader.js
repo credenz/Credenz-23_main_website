@@ -43,7 +43,7 @@ export default function Loader(props) {
                </div>
                <div class="text-container">
                   <h2>
-                     Loading
+                     Loading...
                   </h2>
                </div>
                <div class="smoke">

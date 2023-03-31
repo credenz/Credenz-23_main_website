@@ -48,6 +48,7 @@
 
 
 import React from "react";
+import Scrolltop from "../../pages/Scrolltop/Scrolltop";
 import { Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import "./Footer.css";
@@ -72,7 +73,7 @@ import LinkedIn from "../../images/linkedin.png";
         </a>
         <div className="terms col-md-4">
           <NavLink to={"/team"} className="terms-text">
-            Designed & Developed By : WEB TEAM
+            Designed & Developed By :  <span  > WEB TEAM </span>
           </NavLink>
         </div>
         <div className="social-wrapper col-md-4">
