@@ -11,12 +11,13 @@ export default function Explore() {
   return (
     <>
     <Canvas className='canvas' camera={{fov: 30, position:camPosition}}>
-      <Suspense fallback={R3FLoader}>
+      <Suspense fallback={<R3FLoader />}>
       <Experience/>
         {/* <Environment files="models/credenz/hdri.hdr" background/> */}
         
         {/* <Temp /> */}
       </Suspense>
+
         
         
     </Canvas>
