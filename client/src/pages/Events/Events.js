@@ -454,7 +454,7 @@ const handelSubmit = (eventId) =>{
                   {/* <button onClick={() => setDetails(3)}>Create Team</button> */}
                 </div>
 
-                <div className="modalbody">
+                <div className="modalbody info">
                   <p className="text-center" style={{marginTop:"30px"}} >{Details === 0 && data.body}</p>
                   <p>
                   {

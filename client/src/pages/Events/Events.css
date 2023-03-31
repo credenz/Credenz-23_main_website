@@ -832,6 +832,11 @@ img {
   flex-wrap: wrap;
 
 }
+
+.info{
+padding: 10px 15px;
+
+}
 .modalbutton .hover:hover {
   background-color: #7a047a;
 }
@@ -898,7 +903,7 @@ height: 85%;
   .modalbody p {
     font-size: 13px;
     letter-spacing: 1.2px;
-    padding: 20px;
+    /* padding: 20px; */
   }
   /* .modalbody p ol{
    margin-top: 30px;
