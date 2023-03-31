@@ -16,10 +16,10 @@ const About = () => {
       <div className="about">
         <div className="banner">
           <h1
-        data-aos="zoom-in-up"
-          data-aos-duration="500"
-          data-aos-easing="linear"
-          data-aos-anchor-placement="top-center"
+            data-aos="zoom-in-up"
+            data-aos-duration="500"
+            data-aos-easing="linear"
+            data-aos-anchor-placement="top-center"
           >
             About Us
           </h1>
@@ -46,10 +46,13 @@ const About = () => {
         </div> */}
           <div className="aboutus ">
             <div className="ieee">
-              <div className="image-ab"   data-aos="fade-down"
-        data-aos-duration="1000"
-        data-aos-easing="linear">
-                <div className="left-1" >
+              <div
+                className="image-ab"
+                data-aos="fade-down"
+                data-aos-duration="1000"
+                data-aos-easing="linear"
+              >
+                <div className="left-1">
                   <div>
                     <img className="abimg" src={Logo} alt="" />
                   </div>
@@ -58,31 +61,49 @@ const About = () => {
                   <div>
                     <h2 style={{ textAlign: "center" }}>CREDENZ</h2>
                     <p>
-                    Credenz, organized by the PICT IEEE Student Branch, is an annual technical festival that began in 2004. It has become one of Pune's premier technical events, aiming to inspire participants to bring out their best. Credenz offers a diverse range of seminars and workshops that help expand participants' knowledge in the ever-evolving field of technology, while also instilling a competitive spirit among them. With events like Clash, B Plan, WebWeaver, Cretronix, Wall Street, and DataWiz, participants have ample opportunities to explore their talents and succeed. Credenz is a unique opportunity for students to surpass the conventional boundaries of academia and unlock their full potential. The PICT IEEE Student Branch's vision is to promote learning and exploration through Credenz, creating a platform for individuals to nurture their skills and achieve their goals.
+                      Credenz, organized by the PICT IEEE Student Branch, is an
+                      annual technical festival that began in 2004. It has
+                      become one of Pune's premier technical events, aiming to
+                      inspire participants to bring out their best. Credenz
+                      offers a diverse range of seminars and workshops that help
+                      expand participants' knowledge in the ever-evolving field
+                      of technology, while also instilling a competitive spirit
+                      among them. With events like Clash, B Plan, WebWeaver,
+                      Cretronix, Wall Street, and DataWiz, participants have
+                      ample opportunities to explore their talents and succeed.
+                      Credenz is a unique opportunity for students to surpass
+                      the conventional boundaries of academia and unlock their
+                      full potential. The PICT IEEE Student Branch's vision is
+                      to promote learning and exploration through Credenz,
+                      creating a platform for individuals to nurture their
+                      skills and achieve their goals.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="image-ab"   data-aos="fade-down"
-        data-aos-duration="1000"
-        data-aos-easing="linear">
+              <div
+                className="image-ab"
+                data-aos="fade-down"
+                data-aos-duration="1000"
+                data-aos-easing="linear"
+              >
                 <div className="left-2">
                   <div>
                     <h2 style={{ textAlign: "center" }}>
                       PICT IEEE Student Branch (PISB)
                     </h2>
                     <p>
-                      PICT IEEE Student Branch (PISB) was established in the
-                      year 1988 with an aim of inculcating a sense of technical
-                      awareness amongst its student members. PISB aims to
-                      escalate the knowledge and trends in the diverse fields of
-                      technologies amongst its members. PISB upholds two major
-                      events every year - Credenz and Credenz Tech Dayz with the
-                      first one being conducted in odd semester and the latter
-                      one in even semester. PISB is also marked by its Women in
-                      Engineering (WIE) chapter, an initiative for the
-                      empowerment of women.
+                      PICT IEEE Student Branch or PISB was founded in 1988, with
+                      the primary goal of fostering technical awareness and
+                      knowledge among its student members. PISB endeavors to
+                      keep its members informed about the latest technology
+                      trends in various fields. Two significant events are
+                      hosted by PISB each year, namely Credenz and Credenz Tech
+                      Dayz. Credenz is conducted in even semesters, while
+                      Credenz Tech Dayz takes place in odd semesters.
+                      Additionally, PISB has a Women in Engineering (WIE)
+                      chapter dedicated to empowering women.
                     </p>
                   </div>
                 </div>
@@ -94,9 +115,12 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="image-ab"   data-aos="fade-down"
-        data-aos-duration="1000"
-        data-aos-easing="linear">
+              <div
+                className="image-ab"
+                data-aos="fade-down"
+                data-aos-duration="1000"
+                data-aos-easing="linear"
+              >
                 <div className="left-3">
                   <div>
                     <img src={Ping} alt="" />
@@ -108,18 +132,18 @@ const About = () => {
                       PICT IEEE NEWSLETTER GROUP (P.I.N.G.)
                     </h2>
                     <p>
-                      P.I.N.G. (PICT IEEE Newsletter Group) is the annual
-                      technical magazine published by the student members of
-                      PICT IEEE Student Branch (PISB). P.I.N.G. serves as a
-                      platform for individuals to portray their technical
-                      ingenuity. It highlights articles on cutting-edge
-                      technologies from technocrats all around the globe. It
-                      also features interviews of distinguished personalities in
-                      various technical domains. P.I.N.G. aims at keeping its
-                      readers updated on recent developments in technology and
-                      helps them extrapolate their perceptions to contemporary
-                      ideas of modernisation. With the imminent Issue 16.1, be
-                      ready to get P.I.N.G.'d!
+                      P.I.C.T. IEEE Newsletter Group or P.I.N.G. is an annual
+                      technical magazine that is published by the student
+                      members of PICT IEEE Student Branch (PISB). It serves as a
+                      platform for technology enthusiasts to showcase their
+                      technical expertise. P.I.N.G. features articles on
+                      cutting-edge technologies from technocrats worldwide and
+                      includes interviews with distinguished personalities in
+                      various technical domains. The magazine's primary
+                      objective is to keep its readers informed about recent
+                      technology advancements and guide them towards
+                      modernization. With the upcoming release of Issue 18.1,
+                      prepare yourself to be 'P.I.N.G.'d.
                     </p>
                   </div>
                 </div>
