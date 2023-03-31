@@ -5,7 +5,7 @@ export default function CommingSoon() {
   return (
     <div className="comming">
       <div className="name">
-        <h1>Comming Soon...</h1>
+        <h1>Coming Soon...</h1>
       </div>
     </div>
   );
