@@ -35,7 +35,10 @@ const PhoneNavbar = () => {
             <li>
               <Link
                 to={"/"}
-                onClick={() => setNavOpen(false)}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/'
+                  :setNavOpen(false)}
                 style={{ textDecoration: "none" }}
               >
                 <span className="fa-li">
@@ -59,7 +62,10 @@ const PhoneNavbar = () => {
             <li>
               <Link
                 to={"/events"}
-                onClick={() => setNavOpen(false)}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/events'
+                  :setNavOpen(false)}
                 style={{ textDecoration: "none" }}
               >
                 <span className="fa-li">
@@ -108,7 +114,10 @@ const PhoneNavbar = () => {
             <li>
               <Link
                 to={"/about"}
-                onClick={() => setNavOpen(false)}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/about'
+                  :setNavOpen(false)}
                 style={{ textDecoration: "none" }}
               >
                 <span className="fa-li">
@@ -120,7 +129,10 @@ const PhoneNavbar = () => {
             <li>
               <Link
                 to={"/contact"}
-                onClick={() => setNavOpen(false)}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/contact'
+                  :setNavOpen(false)}
                 style={{ textDecoration: "none" }}
               >
                 <span className="fa-li">
