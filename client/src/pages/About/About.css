@@ -131,7 +131,7 @@
   /* padding: 20px; */
 }
 .about .left-3 img {
-  width: 330px;
+  width: 300px;
   height: 350px;
 }
 
@@ -140,7 +140,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 20px; */
+  padding: 20px;
 }
 
 .about .image-ab {
