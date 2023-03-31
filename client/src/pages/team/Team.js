@@ -17,7 +17,7 @@ const Team = () => {
     },
     {
       photo:Chinmay,
-      name:"Chinmay Survey",
+      name:"Chinmay Surve",
       link:"https://www.linkedin.com/in/chinmay-surve-557433218/",
       id:2,
     },
