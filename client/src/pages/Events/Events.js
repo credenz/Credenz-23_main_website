@@ -106,7 +106,7 @@ const handelSubmit = (eventId) =>{
         body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges,carefully designed to assess your command over programming in the language of your choice- Python, C or C++. Showcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.",
         id: "1",
         structure:
-          "Carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+          "carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.", 
         rules : { 1 : "MCQs based on coding concepts in C/C++ and python. (Python, C/C++ for FE and C/C++ for SE, TE and BE)",
         2 : "A 28-minute game for a person or a team of two people.",
         3 : "Teams or players are not allowed to use any IDE or software once the game has started.",
@@ -119,8 +119,7 @@ const handelSubmit = (eventId) =>{
         team: "Maximum 3 players are allowed",
         max: 3,
       },
-  
-      {
+       {
         image: RC,
         heading: "REVERSE CODING",
         body: "A coding competition to test your conceptual understanding of algorithms and programming languages. Combine logic and agility to decipher given patterns and code to decode these sequences to find the final answer.",
@@ -137,8 +136,7 @@ const handelSubmit = (eventId) =>{
         team: "Maximum 2 players are allowed",
         max: 2,
       },
-  
-      {
+       {
         image : NTH,
         heading : "NETWORK TREASURE HUNT",
         body : "Network Treasure Hunt is an online Treasure Hunt played across the globe. Read between the lines, find the hidden clues and connect the dots. You can use every tool at your disposal. Even with Google and Wikipedia by your side, it's going to be fun and challenging.",
@@ -161,8 +159,7 @@ const handelSubmit = (eventId) =>{
         team : "Individual event",
         max : 1,
       },
-  
-      {
+       {
         image : WALLSTREET,
         heading : "WALL STREET",
         body : "'The stock market is a device for transferring money from the impatient to the patient.' - Warren Buffett Interested in learning about the stock market and improving your investment skills? Well you are in luck, as we bring you, 'Wall Street'",
@@ -180,7 +177,7 @@ const handelSubmit = (eventId) =>{
           10 : "The Ranking of the user is decided using a 'Valuation Formula'.Valuation of the user will be 60% of his total asset value in Shares acquired (according to current market prices) + 40% of the cash balance in his account.This total will be termed as the valuation amount.",
           11 : "Only Integral Bids allowed.Decimal values will be invalid.",
           12 : "Participants can be disqualified for MALPRACTICES.",
-          13 : "News regarding the listed companies would be displayed every half an hour." 
+          13 : "News regarding the listed companies would be displayed every half an hour."
           },
         id: "4",
         amount : 39,
@@ -188,8 +185,7 @@ const handelSubmit = (eventId) =>{
         team : "Individual event",
         max : 1,
       },
-  
-      {
+       {
         image : BPLAN,
         heading : "B-PLAN",
         body : "Looking for a thrilling and engaging event that showcases innovation and entrepreneurship? Look no further than B-Plan! Register now for an event as you get to be a deadly Shark Tank!",
@@ -203,34 +199,29 @@ const handelSubmit = (eventId) =>{
         team : "Individual event",
         max : 1,
       },
-      
+     
       {
         image: ENIGMA,
         heading: "ENIGMA",
-        body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-        structure: {1 : "There will be two rounds.",
-        2 : "You need to qualify the threshold score to get into the next round. The threshold will be decided based upon the performance of all the teams.",
-        3 : "The decision of the organizer will be final.",
-        4 : "There is no negative marking at any stage.",
-      },
-        rules : { 1 : "Candidates pursuing an Undergraduate program will be allowed to participate. It will be an individual event.",
-        2 : "All the participants should follow all the instructions as mentioned in the mail received after registration.",
-        3 : "The decision of the organizer will be final.",
-        4 : "There is no negative marking at any stage.",
-        5 : "ROUND 1:\na. There will be 35 questions in this round.\nb. Time limit is 40 minutes.\nc. For every right answer, you will be awarded points and no negative points for a wrong answer.\nd. The marking scheme will be declared on the day of the event.",
-        6 : "ROUND 2:\na. There will be 5 Puzzles and 5 MCQs in this round.\nb. Time Limit is 2 hours\nc. You must claim whenever you are done. Earliest claim with max. score wins.",
-        },
-        id: "6",
-        amount: 50,
+        body: "Are you diligent enough to face the mind-boggling questions which will push your logical reasoning to its limits? Then do not miss this amazing opportunity.",
+        structure: "Enigma is a logical reasoning based questionnaire, which will test your aptitude, thinking capability, response time and mental ability. Get ready to put your Grey Cells to work!",
+        rules : { 1 : "Electronic gadgets (phones, calculators, smart watches) are prohibited.",
+        2 : "The first round is an hour-long aptitude test.",
+        3 : "The second round will consist of a two-hour descriptive logical reasoning interview.",
+        4 : "Enigma Wildcard is conducted specially for PICT students whose winners are directly promoted to Round 2 of the event free of cost.",
+        },	
+        amount: "To be declared soon",
         count: 1,
         team: "Maximum 2 players are allowed",
         max: 2,
+ 
+ 
       },
-      
+     
       {
         image: DATAWIZ,
         heading: "DATAWIZ",
-        body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+        body: "Get ready to set off on a journey to the world of data science! DataWiz gives you an opportunity to test your machine learning and data analytics skills, work on real world datasets to analyse and make predictions using your models.",
         structure : {1 : "Get ready to set off on a journey to the world of data science.",
         2 : "DataWiz gives you an opportunity to test your machine learning and data analytics skills, work on datasets to analyse and make predictions using your models.",
         3 : "Datawiz is a week-long machine learning competition hosted on Kaggle.",
@@ -253,7 +244,7 @@ const handelSubmit = (eventId) =>{
       {
         image: QUIZ,
         heading: "QUIZ",
-        body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+        body: "Brainstorm on the questions ranging from Greek mythology to world politics, from Shakespeare to business gurus. Set out on a voyage through mind-boggling questions captained by a witty quiz master. Flex your IQ in a set of three quizzes, designed to be a battle of wits. MELA Quiz",
         structure : {1 : "General Quiz: It includes everything from robotics to politics. Test your GK!",
         2 : "MELA Quiz: Movies Entertainment Literature and Arts (MELA) is all set to test your knowledge of literature, arts and entertainment. If you are an entertainment lover, this is for you!",
         3 : "BizTech Quiz: If you are passionate about marketing, economics and Business, then BizTech is the ultimate questionnaire you need to answer.",
@@ -282,7 +273,7 @@ const handelSubmit = (eventId) =>{
       {
         image: CRETRONIX,
         heading: "CRETRONIX",
-        body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+        body: "Battle it out on the breadboard! Challenge your brains to clear a test where you demonstrate your knowledge in the field of electronics, physics, logical ability and building a circuit by interpreting the hints provided.",
         structure : {1 : "Round 1: (Junior and Senior Team)\nIt will consist of Multiple Choice Questions (MCQs) based on theoretical and practical concepts of electronics. There will be 30 questions for a time limit of 30 minutes.",
         2 : "Round 2: (Junior and Senior Team)\nThe participants will be given a problem statement and they are supposed to deduce a solution with the help of a tinkercad simulation environment.\nLINK: https://www.tinkercad.com/dashboard",
       },
@@ -309,8 +300,8 @@ const handelSubmit = (eventId) =>{
       {
         image : WEB,
         heading : "WEB WEAVER",
-        body : "Ever wondered how GSO and other Open-Source programs work? Register now for web-weaver to get a taste!",
-        structure: "Tou will get to know all the nitty-gritty details and nuances about web and app development and other tools essential for a developer to know",
+        body : "Ever wondered how GSOC and other Open-Source programs work? Register now for web-weaver to get a taste!",
+        structure: "You will get to know all the nitty-gritty details and nuances about web and app development and other tools essential for a developer to know",
         rules : {
           1 : "To be declared soon!",
           },
@@ -321,6 +312,8 @@ const handelSubmit = (eventId) =>{
         max : 1,
       }
     ]
+ 
+ 
   );
 
   const customStyles = {
