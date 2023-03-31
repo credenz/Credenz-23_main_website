@@ -14,6 +14,7 @@ export default function Sign(props) {
   const navigate = useNavigate()
 
   const [hovered, setHovered] = useState(false)
+  const [navScale, setNavScale] = useState([0.8,0.8,0.8,0.8,0.8])
 
   useEffect(() => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'
@@ -27,10 +28,20 @@ export default function Sign(props) {
         material={nodes.Nav001.material}
         position={[-3.57, 2.01, 5.54]}
         rotation={[0, 0.61, 0]}
-        scale={0.8}
+        scale={navScale[0]}
         onClick={() => navigate("/explore")} 
-        onPointerOver={() => {setHovered(true)}}
-        onPointerOut={() => {setHovered(false)}}
+        onPointerOver={() => {
+          setHovered(true); 
+          let arr = [...navScale];
+          arr[0] = 0.88;
+          setNavScale(arr)
+        }}
+        onPointerOut={() => {
+          setHovered(false); 
+          let arr = [...navScale];
+          arr[0] = 0.8;
+          setNavScale(arr)
+        }}
       >
         <meshBasicMaterial map={navTexture} map-flipY={false} />
       </mesh>
@@ -39,10 +50,20 @@ export default function Sign(props) {
         material={nodes.Nav_003.material}
         position={[-3.57, 1.3, 5.54]}
         rotation={[0, 0.61, 0]}
-        scale={0.8}
+        scale={navScale[1]}
         onClick={() => navigate("/sessions")} 
-        onPointerOver={() => {setHovered(true)}}
-        onPointerOut={() => {setHovered(false)}}
+        onPointerOver={() => {
+          setHovered(true); 
+          let arr = [...navScale];
+          arr[1] = 0.88;
+          setNavScale(arr)
+        }}
+        onPointerOut={() => {
+          setHovered(false); 
+          let arr = [...navScale];
+          arr[1] = 0.8;
+          setNavScale(arr)
+        }}
       >
         <meshBasicMaterial map={navTexture} map-flipY={false} />
       </mesh>
@@ -51,10 +72,20 @@ export default function Sign(props) {
         material={nodes.Nav_004.material}
         position={[-3.57, 0.98, 5.54]}
         rotation={[0, 0.61, -3.08]}
-        scale={0.8}
+        scale={navScale[2]}
         onClick={() => navigate("/contact")} 
-        onPointerOver={() => {setHovered(true)}}
-        onPointerOut={() => {setHovered(false)}}
+        onPointerOver={() => {
+          setHovered(true); 
+          let arr = [...navScale];
+          arr[2] = 0.88;
+          setNavScale(arr)
+        }}
+        onPointerOut={() => {
+          setHovered(false); 
+          let arr = [...navScale];
+          arr[2] = 0.8;
+          setNavScale(arr)
+        }}
       >
         <meshBasicMaterial map={navTexture} map-flipY={false} />
       </mesh>
@@ -63,10 +94,20 @@ export default function Sign(props) {
         material={nodes.Nav_002.material}
         position={[-3.57, 1.69, 5.54]}
         rotation={[0, 0.61, 0]}
-        scale={0.8}
+        scale={navScale[3]}
         onClick={() => navigate("/events")} 
-        onPointerOver={() => {setHovered(true)}}
-        onPointerOut={() => {setHovered(false)}}
+        onPointerOver={() => {
+          setHovered(true); 
+          let arr = [...navScale];
+          arr[3] = 0.88;
+          setNavScale(arr)
+        }}
+        onPointerOut={() => {
+          setHovered(false); 
+          let arr = [...navScale];
+          arr[3] = 0.8;
+          setNavScale(arr)
+        }}
       >
         <meshBasicMaterial map={navTexture} map-flipY={false} />
       </mesh>
@@ -75,10 +116,20 @@ export default function Sign(props) {
         material={nodes.Nav_005.material}
         position={[-3.57, 0.6, 5.54]}
         rotation={[0, 0.61, -0.04]}
-        scale={0.8}
+        scale={navScale[4]}
         onClick={() => navigate("/about")} 
-        onPointerOver={() => {setHovered(true)}}
-        onPointerOut={() => {setHovered(false)}}
+        onPointerOver={() => {
+          setHovered(true); 
+          let arr = [...navScale];
+          arr[4] = 0.88;
+          setNavScale(arr)
+        }}
+        onPointerOut={() => {
+          setHovered(false); 
+          let arr = [...navScale];
+          arr[4] = 0.8;
+          setNavScale(arr)
+        }}
       >
         <meshBasicMaterial map={navTexture} map-flipY={false} />
       </mesh>
