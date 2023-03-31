@@ -12,7 +12,7 @@ const Team = () => {
     {
       photo:Yash,
       name:"Yash Mali",
-      link:"https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-linkedin",
+      link:"#",
       id:1,
     },
     {
