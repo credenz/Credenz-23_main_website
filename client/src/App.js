@@ -21,6 +21,7 @@ import Error from './pages/Error/Error';
 import User from './Components/useradd/User';
 import Explore from './Components/Events3d/Explore';
 import Loader from './Components/loader/Loader';
+import CommingSoon from './pages/comingsoon/CommingSoon';
 
 
 
@@ -47,6 +48,7 @@ function App() {
    
    <Route exact path="/admin" element={<Admin/> } /> */}
    <Route exact path="/team" element={<Team/> } />
+   <Route exact path="/sessions" element={<CommingSoon/> } />
    <Route exact path="*" element={<Error/> } />
   </Routes> 
   <Footer/>
