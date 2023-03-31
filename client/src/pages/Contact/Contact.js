@@ -9,25 +9,25 @@ export default function Contact() {
     <div className="contact-one" >
       <Cname />
       <section>
-        <div class="row">
-          <div class="column">
-            <div class="card"  data-aos="zoom-out" >
-              <div class="img-container">
+        <div className="row">
+          <div className="column">
+            <div className="card"  data-aos="zoom-out" >
+              <div className="img-container">
                 <img
                   src={Nidhi}
                   alt=""
                 />
               </div>
               <h3>Nidhi Yadav</h3>
-              <div class="icons">
+              <div className="icons">
                 <a href="tel:+91 8767887493" alt="">
-                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="https://www.linkedin.com/in/nidhi-p-yadav" alt="" target={"_blank"}>
-                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="mailto:nidhiprashantyadav1904@gmail.com" alt="">
-                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
@@ -35,32 +35,32 @@ export default function Contact() {
 
         
 
-          <div class="column">
-            <div class="card"  data-aos="zoom-out" >
-              <div class="img-container">
+          <div className="column">
+            <div className="card"  data-aos="zoom-out" >
+              <div className="img-container">
                 <img
                   src={Harsh}
                   alt=""
                 />
               </div>
-              <h3>Harsh The Simp Bhat</h3>
+              <h3>Harsh Bhat</h3>
 
-              <div class="icons">
+              <div className="icons">
                 <a href="tel:+91 8983594252" alt="">
-                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="https://www.linkedin.com/in/harshbhat/" alt="" target={"_blank"}>
-                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="mailto:harshbhat83@gmail.com" alt="">
-                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
           </div>
-          {/* <div class="column">
-            <div class="card"  data-aos="zoom-out" >
-              <div class="img-container">
+          {/* <div className="column">
+            <div className="card"  data-aos="zoom-out" >
+              <div className="img-container">
                 <img
                   src={Harsh}
                   alt=""
@@ -68,15 +68,15 @@ export default function Contact() {
               </div>
               <h3>Chu</h3>
 
-              <div class="icons">
+              <div className="icons">
                 <a href="/#" alt="">
-                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="/#" alt="">
-                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="/#" alt="">
-                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
@@ -103,7 +103,7 @@ export default function Contact() {
                 rows="10"
                 placeholder="Write Message"
               ></textarea>
-              <input type="submit" value="submit" class="send-button" />
+              <input type="submit" value="submit" className="send-button" />
             </form>
           </div>
           {/* map */}

@@ -36,9 +36,9 @@ const Events = () => {
     { logo: DATAWIZ, title: "Datawiz", id: "7" },
     { logo: QUIZ, title: "Quiz", id: "8" },
     // { logo: PAPER, title: "Paper Presentation", id: "9" },
-    { logo: CRETRONIX, title: "Cretronix", id: "10" },
+    { logo: CRETRONIX, title: "Cretronix", id: "9" },
     // { logo: PIXELATE, title: "Pixelate", id: "11" },
-    { logo: WEB, title: "Web Weaver", id: "12" },
+    { logo: WEB, title: "Web Weaver", id: "10" },
   ]);
 
   const [player, setplayer] = useState({
@@ -57,14 +57,14 @@ const Events = () => {
     13: [],
     14: [],
   }); //{ 0:[] , 1:[], 2:[]}
-  useEffect(() => {
-    console.log(player);
-  }, [player]);
+  // useEffect(() => {
+  //   console.log(player);
+  // }, [player]);
 
   const handleplayerChange = (e, eventId, index) => {
     const { name, value } = e.target;
-    console.log("indexx=", index);
-    console.log("data.id=", eventId);
+    // console.log("indexx=", index);
+    // console.log("data.id=", eventId);
     let list = [...player[eventId]];
     list[index] = value;
     setplayer(
@@ -76,7 +76,7 @@ const Events = () => {
 
   const handleplayerRemove = (eventId, index) => {
     let list = [...player[eventId]];
-    console.log("index: ",index)
+    // console.log("index: ",index)
     list.splice(index, 1);
     setplayer(
       Object.assign({}, player, {
@@ -93,9 +93,9 @@ const Events = () => {
     );
   };
 const handelSubmit = (eventId) =>{
-  console.log("in Submit" , eventId);
+  // console.log("in Submit" , eventId);
   let arr = player[eventId];
-  console.log(arr);
+  // console.log(arr);
 }
   const [details, setdetails] = useState(
     [
@@ -290,7 +290,7 @@ const handelSubmit = (eventId) =>{
         2 : "Participants will be provided with credentials to join tinkercad for the 2nd round.",
         3 : "Participants can use datasheets for the components they are using and are supposed to provide a link of the same.",
         },
-        id: "10",
+        id: "9",
         amount: 50,
         count: 1,
         team: "Maximum 2 players are allowed",
@@ -314,7 +314,7 @@ const handelSubmit = (eventId) =>{
         rules : {
           1 : "To be declared soon!",
           },
-        id: "12",
+        id: "10",
         amount : 39,
         count : 1,
         team : "Individual event",
@@ -444,7 +444,7 @@ const handelSubmit = (eventId) =>{
 
                 <div className="modalbody">
                   <p className="text-center" style={{marginTop:"30px"}} >{Details === 0 && data.body}</p>
-                  <p >
+                  <p>
                   {
                     Details === 1 && data.rules
                     ?   

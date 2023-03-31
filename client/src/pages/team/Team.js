@@ -12,47 +12,49 @@ const Team = () => {
     {
       photo:Yash,
       name:"Yash Mali",
-      link:"#",
+      link:"https://www.linkedin.com/in/yash-mali-b8886a217",
       id:1,
     },
     {
       photo:Chinmay,
       name:"Chinmay Survey",
-      link:"#",
+      link:"https://www.linkedin.com/in/chinmay-surve-557433218/",
       id:2,
     },
     {
       photo:Prajwal,
       name:"Prajwal Toundakar",
-      link:"#",
+      link:"https://www.linkedin.com/in/prajwal-toundakar-90017a204",
       id:3,
     },
     {
       photo:Vansh,
       name:"Vansh Teppalwar",
-      link:"#",
+      link:"https://www.linkedin.com/in/vansh-teppalwar-0b60b0217/",
       id:4,
     },
     {
       photo:Shreyas,
       name:"Shreyas Chandolkar",
-      link:"#",
+      link:"https://www.linkedin.com/in/shreyaschandolkar",
       id:5,
     },
     {
       photo:Devraj,
       name:"Devraj Shetake",
-      link:"#",
+      link:"https://www.linkedin.com/in/devraj-shetake-439606206/",
       id:6,
     },
   ])
   return (
     <>
       <div className="teampage">
-        <div className="container">
+        <div className="container"          data-aos="zoom-in-up"
+          data-aos-duration="500"
+          data-aos-easing="ease-in-sine">
         <div className="team">
           <h1>Our Team</h1>
-          <div className="cards">
+          <div className="cards" >
           
 
           {ourteam.map((details)=>(
