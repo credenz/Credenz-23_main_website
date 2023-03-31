@@ -18,12 +18,17 @@ import Soon from './models/Soon'
 
 export default function Experience() {
   const [isSnapped, setSnpped] = useState(false)
+  const [rigDampSpeed, setRigSpeed] = useState(1.5)
 
   function Rig() {
     return useFrame((state, delta) => {
-      easing.damp3(state.camera.position, [0 + state.mouse.x / 1, 1.5 + state.mouse.y / 1, 11], 1.5, delta)
+      easing.damp3(state.camera.position, [0 + state.mouse.x / 1, 1.5 + state.mouse.y / 1, 11], rigDampSpeed, delta)
     })
   }
+
+  setTimeout(() => {
+    setRigSpeed(0.5)
+  },4000)
 
   function MobileController(){
 
