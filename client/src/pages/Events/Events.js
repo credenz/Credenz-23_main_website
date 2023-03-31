@@ -448,9 +448,9 @@ const handelSubmit = (eventId) =>{
                 </div>
                 <p>{data.heading}</p>
                 <div className="modalbutton">
-                  <button className="hover "  onClick={() => setDetails(0)}>Info</button>
-                  <button className="hover" onClick={() => setDetails(1)}>Rules</button>
-                  <button className="hover" onClick={() => setDetails(2)}>Structure</button>
+                  <button className={Details===0?"active":"hover "}  onClick={() => setDetails(0)}>Info</button>
+                  <button className={Details===1?"active":"hover "} onClick={() => setDetails(1)}>Rules</button>
+                  <button className={Details===2?"active":"hover "} onClick={() => setDetails(2)}>Structure</button>
                   {/* <button onClick={() => setDetails(3)}>Create Team</button> */}
                 </div>
 

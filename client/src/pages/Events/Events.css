@@ -837,6 +837,9 @@ img {
 padding: 10px 15px;
 
 }
+.modalbutton .active{
+  background-color: #7a047a;
+}
 .modalbutton .hover:hover {
   background-color: #7a047a;
 }
