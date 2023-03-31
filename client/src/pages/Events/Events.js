@@ -375,8 +375,14 @@ const handelSubmit = (eventId) =>{
         setLoaderStatus(false);
         // Uncomment for live results
         // eventStatus();
-    },2000)
+    },1000)
   },[]) // eslint-disable-line react-hooks/exhaustive-deps
+  
+  // useEffect(() => {
+  //   document.addEventListener('DOMContentLoaded', () => {
+  //     setLoaderStatus(false);
+  //   });
+  // }, []);
   return (
     
       loaderStatus
