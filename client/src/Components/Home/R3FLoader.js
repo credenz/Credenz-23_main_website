@@ -1,10 +1,14 @@
 import { Html, useProgress } from "@react-three/drei";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../loader/Loader.css"
 import rocket from "../../images/rocket.svg"
 
 export default function R3FLoader() {
   const { active, progress, errors, item, loaded, total } = useProgress();
+  const [percent, setPercent] = useState(0)
+  useEffect(() => {
+    setPercent(Math.max(percent,Math.round(progress)));
+  }, [percent, progress])
   // return <Html center>{progress} % loaded</Html>
   return (
     <Html center>
@@ -21,7 +25,7 @@ export default function R3FLoader() {
             />
           </div>
           <div class="text-container">
-            <h2>{Math.round(progress)}%</h2>
+            <h2>{percent}%</h2>
           </div>
           <div class="smoke">
             <span hidden></span>
