@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import Scrollbars from "react-custom-scrollbars-2";
 
 import "./Events.css";
-
+import Loader from "../../Components/loader/Loader";
 import Clash from "../../images/clash.png";
 import RC from "../../images/rc.png";
 import NTH from "../../images/nth.png";
@@ -23,6 +23,7 @@ import EventSky from "./EventSky";
 import Requests from "../../api/requests";
 
 const Events = () => {
+  const [loaderStatus, setLoaderStatus] = useState(true);
   const { cart, addtocart } = useCartContext();
   const [Details, setDetails] = useState(0);
   const [eventid, seteventid] = useState();
@@ -369,9 +370,20 @@ const handelSubmit = (eventId) =>{
   // useEffect(() => {
   //   eventList();
   // }, []);
-
+  useEffect(() => {
+    setTimeout(()=>{
+        setLoaderStatus(false);
+        // Uncomment for live results
+        // eventStatus();
+    },2000)
+  },[]) // eslint-disable-line react-hooks/exhaustive-deps
   return (
-    <>
+    
+      loaderStatus
+        ?
+        <Loader/>
+        :
+        <>
       {/* <EventSky> */}
       <div className="st">
         <div id="stars"></div>

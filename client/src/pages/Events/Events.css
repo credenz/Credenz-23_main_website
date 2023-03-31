@@ -797,7 +797,7 @@ img {
   border-image-source: url("../../images/eventborder.png");
   border-image-slice: 245;
   border-image-width: 375px;
-  border-image-outset: 9;
+  border-image-outset: 6;
   left: -1px;
   border-image-repeat: none;
   border-style: solid;
