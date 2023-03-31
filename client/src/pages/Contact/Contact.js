@@ -18,15 +18,15 @@ export default function Contact() {
                   alt=""
                 />
               </div>
-              <h3>kim Jong</h3>
+              <h3>Nidhi Yadav</h3>
               <div class="icons">
-                <a href="/#" alt="">
+                <a href="tel:+91 8767887493" alt="">
                   <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
-                <a href="/#" alt="">
+                <a href="https://www.linkedin.com/in/nidhi-p-yadav" alt="" target={"_blank"}>
                   <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
-                <a href="/#" alt="">
+                <a href="mailto:nidhiprashantyadav1904@gmail.com" alt="">
                   <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
@@ -43,22 +43,22 @@ export default function Contact() {
                   alt=""
                 />
               </div>
-              <h3>xi jinping</h3>
+              <h3>Harsh The Simp Bhat</h3>
 
               <div class="icons">
-                <a href="/#" alt="">
+                <a href="tel:+91 8983594252" alt="">
                   <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
-                <a href="/#" alt="">
+                <a href="https://www.linkedin.com/in/harshbhat/" alt="" target={"_blank"}>
                   <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
-                <a href="/#" alt="">
+                <a href="mailto:harshbhat83@gmail.com" alt="">
                   <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
           </div>
-          <div class="column">
+          {/* <div class="column">
             <div class="card"  data-aos="zoom-out" >
               <div class="img-container">
                 <img
@@ -80,7 +80,7 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="contact-container"  >
           {/* feedback form  */}
