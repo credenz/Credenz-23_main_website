@@ -887,6 +887,28 @@ height: 85%;
   /* white-space: break-spaces; */
 }
 
+.modalclose{
+  position: absolute;
+  margin: 20px 15px;
+
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+
+.modalclose button {
+background: none;
+border: none;
+width: 0px;
+}
+
+.modalclose  .cross {
+ font-size: 18px;
+  
+  }
+  
+
 @media screen and (max-width: 545px) {
   .modal-content {
     font-size: 10px;
@@ -894,6 +916,17 @@ height: 85%;
     padding: 2px;
     /* border-image-outset: 5; */
   }
+  .modalclose{
+    position: absolute;
+    margin: 15px 15px;
+  
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+
+  
   .modalbody {
     font-size: 12px;
     letter-spacing: 1px;
@@ -919,6 +952,14 @@ height: 85%;
     width: 70px;
     padding: 3px;
   }
+
+  .modalclose button {
+    background: none;
+    border: none;
+    width: 0px;
+    margin: 0 5px;
+    padding: 0;
+    }
 }
 
 .eventpage {

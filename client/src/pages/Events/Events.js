@@ -443,6 +443,14 @@ const handelSubmit = (eventId) =>{
             return (
          
               <div className="modal-content" key={data.id} data-aos="fade-in"  data-aos-duration="500" >
+
+              <div className="modalclose">
+              <div className="">
+                <button  onClick={closeModal}><i class="fa fa-times cross" aria-hidden="true"></i></button>
+                
+                </div>
+                </div>
+
                 <div className="modalimage">
                   <img src={data.image} alt="" />
                 </div>
@@ -590,9 +598,9 @@ const handelSubmit = (eventId) =>{
                     }
                   >SUBMIT</button>
                 </div> */}
-                <div className="close">
+                {/* <div className="modalclose">
                 <button  onClick={closeModal}>CLOSE</button>
-                </div>
+                </div> */}
               </div>
               
             );
