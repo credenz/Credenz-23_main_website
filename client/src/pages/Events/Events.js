@@ -431,7 +431,7 @@ const handelSubmit = (eventId) =>{
                 <div className="modalbutton">
                   <button onClick={() => setDetails(0)}>Info</button>
                   <button onClick={() => setDetails(1)}>Rules</button>
-                  <button onClick={() => setDetails(2)}>Stucture</button>
+                  <button onClick={() => setDetails(2)}>Structure</button>
                   {/* <button onClick={() => setDetails(3)}>Create Team</button> */}
                 </div>
 
