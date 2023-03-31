@@ -73,7 +73,7 @@ import LinkedIn from "../../images/linkedin.png";
         </a>
         <div className="terms col-md-4">
           <NavLink to={"/team"} className="terms-text">
-            Designed & Developed By :  <span  > WEB TEAM </span>
+            Designed & Developed By :  <span  > Web Team </span>
           </NavLink>
         </div>
         <div className="social-wrapper col-md-4">

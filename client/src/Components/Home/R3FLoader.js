@@ -7,7 +7,7 @@ export default function R3FLoader() {
   const { active, progress, errors, item, loaded, total } = useProgress();
   const [percent, setPercent] = useState(0)
   useEffect(() => {
-    setPercent(Math.max(percent,Math.round(progress)));
+    setPercent(progress < 99 ? Math.max(percent,Math.round(progress)): 99);
   }, [percent, progress])
   // return <Html center>{progress} % loaded</Html>
   return (

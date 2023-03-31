@@ -211,6 +211,7 @@ const handelSubmit = (eventId) =>{
         3 : "The second round will consist of a two-hour descriptive logical reasoning interview.",
         4 : "Enigma Wildcard is conducted specially for PICT students whose winners are directly promoted to Round 2 of the event free of cost.",
         },	
+        id: "6",
         amount: "To be declared soon",
         count: 1,
         team: "Maximum 2 players are allowed",
