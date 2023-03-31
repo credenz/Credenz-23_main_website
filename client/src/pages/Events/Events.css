@@ -789,9 +789,10 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80vw;
+  width: 70vw;
+  height: 500px;
   /* height: 90vh; */
-  padding: 10px;
+  padding: 40px;
   /* border-image-source: url("../../../public/assets/images/eventborder.png"); */
   border-image-source: url("../../images/eventborder.png");
   border-image-slice: 245;
@@ -833,8 +834,8 @@ img {
   background-color: rgb(55, 1, 55);
   border-radius: 3px;
   margin: 5px 15px;
-  width: 150px;
-  padding: 5px;
+  width: 105px;
+  padding: 0px;
 }
 
 .modal-content button:disabled,
@@ -846,51 +847,56 @@ button[disabled]
 }
 
 
-
 .modalbody {
   font-size: 16px;
   letter-spacing: 1.5px;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-
-  margin: 10px 0 10px 0;
-  padding: 12px;
+  align-items: center; */
+height: 85%;
+  /* margin: 10px 0 10px 0;
+  padding: 12px; */
+  overflow-y: scroll;
 }
 
 .modalbody p {
   font-size: 16px;
   letter-spacing: 1.5px;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  /* white-space: break-spaces; */
 }
 
 @media screen and (max-width: 545px) {
   .modal-content {
     font-size: 10px;
-
+    width: 90vw;
     padding: 2px;
   }
   .modalbody {
     font-size: 12px;
     letter-spacing: 1px;
 
-    max-height: 30vh;
+    /* max-height: 30vh; */
     height: 100%;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   }
 
   .modalbody p {
     font-size: 13px;
     letter-spacing: 1.2px;
+    /* padding: 20px; */
   }
+  /* .modalbody p ol{
+   margin-top: 30px;
+  } */
 
   .modal-content button {
     
-    font-size: 12px;
-    margin: 2px 2px;
-    width: 100px;
+    font-size: 14px;
+    margin: 2px 5px;
+    width: 70px;
     padding: 3px;
   }
 }

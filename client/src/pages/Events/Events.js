@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
+import Scrollbars from "react-custom-scrollbars-2";
 
 import "./Events.css";
 
@@ -421,6 +422,7 @@ const handelSubmit = (eventId) =>{
         {details.map((data) => {
           if (eventid && data.id === eventid)
             return (
+         
               <div className="modal-content" key={data.id} data-aos="fade-in"  data-aos-duration="500" >
                 <div className="modalimage">
                   <img src={data.image} alt="" />
@@ -434,8 +436,8 @@ const handelSubmit = (eventId) =>{
                 </div>
 
                 <div className="modalbody">
-                  <p>{Details === 0 && data.body}</p>
-                  <p>
+                  <p className="text-center" style={{marginTop:"30px"}} >{Details === 0 && data.body}</p>
+                  <p >
                   {
                     Details === 1 && data.rules
                     ?   
@@ -450,7 +452,7 @@ const handelSubmit = (eventId) =>{
                     <></>
                   }
                   </p>
-                  <p>
+                  <p >
                   {
                     Details === 2 && data.structure
                     ?
@@ -571,6 +573,7 @@ const handelSubmit = (eventId) =>{
                 </div> */}
                 <button onClick={closeModal}>CLOSE</button>
               </div>
+              
             );
         })}
       </Modal>
