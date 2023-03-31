@@ -6,6 +6,7 @@ import Temp from './Temp'
 import Loader from '../loader/Loader'
 import './Home.css'
 import './toggle.css'
+import R3FLoader from './R3FLoader'
 
 export default function Home() {
   const [explore3D, setExplore3D] = useState(false)
@@ -31,11 +32,11 @@ export default function Home() {
     </>
   )
 }
-function R3FLoader() {
-  const { active, progress, errors, item, loaded, total } = useProgress()
-  // return <Html center>{progress} % loaded</Html>
-  return <Html ><Loader props={progress}/></Html>
-}
+// function R3FLoader() {
+//   const { active, progress, errors, item, loaded, total } = useProgress()
+//   // return <Html center>{progress} % loaded</Html>
+//   return <Html center><Loader props={progress}/></Html>
+// }
 
 
 
