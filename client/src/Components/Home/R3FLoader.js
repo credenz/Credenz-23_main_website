@@ -1,7 +1,7 @@
 import { Html, useProgress } from "@react-three/drei";
 import React from "react";
 import "../loader/Loader.css"
-import rocket from "../../images/rocket.png"
+import rocket from "../../images/rocket.svg"
 
 export default function R3FLoader() {
   const { active, progress, errors, item, loaded, total } = useProgress();

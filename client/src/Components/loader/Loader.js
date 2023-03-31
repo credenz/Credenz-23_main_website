@@ -1,6 +1,6 @@
 import React from 'react'
 import './Loader.css'
-import rocket from '../../images/rocket.png';
+import rocket from '../../images/rocket.svg';
 
 export default function Loader(props) {
    console.log(props.progress)

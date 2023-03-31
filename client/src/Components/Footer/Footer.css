@@ -173,6 +173,13 @@
     .social-wrapper {
       margin: 10px 0;
     }
+    .terms-text {
+      cursor: pointer;
+      text-decoration: none !important;
+      text-decoration-thickness: 0;
+      color: white;
+      font-size: 12px;
+    }
   }
   
   @media (max-width: 375px) and (min-width: 320px) {
@@ -185,6 +192,7 @@
       margin-left: 0;
       transform: translateX(0);
     }
+    
   }
   
   
