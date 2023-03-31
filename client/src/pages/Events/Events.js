@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
+import Scrollbars from "react-custom-scrollbars-2";
 
 import "./Events.css";
 
@@ -105,7 +106,7 @@ const handelSubmit = (eventId) =>{
         body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges,carefully designed to assess your command over programming in the language of your choice- Python, C or C++. Showcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.",
         id: "1",
         structure:
-          "carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+          "Carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
         rules : { 1 : "MCQs based on coding concepts in C/C++ and python. (Python, C/C++ for FE and C/C++ for SE, TE and BE)",
         2 : "A 28-minute game for a person or a team of two people.",
         3 : "Teams or players are not allowed to use any IDE or software once the game has started.",
@@ -428,6 +429,7 @@ const handelSubmit = (eventId) =>{
         {details.map((data) => {
           if (eventid && data.id === eventid)
             return (
+         
               <div className="modal-content" key={data.id} data-aos="fade-in"  data-aos-duration="500" >
                 <div className="modalimage">
                   <img src={data.image} alt="" />
@@ -441,8 +443,8 @@ const handelSubmit = (eventId) =>{
                 </div>
 
                 <div className="modalbody">
-                  <p>{Details === 0 && data.body}</p>
-                  <p>
+                  <p className="text-center" style={{marginTop:"30px"}} >{Details === 0 && data.body}</p>
+                  <p >
                   {
                     Details === 1 && data.rules
                     ?   
@@ -457,7 +459,7 @@ const handelSubmit = (eventId) =>{
                     <></>
                   }
                   </p>
-                  <p>
+                  <p >
                   {
                     Details === 2 && data.structure
                     ?
@@ -578,6 +580,7 @@ const handelSubmit = (eventId) =>{
                 </div> */}
                 <button onClick={closeModal}>CLOSE</button>
               </div>
+              
             );
         })}
       </Modal>
