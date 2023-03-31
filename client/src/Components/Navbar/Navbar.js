@@ -583,6 +583,10 @@ const NavbarCustom = (props) => {
                 }}
                 className={`header-title ${page === "/" ? "activeLink" : ""}`}
                 onClick={() => {
+                  window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/'
+                  :
                   setPage("/");
                   handleCollapse();
                 }}
@@ -597,6 +601,10 @@ const NavbarCustom = (props) => {
                 isActive={() => page === "/events"}
                 className="header-title"
                 onClick={() => {
+                  window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/events'
+                  :
                   setPage("/events");
                   handleCollapse();
                 }}
@@ -611,6 +619,10 @@ const NavbarCustom = (props) => {
                 isActive={() => page === "/about"}
                 className="header-title"
                 onClick={() => {
+                  window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/about'
+                  :
                   setPage("/about");
                   handleCollapse();
                 }}
@@ -624,6 +636,10 @@ const NavbarCustom = (props) => {
                 isActive={() => page === "/contact"}
                 className="header-title"
                 onClick={() => {
+                  window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/contact'
+                  :
                   setPage("/contact");
                   handleCollapse();
                 }}
