@@ -1,90 +1,93 @@
 import React from "react";
 import Cname from "./Cname";
+import Nidhi from "./nidhi.jpg"
+import Harsh from "./harsh.png"
 import "./Contact.css";
-
+import swal from "sweetalert";
 export default function Contact() {
   return (
     <div className="contact-one" >
       <Cname />
       <section>
-        <div class="row">
-          <div class="column">
-            <div class="card"  data-aos="zoom-out" >
-              <div class="img-container">
+        <div className="row">
+          <div className="column">
+            <div className="card"  data-aos="zoom-out" >
+              <div className="img-container">
                 <img
-                  src=""
+                  src={Nidhi}
                   alt=""
                 />
               </div>
-              <h3>kim Jong</h3>
-              <div class="icons">
-                <a href="/#" alt="">
-                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
+              <h3>Nidhi Yadav</h3>
+              <div className="icons">
+                <a href="tel:+91 8767887493" alt="">
+                  <i className="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
-                <a href="/#" alt="">
-                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                <a href="https://www.linkedin.com/in/nidhi-p-yadav" alt="" target={"_blank"}>
+                  <i className="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
-                <a href="/#" alt="">
-                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                <a href="mailto:nidhiprashantyadav1904@gmail.com" alt="">
+                  <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
           </div>
 
-          <div class="column">
-            <div class="card" data-aos="zoom-out" >
-              <div class="img-container">
+        
+
+          <div className="column">
+            <div className="card"  data-aos="zoom-out" >
+              <div className="img-container">
                 <img
-                  src=""
+                  src={Harsh}
                   alt=""
                 />
               </div>
-              <h3>Donald Trump</h3>
+              <h3>Harsh Bhat</h3>
 
-              <div class="icons">
-                <a href="/#" alt="">
-                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
+              <div className="icons">
+                <a href="tel:+91 8983594252" alt="">
+                  <i className="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
-                <a href="/#" alt="">
-                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                <a href="https://www.linkedin.com/in/harshbhat/" alt="" target={"_blank"}>
+                  <i className="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
-                <a href="/#" alt="">
-                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                <a href="mailto:harshbhat83@gmail.com" alt="">
+                  <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
           </div>
-
-          <div class="column">
-            <div class="card"  data-aos="zoom-out" >
-              <div class="img-container">
+          {/* <div className="column">
+            <div className="card"  data-aos="zoom-out" >
+              <div className="img-container">
                 <img
-                  src=""
+                  src={Harsh}
                   alt=""
                 />
               </div>
-              <h3>xi jinping</h3>
+              <h3>Chu</h3>
 
-              <div class="icons">
+              <div className="icons">
                 <a href="/#" alt="">
-                  <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-phone-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="/#" alt="">
-                  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-linkedin-square fa-lg" aria-hidden="true"></i>
                 </a>
                 <a href="/#" alt="">
-                  <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                  <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="contact-container"  >
           {/* feedback form  */}
 
           <div className="form-container" data-aos="fade-right" >
             <h3>FeedBack</h3>
-            <form action="" className="contact-form">
+            <form action="" className="contact-form" onSubmit={(e)=>{e.preventDefault();swal("Your feedback has been succesfully submitted!", "", "success");}}>
               <input type="text" placeholder="Enter Name" required />
               <input
                 type="email"
@@ -100,7 +103,7 @@ export default function Contact() {
                 rows="10"
                 placeholder="Write Message"
               ></textarea>
-              <input type="submit" value="submit" class="send-button" />
+              <input type="submit" value="submit" className="send-button" />
             </form>
           </div>
           {/* map */}

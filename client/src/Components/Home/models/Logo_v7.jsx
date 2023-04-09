@@ -13,11 +13,18 @@ export function LogoV7(props) {
   const logoTexture = useTexture('/models/v7/textures/logo.png')
   const navTexture = useTexture('/models/v7/textures/nav.png')
   const satelliteTexture = useTexture('/models/v7/textures/satellite.png')
-  const spaceshipTexture = useTexture('/models/v7/textures/spaceship.png')
+  // const spaceshipTexture = useTexture('/models/v7/textures/spaceship.png')
   const stonesTexture = useTexture('/models/v7/textures/stones.png')
   const terrain1Texture = useTexture('/models/v7/textures/terrain_1.png')
-  const terrain2Texture = useTexture('/models/v7/textures/terrain2.png')
+  // const terrain2Texture = useTexture('/models/v7/textures/terrain2.png')
   const tilesTexture = useTexture('/models/v7/textures/tiles.png')
+
+
+  function signboard(){
+    return <>
+      
+    </>
+  }
 
   return (
     <group {...props} dispose={null}>
@@ -42,35 +49,22 @@ export function LogoV7(props) {
       <mesh geometry={nodes.Gems.geometry} material={nodes.Gems.material} position={[-2.03, -0.05, 27.25]} rotation={[Math.PI / 2, 0, Math.PI]} >
         <meshBasicMaterial map={gemTexture} map-flipY={false} />
       </mesh>
-      <mesh geometry={nodes.Terrain_002.geometry} material={nodes.Terrain_002.material} position={[-26.3, -15.35, -130.37]} rotation={[0.4, 0.54, -0.39]} >
+      {/* <mesh geometry={nodes.Terrain_002.geometry} material={nodes.Terrain_002.material} position={[-26.3, -15.35, -130.37]} rotation={[0.4, 0.54, -0.39]} >
         <meshBasicMaterial map={terrain2Texture} map-flipY={false} />
-      </mesh>
+      </mesh> */}
       <mesh geometry={nodes.Cylinder.geometry} material={nodes.Cylinder.material} position={[3.19, 1.15, 4.32]} rotation={[1.59, 0, 1.4]} scale={0.47} >
         <meshBasicMaterial map={satelliteTexture} map-flipY={false} />
       </mesh>
-      <mesh geometry={nodes.Spaceship.geometry} material={nodes.Spaceship.material} position={[0.01, 1.2, 18.48]} rotation={[0.03, 0.61, -1.62]} scale={[0.14, 0.16, 0.14]} >
+      {/* <mesh geometry={nodes.Spaceship.geometry} material={nodes.Spaceship.material} position={[0.01, 1.2, 18.48]} rotation={[0.03, 0.61, -1.62]} scale={[0.14, 0.16, 0.14]} >
         <meshBasicMaterial map={spaceshipTexture} map-flipY={false} />
-      </mesh>
-      <mesh geometry={nodes.Nav001.geometry} material={nodes.Nav001.material} position={[-3.57, 2.01, 5.54]} rotation={[0, 0.61, 0]} scale={0.8} >
-        <meshBasicMaterial map={navTexture} map-flipY={false} />
-      </mesh>
-      <mesh geometry={nodes.Nav_003.geometry} material={nodes.Nav_003.material} position={[-3.57, 1.3, 5.54]} rotation={[0, 0.61, 0]} scale={0.8} >
-        <meshBasicMaterial map={navTexture} map-flipY={false} />
-      </mesh>
-      <mesh geometry={nodes.Nav_004.geometry} material={nodes.Nav_004.material} position={[-3.57, 0.98, 5.54]} rotation={[0, 0.61, -3.08]} scale={0.8} >
-        <meshBasicMaterial map={navTexture} map-flipY={false} />
-      </mesh>
-      <mesh geometry={nodes.Nav_002.geometry} material={nodes.Nav_002.material} position={[-3.57, 1.69, 5.54]} rotation={[0, 0.61, 0]} scale={0.8} >
-        <meshBasicMaterial map={navTexture} map-flipY={false} />
-      </mesh>
-      <mesh geometry={nodes.Nav_005.geometry} material={nodes.Nav_005.material} position={[-3.57, 0.6, 5.54]} rotation={[0, 0.61, -0.04]} scale={0.8} >
-        <meshBasicMaterial map={navTexture} map-flipY={false} />
-      </mesh>
-      <mesh geometry={nodes.NavStand.geometry} material={nodes.NavStand.material} position={[-3.52, 2.4, 5.56]} rotation={[0, 0.61, 0]} scale={0.8} >
-        <meshBasicMaterial map={navTexture} map-flipY={false} />
-      </mesh>
+      </mesh> */}
+      
     </group>
   )
+
+  
 }
+
+
 
 useGLTF.preload('/models/v7/scene.glb')

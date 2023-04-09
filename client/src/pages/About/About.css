@@ -18,11 +18,12 @@
   justify-content: center;
   align-items: center;
  
-    background-image: url(../../../public/assets/images/Sky.png);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 0;
+  /* background-image: url("../../../public/assets/images/bgspace.webp"); */
+  background-image: url("../../images/about-bg.jpeg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 0;
 
 
 
@@ -56,10 +57,11 @@
 
 .about .aboutus {
   /* margin: 80px 0 10px 0; */
+  padding-bottom: 20vh;
 }
 
 .about .aboutus h1 {
-  font-size: 60px;
+  font-size: 100px;
 }
 .about .ieee {
   display: flex;
@@ -79,7 +81,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 30px;
+  padding: 20px;
 }
 .left-1 img {
   width: 100%;
@@ -97,7 +99,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 30px;
+  padding: 20px;
   width: 70%;
 }
 
@@ -106,7 +108,7 @@
   align-items: center;
   justify-content: center;
   width: 70%;
-  padding: 0 30px;
+  padding: 20px;
 }
 .about .right-2 {
   display: flex;
@@ -126,11 +128,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 30px;
+  /* padding: 20px; */
 }
 .about .left-3 img {
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  height: 350px;
 }
 
 .about .right-3 {
@@ -138,7 +140,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 30px;
+  padding: 20px;
 }
 
 .about .image-ab {
@@ -167,8 +169,8 @@
     } */
 
   .about .left-1 img {
-    width: 430px;
-    height: 150px;
+    width: 230px;
+    height: 295px;
   }
 
   .about .right-1 {
@@ -233,7 +235,7 @@
   }
 
   .about .aboutus h1 {
-    font-size: 50px;
+    font-size: 100px;
   }
 
   /* .l-1{
@@ -246,8 +248,8 @@
     } */
 
   .about .left-1 img {
-    width: 240px;
-    height: 95px;
+    width: 215px;
+    height: 230px;
   }
 
   .about .right-1 {
@@ -288,7 +290,7 @@
     width: 90%;
   }
   .about .left-3 img {
-    width: 270px;
+    width: 250px;
     height: 285px;
   }
 }
@@ -362,4 +364,12 @@
 .our-clients ul li:hover img:nth-child(2) {
   transform: translateY(-100%);
   transition: 0.5s;
+}
+
+
+@media only screen and (max-width: 767px){
+.banner h1{
+  font-size: 50px;
+}
+
 }

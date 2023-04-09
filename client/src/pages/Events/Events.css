@@ -17,9 +17,15 @@
   min-height: 90vh;
   max-width: 100vw;
   overflow: hidden;
-  background: url("../../../public/assets/images/astronaut.png") no-repeat center
+  /* background: url("../../../public/assets/images/astronaut.png") no-repeat center
+    center fixed; */
+    
+    /* background: rgb(36,0,9);
+    background: linear-gradient(180deg, rgba(36,0,9,1) 42%, rgba(54,25,39,1) 73%, rgba(80,19,44,1) 100%); */
+    /* background: url("../../../public/assets/images/bgspace.jpg") no-repeat center */
+    background: url("../../images/bgspace.jpg") no-repeat center
     center fixed;
-    background-position: right 45% bottom 90%;
+    background-position: right 47% bottom 90%;
 }
 
 .eventpage button {
@@ -602,7 +608,7 @@
     letter-spacing: 2px;
     background: url("./bg.jpg"); */
 
-  min-height: 95vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -617,7 +623,8 @@
   -o-background-size: cover;
   background-size: cover;
   z-index: 10;
-  border-image-source: url(../../../public/assets/images/eww.png);
+  /* border-image-source: url(../../../public/assets/images/eww.png); */
+  border-image-source: url(../../images/eww.png);
   /* border-image-source: url(/whitespace.png); */
   border-image-slice: 212;
   border-image-width: 265px;
@@ -628,8 +635,19 @@
   position: relative;
   padding: 6.5rem 0.5rem 8.7rem;
   /* min-height: 90vh; */
+  animation: eventpage 5s ease-in-out infinite;
 }
-
+/* @keyframes eventpage {
+  0% {
+    transform: translateY(4px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+} */
 
 
 .eventpage .container{
@@ -638,9 +656,10 @@ margin-top: 35px;
 
 .main {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  
 }
 
 .eventslist {
@@ -653,7 +672,8 @@ margin-top: 35px;
 }
 .outer {
   z-index: 10;
-  background-image: url("../../../public/assets/images/eventborder.png");
+  /* background-image: url("../../../public/assets/images/eventborder.png"); */
+  background-image: url("../../images/eventborder.png");
   /* box-shadow: 0px 0px 6px 2px purple; */
   background-size: contain;
   background-repeat: no-repeat;
@@ -661,7 +681,7 @@ margin-top: 35px;
   width: 135px;
   height: 135px;
   /* margin: 5% auto; */
-  margin: 20px 40px;
+  margin: 9px 41px;
   position: relative;
   transition: all 0.2s ease;
 
@@ -680,6 +700,14 @@ margin-top: 35px;
     opacity: 1;
     
 } */
+
+.outer:hover{
+  transform: scale(1.05);
+box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+  
+    
+}
 
 .wrapper-new {
   width: 91%;
@@ -750,7 +778,7 @@ img {
   .outer {
     width: 115px;
     height: 115px;
-    margin: 10px 5px;
+    margin: 17px 10px;
   }
 
   .eventpage {
@@ -769,14 +797,15 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80vw;
+  width: 70vw;
+  height: 500px;
   /* height: 90vh; */
-  padding: 10px;
-  border-image-source: url("../../../public/assets/images/eventborder.png");
- 
+  padding: 40px;
+  /* border-image-source: url("../../../public/assets/images/eventborder.png"); */
+  border-image-source: url("../../images/eventborder.png");
   border-image-slice: 245;
   border-image-width: 375px;
-  border-image-outset: 9;
+  border-image-outset: 8;
   left: -1px;
   border-image-repeat: none;
   border-style: solid;
@@ -804,6 +833,17 @@ img {
 
 }
 
+.info{
+padding: 10px 15px;
+
+}
+.modalbutton .active{
+  background-color: #7a047a;
+}
+.modalbutton .hover:hover {
+  background-color: #7a047a;
+}
+
 .modal-content button {
   display: flex;
   justify-content: center;
@@ -813,8 +853,8 @@ img {
   background-color: rgb(55, 1, 55);
   border-radius: 3px;
   margin: 5px 15px;
-  width: 150px;
-  padding: 5px;
+  width: 105px;
+  padding: 0px;
 }
 
 .modal-content button:disabled,
@@ -826,53 +866,100 @@ button[disabled]
 }
 
 
-
 .modalbody {
   font-size: 16px;
   letter-spacing: 1.5px;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-
-  margin: 10px 0 10px 0;
-  padding: 12px;
+  align-items: center; */
+height: 85%;
+  /* margin: 10px 0 10px 0;
+  padding: 12px; */
+  overflow-y: scroll;
 }
 
 .modalbody p {
   font-size: 16px;
   letter-spacing: 1.5px;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  /* white-space: break-spaces; */
 }
+
+.modalclose{
+  position: absolute;
+  margin: 20px 15px;
+
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+
+.modalclose button {
+background: none;
+border: none;
+width: 0px;
+}
+
+.modalclose  .cross {
+ font-size: 18px;
+  
+  }
+  
 
 @media screen and (max-width: 545px) {
   .modal-content {
     font-size: 10px;
-
+    width: 90vw;
     padding: 2px;
+    /* border-image-outset: 5; */
   }
+  .modalclose{
+    position: absolute;
+    margin: 15px 15px;
+  
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+
+  
   .modalbody {
     font-size: 12px;
     letter-spacing: 1px;
 
-    max-height: 30vh;
+    /* max-height: 30vh; */
     height: 100%;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   }
 
   .modalbody p {
     font-size: 13px;
     letter-spacing: 1.2px;
+    /* padding: 20px; */
   }
+  /* .modalbody p ol{
+   margin-top: 30px;
+  } */
 
   .modal-content button {
     
-    font-size: 12px;
-    margin: 2px 2px;
-    width: 100px;
+    font-size: 14px;
+    margin: 2px 5px;
+    width: 70px;
     padding: 3px;
   }
+
+  .modalclose button {
+    background: none;
+    border: none;
+    width: 0px;
+    margin: 0 5px;
+    padding: 0;
+    }
 }
 
 .eventpage {

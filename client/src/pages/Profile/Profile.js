@@ -28,6 +28,7 @@ const Profile = () => {
         await Requests.profile({token:localStorage.getItem('token')})
         .then((res)=>{
             console.log(res);
+            setData(res.data);
         })
         .catch((err)=>{
             console.log(err)
@@ -35,7 +36,7 @@ const Profile = () => {
     }
     useEffect(()=>{
         fetchProfile();
-        setData({username:'neil_reac',first_name:'Neil',last_name:'Armstrrong',email:'wasd@gmail.com',phone:1233211231,institute:'Pune Institute Of Computer Technology',coins:200,referral:'JOBHIHO',order:[{date:'23/3/23',eventName:'CLASH',paymentStatus:'Under Review'},{date:'23/3/23',eventName:'RC',paymentStatus:'Successfull'}]})
+        // setData({username:'neil_reac',full_name:'Neil Armstrrong',email:'wasd@gmail.com',phone:1233211231,institute:'Pune Institute Of Computer Technology',coins:200,referral:'JOBHIHO',order:[{date:'23/3/23',eventName:'CLASH',paymentStatus:'Under Review'},{date:'23/3/23',eventName:'RC',paymentStatus:'Successfull'}]})
     },[])
     return (
         <> 
@@ -46,7 +47,10 @@ const Profile = () => {
                     {/* <div className="card-cover" style="background-image: url('https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')"></div> */}
                     {/* <img className="card-avatar" src="https://pbs.twimg.com/profile_images/561338081970638848/Y8lKkD2f_400x400.png" alt="avatar" /> */}
                     <img className="card-avatar" src="https://media.wired.com/photos/5ec6fb698971d7886fd36024/1:1/w_1007,h_1007,c_limit/astronaut-urine-elena-lacey-wired-science.jpg" alt="avatar" />
-                    <h1 className="card-fullname">{data.first_name} {data.last_name}</h1>
+                    <h1 className="card-fullname">
+                    {/* {data.first_name} {data.last_name} */}
+                    {data.full_name}
+                    </h1>
                     <h2 className="card-jobtitle">@{data.username}</h2>
                 </div>
                 <div className="card-main">

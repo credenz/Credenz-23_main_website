@@ -9,7 +9,8 @@
   z-index: 101;
   height: 100vh;
   font-size: 40px;
-  background-image: url(../../../public/assets/images/Sky.png);
+  /* background-image: url("../../../public/assets/images/bgspace.webp"); */
+  background-image: url("../../images/about-bg.jpeg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
