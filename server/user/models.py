@@ -47,6 +47,7 @@ class Event(models.Model):
     group_event = models.BooleanField(default=False, null=True)
     group_size = models.IntegerField(default=0, null=True)
     event_rules =  models.TextField(null=True)
+    event_structure = models.TextField(null=True)
     event_cost = models.IntegerField(default=0)
 
 
