@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import './Profile.css';
+import './Profile.css';
 import Requests from '../../api/requests';
 import Desktop from './Desktop'
 const Profile = () => {
@@ -36,8 +36,8 @@ const Profile = () => {
         })
     }
     useEffect(() => {
-        fetchProfile();
-        // setData({username:'neil_reac',full_name:'Neil Armstrrong',email:'wasd@gmail.com',phone:1233211231,institute:'Pune Institute Of Computer Technology',coins:200,referral:'JOBHIHO',order:[{date:'23/3/23',eventName:'CLASH',paymentStatus:'Under Review'},{date:'23/3/23',eventName:'RC',paymentStatus:'Successfull'}]})
+        // fetchProfile();
+        setData({username:'neil_reac',full_name:'Neil Armstrrong',email:'wasd@gmail.com',phone:1233211231,institute:'Pune Institute Of Computer Technology',coins:200,referral:'JOBHIHO',order:[{date:'23/3/23',eventName:'CLASH',paymentStatus:'Under Review'},{date:'23/3/23',eventName:'RC',paymentStatus:'Successfull'}]})
     },[])
     return (
         <> 
@@ -168,7 +168,7 @@ const Profile = () => {
             </div>
             </div>
             </div>
-            {/* <Desktop/> */}
+            <Desktop/>
         </>
     )
 }
