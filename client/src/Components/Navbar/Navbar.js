@@ -646,7 +646,7 @@ const NavbarCustom = (props) => {
               >
                 Contact
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 key={"login"}
                 activeClassName="activeLink"
                 to={`/login`}
@@ -658,14 +658,14 @@ const NavbarCustom = (props) => {
                 className="header-title"
                 // hidden={isLoggedIn ? true : false}
               >
-                {/* <TextSliced
+                <TextSliced
                 title={isLoggedIn ? (!paymentDone ? "Pay Now" : "") : "Login"}
                 activeLink={page === "/login"}
-              /> */}
+              />
                 Login
-              </NavLink>
+              </NavLink> */}
 
-              <NavLink
+              {/* <NavLink
                 key={"profile"}
                 activeClassName="activeLink"
                 to={`/profile`}
@@ -691,7 +691,7 @@ const NavbarCustom = (props) => {
                 }}
               >
                 Cart
-              </NavLink>
+              </NavLink> */}
               {/* {isLoggedIn && (
                 <>
                   <div
