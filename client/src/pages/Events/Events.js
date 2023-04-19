@@ -372,8 +372,6 @@ const handelSubmit = (eventId) =>{
   useEffect(() => {
     setTimeout(()=>{
         setLoaderStatus(false);
-        // Uncomment for live results
-        // eventStatus();
     },1000)
   },[]) // eslint-disable-line react-hooks/exhaustive-deps
   
@@ -497,7 +495,7 @@ const handelSubmit = (eventId) =>{
                     <></>
                   }
                   </p>
-                  {/* {Details === 3 && (
+                  {Details === 3 && (
                     <div className="members">
                       <p>{data.team}</p>
                       <form className="" autoComplete="off">
@@ -541,30 +539,16 @@ const handelSubmit = (eventId) =>{
                               </div>
                             );
                           })}
-                          {data.max> player[data.id].length   && (
-                                    <button
-                                      type="button"
-                                      onClick={() => handleplayerAdd(data.id)}
-                                      className="add-btn"
-                                    >
-                                      <span>Add a player</span>
-                                    </button>   
-                                  )}
+                          
                         </div>
                         
                         <div className="output">
-        <h2>Output</h2>
-        {player &&
-          player.map((singleplayer, index) => (
-            <ul key={index}>
-              {singleplayer.player && <li>{singleplayer.player}</li>}
-            </ul>
-          ))}
+        <h2>Bact to teams</h2>
       </div>
                         
                       </form>
                     </div>
-                  )} */}
+                  )}
                 </div>
 
                 {/* <div className="modalbutton">
