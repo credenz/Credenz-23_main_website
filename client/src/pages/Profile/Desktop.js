@@ -67,6 +67,8 @@ const Desktop = ({ data }) => {
     };
     const [selected, setSelected] = useState(0);
     const [teamVisible, setTeamVisible] = useState(0);
+    const [eventSelected, setEvnentSelected] = useState(101);
+    const teamEvents=[{id:101,name:'Clash'},{id:102,name:'RC'},{id:103,name:'Enigma'},{id:104,name:'B-plan'}]
     console.log(data)
     // const data=props;
     return (
@@ -107,7 +109,7 @@ const Desktop = ({ data }) => {
                 <nav>
                     <ul class="repo-nav">
                         <li className={selected === 0 ? 'is-active' : ''} onClick={() => setSelected(0)}><button >Tickets</button></li>
-                        <li className={selected === 1 ? 'is-active' : ''} onClick={() => setSelected(1)}><button >My Team</button></li>
+                        <li className={selected === 1 ? 'is-active' : ''} onClick={() => setSelected(1)}><button >Team</button></li>
                         <li className={selected === 2 ? 'is-active' : ''} onClick={() => setSelected(2)}><button >Referral</button></li>
                         {/* <li>Followers</li>
                <li>Following</li> */}
@@ -272,15 +274,20 @@ const Desktop = ({ data }) => {
                         selected === 1
                             ?
                             <section className='desktopProfile-section'>
+                                                <div style={{ 'display': 'inline-block','width':'fitContent' }} className='teamJoin'>
+                                                <button onClick={() => (setTeamVisible(0))} style={{'width':'fit-content'}}>My Teams</button></div>
+                                                <div className='teamJoin' style={{ 'display': 'inline-block' }}>
+                                                    <button onClick={() => (setTeamVisible(1))} style={{'width':'fit-content'}}>Create Team</button>
+                                                </div>
+                                                <div className='teamJoin' style={{ 'display': 'inline-block','width':'fitContent' }}>
+                                                    <button onClick={() => (setTeamVisible(2))} style={{'width':'fit-content'}}>JOIN Team</button>
+                                                </div>
+                                <div style={{'margin':'50px auto 0'}}></div>
                                 {
                                     teamVisible === 0
                                         ?
                                         <div>
                                             <div >
-                                                <div style={{ 'display': 'inline-block' }} className='teamHead'>My Teams</div>
-                                                <div className='teamJoin' style={{ 'display': 'inline-block' }}>
-                                                    <button onClick={() => (setTeamVisible(1))}>JOIN Team</button>
-                                                </div>
                                                 <div className="teamList">
                                                     <div class="teamListrow">
                                                         <div class="teamListexample-1 teamListcard">
@@ -308,6 +315,68 @@ const Desktop = ({ data }) => {
                                             </div>
                                         </div>
                                         :
+                                        teamVisible === 1
+                                        ?
+                                        <div className="cmembers">
+                                            <p>{data.team}</p>
+                                            <form className="" autoComplete="off">
+                                                <div className="cform-field">
+                                                    <label htmlFor="player">Select Event</label>
+                                                    <div className="cplayers">
+                                                            {/* <input
+                                                                name="player"
+                                                                type="text"
+                                                                id="player"
+                                                                placeholder="Team Id"
+                                                                value={teamId}
+                                                                onChange={(e) =>
+                                                                    // handleplayerChange(e)
+                                                                    setTeamId(e.target.value)
+                                                                }
+                                                                required
+                                                            /> */}
+                                                            {
+                                                                        teamEvents.map((data,idx)=>{
+                                                                            return (
+                                                        <div className="cfirst-division">
+
+                                                            <input className='cinput' id={idx} type="radio" name="data.name" checked={eventSelected===data.id} onChange={()=>setEvnentSelected(data.id)}/><label for={idx}>{data.name}</label>
+                                                            {/* <input className='cinput'id="rad2" type="radio" name="rad"/><label for="rad2">RC</label> */}
+                                                        </div>
+                                                                            )
+
+                                                                        }
+                                                                    )}
+                                                        <div className="csecond-division">
+                                                            <button
+                                                                type="button"
+                                                                onClick={() =>
+                                                                    // handleplayerRemove(0)
+                                                                    console.log(eventSelected)
+                                                                }
+                                                                className="remove-btn"
+                                                            >
+                                                                <span>Create</span>
+                                                            </button>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                {/* <div className="output">
+                                                    <a href="#" onClick={(e) => { e.preventDefault(); setTeamVisible(0) }}>Back to team</a>
+                                                    {player &&
+                                                player[0].map((singleplayer, index) => (
+                                                    <ul key={index}>
+                                                        {singleplayer.player && <li>{singleplayer.player}</li>}
+                                                    </ul>
+                                                ))}
+                                                </div> */}
+
+                                            </form>
+                                        </div>
+                                        :
                                         <div className="members">
                                             <p>{data.team}</p>
                                             <form className="" autoComplete="off">
@@ -329,7 +398,7 @@ const Desktop = ({ data }) => {
                                                             />
 
                                                         </div>
-                                                        <div className="second-division">
+                                                        <div className="jsecond-division">
                                                             <button
                                                                 type="button"
                                                                 onClick={() =>
@@ -345,15 +414,15 @@ const Desktop = ({ data }) => {
 
                                                 </div>
 
-                                                <div className="output">
+                                                {/* <div className="output">
                                                     <a href="#" onClick={(e) => { e.preventDefault(); setTeamVisible(0) }}>Back to team</a>
-                                                    {/* {player &&
+                                                    {player &&
                                                 player[0].map((singleplayer, index) => (
                                                     <ul key={index}>
                                                         {singleplayer.player && <li>{singleplayer.player}</li>}
                                                     </ul>
-                                                ))} */}
-                                                </div>
+                                                ))}
+                                                </div> */}
 
                                             </form>
                                         </div>

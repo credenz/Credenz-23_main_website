@@ -431,7 +431,8 @@ margin-right: auto;
   top: 70%;
 }
 .teamJoin{
-  margin-left: 50%;
+  margin-left: 18%;
+  width: fit-content;
 }
 .teamHead{
   margin-left: 10%;
@@ -458,8 +459,20 @@ margin-right: auto;
   
 }
 
+.cmembers{
+  /* min-height: 100vh;
+  width: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
 
 .members .form-field {
+  flex: 2;
+}
+.cmembers .cform-field {
   flex: 2;
 }
 .members  .output {
@@ -485,6 +498,15 @@ margin-right: auto;
   color: black;
   border: 1px solid rgb(220, 220, 220);
 }
+.cmembers  .cinput {
+  height: 22px;
+  width: 42%;
+  padding: 7px;
+  outline: none;
+  border-radius: 5px;
+  color: black;
+  border: 1px solid rgb(220, 220, 220);
+}
 
 .members input:focus {
   border: 1px solid rgb(0, 208, 255);
@@ -494,13 +516,31 @@ margin-right: auto;
   display: flex;
   justify-content: space-between;
 }
+/* .cmembers .cplayers {
+  display: flex;
+  justify-content: space-between;
+} */
 .members .first-division {
   display: flex;
   flex-direction: column;
   margin: 0 5px 0.5rem 0;
   width: 100%;
 }
+.cmembers .cfirst-division {
+  /* display: flex;
+  flex-direction: column; */
+  margin: 10px 15px 1.5rem 0;
+  width: 100%;
+}
 .members  button {
+  background: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 2px;
+  padding: 5px 10px;
+}
+.cmembers  button {
   background: none;
   outline: none;
   cursor: pointer;
@@ -516,8 +556,17 @@ margin-right: auto;
   color: rgb(0, 208, 255);
   border: 1px solid rgb(0, 208, 255);
 }
-
 .members .second-division button {
+  color: red;
+  border: 1px solid red;
+  width: 100px;
+}
+.cmembers .csecond-division button {
+  color: red;
+  border: 1px solid red;
+  width: 100px;
+}
+.members .jsecond-division button {
   color: red;
   border: 1px solid red;
   width: 100px;
