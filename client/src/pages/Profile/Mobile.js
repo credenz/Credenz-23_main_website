@@ -1,7 +1,23 @@
 import { useState } from 'react';
 import './Mobile.css';
+import Clash from "../../images/clash.png";
+import RC from "../../images/rc.png";
+import NTH from "../../images/nth.png";
+import WALLSTREET from "../../images/wallstreet.png";
+import BPLAN from "../../images/bplan.png";
+import ENIGMA from "../../images/enigma.png";
+import DATAWIZ from "../../images/datawiz.png";
+import QUIZ from "../../images/quiz.png";
+import PAPER from "../../images/paper.png";
+import CRETRONIX from "../../images/cretronix.png";
+import PIXELATE from "../../images/pixelate.png";
+import WEB from "../../images/webwever.png";
 const Mobile=({data})=>{
+    const [teamId, setTeamId] = useState("");
     const [selected,setSelected] =useState(0);
+    const [teamVisible, setTeamVisible] = useState(0);
+    const [eventSelected, setEvnentSelected] = useState(101);
+    const teamEvents=[{id:101,name:'Clash'},{id:102,name:'RC'},{id:103,name:'Enigma'},{id:104,name:'B-plan'}]
     // const buttons = document.querySelectorAll(".card-buttons button");
     // const sections = document.querySelectorAll(".card-section");
     // const card = document.querySelector(".card");
@@ -102,6 +118,177 @@ const Mobile=({data})=>{
                     </div>
                     <div className={selected===2?"card-section is-active":"card-section"} id="contact">
                         <div className="card-content">
+                            {/* <div className="card-subtitle">REFERRAL</div> */}
+                            <div className="card-contact-wrapper">
+                               
+                                
+                                <div className="card-contact">
+                                <div style={{'marginLeft':'5%','marginRight':'5%'}}>
+                                <section >
+                                                <div style={{ 'display': 'inline-block','width':'fitContent' }} className='pteamJoin'>
+                                                <button onClick={() => (setTeamVisible(0))} style={{'width':'fit-content'}}>My Teams</button></div>
+                                                <div className='pteamJoin' style={{ 'display': 'inline-block' }}>
+                                                    <button onClick={() => (setTeamVisible(1))} style={{'width':'fit-content'}}>Create Team</button>
+                                                </div>
+                                                <div className='pteamJoin' style={{ 'display': 'inline-block','width':'fitContent' }}>
+                                                    <button onClick={() => (setTeamVisible(2))} style={{'width':'fit-content'}}>JOIN Team</button>
+                                                </div>
+                                {
+                                    teamVisible === 0
+                                        ?
+                                        <div>
+                                            <div >
+                                                <div className="teamList">
+                                                    <div class="teamListrow">
+                                                        <div class="teamListexample-1 teamListcard">
+                                                            <div class="teamListwrapper">
+
+                                                                <div class="teamListimage">
+                                                                    <div style={{ 'display': 'flex' }}><img class="teamListbook-image" style={{ 'display': 'inline-block' }}src={Clash} /></div>
+                                                                    <div style={{ 'display': 'flex' }}><p style={{ 'display': 'inline-block' }}>Clash</p></div>
+                                                                </div>
+
+                                                                <div class="teamListdata">
+                                                                    <div class="teamListcontent">
+                                                                        <p class="teamListauthor">Name - chutiya</p>
+                                                                        <p class="teamListauthor">TeAM ID - 2436</p>
+                                                                        <p class="teamListauthor">TeAM Members - chinmay</p>
+                                                                        {/* <h1 class="teamListtitle"><p class="teamListcardTitle">Boxing icon has the will for a couple more fights</p></h1>
+                                                                        <p class="teamListtext">The highly anticipated world championship fight will take place at 10am and is the second major boxing blockbuster in the nation after 43 years.</p> */}
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        :
+                                        teamVisible === 1
+                                        ?
+                                        <div className="pcmembers">
+                                            <p>{data.team}</p>
+                                            <form className="" autoComplete="off">
+                                                <div className="pcform-field">
+                                                    <label htmlFor="player">Select Event</label>
+                                                    <div className="pcplayers">
+                                                            {/* <input
+                                                                name="player"
+                                                                type="text"
+                                                                id="player"
+                                                                placeholder="Team Id"
+                                                                value={teamId}
+                                                                onChange={(e) =>
+                                                                    // handleplayerChange(e)
+                                                                    setTeamId(e.target.value)
+                                                                }
+                                                                required
+                                                            /> */}
+                                                            {
+                                                                        teamEvents.map((data,idx)=>{
+                                                                            return (
+                                                        <div className="pcfirst-division">
+
+                                                            <input className='pcinput' id={idx} type="radio" name="data.name" checked={eventSelected===data.id} onChange={()=>setEvnentSelected(data.id)}/><label for={idx}>{data.name}</label>
+                                                            {/* <input className='cinput'id="rad2" type="radio" name="rad"/><label for="rad2">RC</label> */}
+                                                        </div>
+                                                                            )
+
+                                                                        }
+                                                                    )}
+                                                        <div className="pcsecond-division">
+                                                            <button
+                                                                type="button"
+                                                                onClick={() =>
+                                                                    // handleplayerRemove(0)
+                                                                    console.log(eventSelected)
+                                                                }
+                                                                className="remove-btn"
+                                                            >
+                                                                <span>Create</span>
+                                                            </button>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                {/* <div className="output">
+                                                    <a href="#" onClick={(e) => { e.preventDefault(); setTeamVisible(0) }}>Back to team</a>
+                                                    {player &&
+                                                player[0].map((singleplayer, index) => (
+                                                    <ul key={index}>
+                                                        {singleplayer.player && <li>{singleplayer.player}</li>}
+                                                    </ul>
+                                                ))}
+                                                </div> */}
+
+                                            </form>
+                                        </div>
+                                        :
+                                        <div className="members">
+                                            <p>{data.team}</p>
+                                            <form className="" autoComplete="off">
+                                                <div className="form-field">
+                                                    <label htmlFor="player">Enter Team Id</label>
+                                                    <div className="players">
+                                                        <div className="first-division">
+                                                            <input
+                                                                name="player"
+                                                                type="text"
+                                                                id="player"
+                                                                placeholder="Team Id"
+                                                                value={teamId}
+                                                                onChange={(e) =>
+                                                                    // handleplayerChange(e)
+                                                                    setTeamId(e.target.value)
+                                                                }
+                                                                required
+                                                            />
+
+                                                        </div>
+                                                        <div className="jsecond-division">
+                                                            <button
+                                                                type="button"
+                                                                onClick={() =>
+                                                                    // handleplayerRemove(0)
+                                                                    console.log(teamId)
+                                                                }
+                                                                className="remove-btn"
+                                                            >
+                                                                <span>Join</span>
+                                                            </button>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                {/* <div className="output">
+                                                    <a href="#" onClick={(e) => { e.preventDefault(); setTeamVisible(0) }}>Back to team</a>
+                                                    {player &&
+                                                player[0].map((singleplayer, index) => (
+                                                    <ul key={index}>
+                                                        {singleplayer.player && <li>{singleplayer.player}</li>}
+                                                    </ul>
+                                                ))}
+                                                </div> */}
+
+                                            </form>
+                                        </div>
+                                }
+                            </section>
+                                </div>
+                                </div>
+                                
+                                
+                                {/* <button className="contact-me" >WORK TOGETHER </button> */}
+                            </div>
+                        </div>
+                    </div>
+                    <div className={selected===3?"card-section is-active":"card-section"} id="contact">
+                        <div className="card-content">
                             <div className="card-subtitle">REFERRAL</div>
                             <div className="card-contact-wrapper">
                                
@@ -144,8 +331,9 @@ const Mobile=({data})=>{
                     </div>
                     <div className="card-buttons">
                         <button data-section="#about" className={selected===0?"is-active":""} onClick={()=>{setSelected(0)}}>ABOUT</button>
-                        <button data-section="#experience" className={selected===1?"is-active":""} onClick={()=>{setSelected(1)}}>ORDERS</button>
-                        <button data-section="#contact" className={selected===2?"is-active":""} onClick={()=>{setSelected(2)}}>REFERRAL</button>
+                        <button data-section="#experience" className={selected===1?"is-active":""} onClick={()=>{setSelected(1)}}>TICKETS</button>
+                        <button data-section="#contact" className={selected===2?"is-active":""} onClick={()=>{setSelected(2)}}>TEAM</button>
+                        <button data-section="#contact" className={selected===3?"is-active":""} onClick={()=>{setSelected(3)}}>REFERRAL</button>
                     </div>
                 </div>
             </div>
