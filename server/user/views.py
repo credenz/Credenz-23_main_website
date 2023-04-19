@@ -140,6 +140,11 @@ class PlaceOrderView(generics.CreateAPIView):
             cost += Event.objects.get(id=id).event_cost
         order = serializer.save(amount=cost)
 
+        ref = Referral.objects.filter(referred_user = request.user)
+        coin_user = User.objects.get(id = ref.referrer.id)
+        coin_user.coins += (cost//10)
+        coin_user.save()
+        
         return Response({"transaction_id" : order.transaction_id}, status=status.HTTP_201_CREATED)
     
 # Team event APIs

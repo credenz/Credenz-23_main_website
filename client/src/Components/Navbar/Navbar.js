@@ -156,19 +156,19 @@ const NavbarCustom = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-  const loadScript = (src) => {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = src;
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
-      document.body.appendChild(script);
-    });
-  };
+  // const loadScript = (src) => {
+  //   return new Promise((resolve) => {
+  //     const script = document.createElement("script");
+  //     script.src = src;
+  //     script.onload = () => {
+  //       resolve(true);
+  //     };
+  //     script.onerror = () => {
+  //       resolve(false);
+  //     };
+  //     document.body.appendChild(script);
+  //   });
+  // };
 
   // const iconHelpr = (name) => {
   //   switch (name) {
@@ -385,7 +385,7 @@ const NavbarCustom = (props) => {
   // const handleCloseUPIModal = () => cartContextValue.setUPIModal(false);
   // const handleOpenUPIModal = () => cartContextValue.setUPIModal(true);
 
-  const handleShowMenu = () => setShowMenu(!showMenu);
+  // const handleShowMenu = () => setShowMenu(!showMenu);
 
   // const deleteEventHandler = (name) => {
   //   let cartItems = cartContextValue.cart;
@@ -646,7 +646,7 @@ const NavbarCustom = (props) => {
               >
                 Contact
               </NavLink>
-              {/* <NavLink
+              <NavLink
                 key={"login"}
                 activeClassName="activeLink"
                 to={`/login`}
@@ -658,14 +658,14 @@ const NavbarCustom = (props) => {
                 className="header-title"
                 // hidden={isLoggedIn ? true : false}
               >
-                <TextSliced
+                {/* <TextSliced
                 title={isLoggedIn ? (!paymentDone ? "Pay Now" : "") : "Login"}
                 activeLink={page === "/login"}
-              />
+              /> */}
                 Login
-              </NavLink> */}
+              </NavLink>
 
-              {/* <NavLink
+              <NavLink
                 key={"profile"}
                 activeClassName="activeLink"
                 to={`/profile`}
@@ -691,7 +691,7 @@ const NavbarCustom = (props) => {
                 }}
               >
                 Cart
-              </NavLink> */}
+              </NavLink>
               {/* {isLoggedIn && (
                 <>
                   <div
