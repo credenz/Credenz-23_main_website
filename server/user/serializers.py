@@ -72,25 +72,32 @@ class EventSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     user = UserSerializer()
-    event = EventSerializer(many=True)
+    event = EventSerializer()
     order_date = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S')
     class Meta:
         model = Order
         fields = "__all__"
 
-class PlaceOrderSerializer(serializers.ModelSerializer):
-    event = serializers.ListField(child=serializers.IntegerField())
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+# class PlaceOrderSerializer(serializers.ModelSerializer):
+#     event = serializers.ListField(child=serializers.IntegerField())
+#     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
+#     class Meta:
+#         model = Order
+#         fields = ("user", "transaction_id", "payment", "event")
+
+#     def create(self, validated_data):
+#         event = validated_data.pop("event")
+#         order = Order.objects.create(**validated_data)
+#         order.event.set(event)
+#         return order
+
+class TeamSerializer(serializers.ModelSerializer):
+    event = EventSerializer()
+    user = UserSerializer(many=True)
     class Meta:
-        model = Order
-        fields = ("user", "transaction_id", "payment", "event")
-
-    def create(self, validated_data):
-        event = validated_data.pop("event")
-        order = Order.objects.create(**validated_data)
-        order.event.set(event)
-        return order
+        model = Team
+        fields= "__all__"
 
 class ProfileSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)
@@ -132,3 +139,9 @@ class ReferralCodeVerifySerializer(serializers.Serializer):
             )
 
         return attrs
+
+# offline order serializer
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transaction
+        fields = '__all__'
