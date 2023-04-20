@@ -359,102 +359,6 @@
 			"response": []
 		},
 		{
-			"name": "remove member",
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNDUxOTgwLCJqdGkiOiI1YTU1NjE5ZDc1ODk0NTk4YThkOTkwMmRjNDRiZmRmMCIsInVzZXJfaWQiOjJ9.uSbs1prvWBr4bKCpH9OCPwnyzkDf6_Axh3QcIORwk-c",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "event",
-							"value": "2",
-							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "test2",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{base}}api/remove-member/",
-					"host": [
-						"{{base}}api"
-					],
-					"path": [
-						"remove-member",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "add member",
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNDQzMDUxLCJqdGkiOiJlODM5MDJjNGZjY2U0OWI3ODY2NGNlMWYyMmE3MTNiOSIsInVzZXJfaWQiOjJ9.55XH8rZ8B-yHESa0FU3ZmcnJVrllUW5D83xeZE4OrxU",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "test2",
-							"type": "text"
-						},
-						{
-							"key": "event",
-							"value": "2",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{base}}api/add-member/",
-					"host": [
-						"{{base}}api"
-					],
-					"path": [
-						"add-member",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "verify referral",
 			"request": {
 				"auth": {
@@ -491,6 +395,142 @@
 					],
 					"path": [
 						"referral-verify",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Team Code",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNTY3ODY4LCJqdGkiOiI1NGExZWFhMzAzM2I0YzRiOWE0ZmJmYjBhMGU5Mjc5NiIsInVzZXJfaWQiOjJ9.TMGfCIgEEnJzeqRSA_fwSV3YhRW7c8_FiTQzuaEAn1I",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "event_id",
+							"value": "101",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base}}api/generate-team/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"generate-team",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Join Team",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNTcwMzE4LCJqdGkiOiIyOTBiYmI3OWNhNzU0OWQyOGQ3MDhhMGQyN2VlYzVkYyIsInVzZXJfaWQiOjF9.ouaG4OIyKSWo1kBLWkIv1nChua49ogIaHr-qk9Q0afQ",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "event_id",
+							"value": "101",
+							"type": "text"
+						},
+						{
+							"key": "team_id",
+							"value": "CRZCL01",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base}}api/join-team/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"join-team",
+						""
+					],
+					"query": [
+						{
+							"key": "event_id",
+							"value": "101",
+							"disabled": true
+						},
+						{
+							"key": "team_id",
+							"value": "CRZCL01",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Team",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNTcwMzE4LCJqdGkiOiIyOTBiYmI3OWNhNzU0OWQyOGQ3MDhhMGQyN2VlYzVkYyIsInVzZXJfaWQiOjF9.ouaG4OIyKSWo1kBLWkIv1nChua49ogIaHr-qk9Q0afQ",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}api/view-team/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"view-team",
 						""
 					]
 				}
