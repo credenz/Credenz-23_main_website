@@ -95,7 +95,7 @@ class TeamResource(resources.ModelResource):
 @admin.register(Team)
 class TeamAdmin(ImportExportActionModelAdmin):
     resource_class = TeamResource
-    list_display = ("id", "event_name", "get_user", "team_id")
+    list_display = ("event_name", "users", "team_id")
     search_fields = ("event__event_name", "user__username")
     list_filter = ('event',)
 
@@ -105,9 +105,10 @@ class TeamAdmin(ImportExportActionModelAdmin):
         else:
             return 'NA'
     
-    def get_user(self, obj):
+    def users(self, obj):
         if obj.user:
-            return list(obj.user.all().values_list('username', flat=True))
+            full_names = [f"{user.first_name} {user.last_name}" for user in obj.user.all()]
+            return ", ".join(full_names)
         else:
             return 'NA'
         
@@ -124,7 +125,7 @@ class TransactionResource(resources.ModelResource):
 @admin.register(Transaction)
 class TransactionAdmin(ImportExportActionModelAdmin):
     resource_class = TransactionResource
-    list_display = ("user_name", "transaction_id", "order_date", 'event_list', 'amount')
+    list_display = ("user_name", "transaction_id", "order_date", 'event_list', 'amount', 'payment')
 
     def user_name(self, obj):
         return obj.user.full_name

@@ -139,3 +139,9 @@ class ReferralCodeVerifySerializer(serializers.Serializer):
             )
 
         return attrs
+
+# offline order serializer
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transaction
+        fields = '__all__'

@@ -154,37 +154,14 @@ class GenerateTeamCodeView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        events = {
-            101: "CRZCL",
-            102: "CRZRC",
-            103: "CRZNH",
-            104: "CRZWL",
-            105: "CRZBP",
-            106: "CRZEG",
-            107: "CRZDW",
-            108: "CRZQZ",
-            109: "CRZCT",
-            110: "CRZWW"
-        }
         event = int(request.data['event_id'])
         user = request.user
 
         if Order.objects.get(event=event, user=user):
             if not Team.objects.filter(event=event, user=user):
-                if event in events:
-                    event_prefix = events[event]
-                    prev_team = (Team.objects.filter(event = event).order_by('-team_id')).first()
-                    if prev_team:
-                        team_num = int(prev_team.team_id[len(event_prefix):]) + 1
-                    else:
-                        team_num = 1
-                    new_team_id = f'{event_prefix}{team_num:02}'
-                    new_team = Team.objects.create(event=Event.objects.get(event_id = event), team_id=new_team_id)
-                    new_team.user.add(request.user)
-                    return Response({"message": "team id generated"}, status=status.HTTP_201_CREATED)
-
-                else:
-                    raise ValueError(f"Invalid event code : {event}")
+                new_team = Team.objects.create(event=Event.objects.get(event_id = event))
+                new_team.user.add(request.user)
+                return Response({"message": new_team.team_id}, status=status.HTTP_201_CREATED)
             else:
                 raise ValueError("Team already exists for this user and event.")
         else:
@@ -221,6 +198,8 @@ class TeamView(generics.ListAPIView):
     
 # Offline Register APIs
 class RegisterPlayerView(generics.CreateAPIView):
+    permission_classes = [IsAuthenticated]
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -231,5 +210,41 @@ class RegisterPlayerView(generics.CreateAPIView):
             serializer.save()
             return Response({"message" : "saved"}, status=status.HTTP_201_CREATED)
         
+class OfflineOrderView(generics.GenericAPIView):
+    permission_classes = [IsAuthenticated]
 
+    def post(self, request):
+        order_user = request.data['username']
+        event_list = request.data['event_list']
+        transaction_id = request.data["transaction_id"]
+        amount = request.data["amount"]
+        if request.user__offline_officer:
+            for event in event_list:
+                order = Order(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event), order_taker = request.user__full_name, payment="CO")
+                order.save()
+
+            # add transaction for the complete list of events
+            transaction = Transaction(event_list = event_list, user = User.objects.get(username=order_user), transaction_id = transaction_id, amount=amount, payment ="CO")
+            transaction.save()
+
+            return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
+        
+        raise ValueError("Transaction not allowed")
+
+class TransactionListView(generics.ListAPIView):
+    serializer_class = TransactionSerializer
+    permission_classes = [IsAdminUser]
+    queryset = Team.objects.all()
+
+class TransactionConfirmView(generics.GenericAPIView):
+    permission_classes = [IsAdminUser]
+
+    def post(self, request):
+        transaction_id = request.data["transaction_id"]
+
+        transaction = Transaction.objects.filter(transaction_id = transaction_id)
+        transaction.payment = "CO"
+        transaction.save()
+
+        return Response({"message" : "confirmed"}, status=status.HTTP_202_ACCEPTED)
         

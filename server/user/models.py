@@ -3,6 +3,11 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from .utils import getReferralCode
+import uuid
+
+def generate_team_id():
+    team_id = str(uuid.uuid4().hex)[:6].upper() 
+    return team_id
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
@@ -56,11 +61,11 @@ class Event(models.Model):
 
 class Order(models.Model):
     PAYMENT_STATUS = (("PO", "Pending"), ("CO", "Completed"))
-    
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     event = models.ForeignKey(Event, to_field="event_id", on_delete=models.CASCADE, default=1)
     order_date = models.DateTimeField(auto_now_add=True)
     payment = models.CharField(max_length=20, choices=PAYMENT_STATUS, default="PO", null=True)
+    order_taker = models.CharField(default="online", max_length=40)
 
     def __str__(self):
         return str(self.pk)
@@ -94,7 +99,7 @@ class Referral(models.Model):
         return res
 
 class Team(models.Model):
-    team_id = models.CharField(max_length=8, default="000000")
+    team_id = models.CharField(max_length=6, default=generate_team_id, unique=True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     user = models.ManyToManyField(User)
 
@@ -102,9 +107,12 @@ class Team(models.Model):
         return f'{self.event} - {", ".join(str(u) for u in self.user.all())}'
     
 class Transaction(models.Model):
+    PAYMENT_STATUS = (("PO", "Pending"), ("CO", "Completed"))
     event_list = models.JSONField(default=list)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     transaction_id = models.CharField(max_length=20)
     order_date = models.DateTimeField(auto_now_add=True)
     amount = models.IntegerField(default=0)
+    order_taker = models.CharField(default="online", max_length=40)
+    payment = models.CharField(max_length=20, choices=PAYMENT_STATUS, default="PO", null=True)
 
