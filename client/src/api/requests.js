@@ -7,6 +7,9 @@ let url = "http://127.0.0.1:8000/api"
 const backend = axios.create({
     baseURL: url
   });
+const list = axios.create({
+    baseURL: 'https://gist.githubusercontent.com/devrajshetake/e3ebe00b1b3ccf3e8a63e6de8da1b430/raw/c4cf8944101d4e11a0a964f376e8c53002e8fa99/events.json'
+  });  
 
 //For Reference, create your own function
 // const login = (data) => backend.post( `/auth/token/login/`, data,{headers: { "content-type": "application/json" }} );
@@ -18,7 +21,7 @@ const backend = axios.create({
 // const time=() => backend.get( `/timer/`, {headers: { "content-type": "application/json"}} );
 // const feedback = (data) => backend.post( `/auth/feedback/`, data,{headers: { "content-type": "application/json" }} );
 
-const events=()=>backend.get(`/events/`,{headers: { }} );
+const events=()=>list.get(`/`,{headers: { }} );
 const login = (data) => backend.post( `/login/`, data,{headers: {}} );
 const profile= (data)=>backend.get(`/profile/`,{headers:{Authorization:`Bearer ${data.token}`}});
 const register=(data)=>backend.post(`/register/`,data,{headers: { }});
