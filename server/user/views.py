@@ -127,73 +127,97 @@ class OrderView(APIView):
         serializer = OrderSerializer(orders, many=True)
         return Response(serializer.data)
 
-class PlaceOrderView(generics.CreateAPIView):
-    serializer_class = PlaceOrderSerializer
+class PlaceOrderView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
-    def create(self, request, *args, **kwargs):
-        cost = 0
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
 
-        event_ids = serializer.validated_data.get('event')
-        for id in event_ids:
-            cost += Event.objects.get(id=id).event_cost
-        order = serializer.save(amount=cost)
+    def post(self, request):
+        # save order for each particular event
+        user = request.user
+        event_list = request.data['event_list']
+        transaction_id = request.data["transaction_id"]
+        amount = request.data["amount"]
 
-        ref = Referral.objects.filter(referred_user = request.user)
-        coin_user = User.objects.get(id = ref.referrer.id)
-        coin_user.coins += (cost//10)
-        coin_user.save()
-        
-        return Response({"transaction_id" : order.transaction_id}, status=status.HTTP_201_CREATED)
+        for event in event_list:
+            order = Order(user = user, event = Event.objects.get(event_id = event))
+            order.save()
+
+        # add transaction for the complete list of events
+        transaction = Transaction(event_list = event_list, user = user, transaction_id = transaction_id, amount=amount)
+        transaction.save()
+
+        return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
+    
+
     
 # Team event APIs
-
-# check if the team member has registered
-class CheckUserView(generics.GenericAPIView):
+class GenerateTeamCodeView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
+
     def post(self, request):
-        username = request.data["username"]
-        phone_no = request.data["phone_no"]
+        events = {
+            101: "CRZCL",
+            102: "CRZRC",
+            103: "CRZNH",
+            104: "CRZWL",
+            105: "CRZBP",
+            106: "CRZEG",
+            107: "CRZDW",
+            108: "CRZQZ",
+            109: "CRZCT",
+            110: "CRZWW"
+        }
+        event = int(request.data['event_id'])
+        user = request.user
 
-        if User.objects.filter(username = username, phone_no = phone_no):
-            return Response({"message" : "verified"}, status=status.HTTP_200_OK)
-        
-        return Response({"message" : "not verified"}, status=status.HTTP_400_BAD_REQUEST)
-    
-class RegisterTeamView(generics.CreateAPIView):
+        if Order.objects.get(event=event, user=user):
+            if not Team.objects.filter(event=event, user=user):
+                if event in events:
+                    event_prefix = events[event]
+                    prev_team = (Team.objects.filter(event = event).order_by('-team_id')).first()
+                    if prev_team:
+                        team_num = int(prev_team.team_id[len(event_prefix):]) + 1
+                    else:
+                        team_num = 1
+                    new_team_id = f'{event_prefix}{team_num:02}'
+                    new_team = Team.objects.create(event=Event.objects.get(event_id = event), team_id=new_team_id)
+                    new_team.user.add(request.user)
+                    return Response({"message": "team id generated"}, status=status.HTTP_201_CREATED)
+
+                else:
+                    raise ValueError(f"Invalid event code : {event}")
+            else:
+                raise ValueError("Team already exists for this user and event.")
+        else:
+            raise ValueError("No order exists for this user and event.")
+
+class JoinTeamView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
-    
+
     def post(self, request):
-        event_id = request.data['event']
-        username = request.data['username']
-        user = User.objects.get(username=username)
+        user = request.user
+        team_id = request.data['team_id']
+        event = request.data['event_id']
 
-        if Order.objects.filter(user=user, event=event_id).exists():
-            if not Team.objects.filter(event=event_id, user=user).exists():
-                team = Team.objects.get_or_create(event=Event.objects.get(id = event_id))
-                team.user.add(request.user, user)
-                return Response({"message": "team member added"}, status=status.HTTP_201_CREATED)
-            return Response({"message" : "User already in a team"}, status=status.HTTP_400_BAD_REQUEST)
+        if Order.objects.filter(event = event, user = user, payment = "CO"):
+            if not Team.objects.filter(user = user, event = event):
+                if Team.objects.filter(team_id = team_id):
+                    exis_team = Team.objects.get(team_id = team_id)
+                    exis_team.user.add(request.user)
+                    return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
+                else:
+                    raise ValueError(f"Invalid team ID : {team_id}")
+            else:
+                raise ValueError("Team already exists for this user and event.")
+        else:
+            raise ValueError("No order exists for this user and event.")
 
-        return Response({"message": "User not registered for the event"}, status=status.HTTP_400_BAD_REQUEST)
-    
-class RemoveUserFromTeamView(generics.UpdateAPIView):
+class TeamView(generics.ListAPIView):
+    serializer_class = TeamSerializer
     permission_classes = [IsAuthenticated]
-    
-    def update(self, request, *args, **kwargs):
-        event_id = request.data['event']
-        username = request.data['username']
 
-        try:
-            user = User.objects.get(username=username)
-            team = Team.objects.get(event_id=event_id, user=request.user)
-            team.user.remove(user)
-            return Response({'message': 'User removed from the team'}, status=status.HTTP_200_OK)
-        except User.DoesNotExist:
-            return Response({'message': 'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
-        except Team.DoesNotExist:
-            return Response({'message': 'User is not a part of the team'}, status=status.HTTP_400_BAD_REQUEST)
+    def get_queryset(self):
+        user = self.request.user
+        return Team.objects.filter(user=user)
     
 # Offline Register APIs
 class RegisterPlayerView(generics.CreateAPIView):

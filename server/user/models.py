@@ -41,7 +41,7 @@ class User(AbstractUser):
 class Event(models.Model):
     event_name = models.CharField(max_length=255)
     event_description = models.CharField(max_length=255)
-    event_id = models.CharField(max_length=255,default=101)
+    event_id = models.CharField(max_length=255,default=101, unique=True)
     event_start = models.DateTimeField()
     event_end = models.DateTimeField()
     group_event = models.BooleanField(default=False, null=True)
@@ -58,9 +58,7 @@ class Order(models.Model):
     PAYMENT_STATUS = (("PO", "Pending"), ("CO", "Completed"))
     
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    event = models.ManyToManyField(Event)
-    amount = models.IntegerField(default=0, null=True)
-    transaction_id = models.IntegerField(default=0, null=True)
+    event = models.ForeignKey(Event, to_field="event_id", on_delete=models.CASCADE, default=1)
     order_date = models.DateTimeField(auto_now_add=True)
     payment = models.CharField(max_length=20, choices=PAYMENT_STATUS, default="PO", null=True)
 
@@ -96,9 +94,17 @@ class Referral(models.Model):
         return res
 
 class Team(models.Model):
+    team_id = models.CharField(max_length=8, default="000000")
     event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     user = models.ManyToManyField(User)
 
     def __str__(self):
         return f'{self.event} - {", ".join(str(u) for u in self.user.all())}'
+    
+class Transaction(models.Model):
+    event_list = models.JSONField(default=list)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    transaction_id = models.CharField(max_length=20)
+    order_date = models.DateTimeField(auto_now_add=True)
+    amount = models.IntegerField(default=0)
 
