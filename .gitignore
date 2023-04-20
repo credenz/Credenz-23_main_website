@@ -2,7 +2,9 @@ client/node_modules
 server/venv
 server/push.sh
 
+
 .env
 
 __pycache__
 *.pyc
+*.sqlite3
