@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
 import './Desktop.css';
 import Clash from "../../images/clash.png";
 import RC from "../../images/rc.png";
@@ -331,8 +332,23 @@ const Desktop = ({ data }) => {
                                             <p>{data.team}</p>
                                             <form className="" autoComplete="off">
                                                 <div className="cform-field">
-                                                    <label htmlFor="player">Select Event</label>
+                                                    {/* <label htmlFor="player">Select Event</label> */}
                                                     <div className="cplayers">
+                                                    <Dropdown>
+        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+          Select Event
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu variant="dark">
+            <Dropdown.Item eventKey={1} onClick={()=>setEvnentSelected(101)} active={eventSelected===101?true:false}>
+                    Clash
+            </Dropdown.Item>
+          <Dropdown.Item eventKey={2} onClick={()=>setEvnentSelected(102)} active={eventSelected===102?true:false} >RC</Dropdown.Item>
+          <Dropdown.Item eventKey={3} onClick={()=>setEvnentSelected(103)} active={eventSelected===103?true:false}>Enigma</Dropdown.Item>
+          {/* <Dropdown.Divider /> */}
+          <Dropdown.Item eventKey={4} onClick={()=>setEvnentSelected(104)} active={eventSelected===104?true:false}>B-Plan</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
                                                             {/* <input
                                                                 name="player"
                                                                 type="text"
@@ -345,18 +361,10 @@ const Desktop = ({ data }) => {
                                                                 }
                                                                 required
                                                             /> */}
-                                                            {
-                                                                        teamEvents.map((data,idx)=>{
-                                                                            return (
+                                                            
                                                         <div className="cfirst-division">
-
-                                                            <input className='cinput' id={idx} type="radio" name="data.name" checked={eventSelected===data.id} onChange={()=>setEvnentSelected(data.id)}/><label for={idx}>{data.name}</label>
-                                                            {/* <input className='cinput'id="rad2" type="radio" name="rad"/><label for="rad2">RC</label> */}
+                                                            Selected : {teamEvents[eventSelected-101].name}
                                                         </div>
-                                                                            )
-
-                                                                        }
-                                                                    )}
                                                         <div className="csecond-division">
                                                             <button
                                                                 type="button"
