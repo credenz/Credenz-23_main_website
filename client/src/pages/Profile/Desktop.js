@@ -12,7 +12,7 @@ import PAPER from "../../images/paper.png";
 import CRETRONIX from "../../images/cretronix.png";
 import PIXELATE from "../../images/pixelate.png";
 import WEB from "../../images/webwever.png";
-
+import Requests from '../../api/requests';
 // import './Mobile.css';
 import ticket from '../../images/aticket.png';
 const Desktop = ({ data }) => {
@@ -65,6 +65,16 @@ const Desktop = ({ data }) => {
             })
         );
     };
+    const handleCreate=()=>{
+        console.log(eventSelected,typeof(eventSelected));
+        Requests.createTeam({event_id:eventSelected})
+        .then((res)=>{
+            console.log(res.data)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
     const [selected, setSelected] = useState(0);
     const [teamVisible, setTeamVisible] = useState(0);
     const [eventSelected, setEvnentSelected] = useState(101);
@@ -352,7 +362,8 @@ const Desktop = ({ data }) => {
                                                                 type="button"
                                                                 onClick={() =>
                                                                     // handleplayerRemove(0)
-                                                                    console.log(eventSelected)
+                                                                    // console.log(eventSelected)
+                                                                    handleCreate()
                                                                 }
                                                                 className="remove-btn"
                                                             >
