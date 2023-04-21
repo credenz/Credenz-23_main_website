@@ -92,6 +92,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+print(BASE_DIR / 'db.sqlite3')
 
 
 # Password validation
