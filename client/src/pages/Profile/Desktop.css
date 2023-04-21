@@ -115,6 +115,7 @@ padding: unset; */
   
   .dektop-profile {
     display: flex;
+    opacity: 0.65;
   }
   
   .dektop-profile aside {

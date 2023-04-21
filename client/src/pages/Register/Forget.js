@@ -53,7 +53,7 @@ const Forget=()=>{
                   <form onClick={forgetSubmit} className="forgetfields">
                     <input
                       className="form-control"
-                      type="email"
+                      type="password"
                       name="forgetemail"
                       placeholder="New Password"
                       required

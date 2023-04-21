@@ -5,7 +5,7 @@ import "./register.css";
 import PhoneInput from "react-phone-number-input";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Requests from "../../api/requests";
-const LoginNew = () => {
+const LoginNew = (props) => {
   let navigate=useNavigate();
   const [register, setregister] = useState(0);
 
@@ -30,17 +30,19 @@ const LoginNew = () => {
       loginUsername,
       loginpassword,
     });
-    await Requests.login({username:loginUsername,password:loginpassword})
-    .then((res)=>{
-      console.log(res.data.access);
-      localStorage.setItem('token',res.data.access);
-      window.alert('LOGIN SUcCess');
-      navigate('/events');
-    })
-    .catch((err)=>{
-      console.log(err);
-      window.alert('Wrong username or password');
-    })
+    console.log(props)
+    props.toast.toast.success("Logged In!");
+    // await Requests.login({username:loginUsername,password:loginpassword})
+    // .then((res)=>{
+    //   console.log(res.data.access);
+    //   localStorage.setItem('token',res.data.access);
+    //   window.alert('LOGIN SUcCess');
+    //   navigate('/events');
+    // })
+    // .catch((err)=>{
+    //   console.log(err);
+    //   window.alert('Wrong username or password');
+    // })
   };
 
   const forgetSubmit = async (e) => {
