@@ -3,9 +3,11 @@ import './Payment.css';
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { useNavigate } from 'react-router-dom';
 import { useCartContext } from "../../context/cart_context";
-const Payment = () => { 
+import { Container, Row, Col } from "react-bootstrap";
+import phonepe from '../../images/phonepe.png'
+const Payment = () => {
     // const [data,setData]=useState(props);
-    const { cart,totalprice } = useCartContext();
+    const { cart, totalprice } = useCartContext();
     const link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${totalprice}&tn=IEEE&cu=INR`;
     // const [isQr, setisQr] = useState(false);
     const [upiId, setupiId] = useState("");
@@ -14,10 +16,10 @@ const Payment = () => {
         // setisQr(true);
         // setisQr(true);
         var div = document.getElementById('payment-qr-code');
-              
-            while(div.firstChild) {
-                div.removeChild(div.firstChild);
-            }
+
+        while (div.firstChild) {
+            div.removeChild(div.firstChild);
+        }
         var qrcode = new window.QRCode(document.querySelector(".payment-qr-code"), {
             text: link,
             width: 150, //default 128
@@ -27,11 +29,11 @@ const Payment = () => {
             correctLevel: window.QRCode.CorrectLevel.H
         });
     }
-    const handleClick=()=>{
+    const handleClick = () => {
         console.log(cart);
         window.alert(`UPI Transaction Id :- ${upiId}`);
     }
-    useEffect(()=>generate(),[]);
+    useEffect(() => generate(), []);
     return (
         <>
             <div className="payment">
@@ -54,11 +56,11 @@ const Payment = () => {
                                     <div>
                                         <h4> Follow This Steps For Payment </h4>
                                         <p className="pay-rules">
-                                        1)Scan QR or click on the link to pay.<br></br>
-                                        2)Ensure Amout entered matches the one shown in summary.<br></br>
-                                        3)Verification of payment will be done and status will be updated in profile-orders section.<br></br>
-                                        4)After Successfull payment, Enter Transaction ID and click confirm payment.<br></br>
-                                        5)In case Of any queries contact below.</p>
+                                            1)Scan QR or click on the link to pay.<br></br>
+                                            2)Ensure Amout entered matches the one shown in summary.<br></br>
+                                            3)Verification of payment will be done and status will be updated in profile-orders section.<br></br>
+                                            4)After Successfull payment, Enter Transaction ID and click confirm payment.<br></br>
+                                            5)In case Of any queries contact below.</p>
                                     </div>
 
                                 </Scrollbars>
@@ -95,17 +97,18 @@ const Payment = () => {
                                 <div className="col text-right"> <i className="fa fa-inr"></i> {totalprice}</div>
                             </div>
                             <div className='pay-links'>
-                            <div className="payment-qr-code" id='payment-qr-code'></div>
-                            <a target="_blank" href={link} rel="noreferrer" className="payment-link">Click To Pay</a>
+                                <div className="payment-qr-code" id='payment-qr-code'></div>
+                                <a target="_blank" href={link} rel="noreferrer" className="payment-link">Click To Pay</a>
                             </div>
+                            
                             Enter Upi Transaction Id:
                             <input id="upiId"
-                                    name="upiId"
-                                    value={upiId}
-                                    onChange={e => setupiId(e.target.value)}
-                                    placeholder="Enter Upi Transaction Id:"
-                                    required
-                                    >
+                                name="upiId"
+                                value={upiId}
+                                onChange={e => setupiId(e.target.value)}
+                                placeholder="Enter Upi Transaction Id:"
+                                required
+                            >
                             </input>
                             <button className="btn" onClick={() => handleClick()}>Confirm Payment</button>
                         </div>
