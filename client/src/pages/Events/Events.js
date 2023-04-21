@@ -48,7 +48,7 @@ const Events = () => {
     //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges,carefully designed to assess your command over programming in the language of your choice- Python, C or C++. Showcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.",
     //     id: "1",
     //     structure:
-    //       "carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.", 
+    //       "carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.",
     //     rules : { 1 : "MCQs based on coding concepts in C/C++ and python. (Python, C/C++ for FE and C/C++ for SE, TE and BE)",
     //     2 : "A 28-minute game for a person or a team of two people.",
     //     3 : "Teams or players are not allowed to use any IDE or software once the game has started.",
@@ -118,7 +118,7 @@ const Events = () => {
     //       9 : "The Ranking of the user is decided using a 'Valuation Formula'.Valuation of the user will be 60% of his total asset value in Shares acquired (according to current market prices) + 40% of the cash balance in his account.This total will be termed as the valuation amount.",
     //       10 : "Only Integral Bids allowed.Decimal values will be invalid.",
     //       11 : "Participants can be disqualified for MALPRACTICES.",
-    //       12 : "News regarding the listed companies would be displayed every half an hour." 
+    //       12 : "News regarding the listed companies would be displayed every half an hour."
     //       },
     //     amount : 39,
     //     id : "4",
@@ -140,7 +140,7 @@ const Events = () => {
     //     team : "Individual event",
     //     max : 1,
     //   },
-     
+
     //   {
     //     image: ENIGMA,
     //     heading: "ENIGMA",
@@ -150,16 +150,15 @@ const Events = () => {
     //     2 : "The first round is an hour-long aptitude test.",
     //     3 : "The second round will consist of a two-hour descriptive logical reasoning interview.",
     //     4 : "Enigma Wildcard is conducted specially for PICT students whose winners are directly promoted to Round 2 of the event free of cost.",
-    //     },	
+    //     },
     //     id: "6",
     //     amount: "To be declared soon",
     //     count: 1,
     //     team: "Maximum 2 players are allowed",
     //     max: 2,
- 
- 
+
     //   },
-     
+
     //   {
     //     image: DATAWIZ,
     //     heading: "DATAWIZ",
@@ -255,7 +254,6 @@ const Events = () => {
     //   }
     // ]
     []
- 
   );
 
   const customStyles = {
@@ -290,7 +288,7 @@ const Events = () => {
 
   function openModal(id) {
     seteventid(id);
-    console.log('open model id:',id)
+    console.log("open model id:", id);
     setIsOpen(true);
   }
 
@@ -305,7 +303,10 @@ const Events = () => {
   }
   const eventList = async () => {
     await Requests.events()
-      .then((res) => {console.log(res.data);setdetails(res.data);})
+      .then((res) => {
+        console.log(res.data);
+        setdetails(res.data);
+      })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
@@ -316,26 +317,23 @@ const Events = () => {
   //   //     setLoaderStatus(false);
   //   // },1000)
   // },[]) // eslint-disable-line react-hooks/exhaustive-deps
-  
+
   // useEffect(() => {
   //   document.addEventListener('DOMContentLoaded', () => {
   //     setLoaderStatus(false);
   //   });
   // }, []);
-  return (
-    
-      loaderStatus
-        ?
-        <Loader/>
-        :
-        <>
+  return loaderStatus ? (
+    <Loader />
+  ) : (
+    <>
       {/* <EventSky> */}
       <div className="st">
         <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3"></div>
-        <div className="eventpage " data-aos="fade-in"  data-aos-duration="400" >
-          <div className="container " >
+        <div className="eventpage " data-aos="fade-in" data-aos-duration="400">
+          <div className="container ">
             <h1 style={{ textAlign: "center" }}>EVENTS</h1>
             <div className="main">
               {eventslist.map((list) => (
@@ -367,9 +365,9 @@ const Events = () => {
         </div>
         {/* </EventSky> */}
       </div>
-        {/* </EventSky> */}
+      {/* </EventSky> */}
 
-      <Modal 
+      <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
@@ -380,68 +378,86 @@ const Events = () => {
         {details.map((data) => {
           if (eventid && data.id === eventid)
             return (
-         
-              <div className="modal-content" key={data.id} data-aos="fade-in"  data-aos-duration="500" >
-
-              <div className="modalclose">
-              <div className="">
-                <button  onClick={closeModal}><i class="fa fa-times cross" aria-hidden="true"></i></button>
-                
-                </div>
+              <div
+                className="modal-content"
+                key={data.id}
+                data-aos="fade-in"
+                data-aos-duration="500"
+              >
+                <div className="modalclose">
+                  <div className="">
+                    <button onClick={closeModal}>
+                      <i class="fa fa-times cross" aria-hidden="true"></i>
+                    </button>
+                  </div>
                 </div>
 
                 <div className="modalimage">
-                
-                  <img src={eventslist[data.id-101].logo} alt="" />
+                  <img src={eventslist[data.id - 101].logo} alt="" />
                 </div>
                 <p>{data.heading}</p>
                 <div className="modalbutton">
-                  <button className={Details===0?"active":"hover "}  onClick={() => setDetails(0)}>Info</button>
-                  <button className={Details===1?"active":"hover "} onClick={() => setDetails(1)}>Rules</button>
-                  <button className={Details===2?"active":"hover "} onClick={() => setDetails(2)}>Structure</button>
+                  <button
+                    className={Details === 0 ? "active" : "hover "}
+                    onClick={() => setDetails(0)}
+                  >
+                    Info
+                  </button>
+                  <button
+                    className={Details === 1 ? "active" : "hover "}
+                    onClick={() => setDetails(1)}
+                  >
+                    Rules
+                  </button>
+                  <button
+                    className={Details === 2 ? "active" : "hover "}
+                    onClick={() => setDetails(2)}
+                  >
+                    Structure
+                  </button>
                   {/* <button onClick={() => setDetails(3)}>Create Team</button> */}
                 </div>
 
                 <div className="modalbody info">
-                  <p className="text-center" style={{marginTop:"30px"}} >{Details === 0 && data.body}</p>
+                  <p className="text-center">{Details === 0 && data.body}</p>
                   <p>
-                  {
-                    Details === 1 && data.rules
-                    ?   
-                    <ol>         
-                    {Object.values(data.rules).map((value, index) => {
-                      return (
-                        <li>{value}</li>
-                      );
-                    })}
-                    </ol>
-                    :
-                    <></>
-                  }
-                  </p>
-                  <p >
-                  {
-                    Details === 2 && data.structure
-                    ?
-                      typeof(data.structure)!=="string"
-                      ?
-                      <ol>         
-                        {Object.values(data.structure).map((value, index) => {
-                          return (
-                            <li>{value}</li>
-                          );
+                    {Details === 1 && data.rules ? (
+                      <ol>
+                        {Object.values(data.rules).map((value, index) => {
+                          return <li>{value}</li>;
                         })}
-                    </ol>
-                      :
-                      data.structure
-                    :
-                    <></>
-                  }
+                      </ol>
+                    ) : (
+                      <></>
+                    )}
                   </p>
-                  
+                  <p className="text-center">
+                    {Details === 2 && data.structure ? (
+                      typeof data.structure !== "string" ? (
+                        <ol>
+                          {Object.values(data.structure).map((value, index) => {
+                            return <li>{value}</li>;
+                          })}
+                        </ol>
+                      ) : (
+                        data.structure
+                      )
+                    ) : (
+                      <></>
+                    )}
+                  </p>
+                </div>
+                <div className="grp">
+                  <div className="team"> Event size : {data.team}</div>
+                 
                 </div>
 
-                <div className="modalbutton">
+                <div className="addtocart">
+                <div className="cost">
+                <p>Event Cost : <i className="fa fa-inr"> </i>
+                    {data.amount}</p>
+                    
+                  </div>
                   <button
                     disabled={
                       cart != null
@@ -450,7 +466,7 @@ const Events = () => {
                           : false
                         : false
                     }
-                    className={`  ${
+                    className={` addtocart ${
                       cart != null
                         ? cart.find((item) => item.id === data.id)
                           ? "disabled"
@@ -458,18 +474,22 @@ const Events = () => {
                         : ""
                     }`}
                     onClick={() =>
-                      addtocart(data.id, eventslist[data.id-101].logo, data.heading, data.amount)
+                      addtocart(
+                        data.id,
+                        eventslist[data.id - 101].logo,
+                        data.heading,
+                        data.amount
+                      )
                     }
                   >
-                    ADD TO CART
+                    Add to cart
                   </button>
-                  <button>CHECKOUT</button>
+                  {/* <button>CHECKOUT</button> */}
                 </div>
                 {/* <div className="modalclose">
                 <button  onClick={closeModal}>CLOSE</button>
                 </div> */}
               </div>
-              
             );
         })}
       </Modal>
