@@ -26,4 +26,7 @@ urlpatterns = [
     # Transaction (Admin view)
     path("transaction-list/", TransactionListView.as_view(), name="transaction-list"),
     path("transaction-confirm/", TransactionConfirmView.as_view(), name="transaction-confirm"),
+    path("upload-file/", UploadFileView.as_view(), name="upload-file"),
+    # feedback
+    path("feedback/", FeedbackView.as_view(), name="feedback"),
 ]

@@ -17,22 +17,11 @@ const LoginNew = () => {
 
   //forget
   const [forgetemail, setforgetemail] = useState("");
-  const [token, settoken] = useState("");
-  const [newpass, setnewpass] = useState("");
 
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
-  //   function validate_required(field,alerttxt)
-  // {
-
-  //     if (password.value != cpassword.value) {
-  //         alert("Your password and confirmation password do not match.");
-  //         cpassword.focus();
-  //         return false;
-  //      }
-
-  // }
+  
 
   const loginSubmit = async(e) => {
     e.preventDefault();
@@ -54,8 +43,12 @@ const LoginNew = () => {
     })
   };
 
-  const forgetSubmit = (e) => {
+  const forgetSubmit = async (e) => {
     e.preventDefault();
+    console.log(forgetemail,typeof(forgetemail));
+    await Requests.forgetPassword({email:forgetemail})
+    .then((res)=>console.log(res))
+    .catch((err)=>console.log(err))
   };
 
   //   const handleregister = (e) => {
@@ -201,38 +194,9 @@ const LoginNew = () => {
                       value={forgetemail}
                     />
 
-                    <input
-                      className="form-control"
-                      type="text"
-                      name="token"
-                      placeholder="Verification token"
-                      required
-                      onChange={(e) => settoken(e.target.value)}
-                      value={token}
-                    />
-
-                    <input
-                      className="form-control"
-                      type="password"
-                      name="newpassword"
-                      placeholder="New password"
-                      required
-                      onChange={(e) => setnewpass(e.target.value)}
-                      value={newpass}
-                    />
+                
 
                     <div className="forgetpart">
-                      <div className="form-button ">
-                        <button
-                          // onClick={() => setregister(0)}
-                          id="submit"
-                          type="submit"
-                          className="ibtn btn-forget"
-                        >
-                          Send Reset Link
-                        </button>
-                      </div>
-
                       <div className="form-button ">
                         <button
                         //   onClick={() => setregister(0)}
@@ -240,7 +204,7 @@ const LoginNew = () => {
                           type="submit"
                           className="ibtn btn-forget"
                         >
-                          Submit
+                          Send Reset Link
                         </button>
                       </div>
                     </div>

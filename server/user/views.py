@@ -16,10 +16,52 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.views import APIView
 from .serializers import *
 from .models import *
+from openpyxl import load_workbook
 
 PASSWORD_RESET_URL = (
-    "https://frontend-link/password-reset-confirm?token={token}&uid={uid}"
+    "https://credenz.in/forget-password/{token}/{uid}"
 )
+
+class FeedbackView(generics.CreateAPIView):
+    serializer_class = FeedbackSerializer
+    queryset = Feedback.objects.all()
+
+class UploadFileView(generics.GenericAPIView):
+    permission_classes = [IsAdminUser]
+    def post(self, request, format=None):
+        serializer = UploadFileSerializer(data=request.data)
+        if serializer.is_valid():
+            file = serializer.validated_data["file"]
+            wb = load_workbook(filename=file)
+            ws = wb.active
+            upi_col_num = None
+            for cell in ws['1']:
+                if cell.value == 'upi':
+                    upi_col_num = cell.column
+                    break
+            f_check = 0
+            c_check = 0
+            for row in ws.iter_rows(min_row=2, values_only=True):
+                upi = str(row[upi_col_num - 1])
+                if upi != "None":
+                    transaction_id = upi.split('/')[1].strip()
+                    amount_excel = row[upi_col_num - 2]
+                    print(transaction_id, amount_excel)
+                try:
+                    transaction = Transaction.objects.get(transaction_id=transaction_id)
+                except Transaction.DoesNotExist:
+                    raise ValueError("Transaction ID does not exist")
+                    continue
+                amount_transaction = transaction.amount
+                if amount_excel == amount_transaction:
+                    c_check += 1
+                    Order.objects.filter(transaction_id=transaction_id).update(payment="CO")
+                    transaction.payment = "CO"
+                    transaction.save()
+                else:
+                    f_check += 1
+            return Response({"message" : f"transactions completed: faulty {f_check}, completed {c_check}"}, status=status.HTTP_202_ACCEPTED)
+
 
 class UserRegisterView(generics.CreateAPIView):
     queryset = User.objects.all()

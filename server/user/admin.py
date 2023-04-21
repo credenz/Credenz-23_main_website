@@ -78,7 +78,7 @@ class ReferralAdmin(ImportExportActionModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     raw_id_fields = ('event',)
-    list_display = ('id', 'user', 'event', 'order_date', 'payment')
+    list_display = ('id', 'user', 'event', 'order_date', 'payment', 'transaction_id')
     
 class TeamResource(resources.ModelResource):
     event_name = fields.Field(attribute='event__event_name', column_name='Event Name')
@@ -129,3 +129,7 @@ class TransactionAdmin(ImportExportActionModelAdmin):
 
     def user_name(self, obj):
         return obj.user.full_name
+    
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'context')

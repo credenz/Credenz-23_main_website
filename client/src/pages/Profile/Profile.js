@@ -9,8 +9,8 @@ const Profile = () => {
     const [data, setData] = useState({});
     const [isPhone, setIsPhone] = useState(isMobile);
     const fetchProfile = async () => {
-        console.log(localStorage.getItem('token'));
-        await Requests.profile({token:localStorage.getItem('token')})
+        // console.log(localStorage.getItem('token'));
+        await Requests.profile()
         .then((res)=>{
             console.log(res);
             setData(res.data);
