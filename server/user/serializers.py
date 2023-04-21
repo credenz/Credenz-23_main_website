@@ -9,6 +9,14 @@ class TokenPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         return token
 
+class FeedbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feedback
+        fields = "__all__"
+
+class UploadFileSerializer(serializers.Serializer):
+    file = serializers.FileField()
+
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=False)
     email = serializers.EmailField(required=True)
@@ -49,6 +57,9 @@ class UserSerializer(serializers.ModelSerializer):
             )
 
     def create(self, validated_data):
+        email = validated_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise serializers.ValidationError('Email already exists.')
         referral = validated_data.pop("referralCode", None)
         user = User.objects.create(
             username=validated_data["username"],
@@ -104,6 +115,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     phone = serializers.CharField(max_length=20, required=True)
     username = serializers.CharField(max_length=20)
     orders = serializers.SerializerMethodField()
+    is_admin = serializers.BooleanField(source='is_staff', read_only=True)
+    is_superuser = serializers.BooleanField(read_only=True)
 
     def get_orders(self, obj):
         user = self.context['request'].user
@@ -126,6 +139,8 @@ class ProfileSerializer(serializers.ModelSerializer):
             "referral",
             "orders",
             "offline_officer",
+            "is_admin",
+            "is_superuser",
         ]
 
 
