@@ -662,17 +662,17 @@
   /* min-height: 90vh; */
   animation: eventpage 5s ease-in-out infinite;
 }
-/* @keyframes eventpage {
+@keyframes eventpage {
   0% {
-    transform: translateY(4px);
+    transform: translateY(1px);
   }
   50% {
-    transform: translateY(-4px);
+    transform: translateY(-1px);
   }
   100% {
-    transform: translateY(4px);
+    transform: translateY(1px);
   }
-} */
+}
 
 
 .eventpage .container{

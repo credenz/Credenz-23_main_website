@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Routes, Route } from "react-router-dom";
+import { Routes,Route} from "react-router-dom";
 // import Home from './pages/Home';
 import Events from "./pages/Events/Events"
 import Contact from './pages/Contact/Contact';
@@ -25,72 +25,26 @@ import CommingSoon from './pages/comingsoon/CommingSoon';
 import Forget from './pages/Register/Forget';
 import toast, { ToastUtils } from "./utils/toastifyContainer";
 import { useLocation } from 'react-router-dom';
-import EventSky from './pages/Events/EventSky';
 
 
 function App() {
   const location = useLocation();
 
-  let backgroundClass = '';
-
-  if (location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/profile') {
-    backgroundClass = 'BgWindow';
-  }
+  let backgroundWindow = '';
+  let backgroundImg="";
+  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile') {
+    {backgroundImg = 'BgImage';backgroundWindow='BgWindow '}
+  } 
   return (
     <>
-      <ToastUtils />
-      <Scrolltop />
-      <Scrolltop />
-      <Navbar />
-      <div className='App'>
-      {backgroundClass !== '' ? <EventSky>
-        <div className={`${backgroundClass}`}>
-          <Routes>
-
-
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/explore" element={<Explore />} />
-            <Route exact path="/events" element={<Events />} />
-            <Route exact path="/about" element={<About />} />
-            <Route exact path="/contact" element={<Contact />} />
-            <Route exact path="/login" element={<LoginNew toast={{ container: <ToastUtils />, toast }} />} />
-            <Route exact path="/register/:referral" element={<Register />} />
-            <Route exact path="/register" element={<Register />} />
-            <Route exact path="/cart" element={<Cart />} />
-            <Route exact path="/user" element={<User />} />
-            <Route exact path="/profile" element={<Profile />} />
-            <Route exact path="/payment" element={<Payment />} />
-            <Route exact path="/admin" element={<Admin />} />
-            <Route exact path="/team" element={<Team />} />
-            <Route exact path="/sessions" element={<CommingSoon />} />
-            <Route exact path="/forget-password/:token/:uid" element={<Forget />} />
-            <Route exact path="*" element={<Error />} />
-          </Routes>
-        </div >
-      </EventSky>
-        : <Routes>
-
-
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/explore" element={<Explore />} />
-          <Route exact path="/events" element={<Events />} />
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/contact" element={<Contact />} />
-          <Route exact path="/login" element={<LoginNew toast={{ container: <ToastUtils />, toast }} />} />
-          <Route exact path="/register/:referral" element={<Register />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/cart" element={<Cart />} />
-          <Route exact path="/user" element={<User />} />
-          <Route exact path="/profile" element={<Profile />} />
-          <Route exact path="/payment" element={<Payment />} />
-          <Route exact path="/admin" element={<Admin />} />
-          <Route exact path="/team" element={<Team />} />
-          <Route exact path="/sessions" element={<CommingSoon />} />
-          <Route exact path="/forget-password/:token/:uid" element={<Forget />} />
-          <Route exact path="*" element={<Error />} />
-        </Routes>
-      }
-      {/* <Routes>
+    <ToastUtils />
+    <Scrolltop/>
+    <Scrolltop/>
+    <Navbar/>
+    <div className={`App`}>
+    <div className={`${backgroundImg}`}>
+    <div className={`${backgroundWindow}`}>
+  <Routes>
 
 
    <Route exact path="/" element={<Home/> } />
@@ -110,9 +64,9 @@ function App() {
    <Route exact path="/sessions" element={<CommingSoon/> } />
    <Route exact path="/forget-password/:token/:uid" element={<Forget/> } />
    <Route exact path="*" element={<Error/> } />
-  </Routes>  */}
-  </div>
-      <Footer />
+  </Routes> 
+</div></div></div>
+  <Footer/>
     </>
   );
 }

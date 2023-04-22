@@ -27,7 +27,7 @@
     /* background: url("../../../public/assets/images/bgspace.jpg") no-repeat center */
     background: url("./images/bgspace.jpg") no-repeat center
     center fixed;
-    background-position: right 47% bottom 90%;
+    background-position: right 40% bottom 90%;
 }
 .BgWindow{
   min-height: 100vh;
@@ -57,5 +57,18 @@
   position: relative;
   padding: 0rem 0.5rem 0rem;
   /* min-height: 90vh; */
-  animation: eventpage 2s ease-in-out infinite;
+  /* animation: eventpage 2s ease-in-out infinite; */
+  animation: BgWindow 7s ease-in-out infinite;
+}
+
+@keyframes BgWindow {
+  0% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(2px);
+  }
 }
