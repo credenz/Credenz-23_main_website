@@ -63,12 +63,12 @@
 
 @keyframes BgWindow {
   0% {
-    transform: translateY(2px);
+    transform: translateY(-3px);
   }
   50% {
-    transform: translateY(-2px);
+    transform: translateY(5px);
   }
   100% {
-    transform: translateY(2px);
+    transform: translateY(-3px);
   }
 }
