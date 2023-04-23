@@ -103,6 +103,7 @@ class Team(models.Model):
     team_id = models.CharField(max_length=6, default=generate_team_id, unique=True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     user = models.ManyToManyField(User)
+    team_name = models.CharField(max_length=20, default="team")
 
     def __str__(self):
         return f'{self.event} - {", ".join(str(u) for u in self.user.all())}'
