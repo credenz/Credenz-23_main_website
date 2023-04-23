@@ -22,6 +22,8 @@ import User from './Components/useradd/User';
 import Explore from './Components/Events3d/Explore';
 import Loader from './Components/loader/Loader';
 import CommingSoon from './pages/comingsoon/CommingSoon';
+import Sessions from './pages/Sessions/Sessions'
+
 
 
 
@@ -49,7 +51,7 @@ function App() {
    <Route exact path="/payment" element={<Payment/> } />
    <Route exact path="/admin" element={<Admin/> } />
    <Route exact path="/team" element={<Team/> } />
-   <Route exact path="/sessions" element={<CommingSoon/> } />
+   <Route exact path="/sessions" element={<Sessions/> } />
    <Route exact path="*" element={<Error/> } />
   </Routes> 
   <Footer/>

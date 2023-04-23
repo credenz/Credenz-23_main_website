@@ -1,0 +1,86 @@
+.sessionspage{
+    min-height:100vh;
+    width: 100%;
+    background-image: url("../../images/about-bg.jpeg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 0;    
+}
+
+.sessions{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-top: 0px;
+}
+
+
+.sessions h1{
+    margin-top: 110px;
+    text-align: center;
+}
+
+.sessions .cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 80px;
+}
+.sessions .cards .card{
+    max-width: 330px;
+    min-width: 240px;
+    width: 100%;
+    height: 100%;
+    margin: 20px 20px;
+    border-radius: 12px;
+    background-color: hsl(300, 60%, 20%);
+}
+.sessions .card .thumb{
+    position: relative;
+    height: 250px;
+    background: #fff;
+    padding: 7px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.514);
+    background-color: rgb(69, 6, 69);
+}
+.sessions .card .thumb img{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-select: none;
+    
+}
+.sessions .card .info{
+    margin-top: 10px;
+    text-align: center;
+}
+.sessions .card .info h2{
+    color: #f5f4f4;
+    font-size: 24px;
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+.sessions .card .content p{
+    color : #f5f4f4;
+    font-size: 14px;
+    text-transform: capitalize;
+    padding-left:15px;
+    padding-right:15px;
+    text-align: justify;
+}
+.sessions .card .info span{
+    font-weight: 600;
+    font-size: 16px;
+    color: #959595;
+    text-transform: capitalize;
+}
+
+.content{
+    color: #252525;
+}
