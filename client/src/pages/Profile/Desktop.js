@@ -278,32 +278,7 @@ marginRight: '20%'}}>
 		<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio">Read all about it</a>
 	</div>
 </article>
-                                            <div >
-                                                <div className="teamList">
-                                                    <div class="teamListrow">
-                                                        <div class="teamListexample-1 teamListcard">
-                                                            <div class="teamListwrapper">
-
-                                                                <div class="teamListimage">
-                                                                    <div style={{ 'display': 'flex' }}><img class="teamListbook-image" style={{ 'display': 'inline-block' }}src={Clash} /></div>
-                                                                    <div style={{ 'display': 'flex' }}><p style={{ 'display': 'inline-block' }}>Clash</p></div>
-                                                                </div>
-
-                                                                <div class="teamListdata">
-                                                                    <div class="teamListcontent">
-                                                                        <p class="teamListauthor">Name - chutiya</p>
-                                                                        <p class="teamListauthor">TeAM ID - 2436</p>
-                                                                        <p class="teamListauthor">TeAM Members - chinmay</p>
-                                                                        {/* <h1 class="teamListtitle"><p class="teamListcardTitle">Boxing icon has the will for a couple more fights</p></h1>
-                                                                        <p class="teamListtext">The highly anticipated world championship fight will take place at 10am and is the second major boxing blockbuster in the nation after 43 years.</p> */}
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         :
                                         teamVisible === 1
