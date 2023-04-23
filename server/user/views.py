@@ -180,7 +180,7 @@ class PlaceOrderView(generics.GenericAPIView):
         amount = request.data["amount"]
 
         for event in event_list:
-            order = Order(user = user, event = Event.objects.get(event_id = event))
+            order = Order(user = user, event = Event.objects.get(event_id = event), transaction_id=transaction_id)
             order.save()
 
         # add transaction for the complete list of events
@@ -197,11 +197,12 @@ class GenerateTeamCodeView(generics.GenericAPIView):
 
     def post(self, request):
         event = int(request.data['event_id'])
+        team_name = request.data['team_name']
         user = request.user
 
         if Order.objects.get(event=event, user=user):
             if not Team.objects.filter(event=event, user=user):
-                new_team = Team.objects.create(event=Event.objects.get(event_id = event))
+                new_team = Team.objects.create(event=Event.objects.get(event_id = event), team_name = team_name)
                 new_team.user.add(request.user)
                 return Response({"message": new_team.team_id}, status=status.HTTP_201_CREATED)
             else:
@@ -215,10 +216,10 @@ class JoinTeamView(generics.GenericAPIView):
     def post(self, request):
         user = request.user
         team_id = request.data['team_id']
-        event = request.data['event_id']
+        event_check = Team.objects.get(team_id=team_id).event
 
-        if Order.objects.filter(event = event, user = user, payment = "CO"):
-            if not Team.objects.filter(user = user, event = event):
+        if Order.objects.filter(event = event_check, user = user, payment = "CO"):
+            if not Team.objects.filter(user = user, event = event_check):
                 if Team.objects.filter(team_id = team_id):
                     exis_team = Team.objects.get(team_id = team_id)
                     exis_team.user.add(request.user)
