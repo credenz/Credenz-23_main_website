@@ -131,8 +131,8 @@
   }
   
   .social-icons {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.2rem;
+    width: 1.2rem;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.5s ease;
@@ -154,6 +154,7 @@
     width: 100%;
     /* background-color: rgb(34, 4, 34); */
   }
+
   
   @media (max-width: 768px) {
     .sticky-bottom {
@@ -171,7 +172,7 @@
       margin-top: 10px;
     }
     .social-wrapper {
-      margin: 10px 0;
+      margin: 0px 0;
     }
     .terms-text {
       cursor: pointer;
@@ -180,6 +181,10 @@
       color: white;
       font-size: 12px;
     }
+    
+  .footer-row a{
+    margin-top: 5px;
+  }
   }
   
   @media (max-width: 375px) and (min-width: 320px) {

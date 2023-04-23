@@ -22,16 +22,28 @@ import User from './Components/useradd/User';
 import Explore from './Components/Events3d/Explore';
 import Loader from './Components/loader/Loader';
 import CommingSoon from './pages/comingsoon/CommingSoon';
-
+import Forget from './pages/Register/Forget';
+import toast, { ToastUtils } from "./utils/toastifyContainer";
+import { useLocation } from 'react-router-dom';
 
 
 function App() {
+  const location = useLocation();
+
+  let backgroundWindow = '';
+  let backgroundImg="";
+  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile') {
+    {backgroundImg = 'BgImage';backgroundWindow='BgWindow '}
+  } 
   return (
     <>
-    <div className="App">
+    <ToastUtils />
     <Scrolltop/>
     <Scrolltop/>
     <Navbar/>
+    <div className={`App`}>
+    <div className={`${backgroundImg}`}>
+    <div className={`${backgroundWindow}`}>
   <Routes>
 
 
@@ -40,7 +52,7 @@ function App() {
    <Route exact path="/events" element={<Events/> } />
    <Route exact path="/about" element={<About/> } />
    <Route exact path="/contact" element={<Contact/> } />
-   <Route exact path="/login" element={<LoginNew/> } />
+   <Route exact path="/login" element={<LoginNew toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/register/:referral" element={<Register/> } />
    <Route exact path="/register" element={<Register/> } />
    <Route exact path="/cart" element={<Cart/> } />
@@ -50,10 +62,11 @@ function App() {
    <Route exact path="/admin" element={<Admin/> } />
    <Route exact path="/team" element={<Team/> } />
    <Route exact path="/sessions" element={<CommingSoon/> } />
+   <Route exact path="/forget-password/:token/:uid" element={<Forget/> } />
    <Route exact path="*" element={<Error/> } />
   </Routes> 
+</div></div></div>
   <Footer/>
-</div>
     </>
   );
 }

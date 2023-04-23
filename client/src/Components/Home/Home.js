@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { Environment, Html, useProgress } from '@react-three/drei'
-import React, { Suspense, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import Experience from './Experience'
 import Temp from './Temp'
 import Loader from '../loader/Loader'
@@ -10,12 +10,21 @@ import R3FLoader from './R3FLoader'
 
 export default function Home() {
   const [explore3D, setExplore3D] = useState(false)
+  const [isMouseDown, setIsMouseDown] = useState(false)
+  useEffect(() => {}, [explore3D])
   return (
     <>
-    <Canvas className='canvas' camera={{fov: 50,}}>
+    <input className='toggle' type="checkbox" id="switch" checked={explore3D} onChange={(event) => {
+      setExplore3D(event.target.checked)
+      console.log(explore3D)
+      
+    }}/>
+    {/* <label for="switch">Toggle</label> */}
+    <Canvas className='canvas' camera={{fov: 50,}} >
+    {/* onMouseDown={() => setIsMouseDown(true)} onMouseUp={() => setIsMouseDown(false)} */}
         
         <Suspense fallback={<R3FLoader />}>
-          <Experience />
+          <Experience explore3D={explore3D} isMouseDown={isMouseDown}/>
           {/* <Environment files="models/credenz/hdri.hdr" background/> */}
           <Environment files="models/v7/textures/hdri4.hdr" />
           
@@ -23,11 +32,7 @@ export default function Home() {
         </Suspense>
     </Canvas>
 
-    {/* <input type="checkbox" id="switch" onChange={(event) => {
-      setExplore3D(event.target.checked)
-      console.log(explore3D)
-      
-    }}/><label for="switch">Toggle</label> */}
+    
 
     </>
   )

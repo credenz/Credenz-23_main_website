@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCartContext } from "../../context/cart_context";
 import { Container, Row, Col } from "react-bootstrap";
 import phonepe from '../../images/phonepe.png'
+import Requests from '../../api/requests';
 const Payment = () => {
     // const [data,setData]=useState(props);
     const { cart, totalprice } = useCartContext();
@@ -29,8 +30,16 @@ const Payment = () => {
             correctLevel: window.QRCode.CorrectLevel.H
         });
     }
-    const handleClick = () => {
-        console.log(cart);
+    const handleClick = async () => {
+        const event_list=[];
+        cart.map((data)=>{
+            event_list.push(data.id);
+        })
+        console.log(event_list,Number(totalprice));
+        await Requests.order({event_list,transaction_id:Number(upiId),amount:totalprice})
+        .then((res)=>{console.log('succesfull')})
+        .catch((err)=>{console.log(err)})
+        // console.log(cart,typeof(upiId));
         window.alert(`UPI Transaction Id :- ${upiId}`);
     }
     useEffect(() => generate(), []);
@@ -100,6 +109,7 @@ const Payment = () => {
                                 <div className="payment-qr-code" id='payment-qr-code'></div>
                                 <a target="_blank" href={link} rel="noreferrer" className="payment-link">Click To Pay</a>
                             </div>
+                            {/* <img src={phonepe} /> */}
                             
                             Enter Upi Transaction Id:
                             <input id="upiId"

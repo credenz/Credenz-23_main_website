@@ -16,13 +16,16 @@ import {isMobile} from 'react-device-detect';
 import Sign from './models/Sign'
 import Soon from './models/Soon'
 
-export default function Experience() {
+export default function Experience({explore3D, isMouseDown}) {
   const [isSnapped, setSnpped] = useState(false)
   const [rigDampSpeed, setRigSpeed] = useState(1.5)
+  const initialCameraPosition = {x: 0, y: 1.5, z: 11}
+  const [cameraPosition, setCameraPosition] = useState(initialCameraPosition)
 
   function Rig() {
     return useFrame((state, delta) => {
-      easing.damp3(state.camera.position, [0 + state.mouse.x / 1, 1.5 + state.mouse.y / 1, 11], rigDampSpeed, delta)
+      state.camera.lookAt(0, 0, 0)
+      easing.damp3(state.camera.position, [cameraPosition.x + state.mouse.x / 1, cameraPosition.y + state.mouse.y / 1, cameraPosition.z], rigDampSpeed, delta)
     })
   }
 
@@ -30,11 +33,21 @@ export default function Experience() {
     setRigSpeed(0.5)
   },4000)
 
+  useEffect(() => {
+    console.log(explore3D)
+    if(explore3D){
+      
+    }
+  }, [explore3D])
+
+
+
+
   function MobileController(){
 
     useFrame((state, delta) => {
       // console.log(state.camera.position)
-      // if(!isSnapped){
+      // if(!isMouseDown){
         easing.damp3(state.camera.position, [-3,4,21], 2, delta)
       //   setSnpped(true)
       // }
@@ -54,6 +67,37 @@ export default function Experience() {
     makeDefault
     />
   }
+  function PCOrbitController(){
+    let stopDamp = false;
+    setTimeout(() => {
+      stopDamp = true;
+    }, 3000)
+    useFrame((state, delta) => {
+      // console.log(state.camera.position)
+      // if(!isSnapped){
+        !stopDamp && easing.damp3(state.camera.position, [15,12,13], 2, delta)
+
+        // {x: 15.464951184826836, y: 12.210116761292216, z: 13.56001786712231, __damp: {…}}
+      //   setSnpped(true)
+      // }
+    })
+
+    
+  
+    return <OrbitControls 
+    // minAzimuthAngle={(-Math.PI / 180) * 180}
+    // maxAzimuthAngle={(Math.PI / 180) * 180}
+    minPolarAngle={(Math.PI / 180) * 30}
+    maxPolarAngle={(Math.PI / 180) * 80}
+    // // enableZoom={isMobile ? false : true}
+    // enableZoom={false}
+    enableDamping
+    maxDistance={30}
+    minDistance={13}
+    // enablePan={false}
+    // makeDefault
+    />
+  }
     const ptLight = useRef()
     const [isPhone, setIsPhone] = useState(isMobile)
 
@@ -61,23 +105,38 @@ export default function Experience() {
       setIsPhone(isMobile)
     }, [])
 
+    function CamControlDispatcher(){
+      if (explore3D){
+        console.log("pcorbitcontroller")
+        return <PCOrbitController />
+      }
+      if(isPhone){
+        console.log("mobile controller")
+        return <MobileController />
+
+      }else{
+        console.log("rig")
+        return <Rig />
+      }
+    }
   return (
     <>
         
         <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} color={"orange"}/>
         <color attach="background" args={['black']} />
         
-        <ambientLight intensity={100}/>
+        <ambientLight intensity={0.5}/>
         <LogoV7 />
         <Sign />
 
-        {isPhone ? <MobileController /> : <Rig />}
+        {/* {isPhone ? <MobileController /> : <Rig />} */}
         {/* {console.log(isPhone)} */}
         {/* <OrbitControls /> */}
-
+        <CamControlDispatcher />
+        {explore3D ? <Html center><h1>Explore 3D</h1></Html> : null}
         
 
-        <Soon />
+        <Soon/>
 
 
         

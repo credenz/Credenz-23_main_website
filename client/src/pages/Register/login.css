@@ -169,7 +169,8 @@ body {
         left: 0px;
         border-image-repeat: none;
         border-style: solid;
-   
+        
+        opacity: 0.65;
 }
 
 

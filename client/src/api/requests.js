@@ -23,18 +23,20 @@ const list = axios.create({
 
 const events=()=>list.get(`/`,{headers: { }} );
 const login = (data) => backend.post( `/login/`, data,{headers: {}} );
-const profile= (data)=>backend.get(`/profile/`,{headers:{Authorization:`Bearer ${data.token}`}});
+const profile= ()=>backend.get(`/profile/`,{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const register=(data)=>backend.post(`/register/`,data,{headers: { }});
+const order=(data)=>backend.post(`/placeorder/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
+const resetPassowrd=(data)=>backend.post(`/password-reset-confirm/`,data,{headers: { }});
+const forgetPassword=(data)=>backend.post(`/password-reset/`,data,{headers: { }});
+const createTeam=(data)=>backend.post(`/generate-team/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const Requests = {
     login,
     profile,
     register,
-    // userquestion,
-    // user,
-    // extrahint,
-    // leaderboard,
-    // time,
-    // feedback.
-    events
+    events,
+    order,
+    forgetPassword,
+    resetPassowrd,
+    createTeam,
   };
   export default Requests;

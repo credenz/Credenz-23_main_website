@@ -141,6 +141,51 @@ const PhoneNavbar = () => {
                 Contact Us
               </Link>
             </li>
+            <li>
+              <Link
+                to={"/login"}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/login'
+                  :setNavOpen(false)}
+                style={{ textDecoration: "none" }}
+              >
+                <span className="fa-li">
+                  <i className="fas fa-info"></i>
+                </span>
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"/profile"}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/profile'
+                  :setNavOpen(false)}
+                style={{ textDecoration: "none" }}
+              >
+                <span className="fa-li">
+                  <i className="fas fa-info"></i>
+                </span>
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"/cart"}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/cart'
+                  :setNavOpen(false)}
+                style={{ textDecoration: "none" }}
+              >
+                <span className="fa-li">
+                  <i className="fas fa-info"></i>
+                </span>
+                cart
+              </Link>
+            </li>
           </ul>
           {/* {loginStateButtons()} */}
         </div>

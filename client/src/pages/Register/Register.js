@@ -229,9 +229,7 @@ const Register = () => {
                         onChange={(e) => setphone(e.target.value)}
                         value={phone}
                       />
-
-                      <div className="passwordsection">
-                        <input
+                       <input
                           className="form-control"
                           type="text"
                           name="institute"
@@ -240,6 +238,9 @@ const Register = () => {
                           onChange={(e) => setinstitute(e.target.value)}
                           value={institute}
                         />
+
+                      <div className="passwordsection">
+                       
                         {/* <input
                           className="form-control"
                           type="text"
