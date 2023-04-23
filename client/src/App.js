@@ -49,20 +49,20 @@ function App() {
 
    <Route exact path="/" element={<Home/> } />
    <Route exact path="/explore" element={<Explore /> } />
-   <Route exact path="/events" element={<Events/> } />
+   <Route exact path="/events" element={<Events toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/about" element={<About/> } />
    <Route exact path="/contact" element={<Contact/> } />
    <Route exact path="/login" element={<LoginNew toast={{ container: <ToastUtils />, toast }}/> } />
-   <Route exact path="/register/:referral" element={<Register/> } />
-   <Route exact path="/register" element={<Register/> } />
-   <Route exact path="/cart" element={<Cart/> } />
+   <Route exact path="/register/:referral" element={<Register toast={{ container: <ToastUtils />, toast }}/> } />
+   <Route exact path="/register" element={<Register toast={{ container: <ToastUtils />, toast }}/> } />
+   <Route exact path="/cart" element={<Cart toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/user" element={<User/> } />
-   <Route exact path="/profile" element={<Profile/> } />
-   <Route exact path="/payment" element={<Payment/> } />
-   <Route exact path="/admin" element={<Admin/> } />
+   <Route exact path="/profile" element={<Profile toast={{ container: <ToastUtils />, toast }}/> } />
+   <Route exact path="/payment" element={<Payment toast={{ container: <ToastUtils />, toast }}/> } />
+   <Route exact path="/admin" element={<Admin toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/team" element={<Team/> } />
    <Route exact path="/sessions" element={<CommingSoon/> } />
-   <Route exact path="/forget-password/:token/:uid" element={<Forget/> } />
+   <Route exact path="/forget-password/:token/:uid" element={<Forget toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="*" element={<Error/> } />
   </Routes> 
 </div></div></div>

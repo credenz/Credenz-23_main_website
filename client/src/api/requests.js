@@ -29,6 +29,9 @@ const order=(data)=>backend.post(`/placeorder/`,data,{headers: {Authorization:`B
 const resetPassowrd=(data)=>backend.post(`/password-reset-confirm/`,data,{headers: { }});
 const forgetPassword=(data)=>backend.post(`/password-reset/`,data,{headers: { }});
 const createTeam=(data)=>backend.post(`/generate-team/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
+const joinTeam=(data)=>backend.post(`/join-team/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
+const viewTeam=()=>backend.get(`/view-team/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
+
 const Requests = {
     login,
     profile,
@@ -38,5 +41,7 @@ const Requests = {
     forgetPassword,
     resetPassowrd,
     createTeam,
+    viewTeam,
+    joinTeam,
   };
   export default Requests;

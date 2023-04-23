@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./login.css";
 import "./register.css";
 import { useNavigate,useParams } from "react-router-dom";
-import swal from "sweetalert";
 import ReactModal from "react-modal";
 import Requests from "../../api/requests";
-const Register = () => {
+const Register = (props) => {
   let navigate=useNavigate();
   const [register2, setregister2] = useState(0);
 
@@ -34,6 +33,12 @@ const Register = () => {
 
   const signupsubmit = async (e) => {
     e.preventDefault();
+    if(!register2) {
+      if(allfieldsfilled() && registerpassword === confirmpassword) setregister2(1);
+      else if(emailError) props.toast.toast.error("Please fill out correct email");
+      else if(phoneError) props.toast.toast.error("Please fill out correct phone number");
+      return;
+    }
     let data={
       username,
       password:registerpassword,
@@ -47,21 +52,23 @@ const Register = () => {
     };
     // if(senior) data.senior='true';
     if(referal!=='') data.referralCode=referal;
-    console.log(data,typeof(data.phone));
+    // console.log(data,typeof(data.phone));
+    const id = props.toast.toast.loading("Please wait...");
     await Requests.register(data)
     .then((res)=>{
-      console.log(res);
+      // console.log(res);
       localStorage.setItem('token',res.data.access);
-      window.alert('Register SUcCess');
+      props.toast.toast.update(id, { render: "Registration Sccessfull", type: "success", isLoading: false, autoClose:5000 });
       navigate('/events');
     })
     .catch((err)=>{
-      console.log(err,err.response.data.username);
-      console.log(err,err.response.data[0]);
-      let msg='Error';
+      // console.log(err,err.response.data.username);
+      // console.log(err,err.response.data[0]);
+      let msg='Error in data';
       if(err.response.data.username) msg=err.response.data.username;
-      if(err.response.data[0]) msg=err.response.data[0];
-      window.alert(msg);
+      if(err.response.data.password[0]) msg=err.response.data[0];
+      // if(err.response.password[0]) msg=err.response.password[0];
+      props.toast.toast.update(id, { render: msg, type: "error", isLoading: false,autoClose:5000 });
 
     })
     // console.log({
@@ -222,7 +229,7 @@ const Register = () => {
 
                       <input
                         className="form-control"
-                        type="phone"
+                        type="number"
                         name="phone"
                         placeholder="Phone"
                         required
@@ -261,12 +268,12 @@ const Register = () => {
                         value={referal}
                       />
 
-                      <div className="passwordsection">
+                      {/* <div className="passwordsection"> */}
                         <input
                           className="form-control"
                           type="password"
                           name="password"
-                          placeholder="Password"
+                          placeholder="Password (Minimum 7 characters)"
                           required
                           onChange={(e) => setregisterpassword(e.target.value)}
                           value={registerpassword}
@@ -280,21 +287,17 @@ const Register = () => {
                           onChange={(e) => setconfirmpassword(e.target.value)}
                           value={confirmpassword}
                         />
-                      </div>
+                      {/* </div> */}
 
                       <div className="form-button">
                         <button
                           onClick={
-                            (e) => {setregister2(1)
-                            allfieldsfilled()
-                              ? registerpassword === confirmpassword
-                              ?  setregister2(1)
-                              : swal(
-                                  "Error",
-                                  "Passwords don't match!",
-                                  "error"
-                                )
-                                : swal("Error", "Please fill out all the details", "error")}
+                            (e) => {
+                            allfieldsfilled() ? 
+                              registerpassword === confirmpassword ? setregister2(1) 
+                                                                    : props.toast.toast.error("Passwords doesn't match!")
+                                  
+                                : props.toast.toast.error("Please fill out Complete details")}
                           }
                           className="ibtn"
                         >
@@ -350,7 +353,7 @@ const Register = () => {
                             checked={senior === false} 
                             onChange={() => setsenior(false)}
                             type="checkbox"
-                            id="javascript"
+                            id="sep1"
                             name="sep1"
                           />
 
@@ -364,7 +367,7 @@ const Register = () => {
                             checked={senior === true} 
                             type="checkbox"
                             name="sep2"
-                            id="javascript"
+                            id="sep2"
                           />
                           <label for="sep2">SENIOR (TE/BE)</label>
                         </div>
