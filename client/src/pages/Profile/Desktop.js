@@ -100,7 +100,8 @@ const Desktop = ({ data,props }) => {
                 </p>
                 <p class='bio'> 📞 {data.phone} </p>
                 <p class='bio'> 🏦 {data.coins} </p>
-                <Button onClick={(e)=>{e.preventDefault();console.log('logout');localStorage.removeItem("token");}}>Logout</Button>
+                {localStorage.getItem('token')!==undefined?<Button onClick={(e)=>{e.preventDefault();console.log('logout');localStorage.removeItem("token");}}>Logout</Button>:<></>}
+                
 
             </aside>
             <div style={{

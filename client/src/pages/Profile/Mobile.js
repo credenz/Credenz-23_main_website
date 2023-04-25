@@ -384,7 +384,7 @@ marginRight: '2%',marginTop:'8%'}}>
                                                         <div className="jsecond-division">
                                                             <button
                                                                 type="button"
-                                                                onClick={() =>
+                                                                onClick={(e) =>
                                                                     // handleplayerRemove(0)
                                                                     // console.log(teamId)
                                                                     handleJoin(e)
