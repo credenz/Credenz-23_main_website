@@ -758,8 +758,9 @@ margin-right: auto;
   outline: 0.5rem solid; */
   /* display: inline-flex; */
 }.ncard-contentr {
-  padding: 20px;
+  padding: 5%;
   text-align: center;
+  width: inherit;
   /* display: flex; */
 }
 

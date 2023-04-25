@@ -18,7 +18,7 @@ const Payment = (props) => {
     const [upiId, setupiId] = useState("");
     const [payMethod,setPayMethod] = useState(0);
     const payList=[
-        'Transaction ID only numeric','UPI transaction ID','UPI Ref ID:','Bank Reference Id'
+        'UTR: ','UPI transaction ID','UPI Ref ID:','Bank Reference Id'
     ]
     let navigate = useNavigate();
     function generate() {
