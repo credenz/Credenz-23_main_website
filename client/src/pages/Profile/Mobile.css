@@ -344,6 +344,8 @@
   }
   .pcmembers .pcform-field {
 	flex: 2;
+	display: grid;
+  justify-content: center;
   }
   .pcmembers  .pcinput {
 	height: 22px;

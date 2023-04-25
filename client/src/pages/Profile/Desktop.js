@@ -18,6 +18,7 @@ import WEB from "../../images/webwever.png";
 import Requests from '../../api/requests';
 // import './Mobile.css';
 import ticket from '../../images/aticket.png';
+import { Button } from 'react-bootstrap';
 const Desktop = ({ data,props }) => {
     const [teamId, setTeamId] = useState("");
     
@@ -46,6 +47,7 @@ const Desktop = ({ data,props }) => {
     }
     
     const handleCreate=()=>{
+        if(teamName.length<4) {props.toast.toast.info("Minimum 4 characters for Team name");return;}
         const id = props.toast.toast.loading("Please wait...");
         // console.log(eventSelected,typeof(eventSelected));
         Requests.createTeam({event_id:eventSelected})
@@ -63,6 +65,7 @@ const Desktop = ({ data,props }) => {
     const [eventSelected, setEvnentSelected] = useState(101);
     const teamEvents=[{id:101,name:'Clash'},{id:102,name:'RC'},{id:103,name:'Enigma'},{id:104,name:'B-plan'}]
     const [myTeams,setMyTeams] = useState([]);
+    const [teamName,setTeamName] = useState('');
     const eventsList = [
         { logo: CLASH, title: "Clash", id: 101 },
         { logo: RC, title: "Reverse Coding", id: 102 },
@@ -86,7 +89,7 @@ const Desktop = ({ data,props }) => {
                 <img src="https://media.wired.com/photos/5ec6fb698971d7886fd36024/1:1/w_1007,h_1007,c_limit/astronaut-urine-elena-lacey-wired-science.jpg" alt="avatar" />
                 <h3>{data.full_name}</h3>
                 <h4 class="username grey-text">{data.username}</h4>
-                <p class="grey-text bio">I'm a Full Stack Developer, Educator and Maker. I stream 5 days a week on my YouTube channel Coding Garden with CJ.</p>
+                {/* <p class="grey-text bio">I'm a Full Stack Developer, Educator and Maker. I stream 5 days a week on my YouTube channel Coding Garden with CJ.</p> */}
                 {/* <p class="grey-text bio">Block or report user</p> */}
                 <hr class="seperator" />
                 <p class='bio'>📍 {data.institute}
@@ -97,6 +100,7 @@ const Desktop = ({ data,props }) => {
                 </p>
                 <p class='bio'> 📞 {data.phone} </p>
                 <p class='bio'> 🏦 {data.coins} </p>
+                <Button onClick={(e)=>{e.preventDefault();console.log('logout');localStorage.removeItem("token");}}>Logout</Button>
 
             </aside>
             <div style={{
@@ -285,9 +289,24 @@ marginRight: '20%'}}>
                                         ?
                                         <div className="cmembers">
                                             <p>{data.team}</p>
-                                            <form className="" autoComplete="off">
+                                            <form className="" autoComplete="off" onSubmit={(e)=>{e.preventDefault();if(teamName.length>=4) handleCreate()
+                                            else props.toast.toast.info("Minimum 4 characters for Team name")}}>
                                                 <div className="cform-field">
-                                                    {/* <label htmlFor="player">Select Event</label> */}
+                                                    <label htmlFor="teamName">Enter Team Name</label>
+                                                            <input
+                                                            className='teamName'
+                                                                name="teamName"
+                                                                type="text"
+                                                                id="teamName"
+                                                                placeholder="Team Name"
+                                                                value={teamName}
+                                                                onChange={(e) =>
+                                                                    {e.preventDefault()
+                                                                    // handleplayerChange(e)
+                                                                    setTeamName(e.target.value)}
+                                                                }
+                                                                required
+                                                            />
                                                     <div className="cplayers">
                                                     <Dropdown>
         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
@@ -302,18 +321,6 @@ marginRight: '20%'}}>
           <Dropdown.Item eventKey={4} onClick={()=>setEvnentSelected(104)} active={eventSelected===104?true:false}>B-Plan</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-                                                            {/* <input
-                                                                name="player"
-                                                                type="text"
-                                                                id="player"
-                                                                placeholder="Team Id"
-                                                                value={teamId}
-                                                                onChange={(e) =>
-                                                                    // handleplayerChange(e)
-                                                                    setTeamId(e.target.value)
-                                                                }
-                                                                required
-                                                            /> */}
                                                             
                                                         <div className="cfirst-division">
                                                             Selected : {teamEvents[eventSelected-101].name}

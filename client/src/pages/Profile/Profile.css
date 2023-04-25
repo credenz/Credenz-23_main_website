@@ -24,6 +24,7 @@
 	}
 	.profile-mobile {
 	  display: block;
+	  opacity: 0.95;
 	}
   }
 
@@ -33,5 +34,6 @@
 	}
 	.profile-mobile {
 	  display: block;
+	  opacity: 0.95;
 	}
   }
