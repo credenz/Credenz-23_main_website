@@ -222,8 +222,11 @@ class JoinTeamView(generics.GenericAPIView):
             if not Team.objects.filter(user = user, event = event_check):
                 if Team.objects.filter(team_id = team_id):
                     exis_team = Team.objects.get(team_id = team_id)
-                    exis_team.user.add(request.user)
-                    return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
+                    if exis_team.user.count() >= exis_team.event.group_size:
+                        return Response({"message" : "Maximum team size reached already!"}, status=status.HTTP_400_BAD_REQUEST)
+                    else:
+                        exis_team.user.add(request.user)
+                        return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
                 else:
                     raise ValueError(f"Invalid team ID : {team_id}")
             else:
