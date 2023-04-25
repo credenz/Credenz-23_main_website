@@ -50,7 +50,7 @@ const Desktop = ({ data,props }) => {
         if(teamName.length<4) {props.toast.toast.info("Minimum 4 characters for Team name");return;}
         const id = props.toast.toast.loading("Please wait...");
         // console.log(eventSelected,typeof(eventSelected));
-        Requests.createTeam({event_id:eventSelected})
+        Requests.createTeam({event_id:eventSelected,team_name:teamName})
         .then((res)=>{
             console.log(res.data);
             props.toast.toast.update(id, { render: "Team Created", type: "success", isLoading: false, autoClose:5000 });

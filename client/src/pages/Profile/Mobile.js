@@ -50,7 +50,7 @@ const Mobile=({ data,props })=>{
     const handleCreate=()=>{
         const id = props.toast.toast.loading("Please wait...");
         // console.log(eventSelected,typeof(eventSelected));
-        Requests.createTeam({event_id:eventSelected})
+        Requests.createTeam({event_id:eventSelected,team_name:teamName})
         .then((res)=>{
             console.log(res.data);
             props.toast.toast.update(id, { render: "Team Created", type: "success", isLoading: false, autoClose:5000 });
@@ -278,7 +278,8 @@ marginRight: '2%',marginTop:'8%'}}>
                                         ?
                                         <div className="pcmembers">
                                             <p>{data.team}</p>
-                                            <form className="" autoComplete="off">
+                                            <form className="" autoComplete="off" onSubmit={(e)=>{e.preventDefault();if(teamName.length>=4) handleCreate()
+                                            else props.toast.toast.info("Minimum 4 characters for Team name")}}>
                                                 <div className="pcform-field">
                                                     {/* <label htmlFor="player">Select Event</label> */}
                                                     <div className="pcplayers">
@@ -333,7 +334,8 @@ marginRight: '2%',marginTop:'8%'}}>
                                                                 type="button"
                                                                 onClick={() =>
                                                                     // handleplayerRemove(0)
-                                                                    console.log(eventSelected)
+                                                                    // console.log(eventSelected)
+                                                                    handleCreate()
                                                                 }
                                                                 className="remove-btn"
                                                             >
@@ -384,7 +386,8 @@ marginRight: '2%',marginTop:'8%'}}>
                                                                 type="button"
                                                                 onClick={() =>
                                                                     // handleplayerRemove(0)
-                                                                    console.log(teamId)
+                                                                    // console.log(teamId)
+                                                                    handleJoin(e)
                                                                 }
                                                                 className="remove-btn"
                                                             >
