@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './Mobile.css';
 import Clash from "../../images/clash.png";
+import CLASH from "../../images/clash.png";
 import RC from "../../images/rc.png";
 import NTH from "../../images/nth.png";
 import WALLSTREET from "../../images/wallstreet.png";
@@ -13,12 +14,67 @@ import PAPER from "../../images/paper.png";
 import CRETRONIX from "../../images/cretronix.png";
 import PIXELATE from "../../images/pixelate.png";
 import WEB from "../../images/webwever.png";
-const Mobile=({data})=>{
+import Requests from '../../api/requests';
+const Mobile=({ data,props })=>{
     const [teamId, setTeamId] = useState("");
     const [selected,setSelected] =useState(0);
     const [teamVisible, setTeamVisible] = useState(0);
     const [eventSelected, setEvnentSelected] = useState(101);
     const teamEvents=[{id:101,name:'Clash'},{id:102,name:'RC'},{id:103,name:'Enigma'},{id:104,name:'B-plan'}]
+    const handleView=()=>{
+        Requests.viewTeam()
+        .then((res)=>{
+            console.log(res.data);
+            setMyTeams(res.data);
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    const handleJoin=()=>{
+        const id = props.toast.toast.loading("Please wait...");
+        Requests.joinTeam({team_id:teamId})
+        .then((res)=>{
+            console.log(res.data);
+            props.toast.toast.update(id, { render: "Joined Successfully", type: "success", isLoading: false, autoClose:5000 });
+        })
+        .catch((err)=>{
+            console.log(err);
+            props.toast.toast.update(id, { render: 'Error while joining', type: "error", isLoading: false,autoClose:5000 });
+        })
+    }
+    
+    const handleCreate=()=>{
+        const id = props.toast.toast.loading("Please wait...");
+        // console.log(eventSelected,typeof(eventSelected));
+        Requests.createTeam({event_id:eventSelected})
+        .then((res)=>{
+            console.log(res.data);
+            props.toast.toast.update(id, { render: "Team Created", type: "success", isLoading: false, autoClose:5000 });
+        })
+        .catch((err)=>{
+            console.log(err);
+            props.toast.toast.update(id, { render: 'Team Not Created', type: "error", isLoading: false,autoClose:5000 });
+        })
+    }
+    const [myTeams,setMyTeams] = useState([]);
+    const eventsList = [
+        { logo: CLASH, title: "Clash", id: 101 },
+        { logo: RC, title: "Reverse Coding", id: 102 },
+        { logo: NTH, title: "NTH", id: 103 },
+        { logo: WALLSTREET, title: "Wallstreet", id: 104 },
+        { logo: BPLAN, title: "B-Plan", id: 105 },
+        { logo: ENIGMA, title: "Enigma", id: 106 },
+        { logo: DATAWIZ, title: "Datawiz", id: 107 },
+        { logo: QUIZ, title: "Quiz", id: 108 },
+        { logo: CRETRONIX, title: "Cretronix", id: 109 },
+        { logo: WEB, title: "Web Weaver", id: 110 },
+      ];
+    // const data=props;
+    useEffect(()=>{
+        handleView();
+    },[])
     // const buttons = document.querySelectorAll(".card-buttons button");
     // const sections = document.querySelectorAll(".card-section");
     // const card = document.querySelector(".card");
@@ -124,8 +180,10 @@ const Mobile=({data})=>{
                                
                                 
                                 <div className="card-contact">
-                                <div style={{'marginLeft':'5%','marginRight':'5%'}}>
+                                <div style={{width:'100%'}}>
                                 <section >
+                            <div style={{display: 'flex',justifyContent: 'space-evenly'}}>
+
                                                 <div style={{ 'display': 'inline-block','width':'fitContent' }} className='pteamJoin'>
                                                 <button onClick={() => (setTeamVisible(0))} style={{'width':'fit-content'}}>My Teams</button></div>
                                                 <div className='pteamJoin' style={{ 'display': 'inline-block' }}>
@@ -134,10 +192,54 @@ const Mobile=({data})=>{
                                                 <div className='pteamJoin' style={{ 'display': 'inline-block','width':'fitContent' }}>
                                                     <button onClick={() => (setTeamVisible(2))} style={{'width':'fit-content'}}>JOIN Team</button>
                                                 </div>
+                                                </div>
                                 {
                                     teamVisible === 0
                                         ?
                                         <div>
+                                        <div style={{display: 'grid',
+justifyContent: 'center',
+marginLeft: '2%',
+marginRight: '2%',marginTop:'8%'}}>
+                                        {myTeams.map((data)=>{return (
+
+                                        <div class="pncard">
+                                            <div class="pncard-contentl">
+                                            <img src={eventsList[data.event.event_id-101].logo} alt="Example Image"/>
+                                                <h2>{data.event.event_name}</h2>
+                                                </div>
+                                                <div style={{border:'2px solid solid rgb(86, 89, 128)', width: 'inherit'}}></div>
+                                                <div class="pncard-contentr">
+                                                <p>Team Name: VanshTeppalwar </p>
+                                                <p>Team Id: {data.team_id}</p>
+                                                <p>Max Team Size: {data.event.group_size}</p>
+                                                <p>Team Members </p> 
+                                                <div style={{textAlign:'initial'}}>
+                                                    <ol>
+                                                {data.user.map((user,idx)=>{return(
+                                                    <li >{user.username} </li>
+                                                )})}
+                                                </ol>
+                                                </div>
+                                                <p>Remaining: {data.event.group_size-data.user.length}</p>
+                                            </div>
+                                            </div>
+                                        )
+
+                                        })}
+
+
+<article class="cta">
+	<img src={Clash} alt='event'/>
+	<div class="cta__text-column">
+		<h2>Team Name</h2>
+		<p>Team Members</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio">Read all about it</a>
+	</div>
+</article>
+                                            
+                                        </div>
                                             <div >
                                                 <div className="teamList">
                                                     <div class="teamListrow">

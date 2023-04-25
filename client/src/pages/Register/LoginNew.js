@@ -25,24 +25,24 @@ const LoginNew = (props) => {
 
   const loginSubmit = async(e) => {
     e.preventDefault();
-    console.log({
-      loginUsername,
-      loginUsername,
-      loginpassword,
-    });
-    console.log(props)
-    props.toast.toast.success("Logged In!");
-    // await Requests.login({username:loginUsername,password:loginpassword})
-    // .then((res)=>{
-    //   console.log(res.data.access);
-    //   localStorage.setItem('token',res.data.access);
-    //   window.alert('LOGIN SUcCess');
-    //   navigate('/events');
-    // })
-    // .catch((err)=>{
-    //   console.log(err);
-    //   window.alert('Wrong username or password');
-    // })
+    // console.log({
+    //   loginUsername,
+    //   loginUsername,
+    //   loginpassword,
+    // });
+    // console.log(props);
+    const id = props.toast.toast.loading("Please wait...");
+    await Requests.login({username:loginUsername,password:loginpassword})
+    .then((res)=>{
+      // console.log(res.data.access);
+      localStorage.setItem('token',res.data.access);
+      props.toast.toast.update(id, { render: "Logged IN", type: "success", isLoading: false, autoClose:5000 });
+      navigate('/events');
+    })
+    .catch((err)=>{
+      console.log(err);
+      props.toast.toast.update(id, { render: "Wrong username or password", type: "error", isLoading: false,autoClose:5000 });
+    })
   };
 
   const forgetSubmit = async (e) => {

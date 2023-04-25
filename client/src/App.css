@@ -27,7 +27,7 @@
     /* background: url("../../../public/assets/images/bgspace.jpg") no-repeat center */
     background: url("./images/bgspace.jpg") no-repeat center
     center fixed;
-    background-position: right 40% bottom 90%;
+    background-position: right 47% bottom 90%;
 }
 .BgWindow{
   min-height: 100vh;
@@ -49,7 +49,7 @@
   border-image-source: url('./images/eww.png');
   /* border-image-source: url(/whitespace.png); */
   border-image-slice: 212;
-  border-image-width: 200px;
+  border-image-width: 20%;
   border-image-outset: 0;
   border-image-repeat: none;
   border-style: solid;
@@ -58,17 +58,17 @@
   padding: 0rem 0.5rem 0rem;
   /* min-height: 90vh; */
   /* animation: eventpage 2s ease-in-out infinite; */
-  animation: BgWindow 7s ease-in-out infinite;
+  /* animation: BgWindow 10s ease-in-out infinite; */
 }
 
 @keyframes BgWindow {
   0% {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
   }
   50% {
-    transform: translateY(5px);
+    transform: translateY(4px);
   }
   100% {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
   }
 }
