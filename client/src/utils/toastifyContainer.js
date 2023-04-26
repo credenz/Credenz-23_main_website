@@ -1,4 +1,5 @@
 import { ToastContainer, toast } from "react-toastify";
+import './toastifyContainer.css';
 export const ToastUtils = () => {
     return (
         <>

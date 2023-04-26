@@ -10,6 +10,7 @@ import paytm from '../../images/paytm.png'
 import amazonpay from '../../images/amazonpay.png'
 import Requests from '../../api/requests';
 import { isDesktop } from 'react-device-detect';
+import Modal from "react-modal";
 const Payment = (props) => {
     // const [data,setData]=useState(props);
     const { cart, totalprice } = useCartContext();
@@ -18,7 +19,7 @@ const Payment = (props) => {
     const [upiId, setupiId] = useState("");
     const [payMethod,setPayMethod] = useState(0);
     const payList=[
-        'UTR: ','UPI transaction ID','UPI Ref ID:','Bank Reference Id'
+        'UTR','UPI transaction ID','UPI Ref ID','Bank Reference Id'
     ]
     let navigate = useNavigate();
     function generate() {
@@ -39,6 +40,7 @@ const Payment = (props) => {
         });
     }
     const handleClick = async () => {
+        if(upiId==='') {props.toast.toast.error('Enter Valid id');return;}
         const event_list=[];
         cart.map((data)=>{
             event_list.push(data.id);
@@ -58,6 +60,50 @@ const Payment = (props) => {
         // console.log(cart,typeof(upiId));
         // window.alert(`UPI Transaction Id :- ${upiId}`);
     }
+    const customStyles = {
+        overlay: {
+          zIndex: "1000",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "transparent",
+          border: "none",
+        },
+        content: {
+          top: "50%",
+          left: "50%",
+          right: "auto",
+          bottom: "auto",
+          marginRight: "-50%",
+          transform: "translate(-50%, -50%)",
+          background: "black",
+          border: "none",
+          padding: "0px",
+        },
+      };
+      const [modalIsOpen, setIsOpen] = useState(false);
+    
+      //   const openmodal =(id)=>{
+      //     seteventid(id);
+      // }
+    
+      function openModal() {
+        // seteventid(id);
+        // console.log("open model id:", id);
+        setIsOpen(true);
+      }
+    
+      function afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        // subtitle.style.color = "#f00";
+      }
+    
+      function closeModal() {
+        setIsOpen(false);
+        // setDetails(0);
+      }
     useEffect(() => generate(), []);
     return (
         <>
@@ -95,13 +141,13 @@ const Payment = (props) => {
                                 <a href="#" onClick={(e) => { e.preventDefault(); navigate('/cart') }}>Back to cart</a>
                                 {/* <button onClick={()=>navigate('/cart')}>Back to cart</button> */}
                                 {/* {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>} */}
-                            </div>
                             {
                                 !isDesktop&&
                             <div style={{display:'inline',paddingLeft:'20%',color: 'rgb(99 102 241)',textDecorationLine: 'underline'}}>
                                 <a target="_blank" href={link} rel="noreferrer" >Click To Pay</a>
                                 {/* <div className="payment-qr-code" id='payment-qr-code'></div> */}
                             </div>}
+                            </div>
                         </div>
 
                         <div className="col-md-4 summary">
@@ -159,11 +205,52 @@ const Payment = (props) => {
                             >
                             </input>
                             </div>
-                            <button className="btn" onClick={() => handleClick()}>Confirm Payment</button>
+                            <button className="btn" onClick={() => {props.toast.toast.info(`Please Ensure ${payList[payMethod]} is correct`);setIsOpen(true)}}>Pay</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        ariaHideApp={false}
+        // contentLabel="Example Modal"
+      >
+              <div
+                className="modal-content"
+                data-aos="fade-in"
+                data-aos-duration="500"
+              >
+                <div className="modalclose">
+                  <div className="">
+                    <button onClick={closeModal}>
+                      <i class="fa fa-times cross" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+
+                {/* <div className="modalimage">
+                  <img src={eventslist[data.id - 101].logo} alt="" />
+                </div> */}
+                <p>Total Price {totalprice} </p>
+                <p>{payList[payMethod]}: {upiId}</p>
+                <div className="modalbutton">
+                  <button
+                    // className={Details === 0 ? "active" : "hover "}
+                    onClick={() => handleClick()}
+                  >
+                    Confirm Payment
+                  </button>
+                  
+                </div>
+
+                <div className="modalbody info">
+                </div>
+              </div>
+            
+      </Modal>
         </>
     )
 }

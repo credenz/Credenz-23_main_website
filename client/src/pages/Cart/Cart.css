@@ -211,6 +211,7 @@ font-size: larger;
       /* margin: 3vh auto; */
       height: 73vh;
       overflow: scroll;
+      background: transparent;
   }
 }
 
