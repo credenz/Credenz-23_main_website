@@ -279,8 +279,7 @@ const Events = () => {
       padding: "0px",
     },
   };
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   //   const openmodal =(id)=>{
   //     seteventid(id);
