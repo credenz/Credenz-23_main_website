@@ -431,7 +431,7 @@ const Events = () => {
                       <></>
                     )}
                   </p>
-                  <p className="text-center">
+                  <p >
                     {Details === 2 && data.structure ? (
                       typeof data.structure !== "string" ? (
                         <ol>
@@ -482,7 +482,10 @@ const Events = () => {
                       )
                     }
                   >
-                    Add to cart
+                    {/* Add to cart */}
+                    {cart.find((item) => item.id === data.id)
+                          ?  <>Added To cart</>
+                          : <>Add to cart</>}
                   </button>
                   {/* <button>CHECKOUT</button> */}
                 </div>
