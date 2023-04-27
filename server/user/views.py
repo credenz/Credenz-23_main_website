@@ -212,9 +212,9 @@ class GenerateTeamCodeView(generics.GenericAPIView):
                 new_team.user.add(request.user)
                 return Response({"message": new_team.team_id}, status=status.HTTP_201_CREATED)
             else:
-                raise ValueError("Team already exists for this user and event.")
+                return Response({"message" : "Team already exists for this user and event."})
         else:
-            raise ValueError("No order exists for this user and event.")
+            return Response({"message" : "No order exists for this user and event."})
 
 class JoinTeamView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
@@ -234,11 +234,11 @@ class JoinTeamView(generics.GenericAPIView):
                         exis_team.user.add(request.user)
                         return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
                 else:
-                    raise ValueError(f"Invalid team ID : {team_id}")
+                    return Response({"message" : "Invalid team ID"})
             else:
-                raise ValueError("Team already exists for this user and event.")
+                return  Response({"message" : "Team already exists for this user and event."})
         else:
-            raise ValueError("No order exists for this user and event.")
+            return Response({"message" : "No order exists for this user and event."})
 
 class TeamView(generics.ListAPIView):
     serializer_class = TeamSerializer
