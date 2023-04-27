@@ -4,7 +4,7 @@ import TablePage from '../Table/TablePage';
 import AdminUser from './AdminUser';
 import { useState,useEffect } from 'react';
 import Requests from '../../api/requests';
-const Admin = () => {
+const Admin = ({props}) => {
     const [selected, setSelected] = useState(0);
     const [adminStatus, setAdminStauts] = useState(0);
     const checkAdmin = async () => {
@@ -56,9 +56,9 @@ const Admin = () => {
                                         <button onClick={() => setSelected(2)}>Payment Table</button>
                                     </div>
 
-                                    : (selected === 1 ? (<><a style={{ 'color': 'red', 'textDecoration': 'underline' }} onClick={(e) => { e.preventDefault(); setSelected(0) }}>Back to Admin</a><AdminUser /></>)
+                                    : (selected === 1 ? (<><a style={{ 'color': 'red', 'textDecoration': 'underline' }} onClick={(e) => { e.preventDefault(); setSelected(0) }}>Back to Admin</a><AdminUser props={{...props}}/></>)
 
-                                        : selected === 2 ? (<><a style={{ 'color': 'red', 'textDecoration': 'underline' }} onClick={(e) => { e.preventDefault(); setSelected(0) }}>Back to Admin</a><TablePage /></>) : '')}
+                                        : selected === 2 ? (<><a style={{ 'color': 'red', 'textDecoration': 'underline' }} onClick={(e) => { e.preventDefault(); setSelected(0) }}>Back to Admin</a><TablePage props={{...props}}/></>) : '')}
                             </div>
                             :
                             'You Are Not Admin'

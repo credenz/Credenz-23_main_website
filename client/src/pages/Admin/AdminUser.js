@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Requests from "../../api/requests";
-const AdminUser = () => {
+const AdminUser = ({props}) => {
   // const details = [
   //   {
 
@@ -147,7 +147,18 @@ const AdminUser = () => {
         });
     }
     const handleClick=()=>{
-        window.alert(`UPI Transaction Id :- ${upiId}`);
+      // console.log(cart);
+      let event_list=[];
+      let amount=0;
+      cart.map((data)=>{amount+=data.amt;event_list.push(data.id)})
+      // console.log(amount,event_list);
+      Requests.adminOrder({username,transaction_id:upiId,event_list,amount})
+      .then((res)=>{
+        console.log(res,props);
+      })
+      .catch((err)=>console.log(err))
+      //   window.alert(`UPI Transaction Id :- ${upiId}`);
+      //   window.alert(`username :- ${username}`);
     }
     const eventList = async () => {
     await Requests.events()
