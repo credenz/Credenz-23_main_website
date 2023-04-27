@@ -56,6 +56,12 @@ class UploadFileView(generics.GenericAPIView):
                 if amount_excel == amount_transaction:
                     c_check += 1
                     Order.objects.filter(transaction_id=transaction_id).update(payment="CO")
+                    # coin update for referred user
+                    referral_obj = Referral.objects.get(referred_user = transaction.user)
+                    coin_user = User.objects.get(username = referral_obj.referrer.username)
+                    coin_user.coins += int(amount_transaction / 10)
+                    coin_user.save()
+                    referral_obj.save()
                     transaction.payment = "CO"
                     transaction.save()
                 else:
@@ -222,8 +228,11 @@ class JoinTeamView(generics.GenericAPIView):
             if not Team.objects.filter(user = user, event = event_check):
                 if Team.objects.filter(team_id = team_id):
                     exis_team = Team.objects.get(team_id = team_id)
-                    exis_team.user.add(request.user)
-                    return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
+                    if exis_team.user.count() >= exis_team.event.group_size:
+                        return Response({"message" : "Maximum team size reached already!"}, status=status.HTTP_400_BAD_REQUEST)
+                    else:
+                        exis_team.user.add(request.user)
+                        return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
                 else:
                     raise ValueError(f"Invalid team ID : {team_id}")
             else:
@@ -247,11 +256,13 @@ class RegisterPlayerView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
     def post(self, request, *args, **kwargs):
-        if (request.user__offline_officer == True):
+        off_officer = request.user
+        if ( User.objects.get(username = off_officer.username).offline_officer== True):
             serializer = self.serializer_class(data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response({"message" : "saved"}, status=status.HTTP_201_CREATED)
+        return Response({"message" : "Not an offline officer"}, status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
         
 class OfflineOrderView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
@@ -261,9 +272,10 @@ class OfflineOrderView(generics.GenericAPIView):
         event_list = request.data['event_list']
         transaction_id = request.data["transaction_id"]
         amount = request.data["amount"]
-        if request.user__offline_officer:
+        off_officer = request.user
+        if (User.objects.get(username = off_officer.username).offline_officer== True):
             for event in event_list:
-                order = Order(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event), order_taker = request.user__full_name, payment="CO")
+                order = Order(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event), order_taker = request.user.full_name, payment="CO", transaction_id=transaction_id)
                 order.save()
 
             # add transaction for the complete list of events
