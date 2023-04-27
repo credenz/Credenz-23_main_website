@@ -186,12 +186,18 @@ class PlaceOrderView(generics.GenericAPIView):
         amount = request.data["amount"]
 
         for event in event_list:
-            order = Order(user = user, event = Event.objects.get(event_id = event), transaction_id=transaction_id)
-            order.save()
-
-        # add transaction for the complete list of events
-        transaction = Transaction(event_list = event_list, user = user, transaction_id = transaction_id, amount=amount)
-        transaction.save()
+            if not Order.objects.get(user = request.user, event = Event.objects.get(event_id = event)):
+                order = Order(user = user, event = Event.objects.get(event_id = event), transaction_id=transaction_id)
+                order.save()
+            else:
+                return Response({"message" : "order already placed"})
+    
+            # add transaction for the complete list of events
+        if not Transaction.objects.get(transaction_id = transaction_id):
+            transaction = Transaction(event_list = event_list, user = user, transaction_id = transaction_id, amount=amount)
+            transaction.save()
+        else:
+            return Response({"message" : "Transaction already performed!"})
 
         return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
     
@@ -275,8 +281,9 @@ class OfflineOrderView(generics.GenericAPIView):
         off_officer = request.user
         if (User.objects.get(username = off_officer.username).offline_officer== True):
             for event in event_list:
-                order = Order(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event), order_taker = request.user.full_name, payment="CO", transaction_id=transaction_id)
-                order.save()
+                if not Order.objects.get(user = request.user, event = Event.objects.get(event_id = event)):
+                    order = Order(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event), order_taker = request.user.full_name, payment="CO", transaction_id=transaction_id)
+                    order.save()
 
             # add transaction for the complete list of events
             transaction = Transaction(event_list = event_list, user = User.objects.get(username=order_user), transaction_id = transaction_id, amount=amount, payment ="CO")
@@ -284,7 +291,7 @@ class OfflineOrderView(generics.GenericAPIView):
 
             return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
         
-        raise ValueError("Transaction not allowed")
+        raise Response({"message" : "Transaction not allowed"})
 
 class TransactionListView(generics.ListAPIView):
     serializer_class = TransactionSerializer
