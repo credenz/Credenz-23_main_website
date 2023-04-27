@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 // import { Users } from "./users";
 import "./TablePage.css";
 import Table from "./Table";
+import Requests from "../../api/requests";
+import { Button } from "react-bootstrap";
 // import axios from "axios";
 
 //////////////////////BASIC SEARCH
@@ -31,6 +33,23 @@ import Table from "./Table";
 ///////////////////////SEARCH ON A DATATABLE
 
 function TablePage() {
+  const [selectedFile, setSelectedFile] = useState(null);
+  
+    const handleFileSelect = (event) => {
+      setSelectedFile(event.target.files[0]);
+    };
+    const handleFileUpload = async() => {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      console.log(formData);
+      await Requests.adminUpload({file:formData})
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
     const Users=[
         {
           "id": 1,
@@ -286,6 +305,9 @@ function TablePage() {
   };
 return (
   <div className="tablePage">
+  <h4>Upload Excel Sheet</h4>
+      <input type="file" accept=".xlsx" onChange={handleFileSelect} />
+      <Button onClick={handleFileUpload} >Upload</Button>
       Enter Name To Find
       <input
         className="search"

@@ -1,125 +1,130 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Requests from "../../api/requests";
 const AdminUser = () => {
-  const details = [
-    {},
-    {
+  // const details = [
+  //   {
 
-      heading: "CLASH",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "1",
-      structure:
-        "carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      rules:
-        "carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      amount: 50,
-      count: 1,
-    },
+  //     heading: "CLASH",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "1",
+  //     structure:
+  //       "carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     rules:
+  //       "carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. \nEvent Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     amount: 50,
+  //     count: 1,
+  //   },
 
-    {
+  //   {
 
-      heading: "REVERSE CODING",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "2",
-      amount: 20,
-      count: 1,
-    },
+  //     heading: "REVERSE CODING",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "2",
+  //     amount: 20,
+  //     count: 1,
+  //   },
 
-    {
+  //   {
 
-      heading: "REVERSE 3",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "3",
-      amount: 30,
-      count: 1,
-    },
+  //     heading: "REVERSE 3",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "3",
+  //     amount: 30,
+  //     count: 1,
+  //   },
 
-    {
+  //   {
 
-      heading: "REVERSE 4",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "4",
-      amount: 50,
-      count: 1,
-    },
+  //     heading: "REVERSE 4",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "4",
+  //     amount: 50,
+  //     count: 1,
+  //   },
 
-    {
+  //   {
 
-      heading: "REVERSE 5",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "5",
-      amount: 50,
-      count: 1,
-    },
-    {
+  //     heading: "REVERSE 5",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "5",
+  //     amount: 50,
+  //     count: 1,
+  //   },
+  //   {
 
-      heading: "REVERSE 6",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "6",
-      amount: 50,
-      count: 1,
-    },
-    {
+  //     heading: "REVERSE 6",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "6",
+  //     amount: 50,
+  //     count: 1,
+  //   },
+  //   {
 
-      heading: "REVERSE 6",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "7",
-      amount: 50,
-      count: 1,
-    },
-    {
+  //     heading: "REVERSE 6",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "7",
+  //     amount: 50,
+  //     count: 1,
+  //   },
+  //   {
 
-      heading: "REVERSE 6",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "8",
-      amount: 50,
-      count: 1,
-    },
-    {
+  //     heading: "REVERSE 6",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "8",
+  //     amount: 50,
+  //     count: 1,
+  //   },
+  //   {
 
-      heading: "REVERSE 6",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "9",
-      amount: 50,
-      count: 1,
-    },
-    {
+  //     heading: "REVERSE 6",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "9",
+  //     amount: 50,
+  //     count: 1,
+  //   },
+  //   {
 
-      heading: "CRETRONIX",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "10",
-      amount: 50,
-      count: 1,
-    },
-    {
+  //     heading: "CRETRONIX",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "10",
+  //     amount: 50,
+  //     count: 1,
+  //   },
+  //   {
 
-      heading: "PIXELATE",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "11",
-      amount: 50,
-      count: 1,
-    },
-    {
+  //     heading: "PIXELATE",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "11",
+  //     amount: 50,
+  //     count: 1,
+  //   },
+  //   {
 
-      heading: "WEB",
-      body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
-      id: "12",
-      amount: 50,
-      count: 1,
-    },
-  ];
+  //     heading: "WEB",
+  //     body: "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set oftime-bound coding challenges, carefully designed to assess your command over programming in the language of your choice-Python, C or ++. Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose. Event Link - http://clash.credenz.in Timings Round-1: 13-04-2022 to 14-04-2022 Round-2: 15-04-2022",
+  //     id: "12",
+  //     amount: 50,
+  //     count: 1,
+  //   },
+  // ];
+  const [details,setdetails] =useState([]);
   const [cart, setCart] = useState([]);
   const [amount, setAmount] = useState(0);
+  const [username,setUsername] = useState('');
+  const [length,setLength] = useState(0);
   let link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${amount}&tn=IEEE&cu=INR`;
   const handelChange = (e) => {
-    // console.log(Number(e.target.value),e.target.id,e.target.checked)
-    let temp = cart;
+    let temp = [];
+    temp=cart;
     if (!e.target.checked) temp = temp.filter((data) => data.id !== e.target.id)
     else temp.push({ id: e.target.id, amt: Number(e.target.value) })
+    // console.log(Number(e.target.value),e.target.id,e.target.checked,temp)
     let amt = 0;
     temp.map(data => amt += data.amt);
-    // console.log(temp,amt);
+    // console.log(e.ttemp,temp.length,amt);
     setAmount(amt);
     setCart(temp);
+    setLength(temp.length);
     link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${amt}&tn=IEEE&cu=INR`;
     generate();
   }
@@ -144,6 +149,17 @@ const AdminUser = () => {
     const handleClick=()=>{
         window.alert(`UPI Transaction Id :- ${upiId}`);
     }
+    const eventList = async () => {
+    await Requests.events()
+      .then((res) => {
+        console.log(res.data);
+        setdetails(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    eventList();
+  }, []);
   return (
 
     <div className="adminUser">
@@ -183,7 +199,7 @@ const AdminUser = () => {
 
                 ))}
                 <tr><hr style={{ 'width': '120%', 'height': '2px', 'borderWidth': '5px', 'color': 'white', 'backgroundColor': 'white' }}></hr></tr>
-                <tr><td>Items</td><td style={{ 'paddingLeft': '15px' }}>{cart.length}</td></tr>
+                <tr><td>Items</td><td style={{ 'paddingLeft': '15px' }}>{length}</td></tr>
                 <tr><td>Total Amount</td><td style={{ 'paddingLeft': '15px' }}>{amount}</td></tr>
 
               </tbody>
@@ -218,6 +234,17 @@ const AdminUser = () => {
             {/* {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>} */}
               <div id='payment-qr-code' className="payment-qr-code" style={isQr ? { 'visibility': 'visible' } : { 'height': '0', 'width': '0' }}></div>
               {/* <a target="_blank" href={link} rel="noreferrer" className="payment-link">Click To Pay</a> */}
+            </div>
+            <div>
+            Enter Username Of Person:
+            <input id="upiId"
+              name="upiId"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+              placeholder="Enter Upi Transaction Id:"
+              required
+            >
+            </input>
             </div>
             Enter Upi Transaction Id:
             <input id="upiId"

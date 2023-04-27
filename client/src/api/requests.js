@@ -31,6 +31,7 @@ const forgetPassword=(data)=>backend.post(`/password-reset/`,data,{headers: { }}
 const createTeam=(data)=>backend.post(`/generate-team/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const joinTeam=(data)=>backend.post(`/join-team/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const viewTeam=()=>backend.get(`/view-team/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
+const adminUpload=(data)=>backend.post(`/upload-file/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 
 const Requests = {
     login,
@@ -43,5 +44,6 @@ const Requests = {
     createTeam,
     viewTeam,
     joinTeam,
+    adminUpload,
   };
   export default Requests;
