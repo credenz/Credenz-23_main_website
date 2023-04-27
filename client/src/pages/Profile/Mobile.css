@@ -21,20 +21,22 @@
 
 
  .profile .card {
-	 max-width: 340px;
+	 max-width: 275px;
 	 margin: 50px 0 50px;
 	 overflow-y: auto;
 	 position: relative;
 	 z-index: 1;
 	 overflow-x: hidden;
-	 background-color: black;
+	 background-color: #180718;
 	 display: flex;
 	 transition: 0.3s;
 	 flex-direction: column;
 	 border-radius: 10px;
-	 box-shadow: 0 0 0 8px rgb(241, 33, 130);
+	 box-shadow: 0 0 0 5px #d700c1;
+	 
 	 height:70vh;
 	 width:100vw;
+	 border-color: darkcyan;
 }
 /* .profile  .card[data-state="#about"] {
 	 height: fit-content;
@@ -78,7 +80,7 @@
 .profile  .card-header {
 	 position: relative;
 	 display: flex;
-	 height: 200px;
+	 height: 180px;
 	 flex-shrink: 0;
 	 width: 100%;
 	 transition: 0.3s;
@@ -139,7 +141,7 @@
 	 position: relative;
 	 flex: 1;
 	 display: flex;
-	 padding-top: 10px;
+	 /* padding-top: 10px; */
 	 flex-direction: column;
 }
 .profile  .card-subtitle {
@@ -148,7 +150,8 @@
 	 margin-bottom: 8px;
 }
 .profile  .card-content {
-	 padding: 20px;
+	 padding: 6px;
+	 overflow: scroll;
 }
 .profile  .card-desc {
 	 line-height: 1.6;
@@ -354,7 +357,7 @@
   .pcmembers .pcfirst-division {
 	/* display: flex;
 	flex-direction: column; */
-	margin: 10px 15px 1.5rem 0;
+	margin: 22px 15px 1.5rem 0;
 	width: 100%;
   }
   .pcmembers  button {
@@ -371,8 +374,8 @@
 	width: 100px;
   }
   .pteamJoin{
-	margin-left: 0%;
-	margin-right: 1%;
+	/* margin-left: 0%;
+	margin-right: 1%; */
 	width: fit-content;
   }
   .pteamJoin button{
@@ -381,8 +384,63 @@
 	cursor: pointer;
 	font-weight: 500;
 	border-radius: 2px;
-	padding: 5px 10px;
+	padding: 6px 6px;
 	color: red;
 	border: 1px solid red;
 	width: 100px;
   }
+
+
+.pncard {
+	display: block;
+	align-items: center;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	  /* box-shadow: 0.65rem 0.65rem 0 #1b2729; */
+	/* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+	height: 40vh;
+	overflow: scroll;
+	box-shadow: 0.4rem 0.55rem 0 #1b2729;
+	  border-radius: 0.8rem;
+	  /* overflow: hidden; */
+	  border: 0.3rem solid;
+	  border-color: #733d6b;
+	width: 100%;
+	margin-bottom: 10%;
+  }
+  
+  .pncard img {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	border-radius: 50%;
+	/* margin-right: 20px; */
+  }
+  
+  .pncard-contentl {
+	padding: 10px;
+	text-align: center;
+	  /* flex: 1 1 200px;
+	outline: 0.5rem solid; */
+	/* display: inline-flex; */
+  }.pncard-contentr {
+	padding: 20px;
+	text-align: center;
+	/* display: flex; */
+  }
+  
+  .pncard h2 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+  }
+  
+  .pncard p {
+	font-size: 16px;
+	line-height: 1.5;
+  }
+  
+  .pncard-content {
+	flex: 1;
+  }
+  

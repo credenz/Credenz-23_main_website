@@ -37,11 +37,19 @@
   }
   label:active:after {
     width: 130px;
-  } */
-  /* body {
+  } 
+   body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-  } */
-  
+  }
+   */
+
+.toggle {
+  position: absolute;
+  /* display: inline-block; */
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+}

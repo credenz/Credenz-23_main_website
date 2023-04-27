@@ -66,6 +66,7 @@ class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add=True)
     payment = models.CharField(max_length=20, choices=PAYMENT_STATUS, default="PO", null=True)
     order_taker = models.CharField(default="online", max_length=40)
+    transaction_id = models.CharField(max_length=20, unique=False, null=True)
 
     def __str__(self):
         return str(self.pk)
@@ -102,6 +103,7 @@ class Team(models.Model):
     team_id = models.CharField(max_length=6, default=generate_team_id, unique=True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     user = models.ManyToManyField(User)
+    team_name = models.CharField(max_length=20, default="team")
 
     def __str__(self):
         return f'{self.event} - {", ".join(str(u) for u in self.user.all())}'
@@ -116,3 +118,10 @@ class Transaction(models.Model):
     order_taker = models.CharField(default="online", max_length=40)
     payment = models.CharField(max_length=20, choices=PAYMENT_STATUS, default="PO", null=True)
 
+    def __str__(self):
+        return f'{self.pk}'
+
+class Feedback(models.Model):
+    name = models.CharField(max_length=50, null=True)
+    email = models.EmailField(null=True)
+    context = models.TextField()

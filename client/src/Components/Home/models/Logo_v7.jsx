@@ -5,19 +5,25 @@ Command: npx gltfjsx@6.1.4 v8.glb
 
 import React, { useRef } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import { MeshWobbleMaterial} from '@react-three/drei';
+import { MeshStandardMaterial } from 'three';
 
 export function LogoV7(props) {
+
+  const logoRef = useRef()
+
   const { nodes, materials } = useGLTF('/models/v7/scene.glb')
-  const rocketTexture = useTexture('/models/v7/textures/rocket.png')
-  const gemTexture = useTexture('/models/v7/textures/gem.png')
-  const logoTexture = useTexture('/models/v7/textures/logo.png')
-  const navTexture = useTexture('/models/v7/textures/nav.png')
-  const satelliteTexture = useTexture('/models/v7/textures/satellite.png')
-  // const spaceshipTexture = useTexture('/models/v7/textures/spaceship.png')
-  const stonesTexture = useTexture('/models/v7/textures/stones.png')
+  const rocketTexture = useTexture('/models/v7/textures/compressed/rocket.png')
+  const gemTexture = useTexture('/models/v7/textures/compressed/gem.png')
+  const logoTexture = useTexture('/models/v7/textures/compressed/logo.png')
+  const navTexture = useTexture('/models/v7/textures/compressed/nav.png')
+  const satelliteTexture = useTexture('/models/v7/textures/compressed/satellite.png')
+  const spaceshipTexture = useTexture('/models/v7/textures/compressed/spaceship.png')
+  const stonesTexture = useTexture('/models/v7/textures/compressed/stones.png')
   const terrain1Texture = useTexture('/models/v7/textures/terrain_1.png')
-  // const terrain2Texture = useTexture('/models/v7/textures/terrain2.png')
-  const tilesTexture = useTexture('/models/v7/textures/tiles.png')
+  // const terrain2Texture = useTexture('/models/v7/textures/compressed/terrain2.png')
+  const tilesTexture = useTexture('/models/v7/textures/compressed/tiles.png')
 
 
   function signboard(){
@@ -27,19 +33,39 @@ export function LogoV7(props) {
     </>
   }
 
+  useFrame(({ clock }) => {
+    const elapsedTime = clock.getElapsedTime();
+    const wireframeMaterial = logoRef.current?.material;
+    if (wireframeMaterial) {
+      // wireframeMaterial.emissive.setHSL(elapsedTime % 1, 1, 0.5);
+      // wireframeMaterial.emissiveIntensity = 0.5 + Math.sin(elapsedTime * 4) * 0.5;
+      console.log(wireframeMaterial)
+    }
+  });
+  
+
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Rocket_Ship_01.geometry} material={nodes.Rocket_Ship_01.material} position={[12.76, 21.44, -40.83]} rotation={[-0.44, 0.29, 1.18]} scale={0.1} >
         <meshBasicMaterial map={rocketTexture} map-flipY={false} />
+        
       </mesh>
-      <mesh geometry={nodes.Logo.geometry} material={nodes.Logo.material} position={[-0.42, 2.89, -4.16]} rotation={[Math.PI / 2, 0, 0]} scale={0.92} >
+      <mesh geometry={nodes.Logo.geometry}  position={[-0.42, 2.89, -4.16]} rotation={[Math.PI / 2, 0, 0]} scale={0.92} ref={logoRef}>
         <meshBasicMaterial map={logoTexture} map-flipY={false} />
+        {/* material={nodes.Logo.material} // add this to mesh  */}
+        {/* <meshStandardMaterial 
+        wireframe
+        color={"blue"}
+        emissive={"#ffffff"}
+        emissiveIntensity={0.1}
+      /> */}
       </mesh>
       <mesh geometry={nodes.Base.geometry} material={nodes.Base.material} position={[0.05, 0.15, -4.27]} rotation={[Math.PI / 2, 0, 0]} scale={[1, 1, 1.04]} >
         <meshBasicMaterial map={logoTexture} map-flipY={false} />
       </mesh>
       <mesh geometry={nodes.Terrain001.geometry} material={nodes.Terrain001.material} position={[-2.03, -0.05, 27.25]} rotation={[Math.PI / 2, 0, Math.PI]} >
         <meshBasicMaterial map={terrain1Texture} map-flipY={false} />
+        {/* <MeshWobbleMaterial map={terrain1Texture} map-flipY={false} />  */}
       </mesh>
       <mesh geometry={nodes.Tiles.geometry} material={nodes.Tiles.material} position={[-2.03, -0.05, 27.25]} rotation={[Math.PI / 2, 0, Math.PI]} >
         <meshBasicMaterial map={tilesTexture} map-flipY={false} />
@@ -55,10 +81,11 @@ export function LogoV7(props) {
       </mesh> */}
       <mesh geometry={nodes.Cylinder.geometry} material={nodes.Cylinder.material} position={[3.19, 1.15, 4.32]} rotation={[1.59, 0, 1.4]} scale={0.47} >
         <meshBasicMaterial map={satelliteTexture} map-flipY={false} />
+        {/* <MeshWobbleMaterial wireframe color={"white"} /> */}
       </mesh>
-      {/* <mesh geometry={nodes.Spaceship.geometry} material={nodes.Spaceship.material} position={[0.01, 1.2, 18.48]} rotation={[0.03, 0.61, -1.62]} scale={[0.14, 0.16, 0.14]} >
+      <mesh geometry={nodes.Spaceship.geometry} material={nodes.Spaceship.material} position={[0.01, 1.2, 18.48]} rotation={[0.03, 0.61, -1.62]} scale={[0.14, 0.16, 0.14]} >
         <meshBasicMaterial map={spaceshipTexture} map-flipY={false} />
-      </mesh> */}
+      </mesh>
       
     </group>
   )

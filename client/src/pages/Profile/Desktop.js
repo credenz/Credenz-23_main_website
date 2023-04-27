@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
 import './Desktop.css';
+import tclash from "../../images/tclash.png";
 import Clash from "../../images/clash.png";
+import CLASH from "../../images/clash.png";
 import RC from "../../images/rc.png";
 import NTH from "../../images/nth.png";
 import WALLSTREET from "../../images/wallstreet.png";
@@ -12,65 +15,70 @@ import PAPER from "../../images/paper.png";
 import CRETRONIX from "../../images/cretronix.png";
 import PIXELATE from "../../images/pixelate.png";
 import WEB from "../../images/webwever.png";
-
+import Requests from '../../api/requests';
 // import './Mobile.css';
 import ticket from '../../images/aticket.png';
-const Desktop = ({ data }) => {
-    const [player, setplayer] = useState({
-        0: ["", "", ""],
-        1: ["", "", ""],
-        2: [""],
-        3: [],
-        4: [],
-        5: [],
-        6: [],
-        7: [],
-        8: [],
-        9: [],
-        10: [],
-        11: [],
-        12: [],
-        13: [],
-        14: [],
-    });
+const Desktop = ({ data,props }) => {
     const [teamId, setTeamId] = useState("");
-    const handleplayerChange = (e, eventId, index) => {
-        const { name, value } = e.target;
-        // console.log("indexx=", index);
-        // console.log("data.id=", eventId);
-        let list = [...player[eventId]];
-        list[index] = value;
-        setplayer(
-            Object.assign({}, player, {
-                [eventId]: list,
-            })
-        );
-    };
+    
+    const handleView=()=>{
+        Requests.viewTeam()
+        .then((res)=>{
+            console.log(res.data);
+            setMyTeams(res.data);
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
 
-    const handleplayerRemove = (eventId, index) => {
-        let list = [...player[eventId]];
-        // console.log("index: ",index)
-        list.splice(index, 1);
-        setplayer(
-            Object.assign({}, player, {
-                [eventId]: list,
-            })
-        );
-    };
-
-    const handleplayerAdd = (eventId) => {
-        setplayer(
-            Object.assign({}, player, {
-                [eventId]: [...player[eventId], `Player ${player[eventId].length - 1}`],
-            })
-        );
-    };
+    const handleJoin=()=>{
+        const id = props.toast.toast.loading("Please wait...");
+        Requests.joinTeam({team_id:teamId})
+        .then((res)=>{
+            console.log(res.data);
+            props.toast.toast.update(id, { render: "Joined Successfully", type: "success", isLoading: false, autoClose:5000 });
+        })
+        .catch((err)=>{
+            console.log(err);
+            props.toast.toast.update(id, { render: 'Error while joining', type: "error", isLoading: false,autoClose:5000 });
+        })
+    }
+    
+    const handleCreate=()=>{
+        const id = props.toast.toast.loading("Please wait...");
+        // console.log(eventSelected,typeof(eventSelected));
+        Requests.createTeam({event_id:eventSelected})
+        .then((res)=>{
+            console.log(res.data);
+            props.toast.toast.update(id, { render: "Team Created", type: "success", isLoading: false, autoClose:5000 });
+        })
+        .catch((err)=>{
+            console.log(err);
+            props.toast.toast.update(id, { render: 'Team Not Created', type: "error", isLoading: false,autoClose:5000 });
+        })
+    }
     const [selected, setSelected] = useState(0);
     const [teamVisible, setTeamVisible] = useState(0);
     const [eventSelected, setEvnentSelected] = useState(101);
     const teamEvents=[{id:101,name:'Clash'},{id:102,name:'RC'},{id:103,name:'Enigma'},{id:104,name:'B-plan'}]
-    console.log(data)
+    const [myTeams,setMyTeams] = useState([]);
+    const eventsList = [
+        { logo: CLASH, title: "Clash", id: 101 },
+        { logo: RC, title: "Reverse Coding", id: 102 },
+        { logo: NTH, title: "NTH", id: 103 },
+        { logo: WALLSTREET, title: "Wallstreet", id: 104 },
+        { logo: BPLAN, title: "B-Plan", id: 105 },
+        { logo: ENIGMA, title: "Enigma", id: 106 },
+        { logo: DATAWIZ, title: "Datawiz", id: 107 },
+        { logo: QUIZ, title: "Quiz", id: 108 },
+        { logo: CRETRONIX, title: "Cretronix", id: 109 },
+        { logo: WEB, title: "Web Weaver", id: 110 },
+      ];
     // const data=props;
+    useEffect(()=>{
+        handleView();
+    },[])
     return (
         <div className='dektop-profile'>
             {/* <main> */}
@@ -121,6 +129,9 @@ const Desktop = ({ data }) => {
                         ?
                         <section class="repositories">
                             <div style={{ "overflowY": 'scroll' }}>
+                            <img src={tclash} style={{ 'width': '550px' }}></img>
+                                <img src={tclash} style={{ 'width': '550px' }}></img>
+                                <img src={tclash} style={{ 'width': '550px' }}></img>
                                 <li class="image_wrapper">
                                     <img src={ticket} alt="" />
                                     <div class="overlay otitle">
@@ -184,71 +195,10 @@ const Desktop = ({ data }) => {
 
                                 <img src={ticket} style={{ 'width': '550px' }}>
                                     {/* <div><h3>hiee</h3></div> */}
+                                
                                 </img>
-                                <img src={ticket} style={{ 'width': '550px' }}></img>
-                                <img src={ticket} style={{ 'width': '550px' }}></img>
-                                <img src={ticket} style={{ 'width': '550px' }}></img>
                             </div>
-                            {/* <div class="pinned-repo-wrapper">
-                    <div class="pinned-repo">
-                        <h3>materialize-themes</h3>
-                        <p>Pre-generated materialize css color combinations. https://w3cj.github.io/materialize-themes/</p>
-                        <ul class="stats">
-                            <li>
-                                <span class="icon">🔵</span>
-                                <span>HTML</span>
-                            </li>
-                            <li>
-                                <span class="icon">⭐️</span>
-                                <span>32</span>
-                            </li>
-                            <li>
-                                <span class="icon">🍴</span>
-                                <span>5</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="pinned-repo-wrapper">
-                    <div class="pinned-repo">
-                        <h3>node-security</h3>
-                        <p>Slides/Notes from my talk on Security Best Practices with Node.js https://www.youtube.com/watch?v=qBLgykeA3Mo</p>
-                        <ul class="stats">
-                            <li>
-                                <span class="icon">🔵</span>
-                                <span>HTML</span>
-                            </li>
-                            <li>
-                                <span class="icon">⭐️</span>
-                                <span>32</span>
-                            </li>
-                            <li>
-                                <span class="icon">🍴</span>
-                                <span>5</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="pinned-repo-wrapper">
-                    <div class="pinned-repo">
-                        <h3>materialize-themes</h3>
-                        <p>Pre-generated materialize css color combinations. https://w3cj.github.io/materialize-themes/</p>
-                        <ul class="stats">
-                            <li>
-                                <span class="icon">🔵</span>
-                                <span>HTML</span>
-                            </li>
-                            <li>
-                                <span class="icon">⭐️</span>
-                                <span>32</span>
-                            </li>
-                            <li>
-                                <span class="icon">🍴</span>
-                                <span>5</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                {/*            
                 <div class="pinned-repo-wrapper">
                     <div class="pinned-repo">
                         <h3>node-security</h3>
@@ -274,45 +224,61 @@ const Desktop = ({ data }) => {
                         selected === 1
                             ?
                             <section className='desktopProfile-section'>
+                            <div style={{marginLeft:'8%',display: 'flex',justifyContent: 'space-evenly'}}>
                                                 <div style={{ 'display': 'inline-block','width':'fitContent' }} className='teamJoin'>
-                                                <button onClick={() => (setTeamVisible(0))} style={{'width':'fit-content'}}>My Teams</button></div>
+                                                <button onClick={() => {(setTeamVisible(0)); handleView();}} style={{'width':'fit-content'}}>My Teams</button></div>
                                                 <div className='teamJoin' style={{ 'display': 'inline-block' }}>
                                                     <button onClick={() => (setTeamVisible(1))} style={{'width':'fit-content'}}>Create Team</button>
                                                 </div>
                                                 <div className='teamJoin' style={{ 'display': 'inline-block','width':'fitContent' }}>
                                                     <button onClick={() => (setTeamVisible(2))} style={{'width':'fit-content'}}>JOIN Team</button>
-                                                </div>
+                                                </div></div>
                                 <div style={{'margin':'50px auto 0'}}></div>
                                 {
                                     teamVisible === 0
                                         ?
-                                        <div>
-                                            <div >
-                                                <div className="teamList">
-                                                    <div class="teamListrow">
-                                                        <div class="teamListexample-1 teamListcard">
-                                                            <div class="teamListwrapper">
+                                        <div style={{display: 'grid',
+justifyContent: 'center',
+marginLeft: '20%',
+marginRight: '20%'}}>
+                                        {myTeams.map((data)=>{return (
 
-                                                                <div class="teamListimage">
-                                                                    <div style={{ 'display': 'flex' }}><img class="teamListbook-image" style={{ 'display': 'inline-block' }}src={Clash} /></div>
-                                                                    <div style={{ 'display': 'flex' }}><p style={{ 'display': 'inline-block' }}>Clash</p></div>
-                                                                </div>
-
-                                                                <div class="teamListdata">
-                                                                    <div class="teamListcontent">
-                                                                        <p class="teamListauthor">Name - chutiya</p>
-                                                                        <p class="teamListauthor">TeAM ID - 2436</p>
-                                                                        <p class="teamListauthor">TeAM Members - chinmay</p>
-                                                                        {/* <h1 class="teamListtitle"><p class="teamListcardTitle">Boxing icon has the will for a couple more fights</p></h1>
-                                                                        <p class="teamListtext">The highly anticipated world championship fight will take place at 10am and is the second major boxing blockbuster in the nation after 43 years.</p> */}
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                        <div class="ncard">
+                                            <div class="ncard-contentl">
+                                            <img src={eventsList[data.event.event_id-101].logo} alt="Example Image"/>
+                                                <h2>{data.event.event_name}</h2>
                                                 </div>
+                                                <div style={{border:'2px solid rgb(82, 85, 117)', height: 'inherit'}}></div>
+                                                <div class="ncard-contentr">
+                                                <p>Team Name: VanshTeppalwar </p>
+                                                <p>Team Id: {data.team_id}</p>
+                                                <p>Max Team Size: {data.event.group_size}</p>
+                                                <p>Team Members </p> 
+                                                <div style={{textAlign:'initial'}}>
+                                                    <ol>
+                                                {data.user.map((user,idx)=>{return(
+                                                    <li >{user.username} </li>
+                                                )})}
+                                                </ol>
+                                                </div>
+                                                <p>Remaining: {data.event.group_size-data.user.length}</p>
                                             </div>
+                                            </div>
+                                        )
+
+                                        })}
+
+
+<article class="cta">
+	<img src={Clash} alt='event'/>
+	<div class="cta__text-column">
+		<h2>Team Name</h2>
+		<p>Team Members</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio">Read all about it</a>
+	</div>
+</article>
+                                            
                                         </div>
                                         :
                                         teamVisible === 1
@@ -321,8 +287,21 @@ const Desktop = ({ data }) => {
                                             <p>{data.team}</p>
                                             <form className="" autoComplete="off">
                                                 <div className="cform-field">
-                                                    <label htmlFor="player">Select Event</label>
+                                                    {/* <label htmlFor="player">Select Event</label> */}
                                                     <div className="cplayers">
+                                                    <Dropdown>
+        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+          Select Event
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu variant="dark">
+            <Dropdown.Item eventKey={1} onClick={()=>setEvnentSelected(101)} active={eventSelected===101?true:false}>Clash</Dropdown.Item>
+          <Dropdown.Item eventKey={2} onClick={()=>setEvnentSelected(102)} active={eventSelected===102?true:false} >RC</Dropdown.Item>
+          <Dropdown.Item eventKey={3} onClick={()=>setEvnentSelected(103)} active={eventSelected===103?true:false}>Enigma</Dropdown.Item>
+          {/* <Dropdown.Divider /> */}
+          <Dropdown.Item eventKey={4} onClick={()=>setEvnentSelected(104)} active={eventSelected===104?true:false}>B-Plan</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
                                                             {/* <input
                                                                 name="player"
                                                                 type="text"
@@ -335,24 +314,17 @@ const Desktop = ({ data }) => {
                                                                 }
                                                                 required
                                                             /> */}
-                                                            {
-                                                                        teamEvents.map((data,idx)=>{
-                                                                            return (
+                                                            
                                                         <div className="cfirst-division">
-
-                                                            <input className='cinput' id={idx} type="radio" name="data.name" checked={eventSelected===data.id} onChange={()=>setEvnentSelected(data.id)}/><label for={idx}>{data.name}</label>
-                                                            {/* <input className='cinput'id="rad2" type="radio" name="rad"/><label for="rad2">RC</label> */}
+                                                            Selected : {teamEvents[eventSelected-101].name}
                                                         </div>
-                                                                            )
-
-                                                                        }
-                                                                    )}
                                                         <div className="csecond-division">
                                                             <button
                                                                 type="button"
                                                                 onClick={() =>
-                                                                    // handleplayerRemove(0)
-                                                                    console.log(eventSelected)
+                                                                    
+                                                                    // console.log(eventSelected)
+                                                                    handleCreate()
                                                                 }
                                                                 className="remove-btn"
                                                             >
@@ -401,8 +373,8 @@ const Desktop = ({ data }) => {
                                                         <div className="jsecond-division">
                                                             <button
                                                                 type="button"
-                                                                onClick={() =>
-                                                                    handleplayerRemove(0)
+                                                                onClick={(e) =>
+                                                                    handleJoin(e)
                                                                 }
                                                                 className="remove-btn"
                                                             >

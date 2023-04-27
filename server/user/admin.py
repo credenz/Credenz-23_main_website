@@ -16,69 +16,10 @@ class UserAdmin(ImportExportActionModelAdmin):
 class ReferralAdmin(ImportExportActionModelAdmin):
     list_display = ("referrer", "referred_user", "timestamp", "referral_code")
 
-# class EventInline(admin.TabularInline):
-#     model = Event
-#     extra = 5
-
-# class OrderResource(resources.ModelResource):
-#     username = fields.Field(attribute='user__username', column_name='Username')
-#     event_name = fields.Field(column_name='Event Name', widget=RelatedFieldWidgetWrapper(
-#         Event,
-#         'event_name'
-#     ))
-#     amount = fields.Field(attribute='amount', column_name='Amount')
-#     transaction_id = fields.Field(attribute='transaction_id', column_name='Transaction Id')
-#     order_date = fields.Field(attribute='order_date', column_name='Order Date')
-
-#     class Meta:
-#         model = Order
-#         fields = ('event_name', 'username', 'amount', 'transaction_id', 'order_date')
-
-# class OrderAdmin(ImportExportMixin, admin.ModelAdmin):
-#     resource_class = OrderResource
-#     inlines = [EventInline]
-
-# class OrderResource(resources.ModelResource):
-#     username = fields.Field(attribute='user__username', column_name='Username')
-#     # event_name = fields.Field(column_name='Event Name', widget=RelatedFieldWidgetWrapper(
-#     #     Event,
-#     #     'event_name'
-#     # ))
-#     amount = fields.Field(attribute='amount', column_name='Amount')
-#     transaction_id = fields.Field(attribute='transaction_id', column_name='Transaction Id')
-#     order_date = fields.Field(attribute='order_date', column_name='Order Date')
-
-#     class Meta:
-#         model = Team
-#         fields = ('username', 'amount', 'transaction_id', 'order_date')
-    
-    # def dehydrate_event_name(self, order):
-    #     return ", ".join([event.event_name for event in order.event.all()])
-
-# @admin.register(Order)
-# class OrderAdmin(ImportExportActionModelAdmin):
-#     resource_class = OrderResource
-#     list_display = ("name", "mobile_number", "events", "order_date", "payment", "transaction_id", "amount")
-#     search_fields = ("event__event_name", "user__username")
-#     list_filter = ('event',)
-#     inlines = [EventInline]
-
-#     def events(self, obj):
-#         if obj.event.all():
-#             return list(obj.event.all().values_list('event_name', flat=True))
-#         else:
-#             return 'NA'
-        
-#     def name(self, obj):
-#         return obj.user.full_name
-    
-#     def mobile_number(self, obj):
-#         return obj.user.phone
-
 @admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
+class OrderAdmin(ImportExportActionModelAdmin):
     raw_id_fields = ('event',)
-    list_display = ('id', 'user', 'event', 'order_date', 'payment')
+    list_display = ('id', 'user', 'event', 'order_date', 'payment', 'transaction_id')
     
 class TeamResource(resources.ModelResource):
     event_name = fields.Field(attribute='event__event_name', column_name='Event Name')
@@ -95,7 +36,7 @@ class TeamResource(resources.ModelResource):
 @admin.register(Team)
 class TeamAdmin(ImportExportActionModelAdmin):
     resource_class = TeamResource
-    list_display = ("event_name", "users", "team_id")
+    list_display = ("event_name", "users", "team_id", "team_name")
     search_fields = ("event__event_name", "user__username")
     list_filter = ('event',)
 
@@ -129,3 +70,7 @@ class TransactionAdmin(ImportExportActionModelAdmin):
 
     def user_name(self, obj):
         return obj.user.full_name
+    
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'context')
