@@ -4,7 +4,7 @@ import TablePage from '../Table/TablePage';
 import AdminUser from './AdminUser';
 import { useState,useEffect } from 'react';
 import Requests from '../../api/requests';
-const Admin = ({props}) => {
+const Admin = (props) => {
     const [selected, setSelected] = useState(0);
     const [adminStatus, setAdminStauts] = useState(0);
     const checkAdmin = async () => {
@@ -31,7 +31,7 @@ const Admin = ({props}) => {
         <div>
             {
                 adminStatus === 0
-                    ? <h1>You Are Not Admin</h1>
+                    ? <h1>You Are Not An Admin</h1>
                     :
                     adminStatus === 1
                         ?
@@ -42,9 +42,9 @@ const Admin = ({props}) => {
                                     {/* <button onClick={()=>setSelected(2)}>Payment Table</button> */}
                                 </div>
 
-                                : (selected === 1 ? (<><a style={{ 'color': 'red', 'textDecoration': 'underline' }} onClick={(e) => { e.preventDefault(); setSelected(0) }}>Back to Admin</a><AdminUser /></>)
+                                : (selected === 1 ? (<><a style={{ 'color': 'red', 'textDecoration': 'underline' }} onClick={(e) => { e.preventDefault(); setSelected(0) }}>Back to Admin</a><AdminUser props={{...props}}/></>)
 
-                                    : selected === 2 ? (<><a style={{ 'color': 'red', 'textDecoration': 'underline' }} onClick={(e) => { e.preventDefault(); setSelected(0) }}>Back to Admin</a><TablePage /></>) : '')}
+                                    : selected === 2 ? (<><a style={{ 'color': 'red', 'textDecoration': 'underline' }} onClick={(e) => { e.preventDefault(); setSelected(0) }}>Back to Admin</a><TablePage props={{...props}}/></>) : '')}
                         </div>
                         :
                         adminStatus === 2

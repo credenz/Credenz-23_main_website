@@ -32,7 +32,7 @@ function App() {
 
   let backgroundWindow = '';
   let backgroundImg="";
-  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile') {
+  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile'||location.pathname === '/forget-password/:token/:uid'||location.pathname==='/forget-password') {
     {backgroundImg = 'BgImage';backgroundWindow='BgWindow '}
   } 
   return (

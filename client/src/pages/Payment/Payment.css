@@ -221,9 +221,42 @@ text-align: center;
 .pay-active{
   box-shadow: 0 0 2px 2px #3f9fdf;
 }
+.pay-modal{
+  color: #fff;
+/* display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center; */width: 45vw;
+height: 50vh;
+padding: 10%;
+background-color: #241723;
+}
+.pmodalbody{
+  display: flex;
+justify-content: center;
+align-items: center;
+  flex-direction: column;
+  height: auto;
+}
+.pmodalbody p{
+  font-size: 17px;
+letter-spacing: 2.5px;
+color: #6dc5ff;
+/* margin: 1px; */
+}
+.pmodalclose {
+  position: absolute;
+  margin: 6px 25px;
+  right: 0;
+  top: 0;
+}
+
 @media(max-width:800px){
   .payment{
     padding-top: 2vh;
+  }
+  .pay-modal{
+    width:80vw;
   }
   .payment .card{
     margin: 6vh auto;
@@ -232,6 +265,12 @@ text-align: center;
   }
   .payment-rules{
     font-size: 1rem;
+  }
+  .pay-list{
+    font-size: 0.9rem;
+margin-left: -15%;
+margin-right: -15%;
+overflow-x: hidden;
   }
 }
 @media(max-width:767px){

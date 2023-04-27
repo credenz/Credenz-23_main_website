@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Requests from "../../api/requests";
+import { useNavigate } from "react-router-dom";
 const AdminUser = ({props}) => {
   // const details = [
   //   {
@@ -112,6 +113,7 @@ const AdminUser = ({props}) => {
   const [amount, setAmount] = useState(0);
   const [username,setUsername] = useState('');
   const [length,setLength] = useState(0);
+  let navigate=useNavigate();
   let link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${amount}&tn=IEEE&cu=INR`;
   const handelChange = (e) => {
     let temp = [];
@@ -155,8 +157,10 @@ const AdminUser = ({props}) => {
       Requests.adminOrder({username,transaction_id:upiId,event_list,amount})
       .then((res)=>{
         console.log(res,props);
+        props.toast.toast.success('Successfully generated ticket');
+        navigate('/admin');
       })
-      .catch((err)=>console.log(err))
+      .catch((err)=>{console.log(err);props.toast.toast.success('Error While Generating ticket');})
       //   window.alert(`UPI Transaction Id :- ${upiId}`);
       //   window.alert(`username :- ${username}`);
     }

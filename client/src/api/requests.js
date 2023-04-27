@@ -33,6 +33,7 @@ const joinTeam=(data)=>backend.post(`/join-team/`,data,{headers: {Authorization:
 const viewTeam=()=>backend.get(`/view-team/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminUpload=(data)=>backend.post(`/upload-file/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminOrder=(data)=>backend.post(`/offline-order/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
+const adminTable=()=>backend.get(`/orders/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 
 const Requests = {
     login,
@@ -47,5 +48,6 @@ const Requests = {
     joinTeam,
     adminUpload,
     adminOrder,
+    adminTable,
   };
   export default Requests;
