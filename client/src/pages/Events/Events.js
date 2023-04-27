@@ -279,8 +279,7 @@ const Events = () => {
       padding: "0px",
     },
   };
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   //   const openmodal =(id)=>{
   //     seteventid(id);
@@ -329,9 +328,9 @@ const Events = () => {
     <>
       {/* <EventSky> */}
       <div className="st">
-        <div id="stars"></div>
+        {/* <div id="stars"></div>
         <div id="stars2"></div>
-        <div id="stars3"></div>
+        <div id="stars3"></div> */}
         <div className="eventpage " data-aos="fade-in" data-aos-duration="400">
           <div className="container ">
             <h1 style={{ textAlign: "center" }}>EVENTS</h1>

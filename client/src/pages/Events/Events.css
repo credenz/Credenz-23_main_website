@@ -649,10 +649,10 @@
   background-size: cover;
   z-index: 10;
   /* border-image-source: url(../../../public/assets/images/eww.png); */
-  border-image-source: url(../../images/eww.png);
+  border-image-source: url('../../images/eww.png');
   /* border-image-source: url(/whitespace.png); */
   border-image-slice: 212;
-  border-image-width: 265px;
+  border-image-width: 260px;
   border-image-outset: 0;
   border-image-repeat: none;
   border-style: solid;
@@ -660,19 +660,19 @@
   position: relative;
   padding: 6.5rem 0.5rem 8.7rem;
   /* min-height: 90vh; */
-  animation: eventpage 5s ease-in-out infinite;
+  /* animation: eventpage 6s ease-in-out infinite; */
 }
-/* @keyframes eventpage {
+@keyframes eventpage {
   0% {
-    transform: translateY(4px);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-4px);
+    transform: translateY(-1px);
   }
   100% {
-    transform: translateY(4px);
+    transform: translateY(0px);
   }
-} */
+}
 
 
 .eventpage .container{

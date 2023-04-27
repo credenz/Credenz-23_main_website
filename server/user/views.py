@@ -56,6 +56,12 @@ class UploadFileView(generics.GenericAPIView):
                 if amount_excel == amount_transaction:
                     c_check += 1
                     Order.objects.filter(transaction_id=transaction_id).update(payment="CO")
+                    # coin update for referred user
+                    referral_obj = Referral.objects.get(referred_user = transaction.user)
+                    coin_user = User.objects.get(username = referral_obj.referrer.username)
+                    coin_user.coins += int(amount_transaction / 10)
+                    coin_user.save()
+                    referral_obj.save()
                     transaction.payment = "CO"
                     transaction.save()
                 else:
@@ -180,12 +186,18 @@ class PlaceOrderView(generics.GenericAPIView):
         amount = request.data["amount"]
 
         for event in event_list:
-            order = Order(user = user, event = Event.objects.get(event_id = event))
-            order.save()
-
-        # add transaction for the complete list of events
-        transaction = Transaction(event_list = event_list, user = user, transaction_id = transaction_id, amount=amount)
-        transaction.save()
+            if not Order.objects.get(user = request.user, event = Event.objects.get(event_id = event)):
+                order = Order(user = user, event = Event.objects.get(event_id = event), transaction_id=transaction_id)
+                order.save()
+            else:
+                return Response({"message" : "order already placed"})
+    
+            # add transaction for the complete list of events
+        if not Transaction.objects.get(transaction_id = transaction_id):
+            transaction = Transaction(event_list = event_list, user = user, transaction_id = transaction_id, amount=amount)
+            transaction.save()
+        else:
+            return Response({"message" : "Transaction already performed!"})
 
         return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
     
@@ -197,17 +209,18 @@ class GenerateTeamCodeView(generics.GenericAPIView):
 
     def post(self, request):
         event = int(request.data['event_id'])
+        team_name = request.data['team_name']
         user = request.user
 
         if Order.objects.get(event=event, user=user):
             if not Team.objects.filter(event=event, user=user):
-                new_team = Team.objects.create(event=Event.objects.get(event_id = event))
+                new_team = Team.objects.create(event=Event.objects.get(event_id = event), team_name = team_name)
                 new_team.user.add(request.user)
                 return Response({"message": new_team.team_id}, status=status.HTTP_201_CREATED)
             else:
-                raise ValueError("Team already exists for this user and event.")
+                return Response({"message" : "Team already exists for this user and event."})
         else:
-            raise ValueError("No order exists for this user and event.")
+            return Response({"message" : "No order exists for this user and event."})
 
 class JoinTeamView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
@@ -215,20 +228,23 @@ class JoinTeamView(generics.GenericAPIView):
     def post(self, request):
         user = request.user
         team_id = request.data['team_id']
-        event = request.data['event_id']
+        event_check = Team.objects.get(team_id=team_id).event
 
-        if Order.objects.filter(event = event, user = user, payment = "CO"):
-            if not Team.objects.filter(user = user, event = event):
+        if Order.objects.filter(event = event_check, user = user, payment = "CO"):
+            if not Team.objects.filter(user = user, event = event_check):
                 if Team.objects.filter(team_id = team_id):
                     exis_team = Team.objects.get(team_id = team_id)
-                    exis_team.user.add(request.user)
-                    return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
+                    if exis_team.user.count() >= exis_team.event.group_size:
+                        return Response({"message" : "Maximum team size reached already!"}, status=status.HTTP_400_BAD_REQUEST)
+                    else:
+                        exis_team.user.add(request.user)
+                        return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
                 else:
-                    raise ValueError(f"Invalid team ID : {team_id}")
+                    return Response({"message" : "Invalid team ID"})
             else:
-                raise ValueError("Team already exists for this user and event.")
+                return  Response({"message" : "Team already exists for this user and event."})
         else:
-            raise ValueError("No order exists for this user and event.")
+            return Response({"message" : "No order exists for this user and event."})
 
 class TeamView(generics.ListAPIView):
     serializer_class = TeamSerializer
@@ -246,11 +262,13 @@ class RegisterPlayerView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
     def post(self, request, *args, **kwargs):
-        if (request.user__offline_officer == True):
+        off_officer = request.user
+        if ( User.objects.get(username = off_officer.username).offline_officer== True):
             serializer = self.serializer_class(data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response({"message" : "saved"}, status=status.HTTP_201_CREATED)
+        return Response({"message" : "Not an offline officer"}, status=status.HTTP_203_NON_AUTHORITATIVE_INFORMATION)
         
 class OfflineOrderView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
@@ -260,10 +278,12 @@ class OfflineOrderView(generics.GenericAPIView):
         event_list = request.data['event_list']
         transaction_id = request.data["transaction_id"]
         amount = request.data["amount"]
-        if request.user__offline_officer:
+        off_officer = request.user
+        if (User.objects.get(username = off_officer.username).offline_officer== True):
             for event in event_list:
-                order = Order(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event), order_taker = request.user__full_name, payment="CO")
-                order.save()
+                if not Order.objects.get(user = request.user, event = Event.objects.get(event_id = event)):
+                    order = Order(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event), order_taker = request.user.full_name, payment="CO", transaction_id=transaction_id)
+                    order.save()
 
             # add transaction for the complete list of events
             transaction = Transaction(event_list = event_list, user = User.objects.get(username=order_user), transaction_id = transaction_id, amount=amount, payment ="CO")
@@ -271,7 +291,7 @@ class OfflineOrderView(generics.GenericAPIView):
 
             return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
         
-        raise ValueError("Transaction not allowed")
+        raise Response({"message" : "Transaction not allowed"})
 
 class TransactionListView(generics.ListAPIView):
     serializer_class = TransactionSerializer

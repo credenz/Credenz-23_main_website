@@ -19,7 +19,7 @@
 					"formdata": [
 						{
 							"key": "username",
-							"value": "test2",
+							"value": "test32",
 							"type": "text"
 						},
 						{
@@ -39,7 +39,7 @@
 						},
 						{
 							"key": "email",
-							"value": "test2@gmail.com",
+							"value": "test32@gmail.com",
 							"type": "text"
 						},
 						{
@@ -50,7 +50,7 @@
 						},
 						{
 							"key": "last_name",
-							"value": "test1",
+							"value": "test2",
 							"type": "text"
 						},
 						{
@@ -61,9 +61,8 @@
 						},
 						{
 							"key": "senior",
-							"value": "True",
-							"type": "text",
-							"disabled": true
+							"value": "False",
+							"type": "text"
 						},
 						{
 							"key": "last_name",
@@ -115,7 +114,7 @@
 						},
 						{
 							"key": "password",
-							"value": "helloworld@23",
+							"value": "hello@23",
 							"type": "text"
 						}
 					]
@@ -174,7 +173,7 @@
 					"apikey": [
 						{
 							"key": "value",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NDUyOTEwLCJqdGkiOiI3YTIwM2FhZjI0NDc0ODk1YjYzZTQ0OTliNDk4NTlkNiIsInVzZXJfaWQiOjJ9.4_kmhNTJv-M7a0U6CmYk-phrrJFfOjmbLejlKTo1r5g",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNjU3Nzg0LCJqdGkiOiI0ZGI2Y2ZmNWFjZjk0MzljOWE4M2FlNmVjNTk5ODdkMSIsInVzZXJfaWQiOjR9.Qo-D_L0zkZLEx4j8cPiMKf6rAPwe_eJVn0Sctcm81do",
 							"type": "string"
 						},
 						{
@@ -324,7 +323,7 @@
 					"apikey": [
 						{
 							"key": "value",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5OTcxNTQzLCJqdGkiOiJhYjE2MDM5MTE2ZjI0NDIzYjdiMDFhYjIwMWIxMmZkMiIsInVzZXJfaWQiOjJ9.08v9PCB0hVOB2B4BpVhJhDAFTjR4rQn9tpDSRnxYvVc",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzMTg1ODk5LCJqdGkiOiIwYWVhMjVlMDMxNTE0OTExOWI4YWIxMjIwYTc5NDEyZCIsInVzZXJfaWQiOjd9.0ZUlsZqjPcFwvXJtUL2UC7Jgw1RqRg7-8uJl58F8Vp8",
 							"type": "string"
 						},
 						{
@@ -338,7 +337,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"transaction_id\": 123456,\r\n    \"payment\": \"PO\",\r\n    \"event\": [1, 2]\r\n}\r\n",
+					"raw": "{\r\n    \"transaction_id\": 123457,\r\n    \"event_list\": [101, 102],\r\n    \"amount\" : 100\r\n\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -409,7 +408,7 @@
 					"apikey": [
 						{
 							"key": "value",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNTY3ODY4LCJqdGkiOiI1NGExZWFhMzAzM2I0YzRiOWE0ZmJmYjBhMGU5Mjc5NiIsInVzZXJfaWQiOjJ9.TMGfCIgEEnJzeqRSA_fwSV3YhRW7c8_FiTQzuaEAn1I",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNjkxOTM1LCJqdGkiOiI0MDFmYjU0ZDg0ZDk0ZjJjYTFlMTA0ZWFiYTA3Y2NiMyIsInVzZXJfaWQiOjR9.kHnex68qUOI63ZCGpe_mvXlMagnxAd883mibY_2SUPA",
 							"type": "string"
 						},
 						{
@@ -427,6 +426,11 @@
 						{
 							"key": "event_id",
 							"value": "101",
+							"type": "text"
+						},
+						{
+							"key": "team_name",
+							"value": "clashify",
 							"type": "text"
 						}
 					]
@@ -452,7 +456,7 @@
 					"apikey": [
 						{
 							"key": "value",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNTcwMzE4LCJqdGkiOiIyOTBiYmI3OWNhNzU0OWQyOGQ3MDhhMGQyN2VlYzVkYyIsInVzZXJfaWQiOjF9.ouaG4OIyKSWo1kBLWkIv1nChua49ogIaHr-qk9Q0afQ",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzMDUzMjIxLCJqdGkiOiIzMTYzN2QwNTBiOGY0ZTg3YjcxYWExNjZjNWM4YWVmNyIsInVzZXJfaWQiOjV9.iHmpUPOMihK398S-fUy5qbvYhiPVkx7pL5yoOZ9sp7c",
 							"type": "string"
 						},
 						{
@@ -468,13 +472,8 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "event_id",
-							"value": "101",
-							"type": "text"
-						},
-						{
 							"key": "team_id",
-							"value": "CRZCL01",
+							"value": "FB45F9",
 							"type": "text"
 						}
 					]
@@ -512,7 +511,7 @@
 					"apikey": [
 						{
 							"key": "value",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNTcwMzE4LCJqdGkiOiIyOTBiYmI3OWNhNzU0OWQyOGQ3MDhhMGQyN2VlYzVkYyIsInVzZXJfaWQiOjF9.ouaG4OIyKSWo1kBLWkIv1nChua49ogIaHr-qk9Q0afQ",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNTkyMDYxLCJqdGkiOiI0MzMxYTg4NGIxM2Q0MTE5OGE3MjRmY2M3YzJkMTNmMyIsInVzZXJfaWQiOjJ9.X3WRuGW4ytelRPyqEmw9kcvkiV3XGJuABeIqBppn7Vc",
 							"type": "string"
 						},
 						{
@@ -531,6 +530,231 @@
 					],
 					"path": [
 						"view-team",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Transaction ",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzMTg2MTQzLCJqdGkiOiI5NWQ0NjMzMzk3OGM0NDVlYWFlYWFjMThlOGQ1MDlmMyIsInVzZXJfaWQiOjF9.f_qZciJAAwY7F-ZevgzvcRnmF6X9TFf0YQmc-30861w",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Admin/Downloads/test_excel.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base}}api/upload-file/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"upload-file",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "shre",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "shre@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "context",
+							"value": "life's good",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base}}api/feedback/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"feedback",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "offline register",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzMTg0MTI4LCJqdGkiOiJlNWFjZTQ5ODQ4NDI0ZjcwODQ1YmVkNWYwNmE5ZjdhZSIsInVzZXJfaWQiOjJ9.LbVlzWzz1tbX812MqBydNuwyxY6tHpozW4Ou0YSB0TQ",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "test32",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "hello@23",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "test2",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "9145527175",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test32@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "country_code",
+							"value": "+91",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "test2",
+							"type": "text"
+						},
+						{
+							"key": "referralCode",
+							"value": "Us9M_g",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "senior",
+							"value": "False",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "test2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "institute",
+							"value": "PICT",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "1234",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base}}api/offline-register/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"offline-register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "offline order",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgzMTg0MTI4LCJqdGkiOiJlNWFjZTQ5ODQ4NDI0ZjcwODQ1YmVkNWYwNmE5ZjdhZSIsInVzZXJfaWQiOjJ9.LbVlzWzz1tbX812MqBydNuwyxY6tHpozW4Ou0YSB0TQ",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"test32\",\r\n    \"transaction_id\": 123456,\r\n    \"event_list\": [101, 102],\r\n    \"amount\" : 100\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}api/offline-order/",
+					"host": [
+						"{{base}}api"
+					],
+					"path": [
+						"offline-order",
 						""
 					]
 				}

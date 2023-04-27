@@ -103,6 +103,7 @@ class Team(models.Model):
     team_id = models.CharField(max_length=6, default=generate_team_id, unique=True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     user = models.ManyToManyField(User)
+    team_name = models.CharField(max_length=20, default="team")
 
     def __str__(self):
         return f'{self.event} - {", ".join(str(u) for u in self.user.all())}'
@@ -111,7 +112,7 @@ class Transaction(models.Model):
     PAYMENT_STATUS = (("PO", "Pending"), ("CO", "Completed"))
     event_list = models.JSONField(default=list)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    transaction_id = models.CharField(max_length=20)
+    transaction_id = models.CharField(max_length=20, unique=True)
     order_date = models.DateTimeField(auto_now_add=True)
     amount = models.IntegerField(default=0)
     order_taker = models.CharField(default="online", max_length=40)

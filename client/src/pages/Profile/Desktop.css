@@ -11,7 +11,7 @@
     font-size: 1.7em;
   } */
   .profile-desktop{
-    padding-top: 7%;
+    padding-top: 1%;
   }
   .dektop-profile{
     /* margin: 0px;
@@ -28,12 +28,12 @@
 	 /* position: relative;
 	 z-index: 1; */
 	 /* overflow-x: hidden; */
-	 background-color: black;
+	 background-color: #0d1825;
 	 /* display: flex; */
 	 transition: 0.3s;
 	 /* flex-direction: column; */
 	 border-radius: 10px;
-	 box-shadow: 0 0 0 5px rgb(241, 33, 130);
+	 box-shadow: 0 0 0 5px #d700c1;
    /* margin: 0px;
 padding: 0px;
   padding-top: 0px; */
@@ -41,13 +41,14 @@ box-sizing: border-box;
 height: 75vh;
 overflow: hidden;
 /* padding-top: 80px; */
-background-color: black;
+background-color: #180718;
+border-color: darkcyan;
 transition: 0.3s;
 border-radius: 10px;
 /* box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2); */
-width: 90%;
-margin-left: 5%;
-margin-right: 5%;
+width: 75%;
+margin-left: 12%;
+margin-right: 12%;
 /* padding-top: 10%;
 margin-top: auto;
 padding: unset; */
@@ -115,7 +116,7 @@ padding: unset; */
   
   .dektop-profile {
     display: flex;
-    opacity: 0.65;
+    opacity: 0.95;
   }
   
   .dektop-profile aside {
@@ -141,7 +142,7 @@ padding: unset; */
   }
   
   .desk-mainsec {
-    width: 100%;
+    width: inherit;
     display: inline-block;
     /* height: 70vh;
 overflow: scroll; */
@@ -163,7 +164,7 @@ overflow: scroll; */
   
   .repo-nav {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     width: 100%;
     /* background-color: #202529; */
   }
@@ -432,14 +433,17 @@ margin-right: auto;
   top: 70%;
 }
 .teamJoin{
-  margin-left: 18%;
+  /* margin-left: 15%; */
   width: fit-content;
+  display: flex;
+  justify-content: space-evenly;
 }
 .teamHead{
   margin-left: 10%;
   /* width:10px */
 }
 .teamJoin button{
+  justify-content: space-evenly;
   background: none;
   outline: none;
   cursor: pointer;
@@ -475,6 +479,8 @@ margin-right: auto;
 }
 .cmembers .cform-field {
   flex: 2;
+  display: grid;
+  justify-content: center;
 }
 .members  .output {
   color: aliceblue;
@@ -548,6 +554,17 @@ margin-right: auto;
   font-weight: 500;
   border-radius: 2px;
   padding: 5px 10px;
+}
+.teamName{
+  height: 35px;
+  width: 74%;
+  padding: 7px;
+  outline: none;
+  border-radius: 5px;
+  color: black;
+  border: 1px solid rgb(220, 220, 220);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
 .members .first-division button {
   align-self: flex-start;
@@ -657,4 +674,107 @@ margin-right: auto;
   height: 80%;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+/* .my teams */
+
+
+
+
+.cta {
+	/* --shadowColor: 300 60% 40%; */
+	display: flex;
+	flex-wrap: wrap;
+	background: hsl(187.1, 52.6%, 19%);
+	max-width: 51rem;
+	width: 100%;
+	box-shadow: 0.65rem 0.65rem 0 #1b2729;
+	border-radius: 0.8rem;
+	overflow: hidden;
+	border: 0.5rem solid;
+	border-color: #733d6b;
+}
+.cta img {
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+	flex: 1 1 300px;
+	outline: 0.5rem solid;
+}
+
+.cta__text-column {
+	padding: min(2rem, 5vw) min(2rem, 5vw) min(2.5rem, 5vw);
+	flex: 1 0 50%;
+}
+
+/* .cta__text-column > * + * {
+	margin: min(1.5rem, 2.5vw) 0 0 0;
+} */
+
+.cta a {
+	display: inline-block;
+	color: black;
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	background: hsl(187 75% 64%);
+	border-radius: 0.6rem;
+	font-weight: 700;
+	border: 0.35rem solid;
+}
+
+
+
+.ncard {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+	/* box-shadow: 0.65rem 0.65rem 0 #1b2729; */
+  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+  height: 40vh;
+  overflow: scroll;
+  box-shadow: 0.65rem 0.65rem 0 #1b2729;
+	border-radius: 0.8rem;
+	/* overflow: hidden; */
+	border: 0.5rem solid;
+	/* border-color: #733d6b; */
+	border-color: rgb(65, 69, 117);
+  
+  width: 100%;
+  margin-bottom: 10%;
+}
+
+.ncard img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.ncard-contentl {
+  padding: 10px;
+  text-align: center;
+	/* flex: 1 1 200px;
+  outline: 0.5rem solid; */
+  /* display: inline-flex; */
+}.ncard-contentr {
+  padding: 5%;
+  text-align: center;
+  width: inherit;
+  /* display: flex; */
+}
+
+.ncard h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ncard p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.ncard-content {
+  flex: 1;
 }
