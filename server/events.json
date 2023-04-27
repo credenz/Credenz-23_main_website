@@ -15,7 +15,26 @@
     "amount": 50,
     "count": 1,
     "team": "Maximum 3 players are allowed",
-    "max": 3
+    "max": 3,
+    "contact": [{
+      "name": "Devraj Shetake",
+      "phone": "8208566305"
+    }, {
+      "name": "Yash Mali",
+      "phone": "9319809833"
+    }],
+    "prizes": [{
+      "1": "Sr. First Prize: Rs. 5000",
+      "2": "Sr. Second Prize: Rs. 3000"
+    }, {
+      "1": "Jr. First Prize: Rs. 5000",
+      "2": "Jr. Second Prize: Rs. 3000"
+    }],
+    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
+
+
+
+
   },
   {
     "heading": "REVERSE CODING",
@@ -25,14 +44,30 @@
       "2": "A 30-minute game for a person or a team of two people.",
       "3": "Teams or players are allowed to use any IDE or software after the game has started.",
       "4": "You will have 3 lifelines (description will be provided in the game itself).",
-      "5": "You will have two attempts to answer a particular question. In the first attempt, the marking scheme will be +4 0. In the second attempt, the marking scheme will be changed to +2 -2."
+	"5": "You are not allowed to switch tabs or close the browser during the game. If you do so, you will be logged out automatically.",
+      "6": "You will have two attempts to answer a particular question. In the first attempt, the marking scheme will be +4 0. In the second attempt, the marking scheme will be changed to +2 -2."
     },
-    "structure": "To be declared soon!",
+    "structure": "Challenge yourself to solve coding questions with your logical and analytical to decode and find the answer.",
     "id": 102,
     "amount": 20,
     "count": 1,
     "team": "Maximum 2 players are allowed",
-    "max": 2
+    "max": 2,
+    "contact": [{
+      "name": "Sarvesh Varade",
+      "phone": "8788013967"
+    }, {
+      "name": "Vansh Teppalwar",
+      "phone": "7972851721"
+    }],
+    "prizes": [{
+      "1": "Sr. First Prize: Rs. 5000",
+      "2": "Sr. Second Prize: Rs. 3000"
+    }, {
+      "1": "Jr. First Prize: Rs. 5000",
+      "2": "Jr. Second Prize: Rs. 3000"
+    }],
+    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
   },
   {
     "heading": "NETWORK TREASURE HUNT",
@@ -54,7 +89,22 @@
     "amount": 0,
     "count": 1,
     "team": "Individual event",
-    "max": 1
+    "max": 1,
+    "contact": [{
+      "name": "Devraj Shetake",
+      "phone": "8208566305"
+    }, {
+      "name": "Yash Mali",
+      "phone": "9319809833"
+    }],
+    "prizes": [{
+      "1": "Sr. First Prize: Rs. 5000",
+      "2": "Sr. Second Prize: Rs. 3000"
+    }, {
+      "1": "Jr. First Prize: Rs. 5000",
+      "2": "Jr. Second Prize: Rs. 3000"
+    }],
+    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
   },
   {
     "heading": "WALL STREET",
@@ -79,7 +129,22 @@
     "amount": 39,
     "count": 1,
     "team": "Individual event",
-    "max": 1
+    "max": 1,
+    "contact": [{
+      "name": "Devraj Shetake",
+      "phone": "8208566305"
+    }, {
+      "name": "Yash Mali",
+      "phone": "9319809833"
+    }],
+    "prizes": [{
+      "1": "Sr. First Prize: Rs. 5000",
+      "2": "Sr. Second Prize: Rs. 3000"
+    }, {
+      "1": "Jr. First Prize: Rs. 5000",
+      "2": "Jr. Second Prize: Rs. 3000"
+    }],
+    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
   },
   {
     "heading": "B-PLAN",
@@ -90,7 +155,22 @@
     "amount": 39,
     "count": 1,
     "team": "Individual event",
-    "max": 1
+    "max": 1,
+    "contact": [{
+      "name": "Devraj Shetake",
+      "phone": "8208566305"
+    }, {
+      "name": "Yash Mali",
+      "phone": "9319809833"
+    }],
+    "prizes": [{
+      "1": "Sr. First Prize: Rs. 5000",
+      "2": "Sr. Second Prize: Rs. 3000"
+    }, {
+      "1": "Jr. First Prize: Rs. 5000",
+      "2": "Jr. Second Prize: Rs. 3000"
+    }],
+    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
   },
   {
     "heading": "ENIGMA",
@@ -98,15 +178,27 @@
     "structure": "Enigma is a logical reasoning based questionnaire, which will test your aptitude, thinking capability, response time and mental ability. Get ready to put your Grey Cells to work!",
     "rules": {
       "1": "Electronic gadgets (phones, calculators, smart watches) are prohibited.",
-      "2": "The first round is an hour-long aptitude test.",
+      "2": "The first round is a 30 min aptitude test.",
       "3": "The second round will consist of a two-hour descriptive logical reasoning interview.",
       "4": "Enigma Wildcard is conducted specially for PICT students whose winners are directly promoted to Round 2 of the event free of cost."
     },
-    "amount": "To be declared soon",
+    "amount": 39,
     "count": 1,
-    "team": "Maximum 2 players are allowed",
+    "team": "Maximum 2 players are allowed in a team.",
     "max": 2,
-    "id": 106
+    "id": 106,
+    "contact": [{
+      "name": "Manas Sewatkar",
+      "phone": "9028093133"
+    }, {
+      "name": "Nidhi Yadav",
+      "phone": "8767887493"
+    }],
+    "prizes": [{
+      "1": "First Prize: Rs. 5000",
+      "2": "Second Prize: Rs. 3000"
+    }],
+    "datetime":["Round 1 (Slot 1): 12th May 2023, 12:00 PM to 12:30 PM","Round 1 (Slot 2): 12th May 2023, 05:00 PM to 05:30 PM","Round 2: 13th May 2023, 05:00 PM to 07:00 PM"]
   },
   {
     "heading": "DATAWIZ",
@@ -130,7 +222,19 @@
     "amount": 50,
     "count": 1,
     "team": "Maximum 2 players are allowed",
-    "max": 2
+    "max": 2,
+    "contact": [{
+      "name": "Aditya Medhe",
+      "phone": "9370546447"
+    }, {
+      "name": "Manas Sewatkar",
+      "phone": "9028093133"
+    }],
+    "prizes": [{
+      "1": "First Prize: Rs. 5000",
+      "2": "Second Prize: Rs. 3000"
+    }],
+    "datetime":["10th May 2023, 12:00 AM to 13th May 2023, 12:00 PM"]
   },
   {
     "heading": "QUIZ",
@@ -150,27 +254,54 @@
     "amount": 50,
     "count": 1,
     "team": "Maximum 2 players are allowed",
-    "max": 2
+    "max": 2,
+    "contact": [{
+      "name": "Devraj Shetake",
+      "phone": "8208566305"
+    }, {
+      "name": "Yash Mali",
+      "phone": "9319809833"
+    }],
+    "prizes": [{
+      "1": "Sr. First Prize: Rs. 5000",
+      "2": "Sr. Second Prize: Rs. 3000"
+    }, {
+      "1": "Jr. First Prize: Rs. 5000",
+      "2": "Jr. Second Prize: Rs. 3000"
+    }],
+    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
   },
   {
     "heading": "CRETRONIX",
     "body": "Battle it out on the breadboard! Challenge your brains to clear a test where you demonstrate your knowledge in the field of electronics, physics, logical ability and building a circuit by interpreting the hints provided.",
     "structure": {
-      "1": "Round 1: It will consist of Multiple Choice Questions (MCQs) based on theoretical and practical concepts of electronics. There will be 30 questions for a time limit of 45 minutes.",
+      "1": "Round 1: It will consist of Multiple Choice Questions (MCQs) based on theoretical and practical concepts of electronics. There will be 30 questions for a time limit of 60 minutes.",
       "2": "Round 2  : Participants will be given a problem statement and they are supposed to implement the circuit with the help of hardware components."
     },
     "rules": {
       "1": "Each team can consist of a maximum of 3 members.",
       "2": "Participants can use the given datasheets.",
       "3": " Use of Mobile is not allowed .",
-      "4": "Usage of calculator is allowed . ",
+      "4": "Use of calculator is allowed . ",
       "5": "Participants are supposed to make a document which describes the proper working of circuit."
     },
     "id": 109,
     "amount": 50,
     "count": 1,
     "team": "Maximum 3 players are allowed",
-    "max": 3
+    "max": 3,
+    "contact": [{
+      "name": "Bhanupratap Jaiswal",
+      "phone": "9860842600"
+    }, {
+      "name": "Suyash Udchan",
+      "phone": "7722079027"
+    }],
+    "prizes": [{
+      "1": " First Prize: Rs. 5000",
+      "2": " Second Prize: Rs. 3000"
+    }     ],
+    "datetime":["Round 1 (Slot 1): 12th May 2023, 11:00 AM to 12:00 PM","Round 2: 14th May 2023, 10:00 AM to 01:00 PM"]
   },
   {
     "heading": "WEB WEAVER",
@@ -180,7 +311,25 @@
     "id": 110,
     "amount": 39,
     "count": 1,
-    "team": "Individual event",
-    "max": 1
+    "team": "Maximum 3 players are allowed",
+    "max": 3,
+    "contact": [{
+      "name": "Devraj Shetake",
+      "phone": "8208566305"
+    }, {
+      "name": "Yash Mali",
+      "phone": "9319809833"
+    }],
+    "prizes": [{
+      "1": "Sr. First Prize: Rs. 5000",
+      "2": "Sr. Second Prize: Rs. 3000"
+    }, {
+      "1": "Jr. First Prize: Rs. 5000",
+      "2": "Jr. Second Prize: Rs. 3000"
+    }],
+    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
   }
 ]
+
+
+
