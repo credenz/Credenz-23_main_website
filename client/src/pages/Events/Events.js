@@ -210,23 +210,27 @@ const Events = () => {
                   {/* <button onClick={() => setDetails(3)}>Create Team</button> */}
                 </div>
 
-                <div className="modalbody info">
+                <div className="modalbody info  ">
                 {Details === 0?<div>
                   <p className="text-center"> {data.body}</p>
-                  {/* {data.datetime.map((time)=>(
-                    <>
-                     <h4>Timings</h4>
+                    <br />
+                  <h5 className="text-center" >Timings</h5>
+                  {data.datetime.map((time)=>(
+                    <div className="text-center" >
                     <p>{time}</p>
-                    </>
+                    </div>
                    
-                  ))} */}
+                  ))}
 
+                    <br />
+                  <h5 className="text-center">Prizes</h5>
+                  
                         {/* {data.prizes.map((prize)=>(
-                          <>
-                          <h4>Prizes</h4>
+                          <div className="text-center">
+                          
                     <p>{prize.1}</p>
                     <p>{prize.2}</p>
-                          </>
+                          </div>
                     
                   ))} */}
                 </div>:<></>}
@@ -258,13 +262,15 @@ const Events = () => {
                   </p>
                   
                   {/* contact */}
-                  {/* {Details === 3 && <div>
+                  {Details === 3 && <div>
                   
                   {data.contact.map((contact)=>(
-                    <p>{contact.name}</p>
+                    <div className="text-center" style={{margin:"10px"}} >
+                    <p >{contact.name}</p>
                     <p>{contact.phone}</p>
+                    </div>
                   ))}
-                </div>} */}
+                </div>}
                 </div>
                 <div className="grp">
                   <div className="team"> Event size : {data.team}</div>
