@@ -300,7 +300,7 @@
 	 cursor: pointer;
 }
 .profile  .card-contact + .card-contact {
-	 margin-top: 16px;
+	 margin-top: 8%;
 }
 .profile  .card-contact svg {
 	flex-shrink: 0;

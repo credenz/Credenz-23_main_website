@@ -237,20 +237,20 @@ const Payment = (props) => {
                   <img src={eventslist[data.id - 101].logo} alt="" />
                 </div> */}
 
-                <div className="modalbody info">
+                {/* <div className="modalbody info"> */}
                 <div className="pmodalbody info">
                 <p>Total Price: {totalprice} </p>
                 <p>{payList[payMethod]}: {upiId}</p>
                 <ol className='pay-list'>
                     <li style={{color:'#625e5e'}}>Payment verification will be done in 2-3 working days.</li>
-                    <li style={{color:'#625e5e'}}>Check profile section for final ticket.</li>
+                    <li style={{color:'#625e5e'}}>Check profile section for final ticket status.</li>
                 </ol>
                 <div className="pay-button">
                 <Button onClick={() => handleClick()}>Confirm</Button>
                   
                 </div>
                 </div>
-                </div>
+                {/* </div> */}
               </div>
             
       </Modal>

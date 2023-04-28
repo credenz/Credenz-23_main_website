@@ -65,7 +65,7 @@ const Register = (props) => {
       // console.log(err,err.response.data.username);
       // console.log(err,err.response.data[0]);
       console.log(err);
-      let msg='Error in data';
+      let msg='Error while registering';
       // if(err.response.data.username) msg=err.response.data.username;
       // if(err.response.data.password[0]) msg=err.response.data[0];
       // if(err.response.password[0]) msg=err.response.password[0];
