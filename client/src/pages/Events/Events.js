@@ -113,9 +113,9 @@ const Events = () => {
     <>
       {/* <EventSky> */}
       <div className="st">
-        {/* <div id="stars"></div>
+        <div id="stars"></div>
         <div id="stars2"></div>
-        <div id="stars3"></div> */}
+        <div id="stars3"></div>
         <div className="eventpage " data-aos="fade-in" data-aos-duration="400">
           <div className="container ">
             <h1 style={{ textAlign: "center" }}>EVENTS</h1>
@@ -200,11 +200,36 @@ const Events = () => {
                   >
                     Structure
                   </button>
+                  <button
+                    className={Details === 3 ? "active" : "hover "}
+                    onClick={() => setDetails(3)}
+                  >
+                    Contact
+                  </button>
+                  
                   {/* <button onClick={() => setDetails(3)}>Create Team</button> */}
                 </div>
 
                 <div className="modalbody info">
-                  <p className="text-center">{Details === 0 && data.body}</p>
+                {Details === 0?<div>
+                  <p className="text-center"> {data.body}</p>
+                  {/* {data.datetime.map((time)=>(
+                    <>
+                     <h4>Timings</h4>
+                    <p>{time}</p>
+                    </>
+                   
+                  ))} */}
+
+                        {/* {data.prizes.map((prize)=>(
+                          <>
+                          <h4>Prizes</h4>
+                    <p>{prize.1}</p>
+                    <p>{prize.2}</p>
+                          </>
+                    
+                  ))} */}
+                </div>:<></>}
                   <p>
                     {Details === 1 && data.rules ? (
                       <ol>
@@ -216,7 +241,7 @@ const Events = () => {
                       <></>
                     )}
                   </p>
-                  <p className="text-center">
+                  <p >
                     {Details === 2 && data.structure ? (
                       typeof data.structure !== "string" ? (
                         <ol>
@@ -231,6 +256,15 @@ const Events = () => {
                       <></>
                     )}
                   </p>
+                  
+                  {/* contact */}
+                  {/* {Details === 3 && <div>
+                  
+                  {data.contact.map((contact)=>(
+                    <p>{contact.name}</p>
+                    <p>{contact.phone}</p>
+                  ))}
+                </div>} */}
                 </div>
                 <div className="grp">
                   <div className="team"> Event size : {data.team}</div>
@@ -267,7 +301,10 @@ const Events = () => {
                       )
                     }
                   >
-                    Add to cart
+                    {/* Add to cart */}
+                    {cart.find((item) => item.id === data.id)
+                          ?  <>Added To cart</>
+                          : <>Add to cart</>}
                   </button>
                   {/* <button>CHECKOUT</button> */}
                 </div>
