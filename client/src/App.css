@@ -8,7 +8,7 @@
 .App {
   min-height: 100vh;
   /* width: 100vw; */
-  background: rgb(36, 36, 36)
+  background: rgb(61, 6, 61)
 /* width: 100vw; */
 
 
@@ -29,7 +29,7 @@
     center fixed;
     background-position: right 47% bottom 90%;
 }
-/* .BgWindow{
+.BgWindow{
   min-height: 100vh;
   width: 100vw;
   display: flex;
@@ -57,7 +57,7 @@
   position: relative;
   padding: 0rem 0.5rem 0rem;
   
-} */
+}
 
 @keyframes BgWindow {
   0% {
