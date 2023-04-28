@@ -37,10 +37,11 @@ function App() {
   } 
   return (
     <>
-    <ToastUtils />
+   
     <Scrolltop/>
     <Scrolltop/>
     <Navbar/>
+    <ToastUtils />
     <div className={`App`}>
     <div className={`${backgroundImg}`}>
     <div className={`${backgroundWindow}`}>
