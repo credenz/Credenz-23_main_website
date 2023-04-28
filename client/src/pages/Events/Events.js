@@ -233,6 +233,11 @@ const Events = () => {
                           </div>
                     
                   ))} */}
+                  {data.prizes.map((prize)=>(<ul>
+                    {Object.values(prize).map((val)=>(
+                      <li>{val}</li>
+                    ))}
+                  </ul>))}
                 </div>:<></>}
                   <p>
                     {Details === 1 && data.rules ? (
