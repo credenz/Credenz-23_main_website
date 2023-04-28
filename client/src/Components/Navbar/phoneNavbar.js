@@ -2,8 +2,11 @@ import './phoneNavbar.css';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useCartContext } from '../../context/cart_context';
+import { Button } from 'react-bootstrap';
 const PhoneNavbar = () => {
     let navigate = useNavigate();
+    const {loginStatus} = useCartContext();
     const [navOpen, setNavOpen] = useState(false);
     return (
         <div className="navbar-wrapper">
@@ -141,7 +144,7 @@ const PhoneNavbar = () => {
                 Contact Us
               </Link>
             </li>
-            {localStorage.getItem('token')!==null&&<li>
+            {loginStatus&&<li>
               <Link
                 to={"/profile"}
                 onClick={() => window.location.pathname==='/explore'
@@ -171,7 +174,7 @@ const PhoneNavbar = () => {
                 cart
               </Link>
             </li>
-            {localStorage.getItem('token')===null&&<li>
+            {!loginStatus&&<li>
               <Link
                 to={"/login"}
                 onClick={() => window.location.pathname==='/explore'
@@ -186,6 +189,7 @@ const PhoneNavbar = () => {
                 <button className='plogin'>
                 Login
                 </button>
+                {/* <Button>Login</Button> */}
               </Link>
             </li>}
           </ul>

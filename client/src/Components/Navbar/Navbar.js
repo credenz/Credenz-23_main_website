@@ -144,6 +144,7 @@ import pisb from '../../images/pisb-logo.png';
 // import CartContext from "./CartContext";
 // import QRCode from "../images/qrcode.jpg";
 import PhoneNavbar from './phoneNavbar';
+import { useCartContext } from "../../context/cart_context";
 
 const NavbarCustom = (props) => {
   const location = useLocation();
@@ -526,17 +527,20 @@ const NavbarCustom = (props) => {
       nav.classList.toggle("show");
     }, 300);
   };
-
+  const {loginStatus,cart,changeLogin,changeLogout} = useCartContext();
+  // const loginStatus=cart.loginStatus;
   const displayUPICode = () => {};
-  const [loginStatus,setLoginStatus]=useState(false);
+  // const [loginStatus,setLoginStatus]=useState(cart.loginStatus);
   useEffect(()=>{
-    if(localStorage.getItem('token')!==null){
-      setLoginStatus(true)
-    }
-    else setLoginStatus(false);
+    // if(localStorage.getItem('token')!==null){
+    //   setLoginStatus(true)
+    // }
+    // else setLoginStatus(false);
+    // setLoginStatus(cart.loginStatus)
   },[])
   return (
     <>
+      {console.log(cart,loginStatus)}
       <div className="navbar-desktop">
       <Navbar
         collapseOnSelect

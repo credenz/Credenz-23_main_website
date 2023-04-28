@@ -18,13 +18,15 @@ import profile from "../../images/profile.jpeg";
 import Requests from '../../api/requests';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useCartContext } from '../../context/cart_context';
 
 const Mobile = ({ data, props }) => {
     const [teamId, setTeamId] = useState("");
     const [selected, setSelected] = useState(0);
     const [teamVisible, setTeamVisible] = useState(0);
     const [eventSelected, setEvnentSelected] = useState(0);
-    const navigate=useNavigate()
+    const navigate=useNavigate();
+    const {changeLogout} = useCartContext();
     const teamEvents = [{ id: 101, name: 'Clash' }, { id: 102, name: 'RC' }, { id: 103, name: 'Enigma' }, { id: 104, name: 'B-plan' }]
     const handleView = () => {
         Requests.viewTeam()
@@ -68,6 +70,7 @@ const Mobile = ({ data, props }) => {
         localStorage.clear();
         props.toast.toast.success('Logout Successfully!');
         navigate('/');
+        changeLogout();
     }
     const [myTeams, setMyTeams] = useState([]);
     const [teamName, setTeamName] = useState('');

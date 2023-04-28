@@ -4,6 +4,7 @@ import "./register.css";
 import PhoneInput from "react-phone-number-input";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Requests from "../../api/requests";
+import { useCartContext } from "../../context/cart_context";
 const LoginNew = (props) => {
   let navigate=useNavigate();
   const [register, setregister] = useState(0);
@@ -20,7 +21,7 @@ const LoginNew = (props) => {
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
-  
+  const {changeLogin} = useCartContext();
 
   const loginSubmit = async(e) => {
     e.preventDefault();
@@ -36,6 +37,7 @@ const LoginNew = (props) => {
       // console.log(res.data.access);
       localStorage.setItem('token',res.data.access);
       props.toast.toast.update(id, { render: "Logged IN", type: "success", isLoading: false, autoClose:5000 });
+      changeLogin()
       navigate('/events');
     })
     .catch((err)=>{

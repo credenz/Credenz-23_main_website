@@ -36,6 +36,21 @@ const cartReducer = (state, action) => {
       cart: [],
     };
   }
+  if (action.type === "CHANGELOGIN") {
+    return {
+      ...state,
+      cart: [],
+      loginStatus:true
+    };
+  }
+  if (action.type === "CHANGELOGOUT") {
+    localStorage.removeItem('token');
+    return {
+      ...state,
+      cart: [],
+      loginStatus:false
+    };
+  }
 
   // if(action.type === "TOTALITEM"){
 

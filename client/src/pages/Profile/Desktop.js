@@ -21,9 +21,11 @@ import Requests from '../../api/requests';
 import ticket from '../../images/aticket.png';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useCartContext } from '../../context/cart_context';
 const Desktop = ({ data,props }) => {
     const [teamId, setTeamId] = useState("");
     const navigate=useNavigate()
+    const {changeLogout}= useCartContext();
     const handleView=()=>{
         Requests.viewTeam()
         .then((res)=>{
@@ -67,6 +69,7 @@ const Desktop = ({ data,props }) => {
         localStorage.clear();
         props.toast.toast.success('Logout Successfully!');
         navigate('/');
+        changeLogout();
     }
     const [selected, setSelected] = useState(0);
     const [teamVisible, setTeamVisible] = useState(0);
