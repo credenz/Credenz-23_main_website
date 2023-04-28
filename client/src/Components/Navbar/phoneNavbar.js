@@ -141,22 +141,7 @@ const PhoneNavbar = () => {
                 Contact Us
               </Link>
             </li>
-            <li>
-              <Link
-                to={"/login"}
-                onClick={() => window.location.pathname==='/explore'
-                  ?
-                  window.location.href =window.location.origin+'/login'
-                  :setNavOpen(false)}
-                style={{ textDecoration: "none" }}
-              >
-                <span className="fa-li">
-                  <i className="fas fa-info"></i>
-                </span>
-                Login
-              </Link>
-            </li>
-            <li>
+            {localStorage.getItem('token')!==null&&<li>
               <Link
                 to={"/profile"}
                 onClick={() => window.location.pathname==='/explore'
@@ -166,11 +151,11 @@ const PhoneNavbar = () => {
                 style={{ textDecoration: "none" }}
               >
                 <span className="fa-li">
-                  <i className="fas fa-info"></i>
+                <i class="fas fa-id-badge" ></i>
                 </span>
                 Profile
               </Link>
-            </li>
+            </li>}
             <li>
               <Link
                 to={"/cart"}
@@ -181,11 +166,28 @@ const PhoneNavbar = () => {
                 style={{ textDecoration: "none" }}
               >
                 <span className="fa-li">
-                  <i className="fas fa-info"></i>
+                <i class="fa fa-shopping-cart" ></i>
                 </span>
                 cart
               </Link>
             </li>
+            {localStorage.getItem('token')===null&&<li>
+              <Link
+                to={"/login"}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/login'
+                  :setNavOpen(false)}
+                style={{ textDecoration: "none" }}
+              >
+                <span className="fa-li">
+                  {/* <i className="fas fa-info"></i> */}
+                </span>
+                <button className='plogin'>
+                Login
+                </button>
+              </Link>
+            </li>}
           </ul>
           {/* {loginStateButtons()} */}
         </div>

@@ -98,7 +98,7 @@ const Forget=(props)=>{
 
                       <div className="form-button ">
                         <button
-                          onClick={(e) => forgetSubmit(e)}
+                          onClick={(e) => {e.preventDefault();forgetSubmit(e)}}
                           id="submit"
                           type="submit"
                           className="ibtn btn-forget"

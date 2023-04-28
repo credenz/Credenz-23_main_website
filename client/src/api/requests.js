@@ -35,7 +35,7 @@ const viewTeam=()=>backend.get(`/view-team/`,{headers: {Authorization:`Bearer ${
 const adminUpload=(data)=>backend.post(`/upload-file/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminOrder=(data)=>backend.post(`/offline-order/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminTable=()=>backend.get(`/orders/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
-
+const feedback=(data)=>backend.post(`/feedback/`,data,{headers: {}});
 const Requests = {
     login,
     profile,
@@ -50,5 +50,6 @@ const Requests = {
     adminUpload,
     adminOrder,
     adminTable,
+    feedback,
   };
   export default Requests;

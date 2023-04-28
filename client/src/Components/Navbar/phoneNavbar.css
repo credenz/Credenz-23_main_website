@@ -7,7 +7,20 @@
 .navbar-mobile {
   display: none;
 }
-
+.plogin{
+  padding-top: 0.75rem;
+padding-bottom: 0.75rem; 
+padding-left: 3.75rem;
+padding-right: 1.75rem; 
+background-color: transparent; 
+color: #1D4ED8; 
+font-weight: 900; 
+/* border-radius: 0.25rem;  */
+border: none;
+}
+.plogin :hover {
+    color: #ffffff; 
+}
 .navbar-wrapper .ham {
   z-index: 9999999999;
   cursor: pointer;

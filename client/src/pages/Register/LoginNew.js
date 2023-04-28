@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
 import "./login.css";
 import "./register.css";
 import PhoneInput from "react-phone-number-input";
@@ -47,7 +46,7 @@ const LoginNew = (props) => {
 
   const forgetSubmit = async (e) => {
     e.preventDefault();
-    console.log(forgetemail,typeof(forgetemail));
+    // console.log(forgetemail,typeof(forgetemail));
     await Requests.forgetPassword({email:forgetemail})
     .then((res)=>{props.toast.toast.success('Link sent to mail!')})
     .catch((err)=>{console.log(err);props.toast.toast.error('Error while sending!')})
@@ -72,7 +71,9 @@ const LoginNew = (props) => {
   //     confirmpassword !== ""
   //   );
   // };
-
+  useEffect(()=>{
+    if(localStorage.getItem('token')!==null) navigate('/events')
+  })
   return (
     <>
       {/* login */}
@@ -185,7 +186,7 @@ const LoginNew = (props) => {
                     <br />A verification code will be sent on your Email
                   </p>
 
-                  <form onClick={forgetSubmit} className="forgetfields">
+                  <form onSubmit={(e)=>{forgetSubmit(e)}} className="forgetfields">
                     <input
                       className="form-control"
                       type="email"

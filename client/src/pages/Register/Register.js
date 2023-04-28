@@ -134,6 +134,7 @@ const Register = (props) => {
   };
   let referral = useParams().referral;
   useEffect(()=>{
+    if(localStorage.getItem('token')!==null) navigate('/events')
     if(referral)
     setreferal(referral);
     // console.log(referral);
