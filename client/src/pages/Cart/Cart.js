@@ -5,7 +5,7 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import { useCartContext } from "../../context/cart_context";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-const Cart = () => {
+const Cart = ({props}) => {
   const { cart, removeitem, clearcart, totalprice } = useCartContext();
   // console.log(cart)
   let navigate = useNavigate();
@@ -81,8 +81,8 @@ const Cart = () => {
                 </Scrollbars>
               </div>
               <div className="back-to-shop">
-                <a href="/events">Back to events</a>
-
+                {/* <a href="/events">Back to events</a> */}
+                <a href="#" onClick={(e) => { e.preventDefault(); navigate('/events') }}>Back to events</a>
                 <button onClick={clearcart}>Clear cart</button>
               </div>
             </div>
@@ -116,7 +116,7 @@ const Cart = () => {
               <button className="btn" onClick={()=>{
                 if(localStorage.getItem('token')) navigate('/payment');
                 else{
-                  swal("Error", "Login First", "error");
+                  props.toast.toast.error("Login First")
                   navigate('/login');
                 }
                 }}>

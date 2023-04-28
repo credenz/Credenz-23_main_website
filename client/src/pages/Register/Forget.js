@@ -1,9 +1,11 @@
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import './login.css';
-import swal from "sweetalert";
+
+// import swal from "sweetalert";
 import Requests from '../../api/requests';
-const Forget=()=>{
+const Forget=(props)=>{
+  let navigate=useNavigate();
     const {token, uid} = useParams();
     //   function validate_required(field,alerttxt)
   // {
@@ -17,21 +19,22 @@ const Forget=()=>{
   // }
     const forgetSubmit = async(e) => {
         e.preventDefault();
-        if(cnewpass!==newpass)
-            swal(
-                "Error",
-                "Passwords don't match!",
-                "error"
-            )
-            console.log(uid,token,newpass)
+        if(cnewpass!==newpass) {props.toast.toast.error("Passwords don't match!"); return;}
+            // console.log(uid,token,newpass)
+        const id = props.toast.toast.loading("Please wait...");
         await Requests.resetPassowrd({uid,token,new_password:newpass})
-        .then((res)=>console.log(res.data))
-        .catch((err)=>console.log(err))
+        .then((res)=>{
+          // console.log(res.data);
+          props.toast.toast.update(id, { render: "Password reset successfully", type: "success", isLoading: false, autoClose:5000 });
+          navigate('/login');
+        })
+        .catch((err)=>{props.toast.toast.update(id, { render: `${err.response.data.message}`, type: "error", isLoading: false,autoClose:5000 });})
       };
   const [newpass, setNewpass] = useState("");
   const [cnewpass, setCnewpass] = useState("");
 
     return (
+      <div className='bforget'>
         <div className="form-body forget" >
           <div className="row">
             <div className="form-holder">
@@ -50,7 +53,7 @@ const Forget=()=>{
                     {/* <br />A verification code will be sent on your Email */}
                   </p>
 
-                  <form onClick={forgetSubmit} className="forgetfields">
+                  <form onSubmit={(e)=>forgetSubmit(e)} className="forgetfields">
                     <input
                       className="form-control"
                       type="password"
@@ -95,7 +98,7 @@ const Forget=()=>{
 
                       <div className="form-button ">
                         <button
-                        //   onClick={() => setregister(0)}
+                          onClick={(e) => forgetSubmit(e)}
                           id="submit"
                           type="submit"
                           className="ibtn btn-forget"
@@ -120,6 +123,7 @@ const Forget=()=>{
               </div>
             </div>
           </div>
+        </div>
         </div>
     )
 }

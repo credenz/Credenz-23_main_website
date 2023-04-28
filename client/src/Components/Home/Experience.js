@@ -15,6 +15,9 @@ import { LogoV7 } from './models/Logo_v7'
 import {isMobile} from 'react-device-detect';
 import Sign from './models/Sign'
 import Soon from './models/Soon'
+import JustLogo from './models/just_logo'
+import JustLogoV2 from './models/just_logo_v2'
+import { JustLogoV3 } from './models/just_logo_v3'
 
 export default function Experience({explore3D, isMouseDown}) {
   const [isSnapped, setSnpped] = useState(false)
@@ -137,6 +140,9 @@ export default function Experience({explore3D, isMouseDown}) {
         
 
         <Soon/>
+        {/* <JustLogo /> */}
+        {/* <JustLogoV2 /> */}
+        <JustLogoV3 />
 
 
         

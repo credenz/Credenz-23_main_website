@@ -3,7 +3,7 @@ import './Payment.css';
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { useNavigate } from 'react-router-dom';
 import { useCartContext } from "../../context/cart_context";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import phonepe from '../../images/phonepe.png'
 import gpay from '../../images/gpay.jpg'
 import paytm from '../../images/paytm.png'
@@ -219,34 +219,37 @@ const Payment = (props) => {
         // contentLabel="Example Modal"
       >
               <div
-                className="modal-content"
-                data-aos="fade-in"
-                data-aos-duration="500"
+                className="pay-modal"
+                // data-aos="fade-in"
+                // data-aos-duration="500"
               >
                 <div className="modalclose">
+                <div className="pmodalclose">
                   <div className="">
                     <button onClick={closeModal}>
                       <i class="fa fa-times cross" aria-hidden="true"></i>
                     </button>
                   </div>
                 </div>
-
+                </div>
+                <h4>Payment Confirmation</h4>
                 {/* <div className="modalimage">
                   <img src={eventslist[data.id - 101].logo} alt="" />
                 </div> */}
-                <p>Total Price {totalprice} </p>
-                <p>{payList[payMethod]}: {upiId}</p>
-                <div className="modalbutton">
-                  <button
-                    // className={Details === 0 ? "active" : "hover "}
-                    onClick={() => handleClick()}
-                  >
-                    Confirm Payment
-                  </button>
-                  
-                </div>
 
                 <div className="modalbody info">
+                <div className="pmodalbody info">
+                <p>Total Price: {totalprice} </p>
+                <p>{payList[payMethod]}: {upiId}</p>
+                <ol className='pay-list'>
+                    <li style={{color:'#625e5e'}}>Payment verification will be done in 2-3 working days.</li>
+                    <li style={{color:'#625e5e'}}>Check profile section for final ticket.</li>
+                </ol>
+                <div className="pay-button">
+                <Button onClick={() => handleClick()}>Confirm</Button>
+                  
+                </div>
+                </div>
                 </div>
               </div>
             

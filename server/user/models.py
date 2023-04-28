@@ -112,7 +112,7 @@ class Transaction(models.Model):
     PAYMENT_STATUS = (("PO", "Pending"), ("CO", "Completed"))
     event_list = models.JSONField(default=list)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    transaction_id = models.CharField(max_length=20)
+    transaction_id = models.CharField(max_length=20, unique=True)
     order_date = models.DateTimeField(auto_now_add=True)
     amount = models.IntegerField(default=0)
     order_taker = models.CharField(default="online", max_length=40)

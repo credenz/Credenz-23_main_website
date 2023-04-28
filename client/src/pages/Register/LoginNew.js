@@ -49,8 +49,8 @@ const LoginNew = (props) => {
     e.preventDefault();
     console.log(forgetemail,typeof(forgetemail));
     await Requests.forgetPassword({email:forgetemail})
-    .then((res)=>console.log(res))
-    .catch((err)=>console.log(err))
+    .then((res)=>{props.toast.toast.success('Link sent to mail!')})
+    .catch((err)=>{console.log(err);props.toast.toast.error('Error while sending!')})
   };
 
   //   const handleregister = (e) => {

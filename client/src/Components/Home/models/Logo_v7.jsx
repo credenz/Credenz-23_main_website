@@ -16,8 +16,8 @@ export function LogoV7(props) {
   const { nodes, materials } = useGLTF('/models/v7/scene.glb')
   const rocketTexture = useTexture('/models/v7/textures/compressed/rocket.png')
   const gemTexture = useTexture('/models/v7/textures/compressed/gem.png')
-  const logoTexture = useTexture('/models/v7/textures/compressed/logo.png')
-  const navTexture = useTexture('/models/v7/textures/compressed/nav.png')
+  // const logoTexture = useTexture('/models/v7/textures/compressed/logo.png')
+  // const navTexture = useTexture('/models/v7/textures/compressed/nav.png')
   const satelliteTexture = useTexture('/models/v7/textures/compressed/satellite.png')
   const spaceshipTexture = useTexture('/models/v7/textures/compressed/spaceship.png')
   const stonesTexture = useTexture('/models/v7/textures/compressed/stones.png')
@@ -50,19 +50,12 @@ export function LogoV7(props) {
         <meshBasicMaterial map={rocketTexture} map-flipY={false} />
         
       </mesh>
-      <mesh geometry={nodes.Logo.geometry}  position={[-0.42, 2.89, -4.16]} rotation={[Math.PI / 2, 0, 0]} scale={0.92} ref={logoRef}>
+      {/* <mesh geometry={nodes.Logo.geometry}  position={[-0.42, 2.89, -4.16]} rotation={[Math.PI / 2, 0, 0]} scale={0.92} ref={logoRef}>
         <meshBasicMaterial map={logoTexture} map-flipY={false} />
-        {/* material={nodes.Logo.material} // add this to mesh  */}
-        {/* <meshStandardMaterial 
-        wireframe
-        color={"blue"}
-        emissive={"#ffffff"}
-        emissiveIntensity={0.1}
-      /> */}
       </mesh>
       <mesh geometry={nodes.Base.geometry} material={nodes.Base.material} position={[0.05, 0.15, -4.27]} rotation={[Math.PI / 2, 0, 0]} scale={[1, 1, 1.04]} >
         <meshBasicMaterial map={logoTexture} map-flipY={false} />
-      </mesh>
+      </mesh> */}
       <mesh geometry={nodes.Terrain001.geometry} material={nodes.Terrain001.material} position={[-2.03, -0.05, 27.25]} rotation={[Math.PI / 2, 0, Math.PI]} >
         <meshBasicMaterial map={terrain1Texture} map-flipY={false} />
         {/* <MeshWobbleMaterial map={terrain1Texture} map-flipY={false} />  */}

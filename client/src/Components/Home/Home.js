@@ -11,14 +11,25 @@ import R3FLoader from './R3FLoader'
 export default function Home() {
   const [explore3D, setExplore3D] = useState(false)
   const [isMouseDown, setIsMouseDown] = useState(false)
-  useEffect(() => {}, [explore3D])
+  const [showCheck, setShowCheck] = useState(false)
+
+  const { loaded } = useProgress()
+
+  useEffect(() => {
+    console.log(loaded, "loaded")
+    if (loaded >= 46) { // 45 as console log shows 46
+      console.log('loaded')
+      setShowCheck(true)
+    }
+  }, [loaded])
+  // useEffect(() => {}, [explore3D])
   return (
     <>
-    <input className='toggle' type="checkbox" id="switch" checked={explore3D} onChange={(event) => {
+    {showCheck && <input className='toggle' type="checkbox" id="switch" checked={explore3D} onChange={(event) => {
       setExplore3D(event.target.checked)
       console.log(explore3D)
       
-    }}/>
+    }}/>}
     {/* <label for="switch">Toggle</label> */}
     <Canvas className='canvas' camera={{fov: 50,}} >
     {/* onMouseDown={() => setIsMouseDown(true)} onMouseUp={() => setIsMouseDown(false)} */}
