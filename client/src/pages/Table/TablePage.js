@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 // import { Users } from "./users";
 import "./TablePage.css";
 import Table from "./Table";
+import Requests from "../../api/requests";
+import { Button } from "react-bootstrap";
 // import axios from "axios";
 
 //////////////////////BASIC SEARCH
@@ -30,7 +32,32 @@ import Table from "./Table";
 
 ///////////////////////SEARCH ON A DATATABLE
 
-function TablePage() {
+function TablePage({props}){
+  console.log(props)
+  const [selectedFile, setSelectedFile] = useState(null);
+  
+    const handleFileSelect = (event) => {
+      setSelectedFile(event.target.files[0]);
+    };
+    const handleFileUpload = async() => {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      console.log(formData);
+      await Requests.adminUpload({file:formData})
+        .then((response) => {
+          console.log(response);
+          props.toast.toast.success('Uploaded successfully');
+        })
+        .catch((error) => {
+          console.error(error);
+          props.toast.toast.error('Error while Uploading');
+        });
+    };
+    const handleTableData= async()=>{
+      await Requests.adminTable()
+      .then((res)=>{console.log('taable list',res);})
+      .catch((err)=>console.log(err));
+    }
     const Users=[
         {
           "id": 1,
@@ -284,8 +311,15 @@ function TablePage() {
       keys.some((key) => item[key].toLowerCase().includes(query))
     );
   };
+  // useEffect(()=>handleTableData())
+//   useEffect(()=>{
+//     handleTableData();
+// },[])
 return (
   <div className="tablePage">
+  <h4>Upload Excel Sheet</h4>
+      <input type="file" accept=".xlsx" onChange={handleFileSelect} />
+      <Button onClick={handleFileUpload} >Upload</Button>
       Enter Name To Find
       <input
         className="search"
