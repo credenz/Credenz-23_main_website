@@ -31,7 +31,7 @@ const Admin = (props) => {
         <div>
             {
                 adminStatus === 0
-                    ? <h1>You Are Not An Admin</h1>
+                    ? <h1  style={{display:"flex", justifyContent:"center",alignItems:"center",height:"100vh"}}>You Are Not An Admin</h1>
                     :
                     adminStatus === 1
                         ?

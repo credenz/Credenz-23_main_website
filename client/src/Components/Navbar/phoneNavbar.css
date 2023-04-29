@@ -7,7 +7,20 @@
 .navbar-mobile {
   display: none;
 }
-
+.plogin{
+  padding-top: 0.75rem;
+padding-bottom: 0.75rem; 
+padding-left: 3.75rem;
+padding-right: 1.75rem; 
+background-color: transparent; 
+color: #0010FF; 
+font-weight: 900; 
+/* border-radius: 0.25rem;  */
+border: none;
+}
+.plogin :hover {
+    color: #ffffff; 
+}
 .navbar-wrapper .ham {
   z-index: 9999999999;
   cursor: pointer;
@@ -71,8 +84,13 @@
 
 .navbar-mobile .wrapper.active a{
   color: white;
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+.navbar-mobile .wrapper a{
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 800;
 }
 
 .navbar-mobile .wrapper {
@@ -81,20 +99,20 @@
   height: 100vh;
   left: -100vw;
   top: 0;
-  -webkit-backdrop-filter: blur(4px);
+  /* -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: brightness(15%);
   backdrop-filter: brightness(15%);
-  display: -webkit-box;
+  display: -webkit-box; */
   display: flex;
-  -webkit-transition: 0.45s;
-  transition: 0.45s;
+  /* -webkit-transition: 0.45s; */
+  transition: 0.55s;
   overflow-y: auto;
-  -webkit-transition-timing-function: ease;
+  /* -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  flex-direction: column;
+  flex-direction: column; */
   color: #f2f2f2;
   z-index: 15000;
 }

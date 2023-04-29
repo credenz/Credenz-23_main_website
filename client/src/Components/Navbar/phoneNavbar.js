@@ -2,8 +2,11 @@ import './phoneNavbar.css';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useCartContext } from '../../context/cart_context';
+import { Button } from 'react-bootstrap';
 const PhoneNavbar = () => {
     let navigate = useNavigate();
+    const {loginStatus} = useCartContext();
     const [navOpen, setNavOpen] = useState(false);
     return (
         <div className="navbar-wrapper">
@@ -141,22 +144,7 @@ const PhoneNavbar = () => {
                 Contact Us
               </Link>
             </li>
-            <li>
-              <Link
-                to={"/login"}
-                onClick={() => window.location.pathname==='/explore'
-                  ?
-                  window.location.href =window.location.origin+'/login'
-                  :setNavOpen(false)}
-                style={{ textDecoration: "none" }}
-              >
-                <span className="fa-li">
-                  <i className="fas fa-info"></i>
-                </span>
-                Login
-              </Link>
-            </li>
-            <li>
+            {loginStatus&&<li>
               <Link
                 to={"/profile"}
                 onClick={() => window.location.pathname==='/explore'
@@ -166,11 +154,11 @@ const PhoneNavbar = () => {
                 style={{ textDecoration: "none" }}
               >
                 <span className="fa-li">
-                  <i className="fas fa-info"></i>
+                <i class="fas fa-id-badge" ></i>
                 </span>
                 Profile
               </Link>
-            </li>
+            </li>}
             <li>
               <Link
                 to={"/cart"}
@@ -181,11 +169,29 @@ const PhoneNavbar = () => {
                 style={{ textDecoration: "none" }}
               >
                 <span className="fa-li">
-                  <i className="fas fa-info"></i>
+                <i class="fa fa-shopping-cart" ></i>
                 </span>
                 cart
               </Link>
             </li>
+            {!loginStatus&&<li>
+              <Link
+                to={"/login"}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/login'
+                  :setNavOpen(false)}
+                style={{ textDecoration: "none" }}
+              >
+                <span className="fa-li">
+                  {/* <i className="fas fa-info"></i> */}
+                </span>
+                <button className='plogin'>
+                Login
+                </button>
+                {/* <Button>Login</Button> */}
+              </Link>
+            </li>}
           </ul>
           {/* {loginStateButtons()} */}
         </div>

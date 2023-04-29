@@ -32,15 +32,16 @@ function App() {
 
   let backgroundWindow = '';
   let backgroundImg="";
-  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile'||location.pathname === '/forget-password/:token/:uid'||location.pathname==='/forget-password') {
+  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile'||location.pathname === '/forget-password/:token/:uid'||location.pathname==='/forget-password'||location.pathname==='/admin') {
     {backgroundImg = 'BgImage';backgroundWindow='BgWindow '}
   } 
   return (
     <>
-    <ToastUtils />
+   
     <Scrolltop/>
     <Scrolltop/>
     <Navbar/>
+    <ToastUtils />
     <div className={`App`}>
     <div className={`${backgroundImg}`}>
     <div className={`${backgroundWindow}`}>
@@ -51,7 +52,7 @@ function App() {
    <Route exact path="/explore" element={<Explore /> } />
    <Route exact path="/events" element={<Events toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/about" element={<About/> } />
-   <Route exact path="/contact" element={<Contact/> } />
+   <Route exact path="/contact" element={<Contact toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/login" element={<LoginNew toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/register/:referral" element={<Register toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/register" element={<Register toast={{ container: <ToastUtils />, toast }}/> } />

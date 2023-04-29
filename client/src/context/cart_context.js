@@ -15,6 +15,10 @@ const getLocalcartdata=()=>{
     return JSON.parse(localcartdata);
   }
 }
+const getLoginStatus=()=>{
+  console.log(localStorage.getItem('token')!==null);
+  return localStorage.getItem('token')!==null;
+}
 
 const initialState = {
   // cart: [],
@@ -24,6 +28,7 @@ const initialState = {
   amount:0,
   totalitem:"",
   totalprice:"",
+  loginStatus:getLoginStatus(),
 };
 
 const CartProvider = ({ children }) => {
@@ -41,6 +46,12 @@ const CartProvider = ({ children }) => {
     dispatch({ type: "CLEARCART"});
   };
 
+  const changeLogin=(loginStatus)=>{
+    dispatch({ type: "CHANGELOGIN",payload:{loginStatus}});
+  }
+  const changeLogout=(loginStatus)=>{
+    dispatch({ type: "CHANGELOGOUT",payload:{loginStatus}});
+  }
 
  
   useEffect(()=>{
@@ -51,7 +62,7 @@ const CartProvider = ({ children }) => {
   },[state.cart]);
 
   return (
-    <CartContext.Provider value={{ ...state, addtocart,removeitem,clearcart }}>
+    <CartContext.Provider value={{ ...state, addtocart,removeitem,clearcart,changeLogin,changeLogout }}>
       {children}
     </CartContext.Provider>
   );

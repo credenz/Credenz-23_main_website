@@ -14,14 +14,19 @@ import PAPER from "../../images/paper.png";
 import CRETRONIX from "../../images/cretronix.png";
 import PIXELATE from "../../images/pixelate.png";
 import WEB from "../../images/webwever.png";
+import profile from "../../images/profile.jpeg";
 import Requests from '../../api/requests';
 import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { useCartContext } from '../../context/cart_context';
 
 const Mobile = ({ data, props }) => {
     const [teamId, setTeamId] = useState("");
     const [selected, setSelected] = useState(0);
     const [teamVisible, setTeamVisible] = useState(0);
-    const [eventSelected, setEvnentSelected] = useState(101);
+    const [eventSelected, setEvnentSelected] = useState(0);
+    const navigate=useNavigate();
+    const {changeLogout} = useCartContext();
     const teamEvents = [{ id: 101, name: 'Clash' }, { id: 102, name: 'RC' }, { id: 103, name: 'Enigma' }, { id: 104, name: 'B-plan' }]
     const handleView = () => {
         Requests.viewTeam()
@@ -60,6 +65,12 @@ const Mobile = ({ data, props }) => {
                 console.log(err);
                 props.toast.toast.update(id, { render: 'Team Not Created', type: "error", isLoading: false, autoClose: 5000 });
             })
+    }
+    const handleLogout=()=>{
+        localStorage.clear();
+        props.toast.toast.success('Logout Successfully!');
+        navigate('/');
+        changeLogout();
     }
     const [myTeams, setMyTeams] = useState([]);
     const [teamName, setTeamName] = useState('');
@@ -107,7 +118,7 @@ const Mobile = ({ data, props }) => {
                         <div className="card-header">
                             {/* <div className="card-cover" style="background-image: url('https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')"></div> */}
                             {/* <img className="card-avatar" src="https://pbs.twimg.com/profile_images/561338081970638848/Y8lKkD2f_400x400.png" alt="avatar" /> */}
-                            <img className="card-avatar" src="https://media.wired.com/photos/5ec6fb698971d7886fd36024/1:1/w_1007,h_1007,c_limit/astronaut-urine-elena-lacey-wired-science.jpg" alt="avatar" />
+                            <img className="card-avatar" src={profile} alt="avatar" />
                             <h1 className="card-fullname">
                                 {/* {data.first_name} {data.last_name} */}
                                 {data.full_name}
@@ -142,7 +153,7 @@ const Mobile = ({ data, props }) => {
                                         </div>
                                         {localStorage.getItem('token') !== null ?
                                             <div className='card-contact'>
-                                                <Button onClick={(e) => { e.preventDefault(); localStorage.removeItem("token"); props.toast.toast.success('Logout successfully') }}>
+                                                <Button onClick={(e) => { e.preventDefault();handleLogout()}}>
                                                     Logout</Button>
                                             </div> : <></>}
                                     </div>
@@ -212,7 +223,8 @@ const Mobile = ({ data, props }) => {
                                                                     marginLeft: '2%',
                                                                     marginRight: '2%', marginTop: '8%'
                                                                 }}>
-                                                                    {myTeams.map((data) => {
+                                                                
+                                                                    {myTeams.length!==0?myTeams.map((data) => {
                                                                         return (
 
                                                                             <div class="pncard">
@@ -254,10 +266,12 @@ const Mobile = ({ data, props }) => {
                                                                             </div>
                                                                         )
 
-                                                                    })}
+                                                                    })
+                                                                    : <h3>No Team Created</h3>
+                                                                    }
 
 
-                                                                    <article class="cta">
+                                                                    {/* <article class="cta">
                                                                         <img src={Clash} alt='event' />
                                                                         <div class="cta__text-column">
                                                                             <h2>Team Name</h2>
@@ -265,34 +279,8 @@ const Mobile = ({ data, props }) => {
                                                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                                                             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio">Read all about it</a>
                                                                         </div>
-                                                                    </article>
+                                                                    </article> */}
 
-                                                                </div>
-                                                                <div >
-                                                                    <div className="teamList">
-                                                                        <div class="teamListrow">
-                                                                            <div class="teamListexample-1 teamListcard">
-                                                                                <div class="teamListwrapper">
-
-                                                                                    <div class="teamListimage">
-                                                                                        <div style={{ 'display': 'flex' }}><img class="teamListbook-image" style={{ 'display': 'inline-block' }} src={Clash} /></div>
-                                                                                        <div style={{ 'display': 'flex' }}><p style={{ 'display': 'inline-block' }}>Clash</p></div>
-                                                                                    </div>
-
-                                                                                    <div class="teamListdata">
-                                                                                        <div class="teamListcontent">
-                                                                                            <p class="teamListauthor">Name - chutiya</p>
-                                                                                            <p class="teamListauthor">TeAM ID - 2436</p>
-                                                                                            <p class="teamListauthor">TeAM Members - chinmay</p>
-                                                                                            {/* <h1 class="teamListtitle"><p class="teamListcardTitle">Boxing icon has the will for a couple more fights</p></h1>
-                                                                        <p class="teamListtext">The highly anticipated world championship fight will take place at 10am and is the second major boxing blockbuster in the nation after 43 years.</p> */}
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             :
@@ -325,17 +313,17 @@ const Mobile = ({ data, props }) => {
                                                                                 />
                                                                                 <Dropdown>
                                                                                     <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
-                                                                                        Select Event
+                                                                                    {eventSelected===0?'Select Event':teamEvents[eventSelected-101].name}
                                                                                     </Dropdown.Toggle>
 
                                                                                     <Dropdown.Menu variant="dark">
-                                                                                        <Dropdown.Item href="#/action-1" onClick={() => setEvnentSelected(101)} active={eventSelected === 101 ? true : false}>
+                                                                                        <Dropdown.Item href="#/action-1" onClick={(e) => {e.preventDefault();setEvnentSelected(101)}} active={eventSelected === 101 ? true : false}>
                                                                                             Clash
                                                                                         </Dropdown.Item>
-                                                                                        <Dropdown.Item href="#/action-2" onClick={() => setEvnentSelected(102)} active={eventSelected === 102 ? true : false} >RC</Dropdown.Item>
-                                                                                        <Dropdown.Item href="#/action-3" onClick={() => setEvnentSelected(103)} active={eventSelected === 103 ? true : false}>Enigma</Dropdown.Item>
+                                                                                        <Dropdown.Item href="#/action-2" onClick={(e) => {e.preventDefault();setEvnentSelected(102)}} active={eventSelected === 102 ? true : false} >RC</Dropdown.Item>
+                                                                                        {/* <Dropdown.Item href="#/action-3" onClick={() => setEvnentSelected(103)} active={eventSelected === 103 ? true : false}>Enigma</Dropdown.Item> */}
                                                                                         {/* <Dropdown.Divider /> */}
-                                                                                        <Dropdown.Item href="#/action-4" onClick={() => setEvnentSelected(104)} active={eventSelected === 104 ? true : false}>B-Plan</Dropdown.Item>
+                                                                                        {/* <Dropdown.Item href="#/action-4" onClick={() => setEvnentSelected(104)} active={eventSelected === 104 ? true : false}>B-Plan</Dropdown.Item> */}
                                                                                     </Dropdown.Menu>
                                                                                 </Dropdown>
                                                                                 {/* <input
@@ -352,7 +340,7 @@ const Mobile = ({ data, props }) => {
                                                             /> */}
 
                                                                                 <div className="pcfirst-division">
-                                                                                    Selected : {teamEvents[eventSelected - 101].name}
+                                                                                    {/* Selected : {teamEvents[eventSelected - 101].name} */}
                                                                                 </div>
                                                                                 <div className="pcsecond-division">
                                                                                     <button

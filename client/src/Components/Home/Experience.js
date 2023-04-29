@@ -136,7 +136,7 @@ export default function Experience({explore3D, isMouseDown}) {
         {/* {console.log(isPhone)} */}
         {/* <OrbitControls /> */}
         <CamControlDispatcher />
-        {explore3D ? <Html center><h1>Explore 3D</h1></Html> : null}
+        {explore3D ? <Html center><h1  >Explore 3D</h1></Html> : null}
         
 
         <Soon/>

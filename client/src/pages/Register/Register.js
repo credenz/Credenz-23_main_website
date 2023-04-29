@@ -4,8 +4,10 @@ import "./register.css";
 import { useNavigate,useParams } from "react-router-dom";
 import ReactModal from "react-modal";
 import Requests from "../../api/requests";
+import { useCartContext } from "../../context/cart_context";
 const Register = (props) => {
   let navigate=useNavigate();
+  const {changeLogin} = useCartContext();
   const [register2, setregister2] = useState(0);
 
   const[senior,setsenior] = useState()
@@ -59,13 +61,14 @@ const Register = (props) => {
       // console.log(res);
       localStorage.setItem('token',res.data.access);
       props.toast.toast.update(id, { render: "Registration Sccessfull", type: "success", isLoading: false, autoClose:5000 });
+      changeLogin();
       navigate('/events');
     })
     .catch((err)=>{
       // console.log(err,err.response.data.username);
       // console.log(err,err.response.data[0]);
       console.log(err);
-      let msg='Error in data';
+      let msg='Error while registering';
       // if(err.response.data.username) msg=err.response.data.username;
       // if(err.response.data.password[0]) msg=err.response.data[0];
       // if(err.response.password[0]) msg=err.response.password[0];
@@ -134,6 +137,7 @@ const Register = (props) => {
   };
   let referral = useParams().referral;
   useEffect(()=>{
+    if(localStorage.getItem('token')!==null) navigate('/events')
     if(referral)
     setreferal(referral);
     // console.log(referral);

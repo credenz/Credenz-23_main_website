@@ -1,11 +1,9 @@
 import React from "react";
 import "./Cart.css";
-// import Clash from "../../images/clash.png";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { useCartContext } from "../../context/cart_context";
 import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
-const Cart = ({props}) => {
+const Cart = (props) => {
   const { cart, removeitem, clearcart, totalprice } = useCartContext();
   // console.log(cart)
   let navigate = useNavigate();
@@ -116,7 +114,7 @@ const Cart = ({props}) => {
               <button className="btn" onClick={()=>{
                 if(localStorage.getItem('token')) navigate('/payment');
                 else{
-                  props.toast.toast.error("Login First")
+                  props.toast.toast.error("Login First!")
                   navigate('/login');
                 }
                 }}>

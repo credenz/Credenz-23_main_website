@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
 import "./login.css";
 import "./register.css";
 import PhoneInput from "react-phone-number-input";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Requests from "../../api/requests";
+import { useCartContext } from "../../context/cart_context";
 const LoginNew = (props) => {
   let navigate=useNavigate();
   const [register, setregister] = useState(0);
@@ -21,7 +21,7 @@ const LoginNew = (props) => {
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
-  
+  const {changeLogin} = useCartContext();
 
   const loginSubmit = async(e) => {
     e.preventDefault();
@@ -37,6 +37,7 @@ const LoginNew = (props) => {
       // console.log(res.data.access);
       localStorage.setItem('token',res.data.access);
       props.toast.toast.update(id, { render: "Logged IN", type: "success", isLoading: false, autoClose:5000 });
+      changeLogin()
       navigate('/events');
     })
     .catch((err)=>{
@@ -47,7 +48,7 @@ const LoginNew = (props) => {
 
   const forgetSubmit = async (e) => {
     e.preventDefault();
-    console.log(forgetemail,typeof(forgetemail));
+    // console.log(forgetemail,typeof(forgetemail));
     await Requests.forgetPassword({email:forgetemail})
     .then((res)=>{props.toast.toast.success('Link sent to mail!')})
     .catch((err)=>{console.log(err);props.toast.toast.error('Error while sending!')})
@@ -72,7 +73,9 @@ const LoginNew = (props) => {
   //     confirmpassword !== ""
   //   );
   // };
-
+  useEffect(()=>{
+    if(localStorage.getItem('token')!==null) navigate('/events')
+  })
   return (
     <>
       {/* login */}
@@ -185,7 +188,7 @@ const LoginNew = (props) => {
                     <br />A verification code will be sent on your Email
                   </p>
 
-                  <form onClick={forgetSubmit} className="forgetfields">
+                  <form onSubmit={(e)=>{forgetSubmit(e)}} className="forgetfields">
                     <input
                       className="form-control"
                       type="email"
