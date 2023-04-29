@@ -6,7 +6,7 @@ import { useCartContext } from '../../context/cart_context';
 import { Button } from 'react-bootstrap';
 const PhoneNavbar = () => {
     let navigate = useNavigate();
-    const {loginStatus} = useCartContext();
+    const {loginStatus,changeLogout} = useCartContext();
     const [navOpen, setNavOpen] = useState(false);
     return (
         <div className="navbar-wrapper">
@@ -188,6 +188,24 @@ const PhoneNavbar = () => {
                 </span>
                 <button className='plogin'>
                 Login
+                </button>
+                {/* <Button>Login</Button> */}
+              </Link>
+            </li>}
+            {loginStatus&&<li>
+              <Link
+                to={"/"}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/login'
+                  :setNavOpen(false)}
+                style={{ textDecoration: "none" }}
+              >
+                <span className="fa-li">
+                  {/* <i className="fas fa-info"></i> */}
+                </span>
+                <button className='plogin' onClick={()=>changeLogout()}>
+                Logout
                 </button>
                 {/* <Button>Login</Button> */}
               </Link>
