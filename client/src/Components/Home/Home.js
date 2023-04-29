@@ -41,7 +41,7 @@ export default function Home() {
      }}/>
     <div class="indicator"></div>
   </div>
-  <div class="label-text">no more emails plz</div>
+  <div class="label-text">Explore 3D</div>
 </label>
 </div>
 
