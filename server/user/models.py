@@ -11,7 +11,7 @@ def generate_team_id():
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
-    phone = models.IntegerField(null = True)
+    phone = models.CharField(max_length = 12, null = True)
     institute = models.TextField(default="", max_length=512)
     senior = models.BooleanField(default=False)
     referral = models.CharField(
