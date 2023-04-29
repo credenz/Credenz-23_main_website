@@ -49,7 +49,7 @@
   border-image-source: url('./images/eww.png');
 
   border-image-slice: 212;
-  border-image-width: 20%;
+  border-image-width: 19%;
   border-image-outset: 0;
   border-image-repeat: none;
   border-style: solid;
@@ -68,5 +68,14 @@
   }
   100% {
     transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 400px) {
+  .BgWindow{
+   
+    border-image-width: 15%;
+   
+    
   }
 }

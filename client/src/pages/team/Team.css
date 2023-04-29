@@ -12,14 +12,14 @@
     
 }
 
-.team{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin-top: 0px;
+.team {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    box-shadow: none;
 }
-
 
 .team h1{
     margin-top: 150px;
