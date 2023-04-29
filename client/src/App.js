@@ -25,7 +25,7 @@ import CommingSoon from './pages/comingsoon/CommingSoon';
 import Forget from './pages/Register/Forget';
 import toast, { ToastUtils } from "./utils/toastifyContainer";
 import { useLocation } from 'react-router-dom';
-
+import Sessions from './pages/Sessions/Sessions';
 
 function App() {
   const location = useLocation();
@@ -62,7 +62,7 @@ function App() {
    <Route exact path="/payment" element={<Payment toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/admin" element={<Admin toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/team" element={<Team/> } />
-   <Route exact path="/sessions" element={<CommingSoon/> } />
+   <Route exact path="/sessions" element={<Sessions/> } />
    <Route exact path="/forget-password/:token/:uid" element={<Forget toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="*" element={<Error/> } />
   </Routes> 

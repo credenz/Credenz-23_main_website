@@ -42,12 +42,16 @@ const Profile = (props) => {
         <> 
             {
                 data.username?<>
-                {console.log(data,isMobile)}
+                
+                {isMobile?<Mobile data={{...data}} props={{...props}} />:<div className='profile-desktop'><Desktop data={{...data}} props={{...props}}/></div>}
+                {!isMobile&&<div className='profile-mobile'>
+                <Mobile data={{...data}} props={{...props}} />
+                </div>}
             {/* <div className='profile-desktop'><Desktop data={{...data}}/></div> */}
-            <div className='profile-desktop'><Desktop data={{...data}} props={{...props}}/></div>
+            {/* <div className='profile-desktop'><Desktop data={{...data}} props={{...props}}/></div>
                 <div className='profile-mobile'>
                 <Mobile data={{...data}} props={{...props}} />
-                </div>
+                </div> */}
                 {/* {!isPhone?<div className='profile-desktop'><Desktop data={{...data}}/></div>:
                 <div className='profile-mobile'>
                 <Mobile data={{...data}} />

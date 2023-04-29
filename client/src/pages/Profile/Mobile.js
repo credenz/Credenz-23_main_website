@@ -59,6 +59,7 @@ const Mobile = ({ data, props }) => {
             .then((res) => {
                 console.log(res.data);
                 props.toast.toast.update(id, { render: "Team Created", type: "success", isLoading: false, autoClose: 5000 });
+                handleView();
                 setTeamVisible(0);
             })
             .catch((err) => {
@@ -205,7 +206,7 @@ const Mobile = ({ data, props }) => {
                                                     <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
 
                                                         <div style={{ 'display': 'inline-block', 'width': 'fitContent' }} className='pteamJoin'>
-                                                            <button onClick={() => (setTeamVisible(0))} style={{ 'width': 'fit-content' }}>My Teams</button></div>
+                                                            <button onClick={() => {handleView();setTeamVisible(0)}} style={{ 'width': 'fit-content' }}>My Teams</button></div>
                                                         <div className='pteamJoin' style={{ 'display': 'inline-block' }}>
                                                             <button onClick={() => (setTeamVisible(1))} style={{ 'width': 'fit-content' }}>Create Team</button>
                                                         </div>
