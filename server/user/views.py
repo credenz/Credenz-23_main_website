@@ -185,15 +185,19 @@ class PlaceOrderView(generics.GenericAPIView):
         transaction_id = request.data["transaction_id"]
         amount = request.data["amount"]
 
+        order_list = []
         for event in event_list:
-            if not Order.objects.get(user = request.user, event = Event.objects.get(event_id = event)):
+            if not Order.objects.filter(user = request.user, event = Event.objects.get(event_id = event)).first():
                 order = Order(user = user, event = Event.objects.get(event_id = event), transaction_id=transaction_id)
-                order.save()
+                order_list.append(order)
             else:
                 return Response({"message" : "order already placed"})
+
+        # check if every event orderis valid and then save
+        Order.objects.bulk_create(order_list)
     
             # add transaction for the complete list of events
-        if not Transaction.objects.get(transaction_id = transaction_id):
+        if not Transaction.objects.filter(transaction_id = transaction_id).first():
             transaction = Transaction(event_list = event_list, user = user, transaction_id = transaction_id, amount=amount)
             transaction.save()
         else:

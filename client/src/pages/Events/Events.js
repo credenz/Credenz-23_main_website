@@ -242,7 +242,7 @@ const Events = () => {
                           </div>
                     
                   ))} */}
-                  {data.prizes.map((prize)=>(<ul>
+                  {data.prizes.map((prize)=>(<ul className="text-center" style={{listStyle:"none", padding:"0"}} >
                     {Object.values(prize).map((val)=>(
                       <li>{val}</li>
                     ))}
