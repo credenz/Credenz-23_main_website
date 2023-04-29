@@ -87,24 +87,24 @@ WSGI_APPLICATION = 'main_website.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-if config('ENVIRONMENT') == 'production':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('PROD_DB_NAME'),
-            'USER': config('PROD_DB_USER'),
-            'PASSWORD': config('PROD_DB_PASSWORD'),
-            'HOST': config('PROD_DB_HOST'),
-            'PORT': config('PROD_DB_PORT'),
-        }
+# if config('ENVIRONMENT') == 'production':
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('PROD_DB_NAME'),
+        'USER': config('PROD_DB_USER'),
+        'PASSWORD': config('PROD_DB_PASSWORD'),
+        'HOST': config('PROD_DB_HOST'),
+        'PORT': config('PROD_DB_PORT'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+#     }
 
 
 
