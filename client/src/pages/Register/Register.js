@@ -69,8 +69,8 @@ const Register = (props) => {
       // console.log(err,err.response.data[0]);
       console.log(err);
       let msg='Error while registering';
-      // if(err.response.data.username) msg=err.response.data.username;
-      // if(err.response.data.password[0]) msg=err.response.data[0];
+      if(err.response.data.username!==undefined) msg=err.response.data.username[0];
+      if(err.response.data[0]!==undefined) msg=err.response.data[0];
       // if(err.response.password[0]) msg=err.response.password[0];
       props.toast.toast.update(id, { render: msg, type: "error", isLoading: false,autoClose:5000 });
 
