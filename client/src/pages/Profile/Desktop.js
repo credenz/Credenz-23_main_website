@@ -58,6 +58,7 @@ const Desktop = ({ data,props }) => {
         .then((res)=>{
             console.log(res.data);
             props.toast.toast.update(id, { render: "Team Created", type: "success", isLoading: false, autoClose:5000 });
+            handleView();
             setTeamVisible(0);
         })
         .catch((err)=>{
@@ -243,7 +244,7 @@ const Desktop = ({ data,props }) => {
                             <section className='desktopProfile-section'>
                             <div style={{marginLeft:'8%',display: 'flex',justifyContent: 'space-evenly'}}>
                                                 <div style={{ 'display': 'inline-block','width':'fitContent' }} className='teamJoin'>
-                                                <button onClick={() => {(setTeamVisible(0)); handleView();}} style={{'width':'fit-content'}}>My Teams</button></div>
+                                                <button onClick={() => {handleView();setTeamVisible(0); }} style={{'width':'fit-content'}}>My Teams</button></div>
                                                 <div className='teamJoin' style={{ 'display': 'inline-block' }}>
                                                     <button onClick={() => (setTeamVisible(1))} style={{'width':'fit-content'}}>Create Team</button>
                                                 </div>
