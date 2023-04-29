@@ -40,6 +40,7 @@ const Events = () => {
     { logo: WEB, title: "Web Weaver", id: 110 },
   ];
   const [details, setdetails] = useState([]);
+  const [purchasedEvents, setPurchasedEvents] = useState([]);
 
   const customStyles = {
     overlay: {
@@ -95,7 +96,13 @@ const Events = () => {
     if(loginStatus){
       await Requests.profile()
       .then((res)=>{
-        console.log(res)
+        let arr = []
+        console.log(res.data.orders)
+        for(let i of res.data.orders){
+          arr.push(i.event.event_id)
+        }
+        setPurchasedEvents(arr)
+        console.log(arr)
       })
       .catch((err)=>{
         console.log(err)
@@ -322,9 +329,10 @@ const Events = () => {
                     }
                   >
                     {/* Add to cart */}
-                    {cart.find((item) => item.id === data.id)
+                    {console.log(data.id.toString(), "looo")}
+                    { purchasedEvents.includes(data.id.toString())? <>Registered</>:(cart.find((item) => item.id === data.id)
                           ?  <>Added To cart</>
-                          : <>Add to cart</>}
+                          : <>Add to cart</>)}
                   </button>
                   {/* <button>CHECKOUT</button> */}
                 </div>
