@@ -7,7 +7,7 @@ import Requests from "../../api/requests";
 import { useCartContext } from "../../context/cart_context";
 const Register = (props) => {
   let navigate=useNavigate();
-  const {changeLogin} = useCartContext();
+  const {changeLogin,loginStatus} = useCartContext();
   const [register2, setregister2] = useState(0);
 
   const[senior,setsenior] = useState()
@@ -137,7 +137,7 @@ const Register = (props) => {
   };
   let referral = useParams().referral;
   useEffect(()=>{
-    if(localStorage.getItem('token')!==null) navigate('/events')
+    if(loginStatus) navigate('/events')
     if(referral)
     setreferal(referral);
     // console.log(referral);

@@ -540,7 +540,6 @@ const NavbarCustom = (props) => {
   },[])
   return (
     <>
-      {console.log(cart,loginStatus)}
       <div className="navbar-desktop">
       <Navbar
         collapseOnSelect
@@ -656,7 +655,6 @@ const NavbarCustom = (props) => {
               >
                 Contact
               </NavLink>
-              {console.log(localStorage.getItem('token')===null)}
               <NavLink
                 key={"login"}
                 activeClassName="activeLink"
