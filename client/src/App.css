@@ -8,7 +8,7 @@
 .App {
   min-height: 100vh;
   /* width: 100vw; */
-  background: rgb(36, 36, 36)
+  background: rgb(61, 6, 61)
 /* width: 100vw; */
 
 
@@ -39,15 +39,15 @@
   color: white;
   letter-spacing: 0px;
 
-  /* background: url("./bgp.jpg")no-repeat center center fixed; */
+
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   z-index: 10;
-  /* border-image-source: url(../../../public/assets/images/eww.png); */
+
   border-image-source: url('./images/eww.png');
-  /* border-image-source: url(/whitespace.png); */
+
   border-image-slice: 212;
   border-image-width: 20%;
   border-image-outset: 0;
@@ -56,9 +56,7 @@
   margin-top: -6px;
   position: relative;
   padding: 0rem 0.5rem 0rem;
-  /* min-height: 90vh; */
-  /* animation: eventpage 2s ease-in-out infinite; */
-  /* animation: BgWindow 10s ease-in-out infinite; */
+  
 }
 
 @keyframes BgWindow {

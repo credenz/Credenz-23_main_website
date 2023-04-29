@@ -4,7 +4,7 @@ server/push.sh
 server.sh
 
 
-.env
+*.env
 
 __pycache__
 *.pyc

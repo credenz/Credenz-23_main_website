@@ -237,12 +237,13 @@ justify-content: center;
 align-items: center;
   flex-direction: column;
   height: auto;
+  overflow-y: hidden;
 }
 .pmodalbody p{
   font-size: 17px;
 letter-spacing: 2.5px;
 color: #6dc5ff;
-/* margin: 1px; */
+margin: 3%;
 }
 .pmodalclose {
   position: absolute;
@@ -252,6 +253,9 @@ color: #6dc5ff;
 }
 
 @media(max-width:800px){
+  .pmodalbody p{
+  margin: 10%;
+  }
   .payment{
     padding-top: 2vh;
   }

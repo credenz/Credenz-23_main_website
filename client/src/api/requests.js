@@ -1,14 +1,15 @@
 import axios from "axios";
 
 const hostname = window.location.hostname
-let url = "http://127.0.0.1:8000/api"
-if(hostname === "localhost") url = "http://127.0.0.1:8000/api"
-else url = `https://api.credenz.in/api`
+// let url = "http://127.0.0.1:8000/api"
+// if(hostname === "localhost") url = "http://127.0.0.1:8000/api"
+// else url = `https://api.credenz.in/api`
+let url = `https://api.credenz.in/api`
 const backend = axios.create({
     baseURL: url
   });
 const list = axios.create({
-    baseURL: 'https://gist.githubusercontent.com/devrajshetake/e3ebe00b1b3ccf3e8a63e6de8da1b430/raw/c4cf8944101d4e11a0a964f376e8c53002e8fa99/events.json'
+    baseURL: 'https://gist.githubusercontent.com/VanshTeppalwar/59454bb8ef51fa856b0fcf62f804556b/raw/fb9775363a7e1de8769bd2071cecb958703b6679/events.json'
   });  
 
 //For Reference, create your own function
@@ -34,7 +35,7 @@ const viewTeam=()=>backend.get(`/view-team/`,{headers: {Authorization:`Bearer ${
 const adminUpload=(data)=>backend.post(`/upload-file/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminOrder=(data)=>backend.post(`/offline-order/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminTable=()=>backend.get(`/orders/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
-
+const feedback=(data)=>backend.post(`/feedback/`,data,{headers: {}});
 const Requests = {
     login,
     profile,
@@ -49,5 +50,6 @@ const Requests = {
     adminUpload,
     adminOrder,
     adminTable,
+    feedback,
   };
   export default Requests;

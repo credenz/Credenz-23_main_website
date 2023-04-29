@@ -25,11 +25,28 @@ export default function Home() {
   // useEffect(() => {}, [explore3D])
   return (
     <>
-    {showCheck && <input className='toggle' type="checkbox" id="switch" checked={explore3D} onChange={(event) => {
-      setExplore3D(event.target.checked)
-      console.log(explore3D)
+    {showCheck && 
+    // <input className='toggle' type="checkbox" id="switch" checked={explore3D} onChange={(event) => {
+    //   setExplore3D(event.target.checked)
+    //   console.log(explore3D)
       
-    }}/>}
+    // }}/>
+      <div className='toggle-div'>
+  <label class="label">
+  <div class="toggle">
+    <input class="toggle-state" type="checkbox" name="check" value="check" checked={explore3D} onChange={(event) => {
+       setExplore3D(event.target.checked)
+     console.log(explore3D)
+      
+     }}/>
+    <div class="indicator"></div>
+  </div>
+  <div class="label-text">Explore 3D</div>
+</label>
+</div>
+
+    
+    }
     {/* <label for="switch">Toggle</label> */}
     <Canvas className='canvas' camera={{fov: 50,}} >
     {/* onMouseDown={() => setIsMouseDown(true)} onMouseUp={() => setIsMouseDown(false)} */}

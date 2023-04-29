@@ -25,22 +25,23 @@ import CommingSoon from './pages/comingsoon/CommingSoon';
 import Forget from './pages/Register/Forget';
 import toast, { ToastUtils } from "./utils/toastifyContainer";
 import { useLocation } from 'react-router-dom';
-
+import Sessions from './pages/Sessions/Sessions';
 
 function App() {
   const location = useLocation();
 
   let backgroundWindow = '';
   let backgroundImg="";
-  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile'||location.pathname === '/forget-password/:token/:uid'||location.pathname==='/forget-password') {
+  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile'||location.pathname === '/forget-password/:token/:uid'||location.pathname==='/forget-password'||location.pathname==='/admin') {
     {backgroundImg = 'BgImage';backgroundWindow='BgWindow '}
   } 
   return (
     <>
-    <ToastUtils />
+   
     <Scrolltop/>
     <Scrolltop/>
     <Navbar/>
+    <ToastUtils />
     <div className={`App`}>
     <div className={`${backgroundImg}`}>
     <div className={`${backgroundWindow}`}>
@@ -51,7 +52,7 @@ function App() {
    <Route exact path="/explore" element={<Explore /> } />
    <Route exact path="/events" element={<Events toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/about" element={<About/> } />
-   <Route exact path="/contact" element={<Contact/> } />
+   <Route exact path="/contact" element={<Contact toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/login" element={<LoginNew toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/register/:referral" element={<Register toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/register" element={<Register toast={{ container: <ToastUtils />, toast }}/> } />
@@ -61,7 +62,7 @@ function App() {
    <Route exact path="/payment" element={<Payment toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/admin" element={<Admin toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/team" element={<Team/> } />
-   <Route exact path="/sessions" element={<CommingSoon/> } />
+   <Route exact path="/sessions" element={<Sessions/> } />
    <Route exact path="/forget-password/:token/:uid" element={<Forget toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="*" element={<Error/> } />
   </Routes> 

@@ -12,7 +12,7 @@ const Profile = (props) => {
     let navigate=useNavigate();
     const fetchProfile = async () => {
         if(localStorage.getItem('token')===null){
-            // props.toast.toast.error('Login First!');
+            props.toast.toast.error('Login First!');
             navigate('/login');
             return;
         }
@@ -29,9 +29,11 @@ const Profile = (props) => {
             console.log(err)
             // props.toast.toast.update(id, { render: 'Error while fetching data', type: "error", isLoading: false,autoClose:5000 });
             props.toast.toast.error('Error while fetching data');
+            navigate('/login');
         })
     }
     useEffect(() => {
+        
         fetchProfile();
         setIsPhone(isMobile);
         // setData({username:'neil_reac',full_name:'Neil Armstrrong',email:'wasd@gmail.com',phone:1233211231,institute:'Pune Institute Of Computer Technology',coins:200,referral:'JOBHIHO',order:[{date:'23/3/23',eventName:'CLASH',paymentStatus:'Under Review'},{date:'23/3/23',eventName:'RC',paymentStatus:'Successfull'}]})
@@ -40,12 +42,16 @@ const Profile = (props) => {
         <> 
             {
                 data.username?<>
-                {console.log(data,isMobile)}
+                
+                {isMobile?<Mobile data={{...data}} props={{...props}} />:<div className='profile-desktop'><Desktop data={{...data}} props={{...props}}/></div>}
+                {!isMobile&&<div className='profile-mobile'>
+                <Mobile data={{...data}} props={{...props}} />
+                </div>}
             {/* <div className='profile-desktop'><Desktop data={{...data}}/></div> */}
-            <div className='profile-desktop'><Desktop data={{...data}} props={{...props}}/></div>
+            {/* <div className='profile-desktop'><Desktop data={{...data}} props={{...props}}/></div>
                 <div className='profile-mobile'>
                 <Mobile data={{...data}} props={{...props}} />
-                </div>
+                </div> */}
                 {/* {!isPhone?<div className='profile-desktop'><Desktop data={{...data}}/></div>:
                 <div className='profile-mobile'>
                 <Mobile data={{...data}} />

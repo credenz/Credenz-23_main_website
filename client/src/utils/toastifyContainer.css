@@ -12,6 +12,13 @@
     /* font-size: 1px !important; */
     /* border: 100px;
     border-color: white; */
-    /* background-color: black; */
+    background-color: black;
 
 }
+
+
+@media only screen and (max-width: 500px) {
+  
+
+  }
+  

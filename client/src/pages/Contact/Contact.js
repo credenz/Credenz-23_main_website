@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Cname from "./Cname";
 import Nidhi from "./nidhi.jpg"
 import Harsh from "./harsh.png"
 import "./Contact.css";
-import swal from "sweetalert";
-export default function Contact() {
+import Requests from "../../api/requests";
+export default function Contact(props) {
+  const [name,setName]=useState('')
+  const [email,setEmail]=useState('')
+  const [context,setContext]=useState('')
+  const handleFeedback=async()=>{
+    const id = props.toast.toast.loading("Please wait...");
+      Requests.feedback({email,name,context})
+      .then((res)=>{
+      props.toast.toast.update(id, { render: "Thank you for your feedback!", type: "success", isLoading: false, autoClose:5000 });
+      })
+      .catch((err)=>{
+      props.toast.toast.update(id, { render: "Error while submitting", type: "error", isLoading: false,autoClose:5000 });
+      
+      })
+  }
   return (
     <div className="contact-one" >
       <Cname />
@@ -87,12 +101,14 @@ export default function Contact() {
 
           <div className="form-container" data-aos="fade-right" >
             <h3>FeedBack</h3>
-            <form action="" className="contact-form" onSubmit={(e)=>{e.preventDefault();swal("Your feedback has been succesfully submitted!", "", "success");}}>
-              <input type="text" placeholder="Enter Name" required />
+            <form action="" className="contact-form" onSubmit={(e)=>{e.preventDefault();handleFeedback();}}>
+              <input type="text" placeholder="Enter Name" required value={name} onChange={(e)=>setName(e.target.value)}/>
               <input
                 type="email"
                 id=""
                 name=""
+                onChange={(e)=>setEmail(e.target.value)}
+                value={email}
                 placeholder="Enter Email"
                 required
               />
@@ -102,6 +118,9 @@ export default function Contact() {
                 cols="30"
                 rows="10"
                 placeholder="Write Message"
+                value={context}
+                onChange={(e)=>setContext(e.target.value)}
+                required
               ></textarea>
               <input type="submit" value="submit" className="send-button" />
             </form>

@@ -15,13 +15,17 @@ import PAPER from "../../images/paper.png";
 import CRETRONIX from "../../images/cretronix.png";
 import PIXELATE from "../../images/pixelate.png";
 import WEB from "../../images/webwever.png";
+import profile from "../../images/profile.jpeg";
 import Requests from '../../api/requests';
 // import './Mobile.css';
 import ticket from '../../images/aticket.png';
 import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { useCartContext } from '../../context/cart_context';
 const Desktop = ({ data,props }) => {
     const [teamId, setTeamId] = useState("");
-    
+    const navigate=useNavigate()
+    const {changeLogout}= useCartContext();
     const handleView=()=>{
         Requests.viewTeam()
         .then((res)=>{
@@ -54,6 +58,7 @@ const Desktop = ({ data,props }) => {
         .then((res)=>{
             console.log(res.data);
             props.toast.toast.update(id, { render: "Team Created", type: "success", isLoading: false, autoClose:5000 });
+            handleView();
             setTeamVisible(0);
         })
         .catch((err)=>{
@@ -61,9 +66,15 @@ const Desktop = ({ data,props }) => {
             props.toast.toast.update(id, { render: 'Team Not Created', type: "error", isLoading: false,autoClose:5000 });
         })
     }
+    const handleLogout=()=>{
+        localStorage.clear();
+        props.toast.toast.success('Logout Successfully!');
+        navigate('/');
+        changeLogout();
+    }
     const [selected, setSelected] = useState(0);
     const [teamVisible, setTeamVisible] = useState(0);
-    const [eventSelected, setEvnentSelected] = useState(101);
+    const [eventSelected, setEvnentSelected] = useState(0);
     const teamEvents=[{id:101,name:'Clash'},{id:102,name:'RC'},{id:103,name:'Enigma'},{id:104,name:'B-plan'}]
     const [myTeams,setMyTeams] = useState([]);
     const [teamName,setTeamName] = useState('');
@@ -88,7 +99,7 @@ const Desktop = ({ data,props }) => {
         <div className='dektop-profile'>
             {/* <main> */}
             <aside>
-                <img src="https://media.wired.com/photos/5ec6fb698971d7886fd36024/1:1/w_1007,h_1007,c_limit/astronaut-urine-elena-lacey-wired-science.jpg" alt="avatar" />
+                <img src={profile} alt="avatar" />
                 <h3>{data.full_name}</h3>
                 <h4 class="username grey-text">{data.username}</h4>
                 {/* <p class="grey-text bio">I'm a Full Stack Developer, Educator and Maker. I stream 5 days a week on my YouTube channel Coding Garden with CJ.</p> */}
@@ -102,7 +113,7 @@ const Desktop = ({ data,props }) => {
                 </p>
                 <p class='bio'> 📞 {data.phone} </p>
                 <p class='bio'> 🏦 {data.coins} </p>
-                {localStorage.getItem('token')!==null?<Button onClick={(e)=>{e.preventDefault();console.log('logout');localStorage.removeItem("token");}}>Logout</Button>:<></>}
+                {localStorage.getItem('token')!==null?<div className='dlogout'><Button onClick={(e)=>{e.preventDefault();handleLogout()}}>Logout</Button></div>:<></>}
                 
 
             </aside>
@@ -233,7 +244,7 @@ const Desktop = ({ data,props }) => {
                             <section className='desktopProfile-section'>
                             <div style={{marginLeft:'8%',display: 'flex',justifyContent: 'space-evenly'}}>
                                                 <div style={{ 'display': 'inline-block','width':'fitContent' }} className='teamJoin'>
-                                                <button onClick={() => {(setTeamVisible(0)); handleView();}} style={{'width':'fit-content'}}>My Teams</button></div>
+                                                <button onClick={() => {handleView();setTeamVisible(0); }} style={{'width':'fit-content'}}>My Teams</button></div>
                                                 <div className='teamJoin' style={{ 'display': 'inline-block' }}>
                                                     <button onClick={() => (setTeamVisible(1))} style={{'width':'fit-content'}}>Create Team</button>
                                                 </div>
@@ -248,7 +259,7 @@ const Desktop = ({ data,props }) => {
 justifyContent: 'center',
 marginLeft: '20%',
 marginRight: '20%'}}>
-                                        {myTeams.map((data)=>{return (
+                                        {myTeams.length!==0?myTeams.map((data)=>{return (
 
                                         <div class="ncard">
                                             <div class="ncard-contentl">
@@ -286,18 +297,7 @@ marginRight: '20%'}}>
                                             </div>
                                         )
 
-                                        })}
-
-
-<article class="cta">
-	<img src={Clash} alt='event'/>
-	<div class="cta__text-column">
-		<h2>Team Name</h2>
-		<p>Team Members</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-		<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio">Read all about it</a>
-	</div>
-</article>
+                                        }): <h3>No Team Created</h3>}
                                             
                                         </div>
                                         :
@@ -326,20 +326,20 @@ marginRight: '20%'}}>
                                                     <div className="cplayers">
                                                     <Dropdown>
         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
-          Select Event
+          {eventSelected===0?'Select Event':teamEvents[eventSelected-101].name}
         </Dropdown.Toggle>
 
         <Dropdown.Menu variant="dark">
             <Dropdown.Item eventKey={1} onClick={()=>setEvnentSelected(101)} active={eventSelected===101?true:false}>Clash</Dropdown.Item>
           <Dropdown.Item eventKey={2} onClick={()=>setEvnentSelected(102)} active={eventSelected===102?true:false} >RC</Dropdown.Item>
-          <Dropdown.Item eventKey={3} onClick={()=>setEvnentSelected(103)} active={eventSelected===103?true:false}>Enigma</Dropdown.Item>
+          {/* <Dropdown.Item eventKey={3} onClick={()=>setEvnentSelected(103)} active={eventSelected===103?true:false}>Enigma</Dropdown.Item> */}
           {/* <Dropdown.Divider /> */}
-          <Dropdown.Item eventKey={4} onClick={()=>setEvnentSelected(104)} active={eventSelected===104?true:false}>B-Plan</Dropdown.Item>
+          {/* <Dropdown.Item eventKey={4} onClick={()=>setEvnentSelected(104)} active={eventSelected===104?true:false}>B-Plan</Dropdown.Item> */}
         </Dropdown.Menu>
       </Dropdown>
                                                             
                                                         <div className="cfirst-division">
-                                                            Selected : {teamEvents[eventSelected-101].name}
+                                                            {/* Selected : {teamEvents[eventSelected-101].name} */}
                                                         </div>
                                                         <div className="csecond-division">
                                                             <button
