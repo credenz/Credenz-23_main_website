@@ -21,7 +21,7 @@ const LoginNew = (props) => {
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
-  const {changeLogin} = useCartContext();
+  const {changeLogin,loginStatus} = useCartContext();
 
   const loginSubmit = async(e) => {
     e.preventDefault();
@@ -74,7 +74,7 @@ const LoginNew = (props) => {
   //   );
   // };
   useEffect(()=>{
-    if(localStorage.getItem('token')!==null) navigate('/events')
+    if(loginStatus) navigate('/events')
   })
   return (
     <>

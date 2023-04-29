@@ -24,7 +24,7 @@ import Requests from "../../api/requests";
 
 const Events = () => {
   const [loaderStatus, setLoaderStatus] = useState(false);
-  const { cart, addtocart } = useCartContext();
+  const { cart, addtocart,loginStatus } = useCartContext();
   const [Details, setDetails] = useState(0);
   const [eventid, seteventid] = useState();
   const eventslist = [
@@ -92,6 +92,15 @@ const Events = () => {
         setdetails(res.data);
       })
       .catch((err) => console.log(err));
+    if(loginStatus){
+      await Requests.profile()
+      .then((res)=>{
+        console.log(res)
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    }
   };
   useEffect(() => {
     eventList();

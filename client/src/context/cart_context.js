@@ -16,7 +16,7 @@ const getLocalcartdata=()=>{
   }
 }
 const getLoginStatus=()=>{
-  console.log(localStorage.getItem('token')!==null);
+  // console.log(localStorage.getItem('token')!==null);
   return localStorage.getItem('token')!==null;
 }
 
