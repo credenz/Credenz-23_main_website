@@ -3,7 +3,7 @@ server/venv
 server/push.sh
 
 
-.env
+*.env
 
 __pycache__
 *.pyc
