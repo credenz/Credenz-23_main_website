@@ -4,11 +4,11 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import { useCartContext } from "../../context/cart_context";
 import { useNavigate } from "react-router-dom";
 const Cart = (props) => {
-  const { cart, removeitem, clearcart, totalprice } = useCartContext();
+  const { cart, removeitem, clearcart, totalprice,loginStatus } = useCartContext();
   // console.log(cart)
   let navigate = useNavigate();
-  let variable = encodeURI('upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=1&tn=ieee&cu=INR');
-  console.log(variable);
+  // let variable = encodeURI('upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=1&tn=ieee&cu=INR');
+  // console.log(variable);
   if (cart.length === 0) {
     return (
       <div className="cartpage">
@@ -112,7 +112,7 @@ const Cart = (props) => {
               {/* <img src={`https://api.qrserver.com/v1/create-qr-code/?data=${variable}&amp;size=100x100`}
                                                 className="qr-code img-thumbnail img-responsive" alt='QR CODE'/> */}
               <button className="btn" onClick={()=>{
-                if(localStorage.getItem('token')) navigate('/payment');
+                if(loginStatus) navigate('/payment');
                 else{
                   props.toast.toast.error("Login First!")
                   navigate('/login');

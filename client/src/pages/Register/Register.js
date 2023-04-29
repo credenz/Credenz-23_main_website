@@ -7,7 +7,7 @@ import Requests from "../../api/requests";
 import { useCartContext } from "../../context/cart_context";
 const Register = (props) => {
   let navigate=useNavigate();
-  const {changeLogin} = useCartContext();
+  const {changeLogin,loginStatus} = useCartContext();
   const [register2, setregister2] = useState(0);
 
   const[senior,setsenior] = useState()
@@ -69,8 +69,8 @@ const Register = (props) => {
       // console.log(err,err.response.data[0]);
       console.log(err);
       let msg='Error while registering';
-      // if(err.response.data.username) msg=err.response.data.username;
-      // if(err.response.data.password[0]) msg=err.response.data[0];
+      if(err.response.data.username!==undefined) msg=err.response.data.username[0];
+      if(err.response.data[0]!==undefined) msg=err.response.data[0];
       // if(err.response.password[0]) msg=err.response.password[0];
       props.toast.toast.update(id, { render: msg, type: "error", isLoading: false,autoClose:5000 });
 
@@ -137,7 +137,7 @@ const Register = (props) => {
   };
   let referral = useParams().referral;
   useEffect(()=>{
-    if(localStorage.getItem('token')!==null) navigate('/events')
+    if(loginStatus) navigate('/events')
     if(referral)
     setreferal(referral);
     // console.log(referral);

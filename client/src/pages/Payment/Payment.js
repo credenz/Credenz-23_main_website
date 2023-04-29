@@ -13,7 +13,7 @@ import { isDesktop } from 'react-device-detect';
 import Modal from "react-modal";
 const Payment = (props) => {
     // const [data,setData]=useState(props);
-    const { cart, totalprice } = useCartContext();
+    const { cart, totalprice,clearcart,loginStatus } = useCartContext();
     const link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${totalprice}&tn=IEEE&cu=INR`;
     // const [isQr, setisQr] = useState(false);
     const [upiId, setupiId] = useState("");
@@ -40,6 +40,7 @@ const Payment = (props) => {
         });
     }
     const handleClick = async () => {
+        if(!loginStatus) {props.toast.toast.error('Login First!');return;}
         if(upiId==='') {props.toast.toast.error('Enter Valid id');return;}
         const event_list=[];
         cart.map((data)=>{
@@ -51,6 +52,8 @@ const Payment = (props) => {
         .then((res)=>{
             console.log('succesfull')
             props.toast.toast.update(id, { render: "Ticket Booked", type: "success", isLoading: false, autoClose:5000 });
+            clearcart();
+            navigate('/');
         })
         .catch((err)=>{
             console.log(err)
