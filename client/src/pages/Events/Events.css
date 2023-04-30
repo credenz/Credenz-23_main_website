@@ -25,7 +25,7 @@
     /* background: rgb(36,0,9);
     background: linear-gradient(180deg, rgba(36,0,9,1) 42%, rgba(54,25,39,1) 73%, rgba(80,19,44,1) 100%); */
     /* background: url("../../../public/assets/images/bgspace.jpg") no-repeat center */
-    background: url("../../images/bgspace.jpg") no-repeat center
+    background: url("../../images/bgspacen.jpg") no-repeat center
     center fixed;
     background-position: right 47% bottom 90%;
 }
@@ -698,7 +698,8 @@ margin-top: 35px;
 .outer {
   z-index: 10;
   /* background-image: url("../../../public/assets/images/eventborder.png"); */
-  background-image: url("../../images/eventborder.png");
+  /* background-image: url("../../images/eventborder.png"); --------------------------------*/
+  background-image: url("../../images/sq.png");
   /* box-shadow: 0px 0px 6px 2px purple; */
   background-size: contain;
   background-repeat: no-repeat;
@@ -827,7 +828,8 @@ img {
   /* height: 90vh; */
   padding: 10px;
   /* border-image-source: url("../../../public/assets/images/eventborder.png"); */
-  border-image-source: url("../../images/eventborder.png");
+  /* border-image-source: url("../../images/eventborder.png"); */
+  border-image-source: url("../../images/sq.png");
   border-image-slice: 245;
   border-image-width: 375px;
   border-image-outset: 8;
@@ -865,10 +867,10 @@ padding: 10px 15px;
 
 }
 .modalbutton .active{
-  background-color: #7a047a;
+  background-color: rgb(83 6 83);
 }
 .modalbutton .hover:hover {
-  background-color: #7a047a;
+  background-color: rgb(83 6 83);
 }
 
 .modal-content button {
@@ -876,8 +878,8 @@ padding: 10px 15px;
   justify-content: center;
   align-items: center;
   color: white;
-  border: 1px solid purple;
-  background-color: rgb(55, 1, 55);
+  border: 1px solid  rgb(38 10 38) ;
+  background-color: rgb(49 14 59);
   border-radius: 3px;
   margin: 5px 15px;
   width: 105px;

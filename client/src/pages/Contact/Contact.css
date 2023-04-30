@@ -27,13 +27,13 @@
   border-radius: 0.6em;
   color: #ffffff;
   cursor: pointer;
-  background-color: rgb(82, 28, 82);
+  background-color: rgb(49 14 59);
   /* border: 2px solid black; */
 }
 .contact-one .card .img-container {
   width: 12em;
   height: 12em;
-  background-color: rgb(69, 6, 69);
+  background-color: rgb(49 14 59);
   padding: 0.5em;
   border-radius: 50%;
   margin: 0 auto 2em auto;
@@ -128,7 +128,7 @@
   padding: 20px;
   height: 500px;
   border-radius: 8px;
-  background: rgb(82, 28, 82);
+  background: rgb(49 14 59);
 }
 
 .contact-one .form-container h3 {
@@ -147,7 +147,7 @@
   border: none;
   height: 60px;
   outline: none;
-  background: rgb(69, 6, 69);
+  background:  rgb(38 10 38);
   padding: 10px;
   font-size: 1.1rem;
   color: #fff;
@@ -156,7 +156,7 @@
 }
 
 .contact-one .contact-form textarea {
-  background: rgb(69, 6, 69);
+  background:  rgb(38 10 38);
   resize: none;
   color: #fff;
   height: 200px;
@@ -170,7 +170,7 @@
 .contact-one .contact-form .send-button {
   border: none;
   outline: none;
-  background: rgb(55, 2, 55);
+  background:  rgb(38 10 38);
   font-size: 1rem;
   font-weight: 500;
   border-radius: 40% 5%;
