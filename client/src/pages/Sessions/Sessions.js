@@ -26,8 +26,8 @@ export const Sessions = () => {
     },{
       image: Herody,
       title: 'Exploring Blockchain and DeFI with meter: A practical workshop',
-      content: 'A live blockchain walkthrough with introduction to Decentralized finance and  hands-on interaction with DeFI applications.',
-      date:'Date - 03/05 2023',
+      content: 'In a session on blockchain, attendees may learn about the basics of blockchain technology, its history, and its potential applications in various industries. The session may also cover the features that make blockchain a secure and decentralized ledger, including cryptography, consensus mechanisms, and smart contracts. Finally, the session may explore some of the challenges and limitations of blockchain, as well as potential future developments in the field.',
+      date:'Date - 02/05/2023',
       id: 3
     }
   ])

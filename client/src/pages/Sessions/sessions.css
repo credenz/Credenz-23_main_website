@@ -83,8 +83,12 @@
     text-transform: capitalize;
 }
 
-.content{
+
+
+.content {
     color: #252525;
+    height: 30vh;
+    overflow-y: scroll;
 }
 
 @media screen and (max-width: 400px) {

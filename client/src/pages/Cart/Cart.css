@@ -210,7 +210,7 @@ font-size: larger;
   .cartpage .card{
       /* margin: 3vh auto; */
       /* height: 73vh; */
-      overflow: scroll;
+      /* overflow: scroll; */
       background: transparent;
       padding: 10vh 0;
   }
