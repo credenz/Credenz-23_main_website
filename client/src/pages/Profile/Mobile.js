@@ -16,7 +16,7 @@ import PIXELATE from "../../images/pixelate.png";
 import WEB from "../../images/webwever.png";
 import profile from "../../images/profile.jpeg";
 import Requests from '../../api/requests';
-import { Button } from 'react-bootstrap';
+import { Button, OverlayTrigger,Tooltip } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useCartContext } from '../../context/cart_context';
 
@@ -31,7 +31,7 @@ const Mobile = ({ data, props }) => {
     const handleView = () => {
         Requests.viewTeam()
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 setMyTeams(res.data);
             })
             .catch((err) => {
@@ -176,22 +176,21 @@ const Mobile = ({ data, props }) => {
                             </div>
                             <div className={selected === 1 ? "card-section is-active" : "card-section"} id="experience">
                                 <div className="card-content">
-                                    <div className="card-subtitle">ORDERS</div>
-                                    <div className="card-timeline">
-                                        {data.order ? data.order.map((val) => <div className="card-item" data-year={val.date}>
-                                            <div className="card-item-title">{val.eventName} </div>
-                                            <div className="card-item-desc">Payment:{val.paymentStatus}</div>
-                                        </div>) : <p>No Order yet</p>}
-                                        {/* <div className="card-item" data-year="2014">
-                                    <div className="card-item-title">Front-end Developer at <span>JotForm</span></div>
-                                    <div className="card-item-desc">Disrupt stumptown retro everyday carry unicorn.</div>
-                                </div>
-                                <div className="card-item" data-year="2016">
-                                    <div className="card-item-title">UI Developer at <span>GitHub</span></div>
-                                    <div className="card-item-desc">Developed new conversion funnels and disrupt.</div>
-                                </div> */}
-
-                                    </div>
+                                    <div className="card-subtitle">TICKETS</div>
+                                    {data.orders.length!==0?
+                            <div className='tickets'>
+                            {console.log(data.orders)}
+                        {data.orders.map((val)=>(
+                            <OverlayTrigger placement={'bottom'} overlay={<Tooltip id={'tooltip-left'}> <strong>{val.payment==="PO"?'Payment Verification IN Progress...':'Payment Verified !'}</strong></Tooltip>}>
+                            <img src={val.payment==="PO"?val.event.event_po:val.event.event_co} style={{ 'maxWidth': '85%',height:'auto' }}></img>
+                            </OverlayTrigger>
+                            ))}
+                                
+                            </div>
+                            :
+                            <div style={{display:'flex',justifyContent:'center',width:'inherit'}}><h3 style={{textAlign:'center'}}>No orders yet</h3></div>
+                        }
+                                    
                                 </div>
                             </div>
                             <div className={selected === 2 ? "card-section is-active" : "card-section"} id="contact">
@@ -471,6 +470,12 @@ const Mobile = ({ data, props }) => {
                                                     });
                                             }}> Copy Link To Clipboard</a></p>
                                         </div>
+                                        <div className="card-contact">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16"> <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/> </svg>
+                                                <p><a href={`${window.location.origin}/leaderboard`} onClick={(e) => {
+                                                    e.preventDefault(); navigate('/leaderboard')
+                                                }}> Leaderboard</a></p>
+                                            </div>
                                         <div className="card-contact">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-qr-code-scan" viewBox="0 0 16 16"> <path d="M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0v-3Zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5ZM.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5Zm15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5ZM4 4h1v1H4V4Z" /> <path d="M7 2H2v5h5V2ZM3 3h3v3H3V3Zm2 8H4v1h1v-1Z" /> <path d="M7 9H2v5h5V9Zm-4 1h3v3H3v-3Zm8-6h1v1h-1V4Z" /> <path d="M9 2h5v5H9V2Zm1 1v3h3V3h-3ZM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8H8Zm2 2H9V9h1v1Zm4 2h-1v1h-2v1h3v-2Zm-4 2v-1H8v1h2Z" /> <path d="M12 9h2V8h-2v1Z" /> </svg>
                                             <img src={`https://chart.googleapis.com/chart?cht=qr&chl=https://localhost:3000/register/${data.referral}&chs=100x100&chld=L|0`}

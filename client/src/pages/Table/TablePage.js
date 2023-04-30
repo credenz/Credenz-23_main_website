@@ -33,9 +33,9 @@ import { Button } from "react-bootstrap";
 ///////////////////////SEARCH ON A DATATABLE
 
 function TablePage({props}){
-  console.log(props)
+  // console.log(props)
   const [selectedFile, setSelectedFile] = useState(null);
-  
+  const [list,setList] = useState([]);
     const handleFileSelect = (event) => {
       setSelectedFile(event.target.files[0]);
     };
@@ -55,7 +55,15 @@ function TablePage({props}){
     };
     const handleTableData= async()=>{
       await Requests.adminTable()
-      .then((res)=>{console.log('taable list',res);})
+      .then((res)=>{
+        console.log('taable list',res.data);
+        let temp=[];
+        res.data.map((val,indx)=>{
+          temp.push({id:indx+1,username:val.user.username,full_name:val.user.first_name+' '+val.user.last_name,transaction_id:val.transaction_id,cost:val.event.event_cost,date:val.order_date,status:val.payment==="PO"?'Pending':'Completed'})
+        })
+        console.log(temp);
+        setList(temp);
+      })
       .catch((err)=>console.log(err));
     }
     const Users=[
@@ -305,28 +313,29 @@ function TablePage({props}){
           "gender": "Male"
        , }];
   const [query, setQuery] = useState("");
-  const keys = ["first_name", "last_name", "email"];
+  const keys = ["full_name", "username"];
   const search = (data) => {
     return data.filter((item) =>
       keys.some((key) => item[key].toLowerCase().includes(query))
     );
   };
   // useEffect(()=>handleTableData())
-//   useEffect(()=>{
-//     handleTableData();
-// },[])
+  useEffect(()=>{
+    handleTableData();
+},[])
 return (
   <div className="tablePage">
   <h4>Upload Excel Sheet</h4>
       <input type="file" accept=".xlsx" onChange={handleFileSelect} />
       <Button onClick={handleFileUpload} >Upload</Button>
-      Enter Name To Find
+      Enter Name or Username To Find
       <input
         className="search"
         placeholder="Search..."
         onChange={(e) => setQuery(e.target.value.toLowerCase())}
       />
-    {<Table data={search(Users)} />}
+      {/* {console.log(list[0])} */}
+    {list[0]!=undefined&&<Table data={search(list)} />}
   </div>
 );
 }

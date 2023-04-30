@@ -36,6 +36,7 @@ const adminUpload=(data)=>backend.post(`/upload-file/`,data,{headers: {Authoriza
 const adminOrder=(data)=>backend.post(`/offline-order/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminTable=()=>backend.get(`/orders/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const feedback=(data)=>backend.post(`/feedback/`,data,{headers: {}});
+const leaderboard=()=>backend.get(`/leaderboard/`,{headers: {}});
 const Requests = {
     login,
     profile,
@@ -51,5 +52,6 @@ const Requests = {
     adminOrder,
     adminTable,
     feedback,
+    leaderboard,
   };
   export default Requests;

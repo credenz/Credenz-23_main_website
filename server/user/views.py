@@ -121,7 +121,7 @@ class PasswordResetView(generics.GenericAPIView):
             token = default_token_generator.make_token(user)
             reset_url = mark_safe(PASSWORD_RESET_URL.format(token=token, uid=uid))
             context = {"user": user, "reset_url": reset_url}
-            html_message = render_to_string("password-reset-temp.html", context=context)
+            html_message = render_to_string("password-reset.html", context=context)
             send_mail(
                 'Reset your password',
                 '',
