@@ -54,6 +54,8 @@ class Event(models.Model):
     event_rules =  models.TextField(null=True)
     event_structure = models.TextField(null=True)
     event_cost = models.IntegerField(default=0)
+    event_po = models.URLField(default="www.credenz.in")
+    event_co = models.URLField(default="www.credenz.in")
 
 
     def __str__(self):
