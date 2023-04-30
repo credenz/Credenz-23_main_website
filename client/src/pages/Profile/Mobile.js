@@ -179,7 +179,6 @@ const Mobile = ({ data, props }) => {
                                     <div className="card-subtitle">TICKETS</div>
                                     {data.orders.length!==0?
                             <div className='tickets'>
-                            {console.log(data.orders)}
                         {data.orders.map((val)=>(
                             <OverlayTrigger placement={'bottom'} overlay={<Tooltip id={'tooltip-left'}> <strong>{val.payment==="PO"?'Payment Verification IN Progress...':'Payment Verified !'}</strong></Tooltip>}>
                             <img src={val.payment==="PO"?val.event.event_po:val.event.event_co} style={{ 'maxWidth': '85%',height:'auto' }}></img>

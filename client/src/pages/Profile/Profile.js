@@ -5,39 +5,46 @@ import Desktop from './Desktop'
 import Mobile from './Mobile';
 import {isMobile} from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
+import { useCartContext } from '../../context/cart_context';
 
 const Profile = (props) => {
     const [data, setData] = useState({});
     const [isPhone, setIsPhone] = useState(isMobile);
+    const {loginStatus}=useCartContext();
+    const [hasFetchedData, setHasFetchedData] = useState(false);
     let navigate=useNavigate();
     const fetchProfile = async () => {
-        if(localStorage.getItem('token')===null){
+        if(!loginStatus){
             props.toast.toast.error('Login First!');
             navigate('/login');
             return;
         }
-        // console.log(localStorage.getItem('token'));
         // const id = props.toast.toast.loading("Please wait...");
+        setHasFetchedData(true);
         await Requests.profile()
         .then((res)=>{
-            // console.log(res);
+            console.log('profilr');
             setData(res.data);
+            // props.toast.toast.update(id, {isLoading: false});
             // props.toast.toast.update(id, { render: 'Error', type: "success", isLoading: false,autoClose:5000 });
             // props.toast.toast.update(id, { isLoading: false });
         })
         .catch((err)=>{
             console.log(err)
             // props.toast.toast.update(id, { render: 'Error while fetching data', type: "error", isLoading: false,autoClose:5000 });
-            props.toast.toast.error('Error while fetching data');
+                // props.toast.toast.update(id, { render: 'Error while fetching data', type: "error", isLoading: false, autoClose: 5000 });
+                props.toast.toast.error('Error while fetching data');
             navigate('/login');
         })
     }
     useEffect(() => {
-        
-        fetchProfile();
-        setIsPhone(isMobile);
+        if (!hasFetchedData) {
+            fetchProfile();
+            setIsPhone(isMobile);
+          }
+        }, [hasFetchedData]);
         // setData({username:'neil_reac',full_name:'Neil Armstrrong',email:'wasd@gmail.com',phone:1233211231,institute:'Pune Institute Of Computer Technology',coins:200,referral:'JOBHIHO',order:[{date:'23/3/23',eventName:'CLASH',paymentStatus:'Under Review'},{date:'23/3/23',eventName:'RC',paymentStatus:'Successfull'}]})
-    },[])
+    // },[])
     return (
         <> 
         
