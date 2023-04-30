@@ -19,7 +19,7 @@ import profile from "../../images/profile.jpeg";
 import Requests from '../../api/requests';
 // import './Mobile.css';
 import ticket from '../../images/aticket.png';
-import { Button } from 'react-bootstrap';
+import { Button, OverlayTrigger,Tooltip } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useCartContext } from '../../context/cart_context';
 const Desktop = ({ data,props }) => {
@@ -29,7 +29,7 @@ const Desktop = ({ data,props }) => {
     const handleView=()=>{
         Requests.viewTeam()
         .then((res)=>{
-            console.log(res.data);
+            // console.log(res.data);
             setMyTeams(res.data);
         })
         .catch((err)=>{
@@ -90,8 +90,6 @@ const Desktop = ({ data,props }) => {
         { logo: CRETRONIX, title: "Cretronix", id: 109 },
         { logo: WEB, title: "Web Weaver", id: 110 },
       ];
-      console.log(window.location.origin)
-    // const data=props;
     useEffect(()=>{
         handleView();
     },[])
@@ -146,76 +144,18 @@ const Desktop = ({ data,props }) => {
                     selected === 0
                         ?
                         <section class="repositories">
-                            <div style={{ "overflowY": 'scroll' }}>
-                            <img src={tclash} style={{ 'width': '550px' }}></img>
-                                <img src={tclash} style={{ 'width': '550px' }}></img>
-                                <img src={tclash} style={{ 'width': '550px' }}></img>
-                                <li class="image_wrapper">
-                                    <img src={ticket} alt="" />
-                                    <div class="overlay otitle">
-                                        <p>Name : {data.full_name}</p>
-                                    </div>
-                                    <div class="overlay oDate">
-                                        <p>Date : 15/5/2023 </p>
-                                    </div>
-                                    <div >
-                                        <p class="overlay oFrom">From</p>
-                                        <p class="overlay oTFrom">Credenz</p>
-                                    </div>
-                                    <div >
-                                        <p class="overlay oTo">To</p>
-                                        <p class="overlay oTTo">Clash</p>
-                                    </div>
-                                    <div class="overlay oTime">
-                                        <p>Boarding Time : 8pm </p>
-                                    </div>
-                                    <div >
-                                        <img className="overlay oImage" src={Clash} alt="" />
-                                    </div>
-                                    <div >
-                                        <p class="overlay oStatus">Seat</p>
-                                        <p class="overlay oCStatus">Not Confirmed</p>
-                                    </div>
-                                    <div class="overlay oRound">
-                                        <p>Round : 1 </p>
-                                    </div>
-                                </li>
-                                <li class="image_wrapper">
-                                    <img src={ticket} alt="" />
-                                    <div class="overlay otitle">
-                                        <p>Name : {data.full_name}</p>
-                                    </div>
-                                    <div class="overlay oDate">
-                                        <p>Date : 15/5/2023 </p>
-                                    </div>
-                                    <div >
-                                        <p class="overlay oFrom">From</p>
-                                        <p class="overlay oTFrom">Credenz</p>
-                                    </div>
-                                    <div >
-                                        <p class="overlay oTo">To</p>
-                                        <p class="overlay oTTo">Clash</p>
-                                    </div>
-                                    <div class="overlay oTime">
-                                        <p>Boarding Time : 8pm </p>
-                                    </div>
-                                    <div >
-                                        <img className="overlay oImage" src={Clash} alt="" />
-                                    </div>
-                                    <div >
-                                        <p class="overlay oStatus">Seat</p>
-                                        <p class="overlay oCStatus">Not Confirmed</p>
-                                    </div>
-                                    <div class="overlay oRound">
-                                        <p>Round : 1 </p>
-                                    </div>
-                                </li>
-
-                                <img src={ticket} style={{ 'width': '550px' }}>
-                                    {/* <div><h3>hiee</h3></div> */}
+                        {data.orders[0].id!==undefined?
+                            <div className='tickets'>
+                        {data.orders.map((val)=>(
+                            <OverlayTrigger placement={'right'} overlay={<Tooltip id={'tooltip-left'}> <strong>{val.payment==="PO"?'Payment Verification IN Progress...':'Payment Verified !'}</strong></Tooltip>}>
+                            <img src={val.payment==="PO"?val.event.event_po:val.event.event_co} style={{ 'maxWidth': '85%',height:'auto' }}></img>
+                            </OverlayTrigger>
+                            ))}
                                 
-                                </img>
                             </div>
+                            :
+                            <div style={{display:'flex',justifyContent:'center',width:'inherit'}}><h3 style={{textAlign:'center'}}>No orders yet</h3></div>
+                        }
                 {/*            
                 <div class="pinned-repo-wrapper">
                     <div class="pinned-repo">
@@ -460,6 +400,12 @@ marginRight: '20%'}}>
                                                             props.toast.toast.error('Something went wrong')
                                                         });
                                                 }}> Copy Link To Clipboard</a></p>
+                                            </div>
+                                            <div className="card-contact">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16"> <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/> </svg>
+                                                <p><a href={`${window.location.origin}/leaderboard`} onClick={(e) => {
+                                                    e.preventDefault(); navigate('/leaderboard')
+                                                }}> Leaderboard</a></p>
                                             </div>
                                             <div className="card-contact">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-qr-code-scan" viewBox="0 0 16 16"> <path d="M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0v-3Zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5ZM.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5Zm15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5ZM4 4h1v1H4V4Z" /> <path d="M7 2H2v5h5V2ZM3 3h3v3H3V3Zm2 8H4v1h1v-1Z" /> <path d="M7 9H2v5h5V9Zm-4 1h3v3H3v-3Zm8-6h1v1h-1V4Z" /> <path d="M9 2h5v5H9V2Zm1 1v3h3V3h-3ZM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8H8Zm2 2H9V9h1v1Zm4 2h-1v1h-2v1h3v-2Zm-4 2v-1H8v1h2Z" /> <path d="M12 9h2V8h-2v1Z" /> </svg>

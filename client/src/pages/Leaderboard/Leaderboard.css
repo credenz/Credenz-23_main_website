@@ -1,0 +1,11 @@
+.leaderboard{
+    width:55%;
+    text-align: center;
+}
+
+@media only screen and (max-width: 767px){
+    .leaderboard{
+      width: min-content;
+    }
+    
+    }

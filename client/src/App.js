@@ -26,13 +26,13 @@ import Forget from './pages/Register/Forget';
 import toast, { ToastUtils } from "./utils/toastifyContainer";
 import { useLocation } from 'react-router-dom';
 import Sessions from './pages/Sessions/Sessions';
-
+import Leaderboard from './pages/Leaderboard/Leaderboard';
 function App() {
   const location = useLocation();
 
   let backgroundWindow = '';
   let backgroundImg="";
-  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile'||location.pathname === '/forget-password/:token/:uid'||location.pathname==='/forget-password'||location.pathname==='/admin') {
+  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile'||location.pathname === '/forget-password/:token/:uid'||location.pathname==='/forget-password'||location.pathname==='/admin'||location.pathname==='/leaderboard') {
     {backgroundImg = 'BgImage';backgroundWindow='BgWindow '}
   } 
   return (
@@ -63,6 +63,7 @@ function App() {
    <Route exact path="/admin" element={<Admin toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/team" element={<Team/> } />
    <Route exact path="/sessions" element={<Sessions/> } />
+   <Route exact path="/leaderboard" element={<Leaderboard/> } />
    <Route exact path="/forget-password/:token/:uid" element={<Forget toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="*" element={<Error/> } />
   </Routes> 
