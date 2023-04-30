@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import "./About.css";
 import { motion } from "framer-motion";
 import Logo from "./credenz23.png";
+import Cn from "./cn.png"
 import Ping from "./ping.jpg";
 import Credenz from "./credenz.jpg";
 const About = () => {

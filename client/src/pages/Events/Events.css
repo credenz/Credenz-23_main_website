@@ -25,8 +25,11 @@
     /* background: rgb(36,0,9);
     background: linear-gradient(180deg, rgba(36,0,9,1) 42%, rgba(54,25,39,1) 73%, rgba(80,19,44,1) 100%); */
     /* background: url("../../../public/assets/images/bgspace.jpg") no-repeat center */
-    background: url("../../images/bgspacen.jpg") no-repeat center
+    /* background: url("../../images/bgspacen.jpg") no-repeat center
+    center fixed; */
+    background: url("../../images/bgg.jpg") no-repeat center
     center fixed;
+    background-size: cover;
     background-position: right 47% bottom 90%;
 }
 

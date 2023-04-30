@@ -4,7 +4,7 @@
     width: 100%;
     /* background-image: url("../../../public/assets/images/bgspace.webp"); */
     /* background-image: url("../../images/about-bg.jpeg"); */
-    background-image: url("../../images/ac.jpg");
+    background-image: url("../../images/acn.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -49,7 +49,7 @@
     padding: 7px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.514);
-    background-color: rgb(69, 6, 69);
+    background-color:  rgb(38 10 38) ;
 }
 .team .card .thumb img{
     width: 100%;
@@ -117,7 +117,7 @@
     bottom: -18px;
     width: 40px;
     height: 40px;
-    background: rgb(178 28 178);
+    background: rgb(49 14 59);
     border-radius: 50%;
     line-height: 40px;
     text-align: center;
