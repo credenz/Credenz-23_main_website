@@ -209,9 +209,10 @@ font-size: larger;
   }
   .cartpage .card{
       /* margin: 3vh auto; */
-      height: 73vh;
+      /* height: 73vh; */
       overflow: scroll;
       background: transparent;
+      padding: 10vh 0;
   }
 }
 
@@ -224,7 +225,7 @@ font-size: larger;
 
 @media(max-width:767px){
   .cartpage .cart{
-      padding: 4vh;
+      padding: 1vh;
       /* border-bottom-left-radius: unset;
       border-top-right-radius: 1rem; */
   }
