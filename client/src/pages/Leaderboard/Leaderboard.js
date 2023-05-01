@@ -19,7 +19,7 @@ function Leaderboard() {
     useEffect(()=>{playersList()},[])
   return (
     <div className='leaderboard'>
-    <Table borderless hover style={{'background':'#200f26'}}>
+    <Table borderless style={{'background':'rgb(31 6 38)'}}>
       <thead>
         <tr>
           <th> </th>

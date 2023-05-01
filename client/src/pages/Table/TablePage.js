@@ -36,6 +36,18 @@ function TablePage({props}){
   // console.log(props)
   const [selectedFile, setSelectedFile] = useState(null);
   const [list,setList] = useState([]);
+  const eventslist = [
+    { title: "Clash", id: 101 },
+    { title: "Reverse Coding", id: 102 },
+    {  title: "NTH", id: 103 },
+    {  title: "Wallstreet", id: 104 },
+    { title: "B-Plan", id: 105 },
+    { title: "Enigma", id: 106 },
+    { title: "Datawiz", id: 107 },
+    { title: "Quiz", id: 108 },
+    { title: "Cretronix", id: 109 },
+    { title: "Web Weaver", id: 110 },
+  ];
     const handleFileSelect = (event) => {
       setSelectedFile(event.target.files[0]);
     };
@@ -59,9 +71,14 @@ function TablePage({props}){
         console.log('taable list',res.data);
         let temp=[];
         res.data.map((val,indx)=>{
-          temp.push({id:indx+1,username:val.user.username,full_name:val.user.first_name+' '+val.user.last_name,transaction_id:val.transaction_id,cost:val.event.event_cost,date:val.order_date,status:val.payment==="PO"?'Pending':'Completed'})
+          let list='';
+          val.event_list.map((val)=>{
+            list+=eventslist[val-101].title+' ';
+          })
+          temp.push({id:indx+1,username:val.user.username,full_name:val.user.first_name+' '+val.user.last_name,transaction_id:val.transaction_id,cost:val.amount,date:val.order_date,status:val.payment==="PO"?'Pending':'Completed',events:list})
+
         })
-        console.log(temp);
+        // console.log(temp);
         setList(temp);
       })
       .catch((err)=>console.log(err));
@@ -313,13 +330,26 @@ function TablePage({props}){
           "gender": "Male"
        , }];
   const [query, setQuery] = useState("");
-  const keys = ["full_name", "username"];
+  const keys = ["full_name", "username",'transaction_id','status'];
   const search = (data) => {
     return data.filter((item) =>
       keys.some((key) => item[key].toLowerCase().includes(query))
     );
   };
   // useEffect(()=>handleTableData())
+  async function handleConfirm(e){
+    const id = props.toast.toast.loading("Please wait...");
+    Requests.adminConfirm({transaction_id:e})
+    .then((res)=>{
+      // console.log('confirm',res.data)
+      props.toast.toast.update(id, { render: "Payment Confirmed!", type: "success", isLoading: false, autoClose:5000 });
+      // props.toast.toast.success('Payment Confirmed!');
+      handleTableData();
+    })
+    .catch((err)=>{
+      props.toast.toast.update(id, { render: 'Error, payment not confirmed', type: "error", isLoading: false,autoClose:5000 });
+    })
+  }
   useEffect(()=>{
     handleTableData();
 },[])
@@ -328,14 +358,14 @@ return (
   <h4>Upload Excel Sheet</h4>
       <input type="file" accept=".xlsx" onChange={handleFileSelect} />
       <Button onClick={handleFileUpload} >Upload</Button>
-      Enter Name or Username To Find
+      Enter Name or Username or Transaction-id or status To Find
       <input
         className="search"
         placeholder="Search..."
         onChange={(e) => setQuery(e.target.value.toLowerCase())}
       />
       {/* {console.log(list[0])} */}
-    {list[0]!=undefined&&<Table data={search(list)} />}
+    {list[0]!=undefined&&<Table data={search(list)} handleConfirm={handleConfirm}/>}
   </div>
 );
 }
