@@ -267,14 +267,14 @@ class GenerateTeamCodeView(generics.GenericAPIView):
                 event_check = Event.objects.filter(event_id=event)
                 context = {"user": user, "team_id": new_team.team_id, "event": event_check, "team_password" : new_team.team_password}
                 html_message = render_to_string("team.html", context=context)
-                send_mail(
-                            'Your Team',
-                            '',
-                            settings.EMAIL_HOST_USER,
-                            [email],
-                            html_message=html_message,
-                            fail_silently=False,
-                        )
+                # send_mail(
+                #             'Your Team',
+                #             '',
+                #             settings.EMAIL_HOST_USER,
+                #             [email],
+                #             html_message=html_message,
+                #             fail_silently=False,
+                #         )
                 return Response({"message": new_team.team_id}, status=status.HTTP_201_CREATED)
             else:
                 return Response({"message" : "Team already exists for this user and event."})
@@ -303,14 +303,14 @@ class JoinTeamView(generics.GenericAPIView):
                         email = user.email
                         context = {"user": user, "team_id": team_id, "event": event_check, "team_password" : exis_team.team_password}
                         html_message = render_to_string("team.html", context=context)
-                        send_mail(
-                            'Your Team',
-                            '',
-                            settings.EMAIL_HOST_USER,
-                            [email],
-                            html_message=html_message,
-                            fail_silently=False,
-                        )
+                        # send_mail(
+                        #     'Your Team',
+                        #     '',
+                        #     settings.EMAIL_HOST_USER,
+                        #     [email],
+                        #     html_message=html_message,
+                        #     fail_silently=False,
+                        # )
                         return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
                 else:
                     return Response({"message" : "Invalid team ID"})
