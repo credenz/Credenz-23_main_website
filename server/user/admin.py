@@ -36,7 +36,7 @@ class TeamResource(resources.ModelResource):
 @admin.register(Team)
 class TeamAdmin(ImportExportActionModelAdmin):
     resource_class = TeamResource
-    list_display = ("event_name", "users", "team_id", "team_name")
+    list_display = ("event_name", "users", "team_id", "team_name", "team_password")
     search_fields = ("event__event_name", "user__username")
     list_filter = ('event',)
 

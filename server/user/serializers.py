@@ -89,20 +89,6 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = "__all__"
 
-# class PlaceOrderSerializer(serializers.ModelSerializer):
-#     event = serializers.ListField(child=serializers.IntegerField())
-#     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-
-#     class Meta:
-#         model = Order
-#         fields = ("user", "transaction_id", "payment", "event")
-
-#     def create(self, validated_data):
-#         event = validated_data.pop("event")
-#         order = Order.objects.create(**validated_data)
-#         order.event.set(event)
-#         return order
-
 class TeamSerializer(serializers.ModelSerializer):
     event = EventSerializer()
     user = UserSerializer(many=True)
@@ -157,6 +143,7 @@ class ReferralCodeVerifySerializer(serializers.Serializer):
 
 # offline order serializer
 class TransactionSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     class Meta:
         model = Transaction
         fields = '__all__'
