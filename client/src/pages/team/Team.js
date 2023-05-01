@@ -5,7 +5,7 @@ import Yash from "./yash.jpeg"
 import Chinmay from "./chinmay.jpeg"
 import Devraj from "./devraj.jpg"
 import Shreyas from "./shreyas.jpg"
-import Vansh from "./vansh.jpeg"
+import Vansh from "./vansh.jpg"
 import Prajwal from "./prajwal.jpeg"
 const Team = () => {
   const[ourteam,setourteam] =useState([

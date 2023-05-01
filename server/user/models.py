@@ -107,6 +107,7 @@ class Team(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
     user = models.ManyToManyField(User)
     team_name = models.CharField(max_length=20, default="team")
+    team_password = models.CharField(max_length=8, default="pass")
 
     def __str__(self):
         return f'{self.event} - {", ".join(str(u) for u in self.user.all())}'

@@ -752,6 +752,7 @@ margin-right: auto;
   
   width: 100%;
   margin-bottom: 10%;
+  height: 38vh;
 }
 
 .ncard img {
@@ -759,7 +760,7 @@ margin-right: auto;
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 
 .ncard-contentl {
@@ -773,6 +774,8 @@ margin-right: auto;
   text-align: center;
   width: inherit;
   /* display: flex; */
+  overflow: scroll;
+  height: inherit;
 }
 
 .ncard h2 {
