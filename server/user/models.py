@@ -19,6 +19,7 @@ class User(AbstractUser):
     )
     coins = models.IntegerField(default=0)
     offline_officer = models.BooleanField(default=False)
+    has_purchased_pass = models.BooleanField(default=False, null=True, blank=True)
 
     @property
     def full_name(self):
