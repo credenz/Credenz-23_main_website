@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     console.log(loaded, "loaded")
-    if (loaded >= 46) { // 45 as console log shows 46
+    if (loaded >= 47) { // 45 as console log shows 46
       console.log('loaded')
       setShowCheck(true)
     }

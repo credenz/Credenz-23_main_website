@@ -14,7 +14,7 @@ import Modal from "react-modal";
 const Payment = (props) => {
     // const [data,setData]=useState(props);
     const { cart, totalprice,clearcart,loginStatus } = useCartContext();
-    const link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${totalprice}&tn=IEEE&cu=INR`;
+    const link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${totalprice}&tn=Credenz IEEE&cu=INR`;
     // const [isQr, setisQr] = useState(false);
     const [upiId, setupiId] = useState("");
     const [payMethod,setPayMethod] = useState(0);
@@ -34,8 +34,8 @@ const Payment = (props) => {
             text: link,
             width: 150, //default 128
             height: 150,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
+            colorDark: "white",
+            colorLight: "black",
             correctLevel: window.QRCode.CorrectLevel.H
         });
     }

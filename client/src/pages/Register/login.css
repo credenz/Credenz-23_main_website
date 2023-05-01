@@ -193,8 +193,8 @@ body {
         border-radius: 10px;
         
             opacity: 0.8;
-            border-color: #d700c1;
-            background-color: #0d1825;
+            border-color:  rgb(38 10 38) ;
+            background-color: rgb(31 6 38);
 }
 
 
@@ -333,7 +333,7 @@ body {
 .register .form-content .form-items {
     max-width:375px ;
     text-align: center;
-    margin: 40px 20px;
+    margin: 18px 5px;
 }
 
 
@@ -832,7 +832,7 @@ body {
 }
 
 .ibtn {
-    background-color: #9d0f9d;
+    background-color: rgb(49 14 59);
     color: #fff;
     -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.16);
     box-shadow: 0 0 0 rgba(0, 0, 0, 0.16);
@@ -859,7 +859,9 @@ body {
 
 
 .form-content .form-button .ibtn {
-    background-color: #9d0f9d;
+    background-color: 
+    rgb(49 14 59);
+    border: 1px solid rgb(29, 7, 29)   ;
     color: #fff;
     -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.16);
     box-shadow: 0 0 0 rgba(0, 0, 0, 0.16);
@@ -867,7 +869,7 @@ body {
 
 
 .form-content .form-button .ibtn:hover, .form-content .form-button .ibtn:focus {
-    background-color: #d613d6;
+    background-color:  rgb(83, 20, 83)   ;
     color: #fff;
     -webkit-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
     box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);

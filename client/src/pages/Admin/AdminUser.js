@@ -127,7 +127,7 @@ const AdminUser = ({props}) => {
     setAmount(amt);
     setCart(temp);
     setLength(temp.length);
-    link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${amt}&tn=IEEE&cu=INR`;
+    link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${amt}&tn=Credenz IEEE&cu=INR`;
     generate();
   }
     const [isQr, setisQr] = useState(false);
@@ -143,8 +143,8 @@ const AdminUser = ({props}) => {
             text: link,
             width: 150, //default 128
             height: 150,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
+            colorDark: "white",
+            colorLight: "black",
             correctLevel: window.QRCode.CorrectLevel.H
         });
     }

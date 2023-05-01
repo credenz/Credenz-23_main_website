@@ -28,12 +28,12 @@
 	 /* position: relative;
 	 z-index: 1; */
 	 /* overflow-x: hidden; */
-	 background-color: #0d1825;
+	 background-color: rgb(31 6 38);
 	 /* display: flex; */
 	 transition: 0.3s;
 	 /* flex-direction: column; */
 	 border-radius: 10px;
-	 box-shadow: 0 0 0 5px #d700c1;
+	 box-shadow: 0 0 0 5px  rgb(38 10 38);
    /* margin: 0px;
 padding: 0px;
   padding-top: 0px; */
@@ -41,7 +41,7 @@ box-sizing: border-box;
 height: 75vh;
 overflow: hidden;
 /* padding-top: 80px; */
-background-color: #180718;
+background-color: rgb(31 6 38);
 border-color: darkcyan;
 transition: 0.3s;
 border-radius: 10px;
@@ -136,13 +136,14 @@ justify-content: center;
   }
   aside h3{
     text-align: center;
+    margin: 10px;
   }
   aside h4{
     text-align: center;
   }
   aside img {
-    width: 60%;
-    height: 40%;
+    width: 100%;
+    height: 38%;
     padding: 0.23em;
     border-radius: 22px;
     /* margin: 0 auto; */
@@ -193,7 +194,7 @@ overflow: scroll; */
   .repo-nav li:hover {
     /* border-bottom-width: 3px; */
     color: #e1e1e7;
-	 border-bottom: 3px solid #8a84ff;
+	 border-bottom: 3px solid rgb(151 17 151);
 	 background: linear-gradient(to bottom, rgba(127, 199, 231, 0) 0%, rgba(207, 204, 255, 0.2) 44%, rgba(211, 226, 255, 0.4) 100%);
   }
   
@@ -201,7 +202,7 @@ overflow: scroll; */
     /* border-bottom: 3px solid #DF570C; */
     /* margin-left: 1em; */
     color: #e1e1e7;
-	 border-bottom: 3px solid #8a84ff;
+	 border-bottom: 3px solid rgb(151 17 151);
 	 background: linear-gradient(to bottom, rgba(127, 199, 231, 0) 0%, rgba(207, 204, 255, 0.2) 44%, rgba(211, 226, 255, 0.4) 100%);
   }
   .repo-nav button{
@@ -751,6 +752,7 @@ margin-right: auto;
   
   width: 100%;
   margin-bottom: 10%;
+  height: 38vh;
 }
 
 .ncard img {
@@ -758,7 +760,7 @@ margin-right: auto;
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 
 .ncard-contentl {
@@ -772,6 +774,8 @@ margin-right: auto;
   text-align: center;
   width: inherit;
   /* display: flex; */
+  overflow: scroll;
+  height: inherit;
 }
 
 .ncard h2 {

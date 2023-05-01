@@ -4,41 +4,32 @@ import './sessions.css'
 import { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import wallstreet from './eee.png'
+import Changzi from "../../images/changzi.jpeg"
+import Srishti from "../../images/srishti.jpeg"
+import Herody from "../../images/Herody.png"
 
 export const Sessions = () => {
   const [sessions, setSessions] = useState([
     {
-      image: wallstreet,
-      title: 'Wallstreet',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      image: Changzi,
+      title: 'Dr. Changzi Li',
+      content: 'During the initial lecture of our series, Dr. Li provided a descriptive overview of "Portable Radar Systems for Life Activity Sensing, Anomaly Detection, and Human Tracking." He delved into several technical aspects of radar systems and their uses in mobile applications and medical contexts.',
+      date:'Date - 19/04/2023',
       id: 1
     },
     {
-      image: wallstreet,
-      title: 'Wallstreet',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      id: 1
+      image: Srishti,
+      title: 'Ms. Srishti Patil',
+      content: `Ms. Patil's presentation enlightened the audience with numerous strategies and techniques for achieving high scores in the CAT examination and gaining admission to top business schools in India and abroad. The session was followed by an engaging Q&A session in which Ms. Patil candidly shared her experiences and addressed various doubts raised by the attendees.`,
+      date:'Date - 23/04/2023',
+      id: 2
     },{
-      image: wallstreet,
-      title: 'Wallstreet',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      id: 1
-    },{
-      image: wallstreet,
-      title: 'Wallstreet',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      id: 1
-    },{
-      image: wallstreet,
-      title: 'Wallstreet',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      id: 1
-    },{
-      image: wallstreet,
-      title: 'Wallstreet',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      id: 1
-    },
+      image: Herody,
+      title: 'Exploring Blockchain and DeFI with meter: A practical workshop',
+      content: 'In a session on blockchain, attendees may learn about the basics of blockchain technology, its history, and its potential applications in various industries. The session may also cover the features that make blockchain a secure and decentralized ledger, including cryptography, consensus mechanisms, and smart contracts. Finally, the session may explore some of the challenges and limitations of blockchain, as well as potential future developments in the field.',
+      date:'Date - 02/05/2023',
+      id: 3
+    }
   ])
 
   return (
@@ -62,6 +53,9 @@ export const Sessions = () => {
                   <div className='content'>
                     <p>
                       {details.content}
+                    </p>
+                    <p  >
+                      {details.date}
                     </p>
                   </div>
                 </div>

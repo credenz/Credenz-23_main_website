@@ -132,14 +132,16 @@ const Events = () => {
         <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3"></div>
-        <div className="eventpage " data-aos="fade-in" data-aos-duration="400">
+        <div className="eventpage " 
+        // data-aos="fade-in" data-aos-duration="400"
+        >
           <div className="container ">
             <h1 style={{ textAlign: "center" }}>EVENTS</h1>
             <div className="main">
               {eventslist.map((list) => (
                 <div
                   className="outer"
-                  // data-aos="zoom-in"
+                  data-aos="zoom-in"
                   key={list.id}
                   onClick={() => openModal(list.id)}
                 >
@@ -304,6 +306,8 @@ const Events = () => {
                     {data.amount}</p>
                     
                   </div>
+                  {data.id===103?<a href="https://nth.credenz.in/register" target="_blank"> <button className={`addtocart`}>Register</button></a>:
+                  purchasedEvents.includes(data.id.toString())? <button disabled={true} className={`addtocart disabled`}>Registered</button>:
                   <button
                     disabled={
                       cart != null
@@ -330,10 +334,11 @@ const Events = () => {
                   >
                     {/* Add to cart */}
                     {console.log(data.id.toString(), "looo")}
-                    { purchasedEvents.includes(data.id.toString())? <>Registered</>:(cart.find((item) => item.id === data.id)
+                    { (cart.find((item) => item.id === data.id)
                           ?  <>Added To cart</>
                           : <>Add to cart</>)}
                   </button>
+                }
                   {/* <button>CHECKOUT</button> */}
                 </div>
                 {/* <div className="modalclose">

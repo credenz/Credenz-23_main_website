@@ -12,7 +12,7 @@
 .toggle-div{
   position: absolute;
   top: 80%;
-  left: 50%;
+  left: 47%;
   z-index: 2;
   /* transform: translate(-50%, -50%); */
 }
@@ -59,3 +59,14 @@
 .toggle-state:checked ~ .indicator {
   transform: translate3d(25%, 0, 0);
 }
+
+@media screen and (max-width: 400px) {
+  
+  .toggle-div {
+    position: absolute;
+    top: 80%;
+    left: 44%;
+    z-index: 2;
+    /* transform: translate(-50%, -50%); */
+}
+  }
