@@ -10,7 +10,7 @@ const Admin = (props) => {
     const checkAdmin = async () => {
         await Requests.profile()
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 if(res.data.is_superuser===true){
                     setAdminStauts(2)
                 }

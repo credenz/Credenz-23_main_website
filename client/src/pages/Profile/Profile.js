@@ -6,14 +6,17 @@ import Mobile from './Mobile';
 import {isMobile} from 'react-device-detect';
 import { useNavigate } from 'react-router-dom';
 import { useCartContext } from '../../context/cart_context';
+import Loader from '../../Components/loader/Loader';
 
 const Profile = (props) => {
     const [data, setData] = useState({});
     const [isPhone, setIsPhone] = useState(isMobile);
     const {loginStatus}=useCartContext();
     const [hasFetchedData, setHasFetchedData] = useState(false);
+    const [loader,setLoader] =useState(true);
     let navigate=useNavigate();
     const fetchProfile = async () => {
+        setLoader(true);
         if(!loginStatus){
             props.toast.toast.error('Login First!');
             navigate('/login');
@@ -36,6 +39,7 @@ const Profile = (props) => {
                 props.toast.toast.error('Error while fetching data');
             navigate('/login');
         })
+        setLoader(false);
     }
     useEffect(() => {
         if (!hasFetchedData) {
@@ -47,14 +51,14 @@ const Profile = (props) => {
     // },[])
     return (
         <> 
-        
+            {loader&&<Loader/>}
             {
                 data.username?<>
                 
                 {isMobile?<Mobile data={{...data}} props={{...props}} />:<div className='profile-desktop'><Desktop data={{...data}} props={{...props}}/></div>}
-                {!isMobile&&<div className='profile-mobile'>
+                {/* {!isMobile&&<div className='profile-mobile'>
                 <Mobile data={{...data}} props={{...props}} />
-                </div>}
+                </div>} */}
             {/* <div className='profile-desktop'><Desktop data={{...data}}/></div> */}
             {/* <div className='profile-desktop'><Desktop data={{...data}} props={{...props}}/></div>
                 <div className='profile-mobile'>

@@ -1,4 +1,5 @@
-const Table = ({ data }) => {
+import Requests from "../../api/requests";
+const Table = ({ data ,handleConfirm}) => {
     return (
       <div className="container" style={{backgroundColor:'black'}}>
       <table >
@@ -9,6 +10,7 @@ const Table = ({ data }) => {
             <th>Transaction-Id</th>
             <th>Amount</th>
             <th>Date</th>
+            <th>Events</th>
             <th>Status</th>
             <th>Payment</th>
           </tr>
@@ -19,8 +21,9 @@ const Table = ({ data }) => {
               <td>{item.transaction_id}</td>
               <td>{item.cost}</td>
               <td>{item.date}</td>
+              <td>{item.events}</td>
               <td>{item.status}</td>
-              <td><button className="td-button" onClick={()=>window.alert(item.username)}>Confirm Payment</button></td>
+              <td>{item.status==='Pending'&&<button className="td-button" onClick={()=>handleConfirm(item.transaction_id)}>Confirm Payment</button>}</td>
             </tr>
           ))}
         </tbody>
