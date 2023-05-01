@@ -254,7 +254,7 @@ class GenerateTeamCodeView(generics.GenericAPIView):
         user = request.user
 
         if Order.objects.filter(event=event, user=user).first():
-            print(Team.objects.filter(event=event, user=user))
+            print(Team.objects.filter(event=event, user__in=user))
             if not Team.objects.filter(event=event, user=user):
                 new_team = Team.objects.create(event=Event.objects.get(event_id = event), team_name = team_name)
                 new_team.user.add(request.user)
