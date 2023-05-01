@@ -198,7 +198,7 @@ const Desktop = ({ data,props }) => {
                                         <div style={{display: 'grid',
 justifyContent: 'center',
 marginLeft: '20%',
-marginRight: '20%'}}>
+marginRight: '20%',marginBottom:'25px'}}>
                                         {myTeams.length!==0?myTeams.map((data)=>{return (
 
                                         <div class="ncard">
