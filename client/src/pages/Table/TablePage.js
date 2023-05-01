@@ -76,6 +76,7 @@ function TablePage({props}){
             list+=eventslist[val-101].title+' ';
           })
           temp.push({id:indx+1,username:val.user.username,full_name:val.user.first_name+' '+val.user.last_name,transaction_id:val.transaction_id,cost:val.amount,date:val.order_date,status:val.payment==="PO"?'Pending':'Completed',events:list})
+
         })
         // console.log(temp);
         setList(temp);
@@ -337,14 +338,16 @@ function TablePage({props}){
   };
   // useEffect(()=>handleTableData())
   async function handleConfirm(e){
+    const id = props.toast.toast.loading("Please wait...");
     Requests.adminConfirm({transaction_id:e})
     .then((res)=>{
       // console.log('confirm',res.data)
-      props.toast.toast.success('Payment Confirmed!');
+      props.toast.toast.update(id, { render: "Payment Confirmed!", type: "success", isLoading: false, autoClose:5000 });
+      // props.toast.toast.success('Payment Confirmed!');
       handleTableData();
     })
     .catch((err)=>{
-      props.toast.toast.error('Error, payment not confirmed')
+      props.toast.toast.update(id, { render: 'Error, payment not confirmed', type: "error", isLoading: false,autoClose:5000 });
     })
   }
   useEffect(()=>{
