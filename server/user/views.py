@@ -253,8 +253,8 @@ class GenerateTeamCodeView(generics.GenericAPIView):
         team_name = request.data['team_name']
         user = request.user
 
-        if Order.objects.get(event=event, user=user):
-            if not Team.objects.filter(event=event, user=user):
+        if Order.objects.filter(event=event, user=user):
+            if not user.team_set.filter(event=event).first():
                 new_team = Team.objects.create(event=Event.objects.get(event_id = event), team_name = team_name)
                 new_team.user.add(request.user)
                 team_password = generate_team_pass(new_team.team_id, Event.objects.filter(event_id=event))
@@ -287,10 +287,10 @@ class JoinTeamView(generics.GenericAPIView):
     def post(self, request):
         user = request.user
         team_id = request.data['team_id']
-        event_check = Team.objects.get(team_id=team_id).event
+        event_check = Team.objects.filter(team_id=team_id).first()
 
-        if Order.objects.filter(event = event_check, user = user, payment = "CO"):
-            if not Team.objects.filter(user = user, event = event_check):
+        if Order.objects.filter(event = event_check.event, user = user, payment = "CO"):
+            if not Team.objects.filter(user = user, event = event_check.event):
                 if Team.objects.filter(team_id = team_id):
                     exis_team = Team.objects.get(team_id = team_id)
                     if exis_team.user.count() >= exis_team.event.group_size:

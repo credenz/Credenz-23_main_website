@@ -103,7 +103,7 @@ class Referral(models.Model):
 
 class Team(models.Model):
     team_id = models.CharField(max_length=6, default=generate_team_id, unique=True)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, default=1)
+    event = models.ForeignKey(Event, to_field="event_id", on_delete=models.CASCADE, default=1)
     user = models.ManyToManyField(User)
     team_name = models.CharField(max_length=20, default="team")
     team_password = models.CharField(max_length=8, default="pass")
