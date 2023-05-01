@@ -1,40 +1,47 @@
+
 [
   {
     "heading": "CLASH",
     "body": "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges,carefully designed to assess your command over programming in the language of your choice- Python, C or C++. Showcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.",
     "id": 101,
-    "structure": "carefully designed to assess your command over programming in the language of your choice-Python, C or ++.  Showcase technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.",
+    "structure": {
+      "1": "Round-1 A 28 minute round of MCQs for individuals as well as a team(max 2 people) contenders  based on coding concepts in C/C++ and python Divided into Juniors and Seniors category. Juniors including F.E’s.Seniors including S.E’s, T.E’s and B.E’s (Python, C/C++ for F.E and C/C++ for S.E, T.E and B.E) where you would also be provided with 3 boonful lifelines(description will be provided in the game itself) and the marking scheme would be as follows:- The primary marks allotted are +4 if answered correctly and -2 if the answer for a particular question is incorrect. If a question attempted is incorrect, then from the next question +2 marks are allotted for each correctly answered question, else -1 until you get a correct answer for upcoming questions.",
+      "2": "Round-2 A 2 hour long round where each team or individuals have to solve 8 core code based  questions with increasing difficulty and Without the help of any Lifelines. Questions would be a blend of Data-Structures and Algorithms and mind bending Competitive programming Questions which the contenders would have to solve and pave their path to victory. Note: Junior level questions would be comparatively a little less challenging than of Sr. level."
+    },
     "rules": {
-      "1": "MCQs based on coding concepts in C/C++ and python. (Python, C/C++ for FE and C/C++ for SE, TE and BE)",
-      "2": "A 28-minute game for a person or a team of two people.",
-      "3": "Teams or players are not allowed to use any IDE or software once the game has started.",
-      "4": "You will have 3 lifelines (description will be provided in the game itself).",
-      "5": "You are not allowed to switch tabs or close the browser during the game. If you do so, you will be logged out automatically.",
-      "6": "The primary marks allotted are +4 if answered correctly and -2 if the answer for a particular question is incorrect. If a question attempted is incorrect, then from the next question +2 marks are allotted for each correctly answered question, else -1 until you get a correct answer for upcoming questions."
+      "1": "Contenders are not allowed to use multiple smart devices while solving the test and it would be considered as malpractice if Caught ",
+      "2": "Teams or players are not allowed to use any IDE or software once the game has started.",
+      "3": "You are not allowed to switch tabs or close the browser during the game. If you do so, you will be logged out automatically.",
+      "4": "Multiple Device Logins from same account are strictly prohibited"
     },
     "amount": 50,
     "count": 1,
-    "team": "Maximum 3 players are allowed",
-    "max": 3,
-    "contact": [{
-      "name": "Devraj Shetake",
-      "phone": "8208566305"
-    }, {
-      "name": "Yash Mali",
-      "phone": "9319809833"
-    }],
-    "prizes": [{
-      "1": "Sr. First Prize: Rs. 5000",
-      "2": "Sr. Second Prize: Rs. 3000"
-    }, {
-      "1": "Jr. First Prize: Rs. 5000",
-      "2": "Jr. Second Prize: Rs. 3000"
-    }],
-    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
-
-
-
-
+    "team": "Maximum 2 players are allowed",
+    "max": 2,
+    "contact": [
+      {
+        "name": "Devraj Shetake",
+        "phone": "8208566305"
+      },
+      {
+        "name": "Yash Mali",
+        "phone": "9319809833"
+      }
+    ],
+    "prizes": [
+      {
+        "1": "Sr. First Prize: Rs. 5000",
+        "2": "Sr. Second Prize: Rs. 3000"
+      },
+      {
+        "1": "Jr. First Prize: Rs. 5000",
+        "2": "Jr. Second Prize: Rs. 3000"
+      }
+    ],
+    "datetime": [
+      "Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM",
+      "Round 2: 14th May 2023, 10:00 AM to 12:00 PM"
+    ]
   },
   {
     "heading": "REVERSE CODING",
@@ -44,7 +51,7 @@
       "2": "A 30-minute game for a person or a team of two people.",
       "3": "Teams or players are allowed to use any IDE or software after the game has started.",
       "4": "You will have 3 lifelines (description will be provided in the game itself).",
-	"5": "You are not allowed to switch tabs or close the browser during the game. If you do so, you will be logged out automatically.",
+      "5": "You are not allowed to switch tabs or close the browser during the game. If you do so, you will be logged out automatically.",
       "6": "You will have two attempts to answer a particular question. In the first attempt, the marking scheme will be +4 0. In the second attempt, the marking scheme will be changed to +2 -2."
     },
     "structure": "Challenge yourself to solve coding questions with your logical and analytical to decode and find the answer.",
@@ -53,21 +60,30 @@
     "count": 1,
     "team": "Maximum 2 players are allowed",
     "max": 2,
-    "contact": [{
-      "name": "Sarvesh Varade",
-      "phone": "8788013967"
-    }, {
-      "name": "Vansh Teppalwar",
-      "phone": "7972851721"
-    }],
-    "prizes": [{
-      "1": "Sr. First Prize: Rs. 5000",
-      "2": "Sr. Second Prize: Rs. 3000"
-    }, {
-      "1": "Jr. First Prize: Rs. 5000",
-      "2": "Jr. Second Prize: Rs. 3000"
-    }],
-    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
+    "contact": [
+      {
+        "name": "Sarvesh Varade",
+        "phone": "8788013967"
+      },
+      {
+        "name": "Vansh Teppalwar",
+        "phone": "7972851721"
+      }
+    ],
+    "prizes": [
+      {
+        "1": "Sr. First Prize: Rs. 5000",
+        "2": "Sr. Second Prize: Rs. 3000"
+      },
+      {
+        "1": "Jr. First Prize: Rs. 5000",
+        "2": "Jr. Second Prize: Rs. 3000"
+      }
+    ],
+    "datetime": [
+      "Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM",
+      "Round 2: 14th May 2023, 10:00 AM to 12:00 PM"
+    ]
   },
   {
     "heading": "NETWORK TREASURE HUNT",
@@ -90,21 +106,26 @@
     "count": 1,
     "team": "Individual event",
     "max": 1,
-    "contact": [{
-      "name": "Devraj Shetake",
-      "phone": "8208566305"
-    }, {
-      "name": "Yash Mali",
-      "phone": "9319809833"
-    }],
-    "prizes": [{
-      "1": "Sr. First Prize: Rs. 5000",
-      "2": "Sr. Second Prize: Rs. 3000"
-    }, {
-      "1": "Jr. First Prize: Rs. 5000",
-      "2": "Jr. Second Prize: Rs. 3000"
-    }],
-    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
+    "contact": [
+      {
+        "name": "Harsh Bhat",
+        "phone": "8983594252"
+      },
+      {
+        "name": "Bhakti Mahurkar",
+        "phone": "9307931414"
+      }
+    ],
+    "prizes": [
+      {
+        "1": "First Prize: Rs. 4000",
+        "2": "Second Prize: Rs. 2000"
+      }
+    ],
+    "datetime": [
+      "Start Time: 5th May 21:00 IST",
+      "End Time: 6th May 21:00 IST"
+    ]
   },
   {
     "heading": "WALL STREET",
@@ -114,12 +135,12 @@
       "1": "Each participant will be provided with a unique ID and password to log on the Wallstreet website and start playing.He/She is expected to buy stocks and subscribe to IPOs using the cash amount.",
       "2": "IPOs will be floated every day before start of the actual trading days to which participants can subscribe. ",
       "3": "A correct answer will direct the user to the next question while an incorrect answer will redirect the user to the same question as before.",
-      "4": "IPO allocation will be visible on the first day of actual trading and will be done on first come first serve basis. So keep an eye on our social media handles for constant updates.",
-      "5": "As soon as the market opens at 9:00 AM on the first day, participant can see all the stocks along woth their listing price.",
+      "4": "IPO allocation will be visible on the first day of actual trading and will be done on a first come first serve basis. So keep an eye on our social media handles for constant updates.",
+      "5": "As soon as the market opens at 9:00 AM on the first day, participant can see all the stocks along with their listing price.",
       "6": "The market will be up from 9:00 AM to 5:00 PM for 3 days.This period is defined as 'day' henceforth in the document.",
       "7": "Any buy bid or sell ask can be made within a margin of ±10% of the current share price.For ex,if the current market price of a share is Rs.100/-,a buy or sell bid can be made from any range between Rs. 90- Rs.110/-",
       "8": "A transaction fee of 1% of total transaction cost will be charged from both the seller and the buyer for every successful transaction between the two.",
-      "9": "When a user places a buy bid for the shares of the compay A, the amount he's bidding for will be immedialtely deducted from his account along with the relevant transaction fee of 1%. For ex. if the buyer buys 50 shares for Rs. 106 each share, the cost will be Rs.5300/-. Adding 1% transaction fee the final cost that'll be deducted from the buyer's account will be1.01*5300 = Rs.5353/-. This amount will be immediately deducted, and the user won't be able to access this amount.",
+      "9": "When a user places a buy bid for the shares of the company A, the amount he's bidding for will be immediately deducted from his account along with the relevant transaction fee of 1%. For ex. if the buyer buys 50 shares for Rs. 106 each share, the cost will be Rs.5300/-. Adding 1% transaction fee the final cost that'll be deducted from the buyer's account will be1.01*5300 = Rs.5353/-. This amount will be immediately deducted, and the user won't be able to access this amount.",
       "10": "The Ranking of the user is decided using a 'Valuation Formula'.Valuation of the user will be 60% of his total asset value in Shares acquired (according to current market prices) + 40% of the cash balance in his account.This total will be termed as the valuation amount.",
       "11": "Only Integral Bids allowed.Decimal values will be invalid.",
       "12": "Participants can be disqualified for MALPRACTICES.",
@@ -131,46 +152,54 @@
     "team": "Individual event",
     "max": 1,
     "contact": [{
-      "name": "Devraj Shetake",
-      "phone": "8208566305"
+      "name": "Shreyas Chandolkar",
+      "phone": "9145527174"
     }, {
-      "name": "Yash Mali",
-      "phone": "9319809833"
+      "name": "Harsh Bhat",
+      "phone": "8983594252"
     }],
     "prizes": [{
-      "1": "Sr. First Prize: Rs. 5000",
-      "2": "Sr. Second Prize: Rs. 3000"
-    }, {
-      "1": "Jr. First Prize: Rs. 5000",
-      "2": "Jr. Second Prize: Rs. 3000"
-    }],
-    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
+      "1": "First Prize: Rs. 6000",
+      "2": "Second Prize: Rs. 4000"
+    }
+ 
+ 
+ 
+ 
+ ],
+    "datetime":["IPO release: From 6th May 2023","Trading: 12th-14th May 2023, 9:15 AM to 3:30 PM"]
   },
+ 
+ 
   {
     "heading": "B-PLAN",
     "body": "Looking for a thrilling and engaging event that showcases innovation and entrepreneurship? Look no further than B-Plan! Register now for an event as you get to be a deadly Shark Tank!",
     "structure": "You'll have a front-row seat to the action and become an actual shark to evaluate business and pitch them!",
-    "rules": { "1": "To be declared soon!" },
+    "rules": {
+      "1": "To be declared soon!"
+    },
     "id": 105,
     "amount": 39,
     "count": 1,
     "team": "Individual event",
     "max": 1,
-    "contact": [{
-      "name": "Devraj Shetake",
-      "phone": "8208566305"
-    }, {
-      "name": "Yash Mali",
-      "phone": "9319809833"
-    }],
-    "prizes": [{
-      "1": "Sr. First Prize: Rs. 5000",
-      "2": "Sr. Second Prize: Rs. 3000"
-    }, {
-      "1": "Jr. First Prize: Rs. 5000",
-      "2": "Jr. Second Prize: Rs. 3000"
-    }],
-    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
+    "contact": [
+      {
+        "name": "Purvi Toshniwal",
+        "phone": "7758874315"
+      }
+      
+    ],
+    "prizes": [
+      {
+        "1": "First Prize: Rs. 6000",
+        "2": "Second Prize: Rs. 4000"
+      }
+    ],
+    "datetime": [
+      "Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM",
+      "Round 2: 14th May 2023, 10:00 AM to 12:00 PM"
+    ]
   },
   {
     "heading": "ENIGMA",
@@ -187,18 +216,27 @@
     "team": "Maximum 2 players are allowed in a team.",
     "max": 2,
     "id": 106,
-    "contact": [{
-      "name": "Manas Sewatkar",
-      "phone": "9028093133"
-    }, {
-      "name": "Nidhi Yadav",
-      "phone": "8767887493"
-    }],
-    "prizes": [{
-      "1": "First Prize: Rs. 5000",
-      "2": "Second Prize: Rs. 3000"
-    }],
-    "datetime":["Round 1 (Slot 1): 12th May 2023, 12:00 PM to 12:30 PM","Round 1 (Slot 2): 12th May 2023, 05:00 PM to 05:30 PM","Round 2: 13th May 2023, 05:00 PM to 07:00 PM"]
+    "contact": [
+      {
+        "name": "Manas Sewatkar",
+        "phone": "9028093133"
+      },
+      {
+        "name": "Nidhi Yadav",
+        "phone": "8767887493"
+      }
+    ],
+    "prizes": [
+      {
+        "1": "First Prize: Rs. 5000",
+        "2": "Second Prize: Rs. 3000"
+      }
+    ],
+    "datetime": [
+      "Round 1 (Slot 1): 12th May 2023, 12:00 PM to 12:30 PM",
+      "Round 1 (Slot 2): 12th May 2023, 05:00 PM to 05:30 PM",
+      "Round 2: 13th May 2023, 05:00 PM to 07:00 PM"
+    ]
   },
   {
     "heading": "DATAWIZ",
@@ -223,18 +261,25 @@
     "count": 1,
     "team": "Maximum 2 players are allowed",
     "max": 2,
-    "contact": [{
-      "name": "Aditya Medhe",
-      "phone": "9370546447"
-    }, {
-      "name": "Manas Sewatkar",
-      "phone": "9028093133"
-    }],
-    "prizes": [{
-      "1": "First Prize: Rs. 5000",
-      "2": "Second Prize: Rs. 3000"
-    }],
-    "datetime":["10th May 2023, 12:00 AM to 13th May 2023, 12:00 PM"]
+    "contact": [
+      {
+        "name": "Aditya Medhe",
+        "phone": "9370546447"
+      },
+      {
+        "name": "Manas Sewatkar",
+        "phone": "9028093133"
+      }
+    ],
+    "prizes": [
+      {
+        "1": "First Prize: Rs. 5000",
+        "2": "Second Prize: Rs. 3000"
+      }
+    ],
+    "datetime": [
+      "10th May 2023, 12:00 AM to 13th May 2023, 12:00 PM"
+    ]
   },
   {
     "heading": "QUIZ",
@@ -255,21 +300,26 @@
     "count": 1,
     "team": "Maximum 2 players are allowed",
     "max": 2,
-    "contact": [{
-      "name": "Devraj Shetake",
-      "phone": "8208566305"
-    }, {
-      "name": "Yash Mali",
-      "phone": "9319809833"
-    }],
-    "prizes": [{
-      "1": "Sr. First Prize: Rs. 5000",
-      "2": "Sr. Second Prize: Rs. 3000"
-    }, {
-      "1": "Jr. First Prize: Rs. 5000",
-      "2": "Jr. Second Prize: Rs. 3000"
-    }],
-    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
+    "contact": [
+      {
+        "name": "Aryan Mahajan",
+        "phone": "9518327965"
+      },
+      {
+        "name": "Samir Hendre",
+        "phone": "9819261702"
+      }
+    ],
+    "prizes": [
+      {
+        "1": "First Prize: Rs. 2000",
+        "2": "Second Prize: Rs. 1000"
+      }
+    ],
+    "datetime": [
+      "Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM",
+      "Round 2: 14th May 2023, 10:00 AM to 12:00 PM"
+    ]
   },
   {
     "heading": "CRETRONIX",
@@ -290,46 +340,59 @@
     "count": 1,
     "team": "Maximum 3 players are allowed",
     "max": 3,
-    "contact": [{
-      "name": "Bhanupratap Jaiswal",
-      "phone": "9860842600"
-    }, {
-      "name": "Suyash Udchan",
-      "phone": "7722079027"
-    }],
-    "prizes": [{
-      "1": " First Prize: Rs. 5000",
-      "2": " Second Prize: Rs. 3000"
-    }     ],
-    "datetime":["Round 1 (Slot 1): 12th May 2023, 11:00 AM to 12:00 PM","Round 2: 14th May 2023, 10:00 AM to 01:00 PM"]
+    "contact": [
+      {
+        "name": "Bhanupratap Jaiswal",
+        "phone": "9860842600"
+      },
+      {
+        "name": "Suyash Udchan",
+        "phone": "7722079027"
+      }
+    ],
+    "prizes": [
+      {
+        "1": " First Prize: Rs. 5000",
+        "2": " Second Prize: Rs. 3000"
+      }
+    ],
+    "datetime": [
+      "Round 1 (Slot 1): 12th May 2023, 11:00 AM to 12:00 PM",
+      "Round 2: 14th May 2023, 10:00 AM to 01:00 PM"
+    ]
   },
   {
     "heading": "WEB WEAVER",
     "body": "Ever wondered how GSOC and other Open-Source programs work? Register now for web-weaver to get a taste!",
     "structure": "You will get to know all the nitty-gritty details and nuances about web and app development and other tools essential for a developer to know",
-    "rules": { "1": "To be declared soon!" },
+    "rules": {
+      "1": "To be declared soon!"
+    },
     "id": 110,
     "amount": 39,
     "count": 1,
     "team": "Maximum 3 players are allowed",
     "max": 3,
-    "contact": [{
-      "name": "Devraj Shetake",
-      "phone": "8208566305"
-    }, {
-      "name": "Yash Mali",
-      "phone": "9319809833"
-    }],
-    "prizes": [{
-      "1": "Sr. First Prize: Rs. 5000",
-      "2": "Sr. Second Prize: Rs. 3000"
-    }, {
-      "1": "Jr. First Prize: Rs. 5000",
-      "2": "Jr. Second Prize: Rs. 3000"
-    }],
-    "datetime":["Round 1 (Slot 1): 12th-13th May 2023, 10:00 AM to 5:00 PM","Round 2: 14th May 2023, 10:00 AM to 12:00 PM"]
+    "contact": [
+      {
+        "name": "Sangmeshwar Mahajan",
+        "phone": "8010965429"
+      },
+      {
+        "name": "Devraj Shetake",
+        "phone": "8208566305"
+      }
+    ],
+    "prizes": [
+      {
+        "1": "First Prize: Rs. 4000",
+        "2": "Second Prize: Rs. 3000"
+      }
+    ],
+    "datetime": [
+      "Round 1 Start: 3rd May",
+      "Round 1 Submission : 9th May 11:59 PM",
+      "Round 2: 13th May 2023, 10:00 AM to 6:00 PM (Offline)"
+    ]
   }
 ]
-
-
-

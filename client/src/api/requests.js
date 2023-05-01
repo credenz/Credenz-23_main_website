@@ -5,11 +5,12 @@ const hostname = window.location.hostname
 // if(hostname === "localhost") url = "http://127.0.0.1:8000/api"
 // else url = `https://api.credenz.in/api`
 let url = `https://api.credenz.in/api`
+url = `http://localhost:8000/api`
 const backend = axios.create({
     baseURL: url
   });
 const list = axios.create({
-    baseURL: 'https://gist.githubusercontent.com/VanshTeppalwar/59454bb8ef51fa856b0fcf62f804556b/raw/fb9775363a7e1de8769bd2071cecb958703b6679/events.json'
+    baseURL: 'https://gist.githubusercontent.com/VanshTeppalwar/59454bb8ef51fa856b0fcf62f804556b/raw/cf3a10461afb7e7f4da2c5aafee1ec00261868d6/events.json'    
   });  
 
 //For Reference, create your own function
@@ -34,7 +35,8 @@ const joinTeam=(data)=>backend.post(`/join-team/`,data,{headers: {Authorization:
 const viewTeam=()=>backend.get(`/view-team/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminUpload=(data)=>backend.post(`/upload-file/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminOrder=(data)=>backend.post(`/offline-order/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
-const adminTable=()=>backend.get(`/orders/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
+const adminTable=()=>backend.get(`/transaction-list/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
+const adminConfirm=(data)=>backend.post(`/transaction-confirm/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const feedback=(data)=>backend.post(`/feedback/`,data,{headers: {}});
 const leaderboard=()=>backend.get(`/leaderboard/`,{headers: {}});
 const Requests = {
@@ -53,5 +55,6 @@ const Requests = {
     adminTable,
     feedback,
     leaderboard,
+    adminConfirm,
   };
   export default Requests;

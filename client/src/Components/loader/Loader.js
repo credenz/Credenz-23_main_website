@@ -58,7 +58,7 @@ export default function Loader(props) {
                   {/* <span></span><span></span> */}
                </div>
             </div>
-            <div className="meteors-container">
+            {/* <div className="meteors-container">
 
                <span></span>
                <span></span>
@@ -67,7 +67,7 @@ export default function Loader(props) {
                <span></span>
                <span></span>
 
-            </div>
+            </div> */}
          </div>
 
       </>

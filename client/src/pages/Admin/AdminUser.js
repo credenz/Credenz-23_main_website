@@ -202,15 +202,16 @@ const AdminUser = ({props}) => {
                   <th style={{ 'paddingLeft': '5px' }}>Cost</th>
                 </tr>
                 {details.map((data) => (
-                  <tr key={data.id}>
+                  <>
+                  {data.id!==103&&<tr key={data.id}>
                     <td><input type="checkbox" onChange={handelChange} id={data.id} name={data.heading} value={data.amount} />
                       <label for={data.id}>{data.heading}</label></td>
                     <td style={{ 'paddingLeft': '15px' }}><label for={data.id}>{data.amount}</label></td>
 
 
                   </tr>
-
-
+                  }
+                  </>
 
                 ))}
                 <tr><hr style={{ 'width': '120%', 'height': '2px', 'borderWidth': '5px', 'color': 'white', 'backgroundColor': 'white' }}></hr></tr>
