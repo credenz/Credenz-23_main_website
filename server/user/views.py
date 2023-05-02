@@ -366,7 +366,7 @@ class OfflineOrderView(generics.GenericAPIView):
         off_officer = request.user
         if (User.objects.get(username = off_officer.username).offline_officer== True):
             for event in event_list:
-                if not Order.objects.get(user = request.user, event = Event.objects.get(event_id = event)):
+                if not Order.objects.get(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event)):
                     order = Order(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event), order_taker = request.user.full_name, payment="CO", transaction_id=transaction_id)
                     order.save()
 
@@ -376,7 +376,7 @@ class OfflineOrderView(generics.GenericAPIView):
 
              # send order email
             events = Event.objects.filter(event_id__in=event_list)
-            user = User.objects.filter(username=order_user)
+            user = User.objects.filter(username=order_user).first()
             email = user.email
             context = {"user": user, "events": events, "transaction_id":transaction_id}
             html_message = render_to_string("event.html", context=context)
@@ -394,7 +394,7 @@ class OfflineOrderView(generics.GenericAPIView):
 
             return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
         
-        raise Response({"message" : "Transaction not allowed"})
+        return Response({"message" : "Transaction not allowed"})
 
 class TransactionListView(generics.ListAPIView):
     serializer_class = TransactionSerializer
@@ -442,4 +442,49 @@ class TransactionConfirmView(generics.GenericAPIView):
                
 
         return Response({"message" : "confirmed"}, status=status.HTTP_202_ACCEPTED)
+    
+class AdminPassView(generics.GenericAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        order_user = request.data['username']
+        transaction_id = request.data["transaction_id"]
+        amount = request.data["amount"]
+        off_officer = request.user
+        if (User.objects.get(username = off_officer.username).offline_officer== True):
+            event_id_list = Event.objects.values_list('event_id', flat=True)
+            event_list = [int(event_id) for event_id in event_id_list]
+            for event in event_list:
+                if not Order.objects.filter(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event)):
+                    order = Order(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event), order_taker = request.user.full_name, payment="CO", transaction_id=transaction_id)
+                    order.save()
+
+            # add transaction for the complete list of events
+            transaction = Transaction(event_list = event_list, user = User.objects.get(username=order_user), transaction_id = transaction_id, amount=amount, payment ="CO")
+            transaction.save()
+
+             # send order email
+            events = Event.objects.filter(event_id__in=event_list)
+            user = User.objects.filter(username=order_user).first()
+            email = user.email
+            user.has_purchased_pass = True
+            user.save()
+            context = {"user": user, "events": events, "transaction_id":transaction_id}
+            html_message = render_to_string("event.html", context=context)
+            try:
+                send_mail(
+                'Your Order',
+                '',
+                settings.EMAIL_HOST_USER,
+                [email],
+                html_message=html_message,
+                fail_silently=False,
+                )
+            except Exception as e:
+                print(f"Email failed due to: {e}")
+
+            return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
+        
+        return Response({"message" : "Transaction not allowed"})
+
         
