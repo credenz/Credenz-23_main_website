@@ -5,7 +5,7 @@ const CartContext = createContext();
 
 const getLocalcartdata=()=>{
   let localcartdata = localStorage.getItem("credenzcart");
-  console.log(localcartdata);
+  // console.log(localcartdata);
   if(localcartdata===null){
     return [];
   }
