@@ -37,6 +37,7 @@ const adminUpload=(data)=>backend.post(`/upload-file/`,data,{headers: {Authoriza
 const adminOrder=(data)=>backend.post(`/offline-order/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminTable=()=>backend.get(`/transaction-list/`,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const adminConfirm=(data)=>backend.post(`/transaction-confirm/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
+const adminPass=(data)=>backend.post(`/event-pass/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const feedback=(data)=>backend.post(`/feedback/`,data,{headers: {}});
 const leaderboard=()=>backend.get(`/leaderboard/`,{headers: {}});
 const Requests = {
@@ -56,5 +57,6 @@ const Requests = {
     feedback,
     leaderboard,
     adminConfirm,
+    adminPass,
   };
   export default Requests;
