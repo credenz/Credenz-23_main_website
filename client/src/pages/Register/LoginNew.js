@@ -41,7 +41,7 @@ const LoginNew = (props) => {
       navigate('/events');
     })
     .catch((err)=>{
-      console.log(err);
+      // console.log(err);
       props.toast.toast.update(id, { render: "Wrong username or password", type: "error", isLoading: false,autoClose:5000 });
     })
   };

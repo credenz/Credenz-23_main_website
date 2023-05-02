@@ -20,7 +20,7 @@ const Admin = (props) => {
                 else setAdminStauts(0)
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 setAdminStauts(0)
             })
     }

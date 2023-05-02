@@ -47,17 +47,17 @@ const Payment = (props) => {
         cart.map((data)=>{
             event_list.push(data.id);
         })
-        console.log(event_list,Number(totalprice));
+        // console.log(event_list,Number(totalprice));
         const id = props.toast.toast.loading("Please wait...");
         await Requests.order({event_list,transaction_id:Number(upiId),amount:totalprice})
         .then((res)=>{
-            console.log('succesfull')
+            // console.log('succesfull')
             props.toast.toast.update(id, { render: "Ticket Booked", type: "success", isLoading: false, autoClose:5000 });
             clearcart();
             navigate('/');
         })
         .catch((err)=>{
-            console.log(err)
+            // console.log(err)
             props.toast.toast.update(id, { render: 'Payment Error', type: "error", isLoading: false,autoClose:5000 });
 
         })

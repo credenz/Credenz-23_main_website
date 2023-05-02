@@ -16,9 +16,9 @@ export default function Home() {
   const { loaded } = useProgress()
 
   useEffect(() => {
-    console.log(loaded, "loaded")
+    // console.log(loaded, "loaded")
     if (loaded >= 47) { // 45 as console log shows 46
-      console.log('loaded')
+      // console.log('loaded')
       setShowCheck(true)
     }
   }, [loaded])
@@ -36,7 +36,7 @@ export default function Home() {
   <div class="toggle">
     <input class="toggle-state" type="checkbox" name="check" value="check" checked={explore3D} onChange={(event) => {
        setExplore3D(event.target.checked)
-     console.log(explore3D)
+    //  console.log(explore3D)
       
      }}/>
     <div class="indicator"></div>

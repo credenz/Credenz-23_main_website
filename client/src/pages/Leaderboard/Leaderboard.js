@@ -7,7 +7,7 @@ function Leaderboard() {
     const playersList= async()=>{
         await Requests.leaderboard()
         .then((res)=>{
-            console.log(res.data);
+            // console.log(res.data);
             let temp=[];
             res.data.map((data)=>{
                 temp.push({coins:data.coins,full_name:data.full_name,username:data.username})

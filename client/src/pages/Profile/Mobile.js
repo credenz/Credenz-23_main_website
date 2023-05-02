@@ -35,7 +35,7 @@ const Mobile = ({ data, props }) => {
                 setMyTeams(res.data);
             })
             .catch((err) => {
-                console.log(err)
+                // console.log(err)
             })
     }
 
@@ -43,11 +43,11 @@ const Mobile = ({ data, props }) => {
         const id = props.toast.toast.loading("Please wait...");
         Requests.joinTeam({ team_id: teamId })
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 props.toast.toast.update(id, { render: "Joined Successfully", type: "success", isLoading: false, autoClose: 5000 });
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 props.toast.toast.update(id, { render: 'Error while joining', type: "error", isLoading: false, autoClose: 5000 });
             })
     }
@@ -57,7 +57,7 @@ const Mobile = ({ data, props }) => {
         // console.log(eventSelected,typeof(eventSelected));
         Requests.createTeam({ event_id: eventSelected, team_name: teamName })
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 if(res.data.message==="No order exists for this user and event."){
                     props.toast.toast.update(id, { render: "Buy event first!", type: "error", isLoading: false, autoClose: 5000 });
                     navigate('/events')
@@ -68,7 +68,7 @@ const Mobile = ({ data, props }) => {
                 setTeamVisible(0);
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 props.toast.toast.update(id, { render: 'Team Not Created', type: "error", isLoading: false, autoClose: 5000 });
             })
     }
@@ -233,7 +233,7 @@ const Mobile = ({ data, props }) => {
 
                                                                             <div class="pncard">
                                                                                 <div class="pncard-contentl">
-                                                                                {console.log(data)}
+                                                                                {/* {console.log(data)} */}
                                                                                     <img src={eventsList[data.event.event_id - 101].logo} alt="Example Image" />
                                                                                     <h2>{data.event.event_name}</h2>
                                                                                 </div>
