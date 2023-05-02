@@ -79,14 +79,17 @@ class UploadFileView(generics.GenericAPIView):
                     events = Event.objects.filter(event_id__in=event_l)
                     context = {"user": user, "events": events, "transaction_id":transaction_id, "order_date": transaction.order_date}
                     html_message = render_to_string("confirmation.html", context=context)
-                    send_mail(
+                    try:
+                        send_mail(
                         'Order Confirmation',
                         '',
                         settings.EMAIL_HOST_USER,
                         [email],
                         html_message=html_message,
                         fail_silently=False,
-                    )
+                        )
+                    except Exception as e:
+                        print(f"Email failed due to: {e}")
                 else:
                     f_check += 1
             return Response({"message" : f"transactions completed: faulty {f_check}, completed {c_check}"}, status=status.HTTP_202_ACCEPTED)
@@ -229,14 +232,17 @@ class PlaceOrderView(generics.GenericAPIView):
             email = user.email
             context = {"user": user, "events": events, "transaction_id":transaction_id}
             html_message = render_to_string("event.html", context=context)
-            send_mail(
+            try:
+                send_mail(
                 'Your Order',
                 '',
                 settings.EMAIL_HOST_USER,
                 [email],
                 html_message=html_message,
                 fail_silently=False,
-    )
+                )
+            except Exception as e:
+                print(f"Email failed due to: {e}")
         else:
             return Response({"message" : "Transaction already performed!"})
 
@@ -253,8 +259,8 @@ class GenerateTeamCodeView(generics.GenericAPIView):
         team_name = request.data['team_name']
         user = request.user
 
-        if Order.objects.get(event=event, user=user):
-            if not Team.objects.filter(event=event, user=user):
+        if Order.objects.filter(event=event, user=user):
+            if not user.team_set.filter(event=event).first():
                 new_team = Team.objects.create(event=Event.objects.get(event_id = event), team_name = team_name)
                 new_team.user.add(request.user)
                 team_password = generate_team_pass(new_team.team_id, Event.objects.filter(event_id=event))
@@ -267,7 +273,8 @@ class GenerateTeamCodeView(generics.GenericAPIView):
                 event_check = Event.objects.filter(event_id=event)
                 context = {"user": user, "team_id": new_team.team_id, "event": event_check, "team_password" : new_team.team_password}
                 html_message = render_to_string("team.html", context=context)
-                send_mail(
+                try:
+                    send_mail(
                             'Your Team',
                             '',
                             settings.EMAIL_HOST_USER,
@@ -275,6 +282,8 @@ class GenerateTeamCodeView(generics.GenericAPIView):
                             html_message=html_message,
                             fail_silently=False,
                         )
+                except Exception as e:
+                    print(f"email failed due to: {e}")
                 return Response({"message": new_team.team_id}, status=status.HTTP_201_CREATED)
             else:
                 return Response({"message" : "Team already exists for this user and event."})
@@ -287,10 +296,10 @@ class JoinTeamView(generics.GenericAPIView):
     def post(self, request):
         user = request.user
         team_id = request.data['team_id']
-        event_check = Team.objects.get(team_id=team_id).event
+        event_check = Team.objects.filter(team_id=team_id).first()
 
-        if Order.objects.filter(event = event_check, user = user, payment = "CO"):
-            if not Team.objects.filter(user = user, event = event_check):
+        if Order.objects.filter(event = event_check.event, user = user, payment = "CO"):
+            if not Team.objects.filter(user = user, event = event_check.event):
                 if Team.objects.filter(team_id = team_id):
                     exis_team = Team.objects.get(team_id = team_id)
                     if exis_team.user.count() >= exis_team.event.group_size:
@@ -303,14 +312,17 @@ class JoinTeamView(generics.GenericAPIView):
                         email = user.email
                         context = {"user": user, "team_id": team_id, "event": event_check, "team_password" : exis_team.team_password}
                         html_message = render_to_string("team.html", context=context)
-                        send_mail(
+                        try:
+                            send_mail(
                             'Your Team',
                             '',
                             settings.EMAIL_HOST_USER,
                             [email],
                             html_message=html_message,
                             fail_silently=False,
-                        )
+                            )
+                        except Exception as e:
+                            print(f"Email failed due to: {e}")
                         return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
                 else:
                     return Response({"message" : "Invalid team ID"})
@@ -368,14 +380,17 @@ class OfflineOrderView(generics.GenericAPIView):
             email = user.email
             context = {"user": user, "events": events, "transaction_id":transaction_id}
             html_message = render_to_string("event.html", context=context)
-            send_mail(
+            try:
+                send_mail(
                 'Your Order',
                 '',
                 settings.EMAIL_HOST_USER,
                 [email],
                 html_message=html_message,
                 fail_silently=False,
-    )
+                )
+            except Exception as e:
+                print(f"Email failed due to: {e}")
 
             return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
         
@@ -412,14 +427,19 @@ class TransactionConfirmView(generics.GenericAPIView):
         events = Event.objects.filter(event_id__in=event_l)
         context = {"user": user, "events": events, "transaction_id":transaction_id, "order_date": transaction.order_date}
         html_message = render_to_string("confirmation.html", context=context)
-        send_mail(
-            'Order Confirmation',
-            '',
-            settings.EMAIL_HOST_USER,
-            [email],
-            html_message=html_message,
-            fail_silently=False,
-        )   
+        try:
+            send_mail(
+                'Order Confirmation',
+                '',
+                settings.EMAIL_HOST_USER,
+                [email],
+                html_message=html_message,
+                fail_silently=False,
+            )
+        except Exception as e:
+            # Handle the exception here
+            print(f"An error occurred while sending the email: {e}")
+               
 
         return Response({"message" : "confirmed"}, status=status.HTTP_202_ACCEPTED)
         
