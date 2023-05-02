@@ -366,13 +366,14 @@ class OfflineOrderView(generics.GenericAPIView):
         off_officer = request.user
         if (User.objects.get(username = off_officer.username).offline_officer== True):
             for event in event_list:
-                if not Order.objects.get(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event)):
+                if not Order.objects.filter(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event)).first():
                     order = Order(user = User.objects.get(username=order_user), event = Event.objects.get(event_id = event), order_taker = request.user.full_name, payment="CO", transaction_id=transaction_id)
                     order.save()
 
             # add transaction for the complete list of events
-            transaction = Transaction(event_list = event_list, user = User.objects.get(username=order_user), transaction_id = transaction_id, amount=amount, payment ="CO")
-            transaction.save()
+            if not Transaction.objects.filter(transaction_id=transaction_id).first():
+                transaction = Transaction(event_list = event_list, user = User.objects.get(username=order_user), transaction_id = transaction_id, amount=amount, payment ="CO")
+                transaction.save()
 
              # send order email
             events = Event.objects.filter(event_id__in=event_list)
@@ -460,6 +461,7 @@ class AdminPassView(generics.GenericAPIView):
                     order.save()
 
             # add transaction for the complete list of events
+            Order.objects.filter(user=User.objects.get(username=order_user)).update(payment="CO")
             transaction = Transaction(event_list = event_list, user = User.objects.get(username=order_user), transaction_id = transaction_id, amount=amount, payment ="CO")
             transaction.save()
 
