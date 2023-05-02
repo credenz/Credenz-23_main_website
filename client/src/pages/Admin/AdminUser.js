@@ -119,13 +119,12 @@ const AdminUser = ({props}) => {
   const [username,setUsername] = useState('');
   const [length,setLength] = useState(0);
   const [payMethod,setPayMethod] = useState(0);
-  const [name,setName] = useState('');
   const [pass,setPass] = useState(false);
   const payList=[
     'UTR','UPI transaction ID','UPI Ref ID','Bank Reference Id'
 ]
   let navigate=useNavigate();
-  let link = `upi://pay?pa=pictscholarship@jsb&pn=${name}&am=${amount}&tn=IEEE&cu=INR`;
+  let link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${amount}&tn=IEEE&cu=INR`;
   const handelChange = (e) => {
     let temp = [];
     temp=cart;
@@ -138,7 +137,7 @@ const AdminUser = ({props}) => {
     setAmount(amt);
     setCart(temp);
     setLength(temp.length);
-    link = `upi://pay?pa=pictscholarship@jsb&pn=${name}&am=${amt}&tn=Credenz IEEE&cu=INR`;
+    link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${amt}&tn=Credenz IEEE&cu=INR`;
     generate();
   }
     const [isQr, setisQr] = useState(false);
@@ -176,7 +175,7 @@ const AdminUser = ({props}) => {
       //   window.alert(`username :- ${username}`);
     }
     const handelPass=()=>{
-      link = `upi://pay?pa=pictscholarship@jsb&pn=${name}&am=${200}&tn=Credenz IEEE&cu=INR`;
+      link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${200}&tn=Credenz IEEE&cu=INR`;
     generate();
     }
     const eventList = async () => {
@@ -265,17 +264,6 @@ const AdminUser = ({props}) => {
             >
               {/* <div className="col">TOTAL PRICE</div>
               <div className="col text-right">{totalprice}</div> */}
-            </div>
-            <div>
-            Enter Payee Name First:
-            <input id="upiId"
-              name="upiId"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              placeholder="Enter Payee Name:"
-              required
-            >
-            </input>
             </div>
             <div className='pay-links'>
             {/* {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>} */}

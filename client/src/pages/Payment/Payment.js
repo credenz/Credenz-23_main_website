@@ -14,7 +14,8 @@ import Modal from "react-modal";
 const Payment = (props) => {
     // const [data,setData]=useState(props);
     const { cart, totalprice,clearcart,loginStatus } = useCartContext();
-    const link = `upi://pay?pa=pictscholarship@jsb&pn=PISB&am=${totalprice}&tn=Credenz IEEE&cu=INR`;
+    // let name=localStorage.getItem('name')===null?"PISB":localStorage.getItem('name');
+    const link = `upi://pay?pa=vanshteppalwar@oksbi&pn=pictscholarship&am=${totalprice}&tn=Credenz IEEE&cu=INR`;
     // const [isQr, setisQr] = useState(false);
     const [upiId, setupiId] = useState("");
     const [payMethod,setPayMethod] = useState(0);
@@ -107,7 +108,21 @@ const Payment = (props) => {
         setIsOpen(false);
         // setDetails(0);
       }
-    useEffect(() => generate(), []);
+    //   const handleProfile = async ()=>{
+    //     await Requests.profile()
+    //     .then((res)=>{
+    //         // console.log(res.data.full_name)
+    //         // name=res.data.full_name
+    //         localStorage.setItem('name',res.data.full_name);
+    //         generate()
+    //     })
+    //     .catch((err)=>{
+    //     })
+    //   }
+    useEffect(() => {
+        // handleProfile()
+        generate()
+    }, []);
     return (
         <>
             <div className="payment">

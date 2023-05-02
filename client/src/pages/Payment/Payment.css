@@ -44,6 +44,7 @@ text-align: center;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   /* border-radius: 1rem; */
   border: transparent;
+  background-color: transparent;
 }
 
 .payment .cart{
@@ -265,7 +266,7 @@ margin: 3%;
   .payment .card{
     margin: 6vh auto;
     height: 73vh;
-    overflow: scroll;
+    overflow: auto;
   }
   .payment-rules{
     font-size: 1rem;

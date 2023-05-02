@@ -27,17 +27,32 @@ import toast, { ToastUtils } from "./utils/toastifyContainer";
 import { useLocation } from 'react-router-dom';
 import Sessions from './pages/Sessions/Sessions';
 import Leaderboard from './pages/Leaderboard/Leaderboard';
+import { useCartContext } from './context/cart_context';
+import { useEffect } from 'react';
+import Requests from './api/requests';
 function App() {
   const location = useLocation();
-
+  // const {loginStatus} = useCartContext();
+  // const fetchProfile=async()=>{
+  //   await Requests.profile()
+  //   .then((res)=>{
+  //     localStorage.setItem('name',res.data.full_name);
+  //   })
+  //   .catch((err)=>{})
+  // }
   let backgroundWindow = '';
   let backgroundImg="";
   if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile'||location.pathname === '/forget-password/:token/:uid'||location.pathname==='/forget-password'||location.pathname==='/admin'||location.pathname==='/leaderboard') {
     {backgroundImg = 'BgImage';backgroundWindow='BgWindow '}
   } 
+  // useEffect(()=>{
+  //   if(loginStatus){
+  //     fetchProfile();
+
+  //   }
+  // })
   return (
     <>
-   
     <Scrolltop/>
     <Scrolltop/>
     <Navbar/>
