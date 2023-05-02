@@ -10,7 +10,7 @@ const backend = axios.create({
     baseURL: url
   });
 const list = axios.create({
-    baseURL: 'https://gist.githubusercontent.com/VanshTeppalwar/59454bb8ef51fa856b0fcf62f804556b/raw/cf3a10461afb7e7f4da2c5aafee1ec00261868d6/events.json'    
+    baseURL: 'https://gist.githubusercontent.com/VanshTeppalwar/59454bb8ef51fa856b0fcf62f804556b/raw/a50cee05fc847058954442f8893d3910d329b1bc/events.json'    
   });  
 
 //For Reference, create your own function
