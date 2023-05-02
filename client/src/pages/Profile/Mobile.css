@@ -151,7 +151,7 @@
 }
 .profile  .card-content {
 	 padding: 6px;
-	 overflow: scroll;
+	 /* overflow: scroll; */
 }
 .profile  .card-desc {
 	 line-height: 1.6;
@@ -400,8 +400,8 @@
 	border-radius: 10px;
 	  /* box-shadow: 0.65rem 0.65rem 0 #1b2729; */
 	/* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
-	height: 40vh;
-	overflow: scroll;
+	/* height: 40vh;
+	overflow: scroll; */
 	box-shadow: 0.4rem 0.55rem 0 #1b2729;
 	  border-radius: 0.8rem;
 	  /* overflow: hidden; */
@@ -410,6 +410,7 @@
 	width: 100%;
 	margin-bottom: 10%;
   }
+  
   
   .pncard img {
 	width: 100px;

@@ -58,6 +58,11 @@ const Mobile = ({ data, props }) => {
         Requests.createTeam({ event_id: eventSelected, team_name: teamName })
             .then((res) => {
                 console.log(res.data);
+                if(res.data.message==="No order exists for this user and event."){
+                    props.toast.toast.update(id, { render: "Buy event first!", type: "error", isLoading: false, autoClose: 5000 });
+                    navigate('/events')
+                    return;
+                }
                 props.toast.toast.update(id, { render: "Team Created", type: "success", isLoading: false, autoClose: 5000 });
                 handleView();
                 setTeamVisible(0);
@@ -228,6 +233,7 @@ const Mobile = ({ data, props }) => {
 
                                                                             <div class="pncard">
                                                                                 <div class="pncard-contentl">
+                                                                                {console.log(data)}
                                                                                     <img src={eventsList[data.event.event_id - 101].logo} alt="Example Image" />
                                                                                     <h2>{data.event.event_name}</h2>
                                                                                 </div>

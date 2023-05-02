@@ -57,6 +57,11 @@ const Desktop = ({ data,props }) => {
         Requests.createTeam({event_id:eventSelected,team_name:teamName})
         .then((res)=>{
             console.log(res.data);
+            if(res.data.message==="No order exists for this user and event."){
+                props.toast.toast.update(id, { render: "Buy event first!", type: "error", isLoading: false, autoClose: 5000 });
+                navigate('/events')
+                return;
+            }
             props.toast.toast.update(id, { render: "Team Created", type: "success", isLoading: false, autoClose:5000 });
             handleView();
             setTeamVisible(0);
@@ -147,7 +152,7 @@ const Desktop = ({ data,props }) => {
                         {data.orders.length!==0?
                             <div className='tickets'>
                         {data.orders.map((val)=>(
-                            <OverlayTrigger placement={'right'} overlay={<Tooltip id={'tooltip-left'}> <strong>{val.payment==="PO"?'Payment Verification IN Progress...':'Payment Verified !'}</strong></Tooltip>}>
+                            <OverlayTrigger placement={'left'} overlay={<Tooltip id={'tooltip-left'}> <strong>{val.payment==="PO"?'Payment Verification IN Progress...':'Payment Verified !'}</strong></Tooltip>}>
                             <img src={val.payment==="PO"?val.event.event_po:val.event.event_co} style={{ 'maxWidth': '85%',height:'auto' }}></img>
                             </OverlayTrigger>
                             ))}

@@ -141,7 +141,7 @@ const Events = () => {
               {eventslist.map((list) => (
                 <div
                   className="outer"
-                  data-aos="zoom-in"
+                  // data-aos="zoom-in"
                   key={list.id}
                   onClick={() => openModal(list.id)}
                 >

@@ -750,9 +750,9 @@ margin-right: auto;
 	/* border-color: #733d6b; */
 	border-color: rgb(65, 69, 117);
   
-  width: 100%;
+  width: 30vw;
   margin-bottom: 10%;
-  height: 38vh;
+  height: 45vh;
 }
 
 .ncard img {
@@ -774,7 +774,7 @@ margin-right: auto;
   text-align: center;
   width: inherit;
   /* display: flex; */
-  overflow: scroll;
+  /* overflow: scroll; */
   height: inherit;
 }
 

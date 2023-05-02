@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import Requests from "../../api/requests";
 import { useNavigate } from "react-router-dom";
+import phonepe from '../../images/phonepe.png'
+import gpay from '../../images/gpay.jpg'
+import paytm from '../../images/paytm.png'
+import amazonpay from '../../images/amazonpay.png'
+import { Container, Row, Col, Button } from "react-bootstrap";
 const AdminUser = ({props}) => {
   // const details = [
   //   {
@@ -113,8 +118,13 @@ const AdminUser = ({props}) => {
   const [amount, setAmount] = useState(0);
   const [username,setUsername] = useState('');
   const [length,setLength] = useState(0);
+  const [payMethod,setPayMethod] = useState(0);
+  const [pass,setPass] = useState(false);
+  const payList=[
+    'UTR','UPI transaction ID','UPI Ref ID','Bank Reference Id'
+]
   let navigate=useNavigate();
-  let link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${amount}&tn=IEEE&cu=INR`;
+  let link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${amount}&tn=IEEE&cu=INR`;
   const handelChange = (e) => {
     let temp = [];
     temp=cart;
@@ -127,7 +137,7 @@ const AdminUser = ({props}) => {
     setAmount(amt);
     setCart(temp);
     setLength(temp.length);
-    link = `upi://pay?pa=vanshteppalwar@oksbi&pn=VanshTeppalwar&am=${amt}&tn=Credenz IEEE&cu=INR`;
+    link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${amt}&tn=Credenz IEEE&cu=INR`;
     generate();
   }
     const [isQr, setisQr] = useState(false);
@@ -163,6 +173,10 @@ const AdminUser = ({props}) => {
       .catch((err)=>{console.log(err);props.toast.toast.success('Error While Generating ticket');})
       //   window.alert(`UPI Transaction Id :- ${upiId}`);
       //   window.alert(`username :- ${username}`);
+    }
+    const handelPass=()=>{
+      link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${200}&tn=Credenz IEEE&cu=INR`;
+    generate();
     }
     const eventList = async () => {
     await Requests.events()
@@ -201,6 +215,11 @@ const AdminUser = ({props}) => {
                   <th>Event Name</th>
                   <th style={{ 'paddingLeft': '5px' }}>Cost</th>
                 </tr>
+                {/* <tr key={100}>
+                    <td><input type="checkbox" onChange={handelPass} id={100} name={'Event Pass'} value={200} />
+                      <label for={100}>{'Event Pass'}</label></td>
+                    <td style={{ 'paddingLeft': '15px' }}><label for={100}>{200}</label></td>
+                  </tr> */}
                 {details.map((data) => (
                   <>
                   {data.id!==103&&<tr key={data.id}>
@@ -249,8 +268,34 @@ const AdminUser = ({props}) => {
             <div className='pay-links'>
             {/* {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>} */}
               <div id='payment-qr-code' className="payment-qr-code" style={isQr ? { 'visibility': 'visible' } : { 'height': '0', 'width': '0' }}></div>
+              <p className="payment-link">Select Method</p>
               {/* <a target="_blank" href={link} rel="noreferrer" className="payment-link">Click To Pay</a> */}
             </div>
+            <Row>
+                            <Col>
+                                <img src={phonepe} alt="phonepe" className={payMethod==0?'pay-method pay-active':'pay-method '} onClick={(e)=>{setPayMethod(0)}}/>
+                            </Col>
+                            <Col>
+                                <img src={gpay} alt="Image 2" className={payMethod===1?'pay-method pay-active':'pay-method '} onClick={(e)=>{setPayMethod(1)}}/>
+                            </Col>
+                            <Col>
+                                <img src={paytm} alt="Image 3" className={payMethod===2?'pay-method pay-active':'pay-method '} onClick={(e)=>{setPayMethod(2)}}/>
+                            </Col>
+                            <Col>
+                                <img src={amazonpay} alt="Image 4" className={payMethod===3?'pay-method pay-active':'pay-method '} onClick={(e)=>{setPayMethod(3)}}/>
+                            </Col>
+                            </Row>
+                            <div style={{paddingTop:'5%'}}>
+                            Enter {payList[payMethod]}
+                            <input id="upiId"
+                                name="upiId"
+                                value={upiId}
+                                onChange={e => setupiId(e.target.value)}
+                                placeholder={`Enter ${payList[payMethod]}`}
+                                required
+                            >
+                            </input>
+                            </div>
             <div>
             Enter Username Of Person:
             <input id="upiId"
@@ -262,7 +307,7 @@ const AdminUser = ({props}) => {
             >
             </input>
             </div>
-            Enter Upi Transaction Id:
+            {/* Enter Upi Transaction Id:
             <input id="upiId"
               name="upiId"
               value={upiId}
@@ -270,7 +315,7 @@ const AdminUser = ({props}) => {
               placeholder="Enter Upi Transaction Id:"
               required
             >
-            </input>
+            </input> */}
             <button className="btn" onClick={() => handleClick()}>Confirm Payment</button>
           </div>
         </div>

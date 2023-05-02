@@ -23,6 +23,7 @@ urlpatterns = [
     # offline registration
     path("offline-register/", RegisterPlayerView.as_view(), name="offline-register"),
     path("offline-order/", OfflineOrderView.as_view(), name="offline-order"),
+    path("event-pass/", AdminPassView.as_view(), name="event-pass"),
     # Transaction (Admin view)
     path("transaction-list/", TransactionListView.as_view(), name="transaction-list"),
     path("transaction-confirm/", TransactionConfirmView.as_view(), name="transaction-confirm"),
