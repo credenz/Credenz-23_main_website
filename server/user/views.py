@@ -460,6 +460,7 @@ class AdminPassView(generics.GenericAPIView):
                     order.save()
 
             # add transaction for the complete list of events
+            Order.objects.filter(user=User.objects.get(username=order_user)).update(payment="CO")
             transaction = Transaction(event_list = event_list, user = User.objects.get(username=order_user), transaction_id = transaction_id, amount=amount, payment ="CO")
             transaction.save()
 
