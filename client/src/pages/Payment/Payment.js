@@ -15,7 +15,7 @@ const Payment = (props) => {
     // const [data,setData]=useState(props);
     const { cart, totalprice,clearcart,loginStatus } = useCartContext();
     // let name=localStorage.getItem('name')===null?"PISB":localStorage.getItem('name');
-    const link = `upi://pay?pa=vanshteppalwar@oksbi&pn=pictscholarship&am=${totalprice}&tn=Credenz IEEE&cu=INR`;
+    const link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${totalprice}&tn=Credenz IEEE&cu=INR`;
     // const [isQr, setisQr] = useState(false);
     const [upiId, setupiId] = useState("");
     const [payMethod,setPayMethod] = useState(0);
