@@ -120,7 +120,7 @@ const AdminUser = ({props}) => {
   const [length,setLength] = useState(0);
   const [payMethod,setPayMethod] = useState(0);
   const [pass,setPass] = useState(false);
-  const passAmt=150;
+  const passAmt=200;
   const payList=[
     'UTR','UPI transaction ID','UPI Ref ID','Bank Reference Id'
 ]
