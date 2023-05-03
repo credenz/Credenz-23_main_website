@@ -11,7 +11,8 @@ const backend = axios.create({
   });
 const list = axios.create({
     // baseURL: 'https://gist.githubusercontent.com/VanshTeppalwar/59454bb8ef51fa856b0fcf62f804556b/raw/a50cee05fc847058954442f8893d3910d329b1bc/events.json'    
-    baseURL: 'https://gist.githubusercontent.com/VanshTeppalwar/59454bb8ef51fa856b0fcf62f804556b/raw/594186105805449ac076f338fdfdf1ca3a7ecb4c/events.json'    
+    // baseURL: 'https://gist.githubusercontent.com/VanshTeppalwar/59454bb8ef51fa856b0fcf62f804556b/raw/594186105805449ac076f338fdfdf1ca3a7ecb4c/events.json'    
+    baseURL: 'https://gist.githubusercontent.com/VanshTeppalwar/59454bb8ef51fa856b0fcf62f804556b/raw/52d86cc0be1786f80a704a5b50a4a1cb4c1d3997/events.json'    
   });  
 
 //For Reference, create your own function
