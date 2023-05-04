@@ -217,14 +217,14 @@ class PlaceOrderView(generics.GenericAPIView):
                 order_list.append(order)
             else:
                 return Response({"message" : "order already placed"})
-
-        # check if every event orderis valid and then save
-        Order.objects.bulk_create(order_list)
     
             # add transaction for the complete list of events
         if not Transaction.objects.filter(transaction_id = transaction_id).first():
             transaction = Transaction(event_list = event_list, user = user, transaction_id = transaction_id, amount=amount)
             transaction.save()
+
+            # check if every event orderis valid and then save
+            Order.objects.bulk_create(order_list)
 
             # send order email
             events = Event.objects.filter(event_id__in=event_list)
@@ -244,6 +244,8 @@ class PlaceOrderView(generics.GenericAPIView):
             except Exception as e:
                 print(f"Email failed due to: {e}")
         else:
+            transaction = Transaction(event_list = event_list, user = user, transaction_id = transaction_id, amount=amount, payment="IO")
+            transaction.save()
             return Response({"message" : "Transaction already performed!"})
 
         return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
