@@ -35,7 +35,7 @@ const Mobile = ({ data, props }) => {
                 setMyTeams(res.data);
             })
             .catch((err) => {
-                console.log(err)
+                // console.log(err)
             })
     }
 
@@ -43,11 +43,11 @@ const Mobile = ({ data, props }) => {
         const id = props.toast.toast.loading("Please wait...");
         Requests.joinTeam({ team_id: teamId })
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 props.toast.toast.update(id, { render: "Joined Successfully", type: "success", isLoading: false, autoClose: 5000 });
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 props.toast.toast.update(id, { render: 'Error while joining', type: "error", isLoading: false, autoClose: 5000 });
             })
     }
@@ -57,7 +57,7 @@ const Mobile = ({ data, props }) => {
         // console.log(eventSelected,typeof(eventSelected));
         Requests.createTeam({ event_id: eventSelected, team_name: teamName })
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 if(res.data.message==="No order exists for this user and event."){
                     props.toast.toast.update(id, { render: "Buy event first!", type: "error", isLoading: false, autoClose: 5000 });
                     navigate('/events')
@@ -68,7 +68,7 @@ const Mobile = ({ data, props }) => {
                 setTeamVisible(0);
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 props.toast.toast.update(id, { render: 'Team Not Created', type: "error", isLoading: false, autoClose: 5000 });
             })
     }
@@ -233,7 +233,7 @@ const Mobile = ({ data, props }) => {
 
                                                                             <div class="pncard">
                                                                                 <div class="pncard-contentl">
-                                                                                {console.log(data)}
+                                                                                {/* {console.log(data)} */}
                                                                                     <img src={eventsList[data.event.event_id - 101].logo} alt="Example Image" />
                                                                                     <h2>{data.event.event_name}</h2>
                                                                                 </div>
@@ -483,7 +483,7 @@ const Mobile = ({ data, props }) => {
                                             </div>
                                         <div className="card-contact">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-qr-code-scan" viewBox="0 0 16 16"> <path d="M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0v-3Zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5ZM.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5Zm15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5ZM4 4h1v1H4V4Z" /> <path d="M7 2H2v5h5V2ZM3 3h3v3H3V3Zm2 8H4v1h1v-1Z" /> <path d="M7 9H2v5h5V9Zm-4 1h3v3H3v-3Zm8-6h1v1h-1V4Z" /> <path d="M9 2h5v5H9V2Zm1 1v3h3V3h-3ZM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8H8Zm2 2H9V9h1v1Zm4 2h-1v1h-2v1h3v-2Zm-4 2v-1H8v1h2Z" /> <path d="M12 9h2V8h-2v1Z" /> </svg>
-                                            <img src={`https://chart.googleapis.com/chart?cht=qr&chl=https://localhost:3000/register/${data.referral}&chs=100x100&chld=L|0`}
+                                            <img src={`https://chart.googleapis.com/chart?cht=qr&chl=${window.location.origin}/register/${data.referral}&chs=100x100&chld=L|0`}
                                                 className="profile-qr-code img-thumbnail img-responsive" alt='QR CODE' />
                                         </div>
                                         <div className="card-contact">

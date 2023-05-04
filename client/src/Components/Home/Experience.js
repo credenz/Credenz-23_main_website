@@ -37,7 +37,7 @@ export default function Experience({explore3D, isMouseDown}) {
   },4000)
 
   useEffect(() => {
-    console.log(explore3D)
+    // console.log(explore3D)
     if(explore3D){
       
     }
@@ -110,15 +110,15 @@ export default function Experience({explore3D, isMouseDown}) {
 
     function CamControlDispatcher(){
       if (explore3D){
-        console.log("pcorbitcontroller")
+        // console.log("pcorbitcontroller")
         return <PCOrbitController />
       }
       if(isPhone){
-        console.log("mobile controller")
+        // console.log("mobile controller")
         return <MobileController />
 
       }else{
-        console.log("rig")
+        // console.log("rig")
         return <Rig />
       }
     }

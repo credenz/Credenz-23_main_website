@@ -54,10 +54,10 @@ function TablePage({props}){
     const handleFileUpload = async() => {
       const formData = new FormData();
       formData.append('file', selectedFile);
-      console.log(formData);
+      // console.log(formData);
       await Requests.adminUpload({file:formData})
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           props.toast.toast.success('Uploaded successfully');
         })
         .catch((error) => {
@@ -68,7 +68,7 @@ function TablePage({props}){
     const handleTableData= async()=>{
       await Requests.adminTable()
       .then((res)=>{
-        console.log('taable list',res.data);
+        // console.log('taable list',res.data);
         let temp=[];
         res.data.map((val,indx)=>{
           let list='';

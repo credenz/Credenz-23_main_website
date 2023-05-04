@@ -120,6 +120,7 @@ const AdminUser = ({props}) => {
   const [length,setLength] = useState(0);
   const [payMethod,setPayMethod] = useState(0);
   const [pass,setPass] = useState(false);
+  const passAmt=200;
   const payList=[
     'UTR','UPI transaction ID','UPI Ref ID','Bank Reference Id'
 ]
@@ -159,29 +160,66 @@ const AdminUser = ({props}) => {
         });
     }
     const handleClick=()=>{
+      if(username===''||upiId===''){
+        props.toast.toast.error('Username or transaction id is empty');
+        return;
+      }
       // console.log(cart);
-      let event_list=[];
-      let amount=0;
-      cart.map((data)=>{amount+=data.amt;event_list.push(data.id)})
-      // console.log(amount,event_list);
-      Requests.adminOrder({username,transaction_id:upiId,event_list,amount})
-      .then((res)=>{
-        console.log(res,props);
-        props.toast.toast.success('Successfully generated ticket');
-        navigate('/admin');
-      })
-      .catch((err)=>{console.log(err);props.toast.toast.success('Error While Generating ticket');})
+      if(pass){
+        const id = props.toast.toast.loading("Please wait...");
+        Requests.adminPass({amount:passAmt,username,transaction_id:upiId})
+        .then((res)=>{
+          console.log(res.data);
+          props.toast.toast.update(id, { render: "Pass Booked", type: "success", isLoading: false, autoClose:5000 });
+        })
+        .catch((err)=>{
+          console.log(err);
+          props.toast.toast.update(id, { render: 'Payment Error', type: "error", isLoading: false,autoClose:5000 });
+        })
+        return ;
+      }
+      else{
+
+        let event_list=[];
+        let amount=0;
+        cart.map((data)=>{amount+=data.amt;event_list.push(data.id)})
+        console.log(username,upiId,event_list,amount);
+        const id = props.toast.toast.loading("Please wait...");
+        Requests.adminOrder({username,transaction_id:upiId,event_list,amount})
+        .then((res)=>{
+          console.log(res,props);
+          props.toast.toast.update(id, { render: "Successfully generated ticket", type: "success", isLoading: false, autoClose:5000 });
+          // props.toast.toast.success('Successfully generated ticket');
+          navigate('/admin');
+        })
+        .catch((err)=>{console.log(err);
+          // props.toast.toast.success('Error While Generating ticket');
+          props.toast.toast.update(id, { render: 'Payment Error', type: "error", isLoading: false,autoClose:5000 });
+        })
+      }
       //   window.alert(`UPI Transaction Id :- ${upiId}`);
       //   window.alert(`username :- ${username}`);
     }
-    const handelPass=()=>{
-      link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${200}&tn=Credenz IEEE&cu=INR`;
-    generate();
+    const handelPass=(e)=>{
+      if(e.target.checked){
+        setPass(true);
+        link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${passAmt}&tn=Credenz IEEE&cu=INR`;
+        generate();
+        setAmount(passAmt);
+        setLength(1);
+        setCart([]);
+      }
+      else{
+        setPass(false);
+        setAmount(0);
+        setLength(0);
+        setCart([]);
+      }
     }
     const eventList = async () => {
     await Requests.events()
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setdetails(res.data);
       })
       .catch((err) => console.log(err));
@@ -215,12 +253,12 @@ const AdminUser = ({props}) => {
                   <th>Event Name</th>
                   <th style={{ 'paddingLeft': '5px' }}>Cost</th>
                 </tr>
-                {/* <tr key={100}>
-                    <td><input type="checkbox" onChange={handelPass} id={100} name={'Event Pass'} value={200} />
+                <tr key={100}>
+                    <td><input type="checkbox" onChange={handelPass} id={100} name={'Event Pass'} value={passAmt} />
                       <label for={100}>{'Event Pass'}</label></td>
-                    <td style={{ 'paddingLeft': '15px' }}><label for={100}>{200}</label></td>
-                  </tr> */}
-                {details.map((data) => (
+                    <td style={{ 'paddingLeft': '15px' }}><label for={100}>{passAmt}</label></td>
+                  </tr>
+                {!pass&&details.map((data) => (
                   <>
                   {data.id!==103&&<tr key={data.id}>
                     <td><input type="checkbox" onChange={handelChange} id={data.id} name={data.heading} value={data.amount} />
@@ -286,7 +324,7 @@ const AdminUser = ({props}) => {
                             </Col>
                             </Row>
                             <div style={{paddingTop:'5%'}}>
-                            Enter {payList[payMethod]}
+                            <p>Enter {payList[payMethod]}</p>
                             <input id="upiId"
                                 name="upiId"
                                 value={upiId}

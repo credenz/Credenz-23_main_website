@@ -73,7 +73,7 @@ const Events = () => {
 
   function openModal(id) {
     seteventid(id);
-    console.log("open model id:", id);
+    // console.log("open model id:", id);
     setIsOpen(true);
   }
 
@@ -89,23 +89,23 @@ const Events = () => {
   const eventList = async () => {
     await Requests.events()
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setdetails(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {});
     if(loginStatus){
       await Requests.profile()
       .then((res)=>{
         let arr = []
-        console.log(res.data.orders)
+        // console.log(res.data.orders)
         for(let i of res.data.orders){
           arr.push(i.event.event_id)
         }
         setPurchasedEvents(arr)
-        console.log(arr)
+        // console.log(arr)
       })
       .catch((err)=>{
-        console.log(err)
+        // console.log(err)
       })
     }
   };
@@ -177,7 +177,7 @@ const Events = () => {
         ariaHideApp={false}
         // contentLabel="Example Modal"
       >
-      {console.log(typeof(details))}
+      {/* {console.log(typeof(details))} */}
         {details.map((data) => {
           if (eventid && data.id === eventid)
             return (
@@ -333,7 +333,7 @@ const Events = () => {
                     }
                   >
                     {/* Add to cart */}
-                    {console.log(data.id.toString(), "looo")}
+                    {/* {console.log(data.id.toString(), "looo")} */}
                     { (cart.find((item) => item.id === data.id)
                           ?  <>Added To cart</>
                           : <>Add to cart</>)}

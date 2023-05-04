@@ -26,14 +26,14 @@ const Profile = (props) => {
         setHasFetchedData(true);
         await Requests.profile()
         .then((res)=>{
-            console.log('profilr',res.data);
+            // console.log('profilr',res.data);
             setData(res.data);
             // props.toast.toast.update(id, {isLoading: false});
             // props.toast.toast.update(id, { render: 'Error', type: "success", isLoading: false,autoClose:5000 });
             // props.toast.toast.update(id, { isLoading: false });
         })
         .catch((err)=>{
-            console.log(err)
+            // console.log(err)
             // props.toast.toast.update(id, { render: 'Error while fetching data', type: "error", isLoading: false,autoClose:5000 });
                 // props.toast.toast.update(id, { render: 'Error while fetching data', type: "error", isLoading: false, autoClose: 5000 });
                 props.toast.toast.error('Error while fetching data');
