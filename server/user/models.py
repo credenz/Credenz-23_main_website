@@ -113,7 +113,7 @@ class Team(models.Model):
         return f'{self.event} - {", ".join(str(u) for u in self.user.all())}'
     
 class Transaction(models.Model):
-    PAYMENT_STATUS = (("PO", "Pending"), ("CO", "Completed"))
+    PAYMENT_STATUS = (("PO", "Pending"), ("CO", "Completed"), ("IO", "Invalid"))
     event_list = models.JSONField(default=list)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     transaction_id = models.IntegerField(null=False, unique=True)
