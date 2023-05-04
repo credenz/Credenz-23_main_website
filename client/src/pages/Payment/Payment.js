@@ -41,13 +41,14 @@ const Payment = (props) => {
         });
     }
     const handleClick = async () => {
-        if(!loginStatus) {props.toast.toast.error('Login First!');return;}
-        if(upiId==='') {props.toast.toast.error('Enter Valid id');return;}
+        
         const event_list=[];
         cart.map((data)=>{
             event_list.push(data.id);
         })
-        // console.log(event_list,Number(totalprice));
+        // console.log(typeof(upiId),upiId);
+        // console.log();
+        
         const id = props.toast.toast.loading("Please wait...");
         await Requests.order({event_list,transaction_id:Number(upiId),amount:totalprice})
         .then((res)=>{
@@ -61,8 +62,8 @@ const Payment = (props) => {
             props.toast.toast.update(id, { render: 'Payment Error', type: "error", isLoading: false,autoClose:5000 });
 
         })
-        // console.log(cart,typeof(upiId));
-        // window.alert(`UPI Transaction Id :- ${upiId}`);
+        console.log(cart,typeof(upiId));
+        window.alert(`UPI Transaction Id :- ${upiId}`);
     }
     const customStyles = {
         overlay: {
@@ -96,7 +97,9 @@ const Payment = (props) => {
       function openModal() {
         // seteventid(id);
         // console.log("open model id:", id);
-        setIsOpen(true);
+        if(!loginStatus) {props.toast.toast.error('Login First!');navigate('/login');return;}
+        else if(upiId===''||upiId.length<10) {props.toast.toast.error('Enter Valid id');return;}
+        else {props.toast.toast.info(`Please Ensure ${payList[payMethod]} is correct`);setIsOpen(true);}
       }
     
       function afterOpenModal() {
@@ -121,6 +124,8 @@ const Payment = (props) => {
     //   }
     useEffect(() => {
         // handleProfile()
+        if(cart.length===0) {navigate('/events');}
+        if(!loginStatus) navigate('/login');
         generate()
     }, []);
     return (
@@ -216,14 +221,24 @@ const Payment = (props) => {
                             Enter {payList[payMethod]}
                             <input id="upiId"
                                 name="upiId"
+                                // type="text" pattern="^[0-9]*$"
                                 value={upiId}
-                                onChange={e => setupiId(e.target.value)}
+                                onKeyDown={e => {
+                                    const pattern = /^[0-9]*$/;
+                                    if (!pattern.test(e.key)&& e.key !== "Backspace") {
+                                    e.preventDefault();
+                                    }
+                                }}
+                                onChange={e => 
+                                    {
+                                        setupiId(e.target.value)}
+                                    }
                                 placeholder={`Enter ${payList[payMethod]}`}
                                 required
                             >
                             </input>
                             </div>
-                            <button className="btn" onClick={() => {props.toast.toast.info(`Please Ensure ${payList[payMethod]} is correct`);setIsOpen(true)}}>Pay</button>
+                            <button className="btn" onClick={() => {openModal()}}>Pay</button>
                         </div>
                     </div>
                 </div>
