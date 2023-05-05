@@ -300,7 +300,7 @@ class JoinTeamView(generics.GenericAPIView):
         team_id = request.data['team_id']
         event_check = Team.objects.filter(team_id=team_id).first()
 
-        if Order.objects.filter(event = event_check.event, user = user, payment = "CO"):
+        if Order.objects.filter(event = event_check.event, user = user):
             if not Team.objects.filter(user = user, event = event_check.event):
                 if Team.objects.filter(team_id = team_id):
                     exis_team = Team.objects.get(team_id = team_id)
