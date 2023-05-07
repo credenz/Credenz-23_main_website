@@ -62,8 +62,8 @@ const Payment = (props) => {
             props.toast.toast.update(id, { render: 'Payment Error', type: "error", isLoading: false,autoClose:5000 });
 
         })
-        // console.log(cart,typeof(upiId));
-        // window.alert(`UPI Transaction Id :- ${upiId}`);
+        console.log(cart,typeof(upiId));
+        window.alert(`UPI Transaction Id :- ${upiId}`);
     }
     const customStyles = {
         overlay: {

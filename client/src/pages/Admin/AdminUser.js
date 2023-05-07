@@ -167,11 +167,15 @@ const AdminUser = ({props}) => {
       return true
     }
     const handleClick=()=>{
-      if(username===''||upiId===''){
-        props.toast.toast.error('Username or transaction id is empty');
+      if(username===''){
+        props.toast.toast.error('Username is empty');
         return;
       }
+
       if(!onlyDigits(upiId)) {props.toast.toast.error('Enter Only Numeric digits!');return;}
+
+      if(upiId===''||upiId.length<10) {props.toast.toast.error('Enter Valid id');return;}
+
       // console.log(cart);
       if(pass){
         const id = props.toast.toast.loading("Please wait...");
@@ -336,7 +340,16 @@ const AdminUser = ({props}) => {
                             <input id="upiId"
                                 name="upiId"
                                 value={upiId}
-                                onChange={e => setupiId(e.target.value)}
+                                onKeyDown={e => {
+                                    const pattern = /^[0-9]*$/;
+                                    if (!pattern.test(e.key)&& e.key !== "Backspace") {
+                                    e.preventDefault();
+                                    }
+                                }}
+                                onChange={e => 
+                                    {
+                                        setupiId(e.target.value)}
+                                    }
                                 placeholder={`Enter ${payList[payMethod]}`}
                                 required
                             >
@@ -348,7 +361,7 @@ const AdminUser = ({props}) => {
               name="upiId"
               value={username}
               onChange={e => setUsername(e.target.value)}
-              placeholder="Enter Upi Transaction Id:"
+              placeholder="Enter Username Of Person:"
               required
             >
             </input>
