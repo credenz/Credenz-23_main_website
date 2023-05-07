@@ -13,6 +13,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.exceptions import ParseError
 from rest_framework.views import APIView
 from .serializers import *
 from .models import *
@@ -562,5 +563,22 @@ class PassView(generics.GenericAPIView):
 
         return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
         
+class ValidateUserView(generics.GenericAPIView):
 
-
+    def post(self, request):
+        try:
+            username = request.data["username"]
+            password = request.data["password"]
+            event = request.data["event"]
+        except KeyError:
+            raise ParseError("Username and password fields are required.")
+        
+        user = User.objects.filter(username=username).first()
+        if user:
+            if user.check_password(password):
+                return Response({"message": "user exists and password is correct"}, status=status.HTTP_200_OK)
+            else:
+                return Response({"message": "incorrect password"}, status=status.HTTP_401_UNAUTHORIZED)
+        else:
+            return Response({"message": "user does not exist"}, status=status.HTTP_404_NOT_FOUND)
+        

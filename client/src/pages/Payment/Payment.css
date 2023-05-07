@@ -167,7 +167,8 @@ text-align: center;
   /* color: white; */
 }
 .payment .back-to-shop a{
-  color: #fff; 
+  /* color: #fff;  */
+  color: rgb(68, 0, 255);
   text-decoration: none;
 }
 .payment .back-to-shop a:hover{
