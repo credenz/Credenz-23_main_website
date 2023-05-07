@@ -11,11 +11,11 @@ import amazonpay from '../../images/amazonpay.png'
 import Requests from '../../api/requests';
 import { isDesktop } from 'react-device-detect';
 import Modal from "react-modal";
-const Payment = (props) => {
+const PassPayment = (props) => {
     // const [data,setData]=useState(props);
     const { cart, totalprice,clearcart,loginStatus } = useCartContext();
-    // let name=localStorage.getItem('name')===null?"PISB":localStorage.getItem('name');
-    const link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${totalprice}&tn=Credenz IEEE&cu=INR`;
+    const passAmt=200;
+    const link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${passAmt}&tn=Credenz IEEE&cu=INR`;
     // const [isQr, setisQr] = useState(false);
     const [upiId, setupiId] = useState("");
     const [payMethod,setPayMethod] = useState(0);
@@ -42,28 +42,19 @@ const Payment = (props) => {
     }
     const handleClick = async () => {
         
-        const event_list=[];
-        cart.map((data)=>{
-            event_list.push(data.id);
-        })
-        // console.log(typeof(upiId),upiId);
-        // console.log();
-        
         const id = props.toast.toast.loading("Please wait...");
-        await Requests.order({event_list,transaction_id:Number(upiId),amount:totalprice})
+        Requests.orderPass({amount:passAmt,transaction_id:upiId})
         .then((res)=>{
-            // console.log('succesfull')
-            props.toast.toast.update(id, { render: "Ticket Booked", type: "success", isLoading: false, autoClose:5000 });
-            clearcart();
-            navigate('/profile');
+          console.log(res.data);
+          clearcart();
+          props.toast.toast.update(id, { render: "Pass Booked", type: "success", isLoading: false, autoClose:5000 });
+          navigate('/profile');
         })
         .catch((err)=>{
-            console.log(err)
-            props.toast.toast.update(id, { render: 'Payment Error', type: "error", isLoading: false,autoClose:5000 });
-
+          console.log(err);
+          props.toast.toast.update(id, { render: 'Payment Error', type: "error", isLoading: false,autoClose:5000 });
         })
-        // console.log(cart,typeof(upiId));
-        // window.alert(`UPI Transaction Id :- ${upiId}`);
+        return ;
     }
     const customStyles = {
         overlay: {
@@ -121,17 +112,15 @@ const Payment = (props) => {
     //   const handleProfile = async ()=>{
     //     await Requests.profile()
     //     .then((res)=>{
-    //         // console.log(res.data.full_name)
-    //         // name=res.data.full_name
-    //         localStorage.setItem('name',res.data.full_name);
-    //         generate()
+    //         setUsername(res.data.username)
     //     })
     //     .catch((err)=>{
+    //         props.toast.toast.error('Error while fetching data');
+    //         navigate('/events');
     //     })
     //   }
     useEffect(() => {
-        // handleProfile()
-        if(cart.length===0) {navigate('/events');}
+        // if(cart.length===0) {navigate('/events');}
         if(!loginStatus) navigate('/login');
         generate()
     }, []);
@@ -145,7 +134,7 @@ const Payment = (props) => {
                                 <div className="row">
                                     <div className="col">
                                         <h4>
-                                            <b>Payment</b>
+                                            <b>Pass Payment</b>
                                         </h4>
                                     </div>
                                     {/* <div className="col align-self-center text-right ">3 items</div> */}
@@ -157,11 +146,12 @@ const Payment = (props) => {
                                     <div>
                                         <h4> Follow This Steps For Payment </h4>
                                         <p className="payment-rules">
-                                            1)Scan QR or click on the link to pay.<br></br>
-                                            2)Ensure Amout entered matches the one shown in summary.<br></br>
-                                            3)Verification of payment will be done and status will be updated in profile-tickets section.<br></br>
-                                            4)After Successfull payment, Enter Transaction ID and click confirm payment.<br></br>
-                                            5)In case Of any queries contact 
+                                            1)Buying pass allows you to participate in all events.<br></br>
+                                            2)Scan QR or click on the link to pay.<br></br>
+                                            3)Ensure Amout entered matches the one shown in summary.<br></br>
+                                            4)Verification of payment will be done and status will be updated in profile-tickets section.<br></br>
+                                            5)After Successfull payment, Enter Transaction ID and click confirm payment.<br></br>
+                                            6)In case Of any queries contact 
                                             <a href='/contact' style={{fontFamily:'inherit'}} onClick={(e)=>{e.preventDefault();navigate('/contact')}}> here</a>.</p>
                                     </div>
 
@@ -173,7 +163,7 @@ const Payment = (props) => {
                                 {/* {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>} */}
                             {
                                 !isDesktop&&
-                            <div style={{display:'inline',paddingLeft:'20%',color: 'rgb(68, 0, 255)',textDecorationLine: 'underline'}}>
+                            <div style={{display:'inline',paddingLeft:'20%',color: 'rgb(99 102 241)',textDecorationLine: 'underline'}}>
                                 <a target="_blank" href={link} rel="noreferrer" >Click To Pay</a>
                                 {/* <div className="payment-qr-code" id='payment-qr-code'></div> */}
                             </div>}
@@ -202,7 +192,7 @@ const Payment = (props) => {
                                 }}
                             >
                                 <div className="col">TOTAL PRICE</div>
-                                <div className="col text-right"> <i className="fa fa-inr"></i> {totalprice}</div>
+                                <div className="col text-right"> <i className="fa fa-inr"></i> {passAmt}</div>
                             </div>
                             <div className='payment-links'>
                                 <div className="payment-qr-code" id='payment-qr-code'></div>
@@ -279,7 +269,7 @@ const Payment = (props) => {
 
                 {/* <div className="modalbody info"> */}
                 <div className="pmodalbody info">
-                <p>Total Price: {totalprice} </p>
+                <p>Total Price: {passAmt} </p>
                 <p>{payList[payMethod]}: {upiId}</p>
                 <ol className='pay-list'>
                     <li style={{color:'#625e5e'}}>Payment verification will be done in 2-3 working days.</li>
@@ -297,4 +287,4 @@ const Payment = (props) => {
         </>
     )
 }
-export default Payment;
+export default PassPayment;
