@@ -18,6 +18,7 @@ import Soon from './models/Soon'
 import JustLogo from './models/just_logo'
 import JustLogoV2 from './models/just_logo_v2'
 import { JustLogoV3 } from './models/just_logo_v3'
+import Sponsor from './models/Sponsor'
 
 export default function Experience({explore3D, isMouseDown}) {
   const [isSnapped, setSnpped] = useState(false)
@@ -139,7 +140,8 @@ export default function Experience({explore3D, isMouseDown}) {
         {/* {explore3D ? <Html center><h1  >Explore 3D</h1></Html> : null} */}
         
 
-        {/* <Soon/> */}
+        <Soon/>
+        <Sponsor />
         {/* <JustLogo /> */}
         {/* <JustLogoV2 /> */}
         <JustLogoV3 />

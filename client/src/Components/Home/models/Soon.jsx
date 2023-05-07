@@ -8,13 +8,13 @@ import { useGLTF, useTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
 export default function Soon(props) {
-  const { nodes, materials } = useGLTF('/models/comingsoon/soon2.glb')
-  const texture = useTexture("/models/comingsoon/soon.png")
+  const { nodes, materials } = useGLTF('/models/comingsoon/credenz.glb')
+  // const texture = useTexture("/models/comingsoon/soon.png")
   const soonRef = useRef()
 
   useFrame(({ clock }) => {
-    const a = clock.getElapsedTime();
-    soonRef.current.rotation.y = Math.cos(a ) * 0.2;
+    // const a = clock.getElapsedTime();
+    // soonRef.current.rotation.y = Math.cos(a ) * 0.2;
     // navGroup.current.rotation.x = a;
     // navGroup.current.rotation.z = a;
   });
@@ -24,14 +24,20 @@ export default function Soon(props) {
     //   <meshBasicMaterial   color={"white"}/>
     //   </mesh>    
     // </group>
-      <group {...props} dispose={null} >
-        <group position={[0.05, 0.15, -4.27]} scale={1.8}>
-          <mesh geometry={nodes.CS.geometry} material={nodes.CS.material} scale={0.75} ref={soonRef}> 
-          <meshBasicMaterial   color={"white"}/>
-          </mesh>
-        </group>
-      </group>
+      // <group {...props} dispose={null} >
+      //   <group position={[0.05, 0.15, -4.27]} scale={1.8}>
+      //     <mesh geometry={nodes.CS.geometry} material={nodes.CS.material} scale={0.75} ref={soonRef}> 
+      //     <meshBasicMaterial   color={"white"}/>
+      //     </mesh>
+      //   </group>
+      // </group>
+
+      <group {...props} dispose={null}>
+      <mesh geometry={nodes.Text001.geometry} material={nodes.Text001.material} position={[0.05, 0.3, -0.44]} rotation={[Math.PI / 2, 0, 0]} scale={0.72} >
+      <meshBasicMaterial   color={"white"}/>
+      </mesh>
+    </group>
   )
 }
 
-useGLTF.preload('/models/comingsoon/soon.glb')
+useGLTF.preload('/models/comingsoon/credenz.glb')
