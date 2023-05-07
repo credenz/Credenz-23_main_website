@@ -120,7 +120,7 @@ const AdminUser = ({props}) => {
   const [length,setLength] = useState(0);
   const [payMethod,setPayMethod] = useState(0);
   const [pass,setPass] = useState(false);
-  const passAmt=200;
+  const passAmt=100;
   const payList=[
     'UTR','UPI transaction ID','UPI Ref ID','Bank Reference Id'
 ]
@@ -159,11 +159,23 @@ const AdminUser = ({props}) => {
             correctLevel: window.QRCode.CorrectLevel.H
         });
     }
+    function onlyDigits(s) {
+      for (let i = s.length - 1; i >= 0; i--) {
+        const d = s.charCodeAt(i);
+        if (d < 48 || d > 57) return false
+      }
+      return true
+    }
     const handleClick=()=>{
-      if(username===''||upiId===''){
-        props.toast.toast.error('Username or transaction id is empty');
+      if(username===''){
+        props.toast.toast.error('Username is empty');
         return;
       }
+
+      if(!onlyDigits(upiId)) {props.toast.toast.error('Enter Only Numeric digits!');return;}
+
+      if(upiId===''||upiId.length<10) {props.toast.toast.error('Enter Valid id');return;}
+
       // console.log(cart);
       if(pass){
         const id = props.toast.toast.loading("Please wait...");
@@ -328,7 +340,16 @@ const AdminUser = ({props}) => {
                             <input id="upiId"
                                 name="upiId"
                                 value={upiId}
-                                onChange={e => setupiId(e.target.value)}
+                                onKeyDown={e => {
+                                    const pattern = /^[0-9]*$/;
+                                    if (!pattern.test(e.key)&& e.key !== "Backspace") {
+                                    e.preventDefault();
+                                    }
+                                }}
+                                onChange={e => 
+                                    {
+                                        setupiId(e.target.value)}
+                                    }
                                 placeholder={`Enter ${payList[payMethod]}`}
                                 required
                             >
@@ -340,7 +361,7 @@ const AdminUser = ({props}) => {
               name="upiId"
               value={username}
               onChange={e => setUsername(e.target.value)}
-              placeholder="Enter Upi Transaction Id:"
+              placeholder="Enter Username Of Person:"
               required
             >
             </input>
