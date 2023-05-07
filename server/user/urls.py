@@ -20,6 +20,7 @@ urlpatterns = [
     # order
     path("orders/", OrderView.as_view(), name="orders"),
     path("placeorder/", PlaceOrderView.as_view(), name="place-order"),
+    path("order-pass/", PassView.as_view(), name="order-pass"),
     # offline registration
     path("offline-register/", RegisterPlayerView.as_view(), name="offline-register"),
     path("offline-order/", OfflineOrderView.as_view(), name="offline-order"),
