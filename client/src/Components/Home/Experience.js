@@ -141,7 +141,7 @@ export default function Experience({explore3D, isMouseDown}) {
         
 
         <Soon/>
-        <Sponsor />
+        {/* <Sponsor /> */}
         {/* <JustLogo /> */}
         {/* <JustLogoV2 /> */}
         <JustLogoV3 />
