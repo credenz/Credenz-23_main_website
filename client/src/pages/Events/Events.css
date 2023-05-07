@@ -1052,3 +1052,15 @@ font-weight: bold;
     margin: 0;
   }
 }
+.passBtn{
+  display: flex;
+justify-content: center;
+align-items: center;
+color: white;
+border: 1px solid rgb(38 10 38) !important;
+background-color: rgb(49 14 59) !important;
+border-radius: 3px;
+margin: 5px 15px !important;
+width: 105px;
+padding: 0px;
+}

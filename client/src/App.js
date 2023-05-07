@@ -12,9 +12,9 @@ import Footer from './Components/Footer/Footer';
 import Home from './Components/Home/Home'
 import Profile from './pages/Profile/Profile';
 import Payment from './pages/Payment/Payment';
+import PassPayment from './pages/Payment/PassPayment';
 import Admin from './pages/Admin/Admin';
 import Team from "./pages/team/Team"
-
 import LoginNew from "./pages/Register/LoginNew";
 import Register from "./pages/Register/Register"
 import Error from './pages/Error/Error';
@@ -76,6 +76,7 @@ function App() {
    <Route exact path="/user" element={<User/> } />
    <Route exact path="/profile" element={<Profile toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/payment" element={<Payment toast={{ container: <ToastUtils />, toast }}/> } />
+   <Route exact path="/payment/pass" element={<PassPayment toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/admin" element={<Admin toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/team" element={<Team/> } />
    <Route exact path="/sessions" element={<Sessions/> } />

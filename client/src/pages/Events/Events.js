@@ -21,8 +21,10 @@ import WEB from "../../images/webwever.png";
 import { useCartContext } from "../../context/cart_context";
 // import EventSky from "./EventSky";
 import Requests from "../../api/requests";
+import { useNavigate } from "react-router-dom";
 
 const Events = () => {
+  let navigate=useNavigate();
   const [loaderStatus, setLoaderStatus] = useState(false);
   const { cart, addtocart,loginStatus } = useCartContext();
   const [Details, setDetails] = useState(0);
@@ -163,6 +165,8 @@ const Events = () => {
                 </div>
               ))}
             </div>
+            <div style={{display:'flex',justifyContent:'center',marginTop:'2%'}}>
+            <button className="passBtn" onClick={(e)=>{e.preventDefault();navigate('/payment/pass')}}>Buy Pass</button></div>
           </div>
         </div>
         {/* </EventSky> */}

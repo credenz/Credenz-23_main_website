@@ -321,11 +321,25 @@ const Mobile = ({ data, props }) => {
                                                                                     {eventSelected===0?'Select Event':teamEvents[eventSelected-101].name}
                                                                                     </Dropdown.Toggle>
 
-                                                                                    <Dropdown.Menu variant="dark">
-                                                                                        <Dropdown.Item href="#/action-1" onClick={(e) => {e.preventDefault();setEvnentSelected(101)}} active={eventSelected === 101 ? true : false}>
+                                                                                    <Dropdown.Menu style={{height:'20vh',overflowY:'scroll'}} variant="dark">
+                                                                                    {myTeams.length===0
+        ?
+        <>{data.orders.map((val,idx)=>(
+            val.event.group_event && 
+            <Dropdown.Item eventKey={idx+1} onClick={()=>setEvnentSelected(Number(val.event.event_id))} active={eventSelected===Number(val.event.event_id)?true:false}>{val.event.event_name}</Dropdown.Item>
+        ))}</>
+        :
+        <>{data.orders.map((val,idx)=>(
+            val.event.group_event && 
+            myTeams.find((event)=>{return Number(val.event.event_id)!==Number(event.event.event_id)}) 
+            && <Dropdown.Item eventKey={idx+1} onClick={()=>setEvnentSelected(Number(val.event.event_id))} active={eventSelected===Number(val.event.event_id)?true:false}>{val.event.event_name}</Dropdown.Item>
+        ))}
+        </>
+        }
+                                                                                        {/* <Dropdown.Item href="#/action-1" onClick={(e) => {e.preventDefault();setEvnentSelected(101)}} active={eventSelected === 101 ? true : false}>
                                                                                             Clash
                                                                                         </Dropdown.Item>
-                                                                                        <Dropdown.Item href="#/action-2" onClick={(e) => {e.preventDefault();setEvnentSelected(102)}} active={eventSelected === 102 ? true : false} >RC</Dropdown.Item>
+                                                                                        <Dropdown.Item href="#/action-2" onClick={(e) => {e.preventDefault();setEvnentSelected(102)}} active={eventSelected === 102 ? true : false} >RC</Dropdown.Item> */}
                                                                                         {/* <Dropdown.Item href="#/action-3" onClick={() => setEvnentSelected(103)} active={eventSelected === 103 ? true : false}>Enigma</Dropdown.Item> */}
                                                                                         {/* <Dropdown.Divider /> */}
                                                                                         {/* <Dropdown.Item href="#/action-4" onClick={() => setEvnentSelected(104)} active={eventSelected === 104 ? true : false}>B-Plan</Dropdown.Item> */}

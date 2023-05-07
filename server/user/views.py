@@ -13,6 +13,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.exceptions import ParseError
 from rest_framework.views import APIView
 from .serializers import *
 from .models import *
@@ -300,9 +301,42 @@ class JoinTeamView(generics.GenericAPIView):
         team_id = request.data['team_id']
         event_check = Team.objects.filter(team_id=team_id).first()
 
-        if Order.objects.filter(event = event_check.event, user = user, payment = "CO"):
-            if not Team.objects.filter(user = user, event = event_check.event):
-                if Team.objects.filter(team_id = team_id):
+        if Team.objects.filter(team_id = team_id):
+            event_c = Team.objects.filter(team_id=team_id).first()
+
+            if event_c.event.event_id == "101" or event_c.event.event_id == "102":
+                if Order.objects.filter(event = event_check.event, user = user):
+                    if not Team.objects.filter(user = user, event = event_check.event):
+                            exis_team = Team.objects.get(team_id = team_id)
+                            if exis_team.user.count() >= exis_team.event.group_size:
+                                return Response({"message" : "Maximum team size reached already!"}, status=status.HTTP_400_BAD_REQUEST)
+                            else:
+                                exis_team.user.add(request.user)
+
+                                # send team email
+                                user = request.user
+                                email = user.email
+                                context = {"user": user, "team_id": team_id, "event": event_check, "team_password" : exis_team.team_password}
+                                html_message = render_to_string("team.html", context=context)
+                                try:
+                                    send_mail(
+                                    'Your Team',
+                                    '',
+                                    settings.EMAIL_HOST_USER,
+                                    [email],
+                                    html_message=html_message,
+                                    fail_silently=False,
+                                    )
+                                except Exception as e:
+                                    print(f"Email failed due to: {e}")
+                                return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
+
+                    else:
+                        return  Response({"message" : "Team already exists for this user and event."})
+                else:
+                    return Response({"message" : "No order exists for this user and event."})
+            else:
+                if not Team.objects.filter(user = user, event = event_check.event):
                     exis_team = Team.objects.get(team_id = team_id)
                     if exis_team.user.count() >= exis_team.event.group_size:
                         return Response({"message" : "Maximum team size reached already!"}, status=status.HTTP_400_BAD_REQUEST)
@@ -327,11 +361,9 @@ class JoinTeamView(generics.GenericAPIView):
                             print(f"Email failed due to: {e}")
                         return Response({"message" : "User added to Team"}, status=status.HTTP_201_CREATED)
                 else:
-                    return Response({"message" : "Invalid team ID"})
-            else:
-                return  Response({"message" : "Team already exists for this user and event."})
+                    return  Response({"message" : "Team already exists for this user and event."})
         else:
-            return Response({"message" : "No order exists for this user and event."})
+            return Response({"message" : "Invalid team ID"})
 
 class TeamView(generics.ListAPIView):
     serializer_class = TeamSerializer
@@ -491,4 +523,62 @@ class AdminPassView(generics.GenericAPIView):
         
         return Response({"message" : "Transaction not allowed"})
 
+class PassView(generics.GenericAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+
+        transaction_id = request.data["transaction_id"]
+        amount = request.data["amount"]
+        buyer = request.user
+        event_id_list = Event.objects.values_list('event_id', flat=True)
+        event_list = [int(event_id) for event_id in event_id_list]
+        for event in event_list:
+            if not Order.objects.filter(user = buyer, event = Event.objects.get(event_id = event)):
+                order = Order(user = buyer, event = Event.objects.get(event_id = event), transaction_id=transaction_id)
+                order.save()
+
+        # add transaction for the complete list of events
+        transaction = Transaction(event_list = event_list, user = buyer, transaction_id = transaction_id, amount=amount)
+        transaction.save()
+
+        # send order email
+        events = Event.objects.filter(event_id__in=event_list)
+        email = buyer.email
+        buyer.has_purchased_pass = True
+        buyer.save()
+        context = {"user": buyer, "events": events, "transaction_id":transaction_id}
+        html_message = render_to_string("event.html", context=context)
+        try:
+            send_mail(
+                'Your Order',
+                '',
+                settings.EMAIL_HOST_USER,
+                [email],
+                html_message=html_message,
+                fail_silently=False,
+            )
+        except Exception as e:
+            print(f"Email failed due to: {e}")
+
+        return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
+        
+class ValidateUserView(generics.GenericAPIView):
+
+    def post(self, request):
+        try:
+            username = request.data["username"]
+            password = request.data["password"]
+            event = request.data["event"]
+        except KeyError:
+            raise ParseError("Username and password fields are required.")
+        
+        user = User.objects.filter(username=username).first()
+        if user:
+            if user.check_password(password):
+                return Response({"message": "user exists and password is correct"}, status=status.HTTP_200_OK)
+            else:
+                return Response({"message": "incorrect password"}, status=status.HTTP_401_UNAUTHORIZED)
+        else:
+            return Response({"message": "user does not exist"}, status=status.HTTP_404_NOT_FOUND)
         
