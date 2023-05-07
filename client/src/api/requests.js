@@ -31,6 +31,7 @@ const login = (data) => backend.post( `/login/`, data,{headers: {}} );
 const profile= ()=>backend.get(`/profile/`,{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const register=(data)=>backend.post(`/register/`,data,{headers: { }});
 const order=(data)=>backend.post(`/placeorder/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
+const orderPass=(data)=>backend.post(`/order-pass/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const resetPassowrd=(data)=>backend.post(`/password-reset-confirm/`,data,{headers: { }});
 const forgetPassword=(data)=>backend.post(`/password-reset/`,data,{headers: { }});
 const createTeam=(data)=>backend.post(`/generate-team/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
@@ -49,6 +50,7 @@ const Requests = {
     register,
     events,
     order,
+    orderPass,
     forgetPassword,
     resetPassowrd,
     createTeam,

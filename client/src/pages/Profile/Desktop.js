@@ -80,7 +80,7 @@ const Desktop = ({ data,props }) => {
     const [selected, setSelected] = useState(0);
     const [teamVisible, setTeamVisible] = useState(0);
     const [eventSelected, setEvnentSelected] = useState(0);
-    const teamEvents=[{id:101,name:'Clash'},{id:102,name:'RC'},{id:103,name:'Enigma'},{id:104,name:'B-plan'}]
+    const teamEvents=[{id:101,name:'Clash'},{id:102,name:'RC'},{id:106,name:'Enigma'},{id:105,name:'B-plan'}]
     const [myTeams,setMyTeams] = useState([]);
     const [teamName,setTeamName] = useState('');
     const eventsList = [
@@ -271,12 +271,26 @@ marginRight: '20%',marginBottom:'25px'}}>
                                                     <div className="cplayers">
                                                     <Dropdown>
         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
-          {eventSelected===0?'Select Event':teamEvents[eventSelected-101].name}
+          {eventSelected===0?'Select Event':eventsList[eventSelected-101].title}
         </Dropdown.Toggle>
-
-        <Dropdown.Menu variant="dark">
-            <Dropdown.Item eventKey={1} onClick={()=>setEvnentSelected(101)} active={eventSelected===101?true:false}>Clash</Dropdown.Item>
-          <Dropdown.Item eventKey={2} onClick={()=>setEvnentSelected(102)} active={eventSelected===102?true:false} >RC</Dropdown.Item>
+        <Dropdown.Menu style={{height:'25vh',overflowY:'scroll'}} variant="dark">
+        {/* {console.log(data.orders)} */}
+        {myTeams.length===0
+        ?
+        <>{data.orders.map((val,idx)=>(
+            val.event.group_event && 
+            <Dropdown.Item eventKey={idx+1} onClick={()=>setEvnentSelected(Number(val.event.event_id))} active={eventSelected===Number(val.event.event_id)?true:false}>{val.event.event_name}</Dropdown.Item>
+        ))}</>
+        :
+        <>{data.orders.map((val,idx)=>(
+            val.event.group_event && 
+            myTeams.find((event)=>{return Number(val.event.event_id)!==Number(event.event.event_id)}) 
+            && <Dropdown.Item eventKey={idx+1} onClick={()=>setEvnentSelected(Number(val.event.event_id))} active={eventSelected===Number(val.event.event_id)?true:false}>{val.event.event_name}</Dropdown.Item>
+        ))}
+        </>
+        }
+            {/* <Dropdown.Item eventKey={1} onClick={()=>setEvnentSelected(101)} active={eventSelected===101?true:false}>Clash</Dropdown.Item>
+          <Dropdown.Item eventKey={2} onClick={()=>setEvnentSelected(102)} active={eventSelected===102?true:false} >RC</Dropdown.Item> */}
           {/* <Dropdown.Item eventKey={3} onClick={()=>setEvnentSelected(103)} active={eventSelected===103?true:false}>Enigma</Dropdown.Item> */}
           {/* <Dropdown.Divider /> */}
           {/* <Dropdown.Item eventKey={4} onClick={()=>setEvnentSelected(104)} active={eventSelected===104?true:false}>B-Plan</Dropdown.Item> */}

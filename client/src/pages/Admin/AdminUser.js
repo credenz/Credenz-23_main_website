@@ -120,7 +120,7 @@ const AdminUser = ({props}) => {
   const [length,setLength] = useState(0);
   const [payMethod,setPayMethod] = useState(0);
   const [pass,setPass] = useState(false);
-  const passAmt=200;
+  const passAmt=100;
   const payList=[
     'UTR','UPI transaction ID','UPI Ref ID','Bank Reference Id'
 ]
@@ -159,11 +159,19 @@ const AdminUser = ({props}) => {
             correctLevel: window.QRCode.CorrectLevel.H
         });
     }
+    function onlyDigits(s) {
+      for (let i = s.length - 1; i >= 0; i--) {
+        const d = s.charCodeAt(i);
+        if (d < 48 || d > 57) return false
+      }
+      return true
+    }
     const handleClick=()=>{
       if(username===''||upiId===''){
         props.toast.toast.error('Username or transaction id is empty');
         return;
       }
+      if(!onlyDigits(upiId)) {props.toast.toast.error('Enter Only Numeric digits!');return;}
       // console.log(cart);
       if(pass){
         const id = props.toast.toast.loading("Please wait...");
