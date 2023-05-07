@@ -11,6 +11,7 @@ class EventAdmin(ImportExportActionModelAdmin):
 @admin.register(User)
 class UserAdmin(ImportExportActionModelAdmin):
     list_display = ("username", "full_name", "phone", "coins", "senior", "referral")
+    search_fields = ("username", "phone")
 
 @admin.register(Referral)
 class ReferralAdmin(ImportExportActionModelAdmin):
@@ -20,6 +21,8 @@ class ReferralAdmin(ImportExportActionModelAdmin):
 class OrderAdmin(ImportExportActionModelAdmin):
     raw_id_fields = ('event',)
     list_display = ('id', 'user', 'event', 'order_date', 'payment', 'transaction_id')
+    search_fields = ("user__username", "user__phone", "transaction_id", "event__event_name")
+
     
 class TeamResource(resources.ModelResource):
     event_name = fields.Field(attribute='event__event_name', column_name='Event Name')
@@ -67,6 +70,8 @@ class TransactionResource(resources.ModelResource):
 class TransactionAdmin(ImportExportActionModelAdmin):
     resource_class = TransactionResource
     list_display = ("user_name", "transaction_id", "order_date", 'event_list', 'amount', 'payment')
+    search_fields = ("user__username", "user__phone", "transaction_id")
+
 
     def user_name(self, obj):
         return obj.user.full_name
