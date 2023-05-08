@@ -622,6 +622,24 @@ const NavbarCustom = (props) => {
                 Events
               </NavLink>
               <NavLink
+                key={"sponsor"}
+                activeClassName="activeLink"
+                to={`/sponsor`}
+                isActive={() => page === "/sponsor"}
+                className="header-title"
+                onClick={() => {
+                  window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/sponsor'
+                  :
+                  setPage("/sponsor");
+                  handleCollapse();
+                }}
+              >
+                Sponsors
+              </NavLink>
+
+              <NavLink
                 key={"about"}
                 activeClassName="activeLink"
                 to={`/about`}
