@@ -19,6 +19,8 @@ from .serializers import *
 from .models import *
 from openpyxl import load_workbook
 import hashlib
+from rest_framework.decorators import api_view, permission_classes
+from django.db.models import Sum
 
 PASSWORD_RESET_URL = (
     "https://credenz.in/forget-password/{token}/{uid}"
@@ -602,3 +604,10 @@ class ValidateUserView(APIView):
         else:
             return Response({"detail": "user does not exist"}, status=status.HTTP_404_NOT_FOUND)
         
+
+
+@api_view(['GET'])
+@permission_classes([IsAdminUser])
+def total_amount(request):
+    total = Transaction.objects.aggregate(Sum('amount'))['amount__sum']
+    return Response({'total_amount': total})
