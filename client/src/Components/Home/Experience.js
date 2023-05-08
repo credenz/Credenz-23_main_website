@@ -19,6 +19,7 @@ import JustLogo from './models/just_logo'
 import JustLogoV2 from './models/just_logo_v2'
 import { JustLogoV3 } from './models/just_logo_v3'
 import Sponsor from './models/Sponsor'
+import { Pubmatic2 } from './models/Pubmatic2'
 
 export default function Experience({explore3D, isMouseDown}) {
   const [isSnapped, setSnpped] = useState(false)
@@ -142,6 +143,7 @@ export default function Experience({explore3D, isMouseDown}) {
 
         <Soon/>
         {/* <Sponsor /> */}
+        <Pubmatic2 />
         {/* <JustLogo /> */}
         {/* <JustLogoV2 /> */}
         <JustLogoV3 />
