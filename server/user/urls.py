@@ -31,4 +31,7 @@ urlpatterns = [
     path("upload-file/", UploadFileView.as_view(), name="upload-file"),
     # feedback
     path("feedback/", FeedbackView.as_view(), name="feedback"),
+
+    # User Verification
+    path("verify/user/", ValidateUserView.as_view(), name="user-verify"),
 ]

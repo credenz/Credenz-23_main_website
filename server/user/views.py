@@ -570,15 +570,36 @@ class ValidateUserView(generics.GenericAPIView):
             username = request.data["username"]
             password = request.data["password"]
             event = request.data["event"]
+            is_team = bool(request.data["is_team"])
+            print(is_team)
+            if event not in ["clash", "rc", "wallstreet"]:
+                raise ParseError("Invalid event")
         except KeyError:
-            raise ParseError("Username and password fields are required.")
+            raise ParseError("Username, password, event and is_team fields are required.")
+
+        if is_team:
+            team = Team.objects.filter(team_id=username).first()
+            if team:
+                if team.team_password != password:
+                    return Response({"detail": "incorrect password"}, status=status.HTTP_401_UNAUTHORIZED)
+                users = team.user.all()
+                serializer = UserSerializer(users, many=True)
+                return Response({"users" :serializer.data, "detail":"verified"}, status=status.HTTP_200_OK)
+            else:
+                return Response({"detail": "team does not exist"}, status=status.HTTP_404_NOT_FOUND)
         
         user = User.objects.filter(username=username).first()
+        
         if user:
+            order = Order.objects.filter(user=user, event=Event.objects.get(event_name=event)).first()
+            if not order:
+                return Response({"detail": f"user is not registered for {event}"}, status=status.HTTP_401_UNAUTHORIZED)
             if user.check_password(password):
-                return Response({"message": "user exists and password is correct"}, status=status.HTTP_200_OK)
+                serializer = UserSerializer(user)
+                serializer.data["detail"] = "verified"
+                return Response(serializer.data, status=status.HTTP_200_OK)
             else:
-                return Response({"message": "incorrect password"}, status=status.HTTP_401_UNAUTHORIZED)
+                return Response({"detail": "incorrect password"}, status=status.HTTP_401_UNAUTHORIZED)
         else:
-            return Response({"message": "user does not exist"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"detail": "user does not exist"}, status=status.HTTP_404_NOT_FOUND)
         
