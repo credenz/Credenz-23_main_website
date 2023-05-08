@@ -116,6 +116,22 @@ const PhoneNavbar = () => {
             </li> */}
             <li>
               <Link
+                to={"/sponsor"}
+                onClick={() => window.location.pathname==='/explore'
+                  ?
+                  window.location.href =window.location.origin+'/sponsor'
+                  :setNavOpen(false)}
+                style={{ textDecoration: "none" }}
+              >
+                <span className="fa-li">
+                  {/* <i className="fas fa-info"></i> */}
+                  <i class='far fa-handshake'></i>
+                </span>
+                Sponsors
+              </Link>
+            </li>
+            <li>
+              <Link
                 to={"/about"}
                 onClick={() => window.location.pathname==='/explore'
                   ?

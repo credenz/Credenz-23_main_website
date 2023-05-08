@@ -596,8 +596,7 @@ class ValidateUserView(APIView):
                 return Response({"detail": f"user is not registered for {event}"}, status=status.HTTP_401_UNAUTHORIZED)
             if user.check_password(password):
                 serializer = UserSerializer(user)
-                serializer.data["detail"] = "verified"
-                return Response(serializer.data, status=status.HTTP_200_OK)
+                return Response({"user" : serializer.data, "detail" : "verified"}, status=status.HTTP_200_OK)
             else:
                 return Response({"detail": "incorrect password"}, status=status.HTTP_401_UNAUTHORIZED)
         else:
