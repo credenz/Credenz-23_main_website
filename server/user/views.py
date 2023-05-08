@@ -60,6 +60,8 @@ class UploadFileView(generics.GenericAPIView):
                     transaction = Transaction.objects.get(transaction_id=transaction_id)
                 except Transaction.DoesNotExist:
                     continue
+                if transaction.payment == "CO":
+                    continue
                 amount_transaction = transaction.amount
                 if amount_excel == amount_transaction:
                     c_check += 1
