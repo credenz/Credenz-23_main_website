@@ -14,6 +14,7 @@ export default function SignBoard(props) {
   const navigate = useNavigate()
 
   const [hovered, setHovered] = useState(false)
+  
 
   useEffect(() => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'

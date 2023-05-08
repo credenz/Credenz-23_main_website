@@ -59,7 +59,6 @@ class UploadFileView(generics.GenericAPIView):
                 try:
                     transaction = Transaction.objects.get(transaction_id=transaction_id)
                 except Transaction.DoesNotExist:
-                    raise ValueError("Transaction ID does not exist")
                     continue
                 amount_transaction = transaction.amount
                 if amount_excel == amount_transaction:

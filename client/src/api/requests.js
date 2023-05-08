@@ -28,7 +28,7 @@ const list = axios.create({
 // const time=() => backend.get( `/timer/`, {headers: { "content-type": "application/json"}} );
 // const feedback = (data) => backend.post( `/auth/feedback/`, data,{headers: { "content-type": "application/json" }} );
 
-const events=()=>list.get(`/`,{headers: { }} );
+const events=()=>list.get(``,{headers: { }} );
 const login = (data) => backend.post( `/login/`, data,{headers: {}} );
 const profile= ()=>backend.get(`/profile/`,{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const register=(data)=>backend.post(`/register/`,data,{headers: { }});

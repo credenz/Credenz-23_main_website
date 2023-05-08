@@ -360,8 +360,8 @@
     "structure": {
       "1": "Round 1: It is the idea submission round. Participants need to submit the idea for way of approach using PPT or PDF for the given problem statements.",
       "2": "Round 2: It is the actual implementation of the problem statement. In the given time duration participants can submit their implementation to the given repo for the problem statement.",
-      "3": "To View the problem statements, click <a href='https://github.com/Credenz-Web-Weaver'>here</a>.",
-      "4": "Submit your ideas <a href='https://forms.gle/khmDuuHNbb2ioJ8g9'>here</a>"
+      "3": "To View the problem statements, visit https://github.com/Credenz-Web-Weaver",
+      "4": "Submit your ideas here. https://forms.gle/khmDuuHNbb2ioJ8g9"
     },
     "rules": {
       "1": "Each team can consist of a maximum of 3 members.",
