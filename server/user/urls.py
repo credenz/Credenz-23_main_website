@@ -34,4 +34,7 @@ urlpatterns = [
 
     # User Verification
     path("verify/user/", ValidateUserView.as_view(), name="user-verify"),
+
+    # Get total amount
+    path('total-amount/', total_amount, name='total-amount'),
 ]
