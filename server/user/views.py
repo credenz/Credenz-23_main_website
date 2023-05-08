@@ -563,7 +563,7 @@ class PassView(generics.GenericAPIView):
 
         return Response({"message" : "order placed"}, status=status.HTTP_201_CREATED)
         
-class ValidateUserView(generics.GenericAPIView):
+class ValidateUserView(APIView):
 
     def post(self, request):
         try:
