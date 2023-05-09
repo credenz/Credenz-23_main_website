@@ -21,6 +21,7 @@ class OrderResource(resources.ModelResource):
     user = fields.Field(attribute='user__full_name', column_name='Name')
     phone = fields.Field(attribute='user__phone', column_name='phone')
     event = fields.Field(attribute='event__event_name', column_name='event')
+    email = fields.Field(attribute='user__email', column_name='email')
     order_date = fields.Field(attribute='order_date', column_name='order date')
     payment = fields.Field(attribute='payment', column_name='payment')
     transaction_id = fields.Field(attribute='transaction_id', column_name='transaction_id')
@@ -29,11 +30,30 @@ class OrderResource(resources.ModelResource):
 class OrderAdmin(ImportExportActionModelAdmin):
     resource_class = OrderResource
     raw_id_fields = ('event',)
-    list_display = ('id', 'user', 'event', 'order_date', 'payment', 'transaction_id', 'phone')
+    list_display = ('id', 'user', 'event', 'order_date', 'payment', 'transaction_id', 'phone', 'email')
     search_fields = ("user__username", "user__phone", "transaction_id", "event__event_name")
 
     def phone(self, obj):
         return obj.user.phone
+    
+    def email(self, obj):
+        return obj.user.email
+    
+    # def wallstreet_mail(self, request, queryset):
+    #     event_name = 104 
+    #     users_with_event = queryset.filter(event__event_name=event_name).values_list('user', flat=True).distinct()
+    #     for user_id in users_with_event:
+    #         user = User.objects.get(id=user_id)
+    #         subject = 'Wallstreet Update'
+    #         message = 'Body of your email'
+    #         from_email = 'your-email@example.com'
+    #         recipient_list = [user.email]
+    #         send_mail(subject, message, from_email, recipient_list)
+    #     self.message_user(request, f'Mail sent to {len(users_with_event)} users with event {event_name}')
+
+    # wallstreet_mail.short_description = "Send mail to wallstreet users"
+
+    # actions = [send_mail_to_users_with_event]
 
     
 class TeamResource(resources.ModelResource):
