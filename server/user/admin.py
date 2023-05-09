@@ -17,11 +17,23 @@ class UserAdmin(ImportExportActionModelAdmin):
 class ReferralAdmin(ImportExportActionModelAdmin):
     list_display = ("referrer", "referred_user", "timestamp", "referral_code")
 
+class OrderResource(resources.ModelResource):
+    user = fields.Field(attribute='user__full_name', column_name='Name')
+    phone = fields.Field(attribute='user__phone', column_name='phone')
+    event = fields.Field(attribute='event__event_name', column_name='event')
+    order_date = fields.Field(attribute='order_date', column_name='order date')
+    payment = fields.Field(attribute='payment', column_name='payment')
+    transaction_id = fields.Field(attribute='transaction_id', column_name='transaction_id')
+
 @admin.register(Order)
 class OrderAdmin(ImportExportActionModelAdmin):
+    resource_class = OrderResource
     raw_id_fields = ('event',)
-    list_display = ('id', 'user', 'event', 'order_date', 'payment', 'transaction_id')
+    list_display = ('id', 'user', 'event', 'order_date', 'payment', 'transaction_id', 'phone')
     search_fields = ("user__username", "user__phone", "transaction_id", "event__event_name")
+
+    def phone(self, obj):
+        return obj.user.phone
 
     
 class TeamResource(resources.ModelResource):
