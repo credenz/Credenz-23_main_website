@@ -31,6 +31,7 @@ import { useCartContext } from './context/cart_context';
 import { useEffect } from 'react';
 import Requests from './api/requests';
 import Sponsor from './pages/Sponsors/Sponsor';
+import Newsponsor from './pages/newsponsor/Newsponsor';
 function App() {
   const location = useLocation();
   // const {loginStatus} = useCartContext();
@@ -66,7 +67,8 @@ function App() {
 
 
    <Route exact path="/" element={<Home/> } />
-   <Route exact path="/sponsor" element={<Sponsor/> } />
+  
+   <Route exact path="/sponsor" element={<Newsponsor/> } />
    <Route exact path="/explore" element={<Explore /> } />
    <Route exact path="/events" element={<Events toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/about" element={<About/> } />
