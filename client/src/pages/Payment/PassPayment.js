@@ -158,7 +158,7 @@ const PassPayment = (props) => {
                                 </Scrollbars>
                             </div>
                             <div className="back-to-shop">
-                                <a href="#" onClick={(e) => { e.preventDefault(); navigate('/cart') }}>Back to cart</a>
+                                <a href="#" onClick={(e) => { e.preventDefault(); navigate('/events') }}>Back to events</a>
                                 {/* <button onClick={()=>navigate('/cart')}>Back to cart</button> */}
                                 {/* {!isQr ? <button onClick={() => generate()}>Click For QR</button> : <></>} */}
                             {
