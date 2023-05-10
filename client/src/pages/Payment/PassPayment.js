@@ -14,7 +14,7 @@ import Modal from "react-modal";
 const PassPayment = (props) => {
     // const [data,setData]=useState(props);
     const { cart, totalprice,clearcart,loginStatus } = useCartContext();
-    const passAmt=100;
+    const passAmt=200;
     const link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${passAmt}&tn=Credenz IEEE&cu=INR`;
     // const [isQr, setisQr] = useState(false);
     const [upiId, setupiId] = useState("");
