@@ -255,6 +255,20 @@ const Mobile = ({ data, props }) => {
                                                             props.toast.toast.error('Something went wrong')
                                                         });
                                                 }}> Copy</a></p>
+                                                <p>Team Password: {data.team_password} <a href={data.team_password} onClick={(e) => {
+                                                    e.preventDefault(); navigator.clipboard
+                                                        .writeText(`${data.team_password}`)
+                                                        .then(() => {
+                                                            // alert("successfully copied");
+                                                            // console.log(props)
+                                                            props.toast.toast.success('Successfully copied')
+                                                        })
+                                                        .catch(() => {
+                                                            // alert("something went wrong");
+                                                            // console.log(props)
+                                                            props.toast.toast.error('Something went wrong')
+                                                        });
+                                                }}> Copy</a></p>
                                                                                     <p>Team Members </p>
                                                                                     <div style={{ textAlign: 'initial' }}>
                                                                                         <ol>
