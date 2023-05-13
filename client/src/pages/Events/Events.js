@@ -311,7 +311,7 @@ const Events = () => {
                     
                   </div>
                   {data.id===103?<a href="https://nth.credenz.in/register" target="_blank"> <button className={`addtocart`}>Register</button></a>:
-                  purchasedEvents.includes(data.id.toString())? <button disabled={true} className={`addtocart disabled`}>Registered</button>:
+                  purchasedEvents.includes(data.id.toString())&&data.id===104?<a href="https://wallstreet.credenz.in/" target="_blank"> <button className={`addtocart`}>Start</button></a>:purchasedEvents.includes(data.id.toString())? <button disabled={true} className={`addtocart disabled`}>Registered</button>:
                   <button
                     disabled={
                       cart != null

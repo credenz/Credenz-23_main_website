@@ -125,7 +125,7 @@ const AdminUser = ({props}) => {
     'UTR','UPI transaction ID','UPI Ref ID','Bank Reference Id'
 ]
   let navigate=useNavigate();
-  let link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${amount}&tn=IEEE&cu=INR`;
+  let link = `upi://pay?pa=kunaljaipuria@ybl&pn=pictscholarship&am=${amount}&tn=IEEE&cu=INR`;
   const handelChange = (e) => {
     let temp = [];
     temp=cart;
@@ -138,7 +138,7 @@ const AdminUser = ({props}) => {
     setAmount(amt);
     setCart(temp);
     setLength(temp.length);
-    link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${amt}&tn=Credenz IEEE&cu=INR`;
+    link = `upi://pay?pa=kunaljaipuria@ybl&pn=pictscholarship&am=${amt}&tn=Credenz IEEE&cu=INR`;
     generate();
   }
     const [isQr, setisQr] = useState(false);
@@ -215,7 +215,7 @@ const AdminUser = ({props}) => {
     const handelPass=(e)=>{
       if(e.target.checked){
         setPass(true);
-        link = `upi://pay?pa=pictscholarship@jsb&pn=pictscholarship&am=${passAmt}&tn=Credenz IEEE&cu=INR`;
+        link = `upi://pay?pa=kunaljaipuria@ybl&pn=pictscholarship&am=${passAmt}&tn=Credenz IEEE&cu=INR`;
         generate();
         setAmount(passAmt);
         setLength(1);
