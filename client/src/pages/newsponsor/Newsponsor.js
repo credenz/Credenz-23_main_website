@@ -17,22 +17,27 @@ const Newsponsor = () => {
               data-aos-duration="500"
               data-aos-easing="ease-in-sine">
             <div className="team">
-              <h1 style={{fontSize:"4rem"}} >Sponsors</h1>
-              <div className="cards" >
-              
-    
-         
-                
-           
-              <div class="grid">
-              <figure class="effect-sadie">
+              {/* <h1 style={{fontSize:"4rem"}} >Sponsors</h1> */}
+			  <div>
+			  <h1 style={{fontSize:"3rem",marginTop:'90px'}} >Title Sponsor</h1>
+              <div class="grid" style={{flexWrap:'inherit'}}>
+              <figure class="effect-sadie" style={{margin:'5px 1%'}}>
 						<img src={Pubmatic} alt="img02"/>
 						<figcaption>
 							{/* <h2>Holy <span>Sadie</span></h2> */}
-							<p>Title Sponsor </p>
+							{/* <p>Title Sponsor </p> */}
 							{/* <a href="#">View more</a> */}
 						</figcaption>			
 					</figure>
+
+
+               
+				</div>
+			  </div>
+              <div className="cards" >
+              	<h1 style={{marginTop:'1px'}}>Other Sponsors</h1>
+				<div class="grid">
+              
 
                     <figure class="effect-sadie">
 						<img src={Ess} alt="img02"/>
@@ -51,6 +56,14 @@ const Newsponsor = () => {
 						</figcaption>			
 					</figure>
                     <figure class="effect-sadie">
+						<img src={Meter } alt="img02"/>
+						<figcaption>
+							{/* <h2>Holy <span>Sadie</span></h2> */}
+							{/* <p>Sadie never took her eyes off me. <br/>She had a dark soul.</p>
+							<a href="#">View more</a> */}
+						</figcaption>			
+					</figure>
+                    <figure class="effect-sadie">
 						<img src={Herody2} alt="img02"/>
 						<figcaption>
 							{/* <h2>Holy <span>Sadie</span></h2> */}
@@ -59,14 +72,6 @@ const Newsponsor = () => {
 						</figcaption>			
 					</figure>
 
-                    <figure class="effect-sadie">
-						<img src={Meter } alt="img02"/>
-						<figcaption>
-							{/* <h2>Holy <span>Sadie</span></h2> */}
-							{/* <p>Sadie never took her eyes off me. <br/>She had a dark soul.</p>
-							<a href="#">View more</a> */}
-						</figcaption>			
-					</figure>
 
                     <figure class="effect-sadie">
 						<img src={Ims} alt="img02"/>
@@ -89,7 +94,6 @@ const Newsponsor = () => {
 
                
 				</div>
-              
                
                 
               </div>

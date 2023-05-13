@@ -44,7 +44,7 @@ function App() {
   // }
   let backgroundWindow = '';
   let backgroundImg="";
-  if (location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile'||location.pathname === '/forget-password/:token/:uid'||location.pathname==='/forget-password'||location.pathname==='/admin'||location.pathname==='/leaderboard') {
+  if (location.pathname === '/payment/pass'||location.pathname === '/login'||location.pathname === '/register' ||location.pathname === '/cart'||location.pathname === '/payment'||location.pathname === '/profile'||location.pathname === '/forget-password/:token/:uid'||location.pathname==='/forget-password'||location.pathname==='/admin'||location.pathname==='/leaderboard') {
     {backgroundImg = 'BgImage';backgroundWindow='BgWindow '}
   } 
   // useEffect(()=>{

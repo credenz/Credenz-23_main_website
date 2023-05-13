@@ -39,27 +39,45 @@ class OrderAdmin(ImportExportActionModelAdmin):
     def email(self, obj):
         return obj.user.email
     
-    # def wallstreet_mail(self, request, queryset):
-    #     event_name = 104 
-    #     users_with_event = queryset.filter(event__event_name=event_name).values_list('user', flat=True).distinct()
-    #     for user_id in users_with_event:
-    #         user = User.objects.get(id=user_id)
-    #         subject = 'Wallstreet Update'
-    #         message = 'Body of your email'
-    #         from_email = 'your-email@example.com'
-    #         recipient_list = [user.email]
-    #         send_mail(subject, message, from_email, recipient_list)
-    #     self.message_user(request, f'Mail sent to {len(users_with_event)} users with event {event_name}')
+    def wallstreet_mail(self, request, queryset):
+        event_name = 104 
+        users_with_event = queryset.filter(event__event_name=event_name).values_list('user', flat=True).distinct()
+        for user_id in users_with_event:
+            print(user_id)
+            # user = User.objects.get(id=user_id)
 
-    # wallstreet_mail.short_description = "Send mail to wallstreet users"
+            # context = {"user": user, "team_id": new_team.team_id, "event": event_check, "team_password" : new_team.team_password}
+            #     html_message = render_to_string("team.html", context=context)
+            #     try:
+            #         send_mail(
+            #                 'Your Team',
+            #                 '',
+            #                 settings.EMAIL_HOST_USER,
+            #                 [email],
+            #                 html_message=html_message,
+            #                 fail_silently=False,
+            #             )
+            #     except Exception as e:
+            #         print(f"email failed due to: {e}")
 
-    # actions = [send_mail_to_users_with_event]
+            # subject = 'Wallstreet Update'
+            # message = 'Body of your email'
+            # from_email = 'your-email@example.com'
+            # recipient_list = [user.email]
+            # send_mail(subject, message, from_email, recipient_list)
+        self.message_user(request, f'Mail sent to {len(users_with_event)} users with event {event_name}')
+
+    wallstreet_mail.short_description = "Send mail to wallstreet users"
+
+    actions = [wallstreet_mail]
 
     
 class TeamResource(resources.ModelResource):
     event_name = fields.Field(attribute='event__event_name', column_name='Event Name')
     usernames = fields.Field()
     team_id  = fields.Field(attribute='team_id', column_name='Team ID')
+    phones = fields.Field()
+    emails = fields.Field()
 
     class Meta:
         model = Team
@@ -67,6 +85,12 @@ class TeamResource(resources.ModelResource):
     
     def dehydrate_usernames(self, team):
         return ", ".join([user.username for user in team.user.all()])
+    
+    def dehydrate_phones(self, team):
+        return ", ".join([user.phone for user in team.user.all()])
+    
+    def dehydrate_emails(self, team):
+        return ", ".join([user.email for user in team.user.all()])
 
 @admin.register(Team)
 class TeamAdmin(ImportExportActionModelAdmin):
