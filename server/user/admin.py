@@ -93,7 +93,7 @@ class TeamResource(resources.ModelResource):
     def dehydrate_emails(self, team):
         return ", ".join([user.email for user in team.user.all()])
     
-    def dehydrate_emails(self, team):
+    def dehydrate_names(self, team):
         return ", ".join([user.full_name for user in team.user.all()])
 
 @admin.register(Team)
