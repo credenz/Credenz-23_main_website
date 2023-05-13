@@ -78,6 +78,7 @@ class TeamResource(resources.ModelResource):
     team_id  = fields.Field(attribute='team_id', column_name='Team ID')
     phones = fields.Field()
     emails = fields.Field()
+    names = fields.Field()
 
     class Meta:
         model = Team
@@ -91,6 +92,9 @@ class TeamResource(resources.ModelResource):
     
     def dehydrate_emails(self, team):
         return ", ".join([user.email for user in team.user.all()])
+    
+    def dehydrate_emails(self, team):
+        return ", ".join([user.full_name for user in team.user.all()])
 
 @admin.register(Team)
 class TeamAdmin(ImportExportActionModelAdmin):
