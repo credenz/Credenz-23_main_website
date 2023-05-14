@@ -47,12 +47,12 @@ const RC = () => {
     // { logo: WEB, title: "Web Weaver", id: 110 },
   ];
   const [details, setdetails] = useState([
-    {title:"Rc",id:1},
-    {title:"Rc",id:2},
-    {title:"Rc",id:3},
-    {title:"Rc",id:4},
-    {title:"Rc",id:5},
-    {title:"Rc",id:6},
+    {title:"2024",id:1},
+    {title:"1/2 Prime?",id:2},
+    {title:"Xor-bi-Xor",id:3},
+    {title:"As Key",id:4},
+    {title:"eye pie",id:5},
+    {title:"We are done :)",id:6},
   ]);
 
   function isValidNumber(num) {
