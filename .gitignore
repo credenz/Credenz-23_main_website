@@ -2,7 +2,7 @@ client/node_modules
 server/venv
 server/push.sh
 server.sh
-
+rc.py
 
 *.env
 
