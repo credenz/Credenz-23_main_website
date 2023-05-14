@@ -37,4 +37,7 @@ urlpatterns = [
 
     # Get total amount
     path('total-amount/', total_amount, name='total-amount'),
+
+    # rc api 
+    path('rc-api/', RcAPI.as_view(), name="rc-api"),
 ]

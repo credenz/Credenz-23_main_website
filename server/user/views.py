@@ -21,6 +21,7 @@ from openpyxl import load_workbook
 import hashlib
 from rest_framework.decorators import api_view, permission_classes
 from django.db.models import Sum
+from .rc import getrcinput
 
 PASSWORD_RESET_URL = (
     "https://credenz.in/forget-password/{token}/{uid}"
@@ -612,3 +613,13 @@ class ValidateUserView(APIView):
 def total_amount(request):
     total = Transaction.objects.aggregate(Sum('amount'))['amount__sum']
     return Response({'total_amount': total})
+
+class RcAPI(generics.GenericAPIView):
+    def post(self, request):
+        rc_input = request.data['rc_input']
+        rc_ques = request.data['rc_ques']
+
+        rc_output = getrcinput(rc_ques, rc_input)
+
+        return Response({"rc_output" : rc_output}, status=status.HTTP_200_OK)
+
