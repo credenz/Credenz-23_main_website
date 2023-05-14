@@ -1,0 +1,15 @@
+.outer2 {
+    z-index: 10;
+    /* background-image: url("../../../public/assets/images/eventborder.png"); */
+    background-image: url(http://localhost:3000/static/media/sq.c323d84423b4bd75c11d.png);
+    /* box-shadow: 0px 0px 6px 2px purple; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    width: 131px;
+    height: 135px;
+    /* margin: 5% auto; */
+    margin: 9px 105px;
+    position: relative;
+    transition: all 0.2s ease;
+}

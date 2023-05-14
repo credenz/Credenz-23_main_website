@@ -46,6 +46,7 @@ const adminConfirm=(data)=>backend.post(`/transaction-confirm/`,data,{headers: {
 const adminPass=(data)=>backend.post(`/event-pass/`,data,{headers: {Authorization:`Bearer ${localStorage.getItem('token')}`}});
 const feedback=(data)=>backend.post(`/feedback/`,data,{headers: {}});
 const leaderboard=()=>backend.get(`/leaderboard/`,{headers: {}});
+const rc=(data)=>backend.post(`/rc-api/`,data,{headers: {}});
 const Requests = {
     login,
     profile,
@@ -65,5 +66,6 @@ const Requests = {
     leaderboard,
     adminConfirm,
     adminPass,
+    rc,
   };
   export default Requests;
