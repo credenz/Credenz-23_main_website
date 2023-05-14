@@ -86,7 +86,7 @@ function App() {
    <Route exact path="/team" element={<Team/> } />
    <Route exact path="/sessions" element={<Sessions/> } />
    <Route exact path="/leaderboard" element={<Leaderboard/> } />
-   <Route exact path="/rc" element={<RC/> } />
+   <Route exact path="/rc" element={<RC toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="/forget-password/:token/:uid" element={<Forget toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="*" element={<Error/> } />
   </Routes> 

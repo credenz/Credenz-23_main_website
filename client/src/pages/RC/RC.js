@@ -26,7 +26,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './RC.css'
-const RC = () => {
+const RC = (props) => {
   let navigate=useNavigate();
   const [loaderStatus, setLoaderStatus] = useState(false);
   const { cart, addtocart,loginStatus } = useCartContext();
@@ -85,16 +85,16 @@ const RC = () => {
   const handleSubmit=()=>{
     // if(isValidNumber(input)){
         console.log('input=',input,typeof(input),' question_number=',eventid,typeof(eventid))
-        // const id = props.toast.toast.loading("Please wait...");
+        const id = props.toast.toast.loading("Please wait...");
         Requests.rc({rc_ques:eventid,rc_input:Number(input)})
         .then((res)=>{
             console.log(res.data);
-            // props.toast.toast.update(id, { render: "Output Received", type: "success", isLoading: false, autoClose:5000 });
+            props.toast.toast.update(id, { render: "Output Received", type: "success", isLoading: false, autoClose:5000 });
             setOutput(res.data.rc_output);
             // setOutput()
         })
         .catch((err)=>{
-            // props.toast.toast.update(id, { render: 'Error', type: "error", isLoading: false,autoClose:5000 });
+            props.toast.toast.update(id, { render: 'Error', type: "error", isLoading: false,autoClose:5000 });
         })
     // }
     // else{
