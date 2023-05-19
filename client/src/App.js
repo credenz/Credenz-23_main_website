@@ -32,6 +32,7 @@ import { useEffect } from 'react';
 import Requests from './api/requests';
 import Sponsor from './pages/Sponsors/Sponsor';
 import Newsponsor from './pages/newsponsor/Newsponsor';
+import RC from './pages/RC/RC';
 function App() {
   const location = useLocation();
   // const {loginStatus} = useCartContext();
@@ -85,6 +86,7 @@ function App() {
    <Route exact path="/team" element={<Team/> } />
    <Route exact path="/sessions" element={<Sessions/> } />
    <Route exact path="/leaderboard" element={<Leaderboard/> } />
+   <Route exact path="/rc" element={<RC/> } />
    <Route exact path="/forget-password/:token/:uid" element={<Forget toast={{ container: <ToastUtils />, toast }}/> } />
    <Route exact path="*" element={<Error/> } />
   </Routes> 
