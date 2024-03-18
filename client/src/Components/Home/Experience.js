@@ -20,6 +20,7 @@ import JustLogoV2 from './models/just_logo_v2'
 import { JustLogoV3 } from './models/just_logo_v3'
 import Sponsor from './models/Sponsor'
 import { Pubmatic2 } from './models/Pubmatic2'
+import { V1 } from './models/credenz24/V1'
 
 export default function Experience({explore3D, isMouseDown}) {
   const [isSnapped, setSnpped] = useState(false)
@@ -127,12 +128,13 @@ export default function Experience({explore3D, isMouseDown}) {
   return (
     <>
         
-        <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} color={"orange"}/>
+        {/* <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} color={"orange"}/> */}
         <color attach="background" args={['black']} />
         
         <ambientLight intensity={0.5}/>
-        <LogoV7 />
-        <Sign />
+        {/* <LogoV7 /> */}
+        <V1 />
+        {/* <Sign /> */}
 
         {/* {isPhone ? <MobileController /> : <Rig />} */}
         {/* {console.log(isPhone)} */}
@@ -141,12 +143,12 @@ export default function Experience({explore3D, isMouseDown}) {
         {/* {explore3D ? <Html center><h1  >Explore 3D</h1></Html> : null} */}
         
 
-        <Soon/>
+        {/* <Soon/> */}
         {/* <Sponsor /> */}
-        <Pubmatic2 />
+        {/* <Pubmatic2 /> */}
         {/* <JustLogo /> */}
         {/* <JustLogoV2 /> */}
-        <JustLogoV3 />
+        {/* <JustLogoV3 /> */}
 
 
         

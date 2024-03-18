@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     // console.log(loaded, "loaded")
-    if (loaded >= 47) { // 45 as console log shows 46
+    if (loaded >= 0) { // 45 as console log shows 46
       // console.log('loaded')
       setShowCheck(true)
     }
@@ -54,7 +54,9 @@ export default function Home() {
         <Suspense fallback={<R3FLoader />}>
           <Experience explore3D={explore3D} isMouseDown={isMouseDown}/>
           {/* <Environment files="models/credenz/hdri.hdr" background/> */}
-          <Environment files="models/v7/textures/hdri4.hdr" />
+          {/* <Environment files="models/v7/textures/hdri4.hdr" /> */}
+          <Environment files="models/pool_1k.hdr" />
+
           
           {/* <Temp /> */}
         </Suspense>
